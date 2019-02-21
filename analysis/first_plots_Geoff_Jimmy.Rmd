@@ -1,0 +1,240 @@
+---
+title: "Rough analyses for Geoff and Jimmy's ungulate manuscript"
+author: "Dan Benesh"
+output: html_document
+---
+
+In this document, I use the life cycle database to explore ideas about how and why helminths infect grazing mammals (ungulates).
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+I need several datasets to address these issues: (i) host associations for the parasites in the life cycle database,
+(ii) life history variables for species in the life cycle database (body sizes and development), (iii) host body masses, and (iv) host taxonomy.
+
+```{r importdata}
+hosts <- read.csv(file = "../data/CLC_database_hosts.csv", header = TRUE) 
+lh <- read.csv(file = "../data/CLC_database_lifehistory.csv", header = TRUE)
+host_mass <- read.csv(file = "../data/collated_host_mass_data.csv", header = TRUE)
+host_tax <- read.csv(file = "../data/ncbi_host_taxonomy.csv", header = TRUE)
+```
+
+Host taxonomies were downloaded from the NCBI database, and I used this taxonomic information to identify host species that are 'ungulates'. Specifically, I tagged species belonging to the orders Perissodactyla or Laurasiatheria. When we print out those hosts for quality control, it looks like this filter did a good job picking out what we commonly consider to be 'ungulates'
+
+```{r}
+# filter out ungulate host species
+ungulate_host_species <- filter(host_tax, order == "Perissodactyla" | order == "Laurasiatheria")%>%
+  select(sp.query, phylum, class, order, family, genus)
+```
+
+```{r}
+# identify ungulates in list of hosts, add var
+hosts <- mutate(hosts, 
+                ungulate = if_else(Host.species %in% ungulate_host_species$sp.query, 1, 0))
+# print common names
+filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
+  knitr::kable(format = 'html')
+```
+
+For each parasite species, I calculated the number of hosts in the life cycle. Some worms have facultative cycles where they can infect more or fewer hosts before reproducing, and here I assumed they took the longest route to the final host, i.e. through all facultative hosts, which may not be the most likely transmission route.
+
+```{r}
+# sp by lc data table
+lcl <- group_by(hosts, Parasite.species, Parasite.group)%>%
+  summarise(lcl = max(Host.no))
+```
+
+I also calculated worm biovolume based on their shape, such as whether they are cylindrical or ellipsoid. I further assumed a tissue density of 1.1. g/cm^3^ to convert these to biomasses, and then averaged these values for each life stage within a species. Adult size was calculated excluding males, as helminths can be dimorphic with males typically being smaller than females.
+
+```{r}
+# calc biomasses
+lh <- mutate(lh, biovolume = 
+                  if_else(Shape %in% c("cylinder", "thread-like", "whip"), 
+                          pi * (Width/2)^2 * Length, # calculate volume as a cylinder
+                          if_else(Shape %in% c("coiled", "sphere", "ellipsoid"),
+                                  4/3 * pi * Length/2 * Width/4, # calculate volume as a ellipsoid
+                                  Length * Width # calculate volume as area for remaining ribbon, leaf shapes
+                                  )),
+                biovolume = biovolume * 1.1) # covert to biomass with assumed 1.1. g/cm3 tissue density 
+
+# species averages at adult stage
+lh_biov_sp <-filter(lh, Stage == 'adult', (Sex == 'f' | is.na(Sex)) )%>% # remove adult males
+  group_by(Parasite.species)%>%
+  summarize(adult_biov = mean(biovolume, na.rm=T),
+            adult_dt = mean(Development.time, na.rm = T))
+```
+
+```{r}
+# calc mean host sizes
+host_mass_avg <- group_by(host_mass, binomial)%>%
+  summarize(body.mass = mean(body.mass, na.rm=T))
+# add to hosts db
+hosts <- left_join(hosts, host_mass_avg, by = c("Host.species" = "binomial"))
+```
+
+I then filtered the dataset to just parasites infecting ungulates for plotting. For parasite species infecting multiple ungulate host species, I averaged body masses across host species.
+
+```{r}
+# filter to ungulate-infecting helminths, excluding those accidentally or atypically found in ungulates
+ung_parasites <- filter(hosts, ungulate == 1, Typical.host == 'typical')%>%
+  group_by(Parasite.species, Host.no, Def.int)%>%
+  summarize(host.bm = mean(body.mass, na.rm = T))
+```
+```{r}
+# combine parasite sizes, host sizes, life cycle info for plotting
+plot_dat <- left_join(ung_parasites, lcl)
+plot_dat <- left_join(plot_dat, lh_biov_sp)
+plot_dat <- mutate(plot_dat, complex = if_else(lcl == 1, "direct", "complex"))
+```
+
+In the paper, the argument is made that helminths face a trophic vacuum when transmitted to ungulates. Helminth propagules are voided into the environment with ungulate faeces, but ungulates avoid grazing near faeces. This faeces avoidance causes the trophic vacuum - eggs in or on faeces are unlikely to be consumed by ungulates.
+
+```{r}
+# add hatching strategy to plot data
+hatch <- select(lh, Parasite.species, Egg.hatch)%>%na.omit()%>%distinct()
+plot_dat <- left_join(plot_dat, hatch)
+```
+
+After surveying helminth transmission routes to ungulates, there appear to be two common ways to circumvent this transmission barrier, either parasite eggs hatch and larvae leave the faeces or parasites infect a transport/intermediate host, like mites, beetles, earthworms, etc. In the paper this was demonstrated with family-counting - egg ingestion is a rare route of infection for directly-transmitted ungulate helminths. Larvae that hatch are more common in these direct cycles. Let's see if the same pattern is found in the life cycle database. Below is a table of species counts exhibiting the different strategies. It seems to confirm the survey - hatching is common when directly-transmitted and egg ingestion is rare. If the life cycle is complex and ungulates are infected via intermediate hosts, then hatching may or may not be present. Maybe this depends on the kind of intermediate host.
+
+```{r}
+plot_dat <- mutate(plot_dat, Egg.hatch2 = if_else(Egg.hatch == 'eaten', 'eaten', 'hatch'))
+with(filter(plot_dat, Def.int == 'def'), table(complex, Egg.hatch2))
+```
+
+Let's compare some life history variables between these groups: worms that infect ungulates directly (with or without hatching) and worms with complex life cycles. The focus will be on nematodes, as these strategies are most diverse in nematodes (direct infection of ungulates does not occur in other helminth groups).
+
+Let's get plotting. We can start by comparing the final size attained by adult worms in ungulate hosts.
+
+```{r}
+ggplot(filter(plot_dat, Parasite.group == "nematode", Def.int == "def"),
+       aes(x = host.bm, y = adult_biov, color = Egg.hatch2) ) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x = "Ungulate body mass", y = "Adult female biovolume", title = "Nematodes in ungulates") +
+  facet_grid(~complex)
+```
+
+The sizes are rather comparable, which is what you might expect, assuming a large mammal favors similar reproductive sizes in worms regardless of how they got there. Whether species hatch from eggs or not does seem too important. It is worth noting, though, that nematodes in ungulates are not all in the gut. Often they infect the lungs (Metastrongylids) or even the nervous system, which may be characterized by different growth and mortality regimes.
+
+```{r}
+filter(hosts, Parasite.species %in% plot_dat$Parasite.species, Parasite.group == 'nematode', Def.int == 'def')%>%
+  select(Parasite.species, Site)%>%distinct()%>%
+  knitr::kable(format = 'html')
+```
+
+Onto the next variable, adult developmental time or more specifically the time to first egg production (prepatent period). We can once again plot it relative to definitive host mass.
+
+```{r}
+ggplot(filter(plot_dat, Parasite.group == "nematode", Def.int == "def"),
+       aes(x = host.bm, y = adult_dt, color = Egg.hatch2) ) +
+  geom_point() +
+  scale_x_log10() +
+  labs(x = "Ungulate body mass", y = "Adult devo time", title = "Nematodes in ungulates") +
+  facet_grid(~complex)
+```
+
+Maybe developmental times are a bit longer in the 'complex' group. I would have expected the opposite, assuming growth in an intermediate host could reduce the amount of growth and development needed in the definitive host. Egg ingestion might result in longer development in direct life cycle worms - perhaps they are less developed when ingested and require more time to mature. The skew with a few species having long prepatent periods is probably due to seasonality (overwintering in a definitive host). None of the differences are profound, however.
+
+What about the propagules themselves? Are they bigger or smaller depending on the transmission strategy? There are two ways to consider propagule size. First, we can look at the size at ingestion, i.e. the size of the parasite propagule that is consumed. Second, we can look at the size at the beginning of growth, which is smaller for worms that hatch out of the eggs after ingestion to begin growth.
+
+```{r}
+# filter propagule sizes, average them within species
+prop_sizes <- filter(lh, Host.no == 0)%>%
+  select(Parasite.species, Stage, biovolume)%>%
+  group_by(Parasite.species, Stage)%>%
+  summarize(propagule_size = mean(biovolume, na.rm = T))
+```
+
+```{r}
+# make variable for selecting transmission propagules eaten
+hatch$selector <- "free larva"
+hatch$selector[which(hatch$Egg.hatch == "eaten")] <- "egg"
+
+# make variable for selecting size at initiation of growth after infection
+hatch$selector2 <- "free larva"
+hatch$selector2[which(hatch$Egg.hatch == "eaten")] <- "embryo"
+```
+
+```{r}
+# reduce to just the transmission propagules to the ungulates
+prop_sizes <- left_join(prop_sizes, hatch, by = "Parasite.species")
+prop_sizes_eaten <- filter(prop_sizes, selector == Stage)%>%
+  select(Parasite.species, propagule_eaten = Stage, propagule_size_eaten = propagule_size)
+prop_sizes_growing <- filter(prop_sizes, selector2 == Stage)%>%
+  select(Parasite.species, propagule_growth_start = Stage, propagule_size_grow_start = propagule_size)
+prop_sizes <- left_join(prop_sizes_eaten, prop_sizes_growing)
+prop_sizes <- filter(prop_sizes, Parasite.species %in% ung_parasites$Parasite.species)
+```
+
+```{r}
+# add propagule sizes to main plotting table
+plot_dat <- left_join(plot_dat, prop_sizes)
+```
+
+Let's look at the size of propagules that are ingested for ungulate nematodes.
+
+```{r}
+ggplot(filter(plot_dat, Parasite.group == "nematode", Def.int == "def"),
+       aes(x = Egg.hatch2, y = propagule_size_eaten)) + 
+  geom_boxplot() +
+  geom_jitter(width = 0.2) +
+  facet_grid(~complex) + 
+  scale_y_log10()
+```
+
+Larvae that hatch and directly-infect ungulates are larger than those that target intermediate hosts, which makes sense. They may need to survive longer on vegetation or be larger to have a chance at infecting ungulates when they are ingested. Ingested eggs may also be smaller if they target an invertebrate instead of the ungulate, but the difference is smaller.
+
+When can also see if the pattern holds when we look at the size at which helminths begin growth in their first host. Specifically, this looks at embryo size, instead of egg size for species in which eggs are ingested. Egg and embryo size are roughly correlated, so this shouldn't change the result much. And it does not.
+
+```{r}
+ggplot(filter(plot_dat, Parasite.group == "nematode", Def.int == "def"),
+       aes(x = Egg.hatch2, y = propagule_size_grow_start)) + 
+  geom_boxplot() +
+  geom_jitter(width = 0.2) +
+  facet_grid(~complex) + 
+  scale_y_log10()
+```
+
+For the last variable, we can examine propagule development. This is a little more challenging, because propagule development is highly temperature-dependent - it is faster in warmer environments. Thus, we need to compare transmission strategies accounting for temperature. 
+
+There are also different measures of propagule development. Depending on the species, eggs need to embryonate, then they may or may not hatch, and then the hatched larvae may or may not need to develop. Let's plot these different kinds of development as a function of temperature for directly and indirectly-transmitted ungulate nematodes. 
+
+```{r}
+# just development of propagule stages
+prop_devo <- filter(lh, Parasite.species %in% ung_parasites$Parasite.species,
+                    Host.no == 0, Stage != 'embryo')%>%
+  select(Parasite.species, Stage, Development.time, Temp)
+# add in data on hatching, life cycle
+prop_devo <- left_join(prop_devo, 
+                       ungroup(plot_dat)%>%
+                         select(Parasite.species, Parasite.group, Def.int, Egg.hatch, Egg.hatch2, complex, lcl))
+```
+
+```{r}
+# reduce to just nematodes reproducing in ungulates
+prop_devo <- filter(prop_devo, Parasite.group == "nematode", Def.int == "def")%>%
+  mutate(devo_group = paste(Stage, Egg.hatch2),
+         devo_group = factor(devo_group, # better labels for plot
+                             labels = c('egg ingested - embryonation',
+                                        'egg hatches - embryonation',
+                                        'egg hatches - larval development')))
+
+```
+
+```{r}
+ggplot(prop_devo, aes(x = Temp, y = Development.time, color = devo_group)) +
+  geom_point() +
+  geom_line(aes(group = Parasite.species)) +
+  facet_grid(~complex)
+```
+
+For direct-transmission, eggs that are ingested have long embryonation times, consistent with the possibility that they are long-lived, durable, and disperse from the faeces eventually. For hatchers, larval development is usually shorter, which may be because they move away from faeces. However, the most conspicous aspect of this plot is the absence of data in the complex life cycle group, much less than for direct life cycles. I assume this is because most of these species are either viviparous, releasing infective larve, or they lay embryonated eggs. I would need to go back to the original sources to determine this, but it would be an interesting difference. When targeting an intermediate host, developing out in the environment in the faeces is costly as it misses opportunities to infect intermediate hosts. This 'opportunity cost' may not exist in directly-transmitted helminths, given the faecal avoidance of ungulates.
+
