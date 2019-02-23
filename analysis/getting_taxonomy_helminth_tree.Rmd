@@ -4,6 +4,8 @@ author: "Dan Benesh"
 output: html_document
 ---
 
+Get trees from OTL that includes the families in which helminth parasitism of ungulates occurs.
+
 ```{r setup, include=FALSE}
 library(ggplot2)
 library(dplyr)
@@ -16,69 +18,192 @@ options(stringsAsFactors = FALSE)
 theme_set(new = theme_bw())
 ```
 
+First, make a list of helminth families in which ungulate parasitism occurs. These were compiled by Jimmy Chubb.
+
 ```{r}
 # list of helminth fams in ungulates - from MS
-monogenes <- "Polystomatidae"
-cestodes <- c('Diphyllobothridae', 'Anoplocephalinae', 'Linstowiinae', 'Thysanosomatinae', 'Inermicapsiferinae',
+mon_ung_fams <- "Polystomatidae"
+ces_ung_fams <- c('Diphyllobothridae', 'Anoplocephalinae', 'Linstowiinae', 'Thysanosomatinae', 'Inermicapsiferinae',
               'Davaineidae', 'Taeniidae')
-trematodes <- c('Hasstilesiidae', 'Schistosomatidae', 'Echinostomatidae', 'Fasciolidae', 'Paramphistomidae',
+tre_ung_fams <- c('Hasstilesiidae', 'Schistosomatidae', 'Echinostomatidae', 'Fasciolidae', 'Paramphistomidae',
               'Balanorchiidae', 'Brumptiidae', 'Choerocotyloididae', 'Cladorchiidae', 'Gastrodiscidae',
               'Gastrothylacidae', 'Olveriidae', 'Stephanopharyngidae', 'Zygocotylidae', 'Notocotylidae',
               'Opisthorchiidae', 'Heterophyidae', 'Dicrocoeliidae', 'Paragonimidae')
-nematodes <- c('Capillariidae', 'Robertdollfusidae', 'Trichinellidae', 'Trichuridae', 'Ancylostomatidae',
+nem_ung_fams <- c('Capillariidae', 'Robertdollfusidae', 'Trichinellidae', 'Trichuridae', 'Ancylostomatidae',
                'Ascarididae', 'Chabertiidae', 'Cooperiidae', 'Dictyocaulidae', 'Filariidae', 'Gnathostomatidae',
                'Gongylonematidae', 'Habronematidae', 'Haemonchidae', 'Metastrongylidae', 'Molineidae',
                'Onchocercidae', 'Oxyuridae', 'Protostrongylidae', 'Spirocercidae', 'Strongylidae', 'Strongyloididae',
                'Syngamidae', 'Thelaziidae', 'Trichostrongylidae')
-acanths <- c('Oligacanthorhynchidae','Echinorhynchidae')
+aca_ung_fams <- c('Oligacanthorhynchidae','Echinorhynchidae')
 ```
 
 ```{r}
 # check to see if they are all in tree
-mono_search <- tnrs_match_names(names = monogenes, context_name = "Platyhelminthes")
-cest_search <- tnrs_match_names(names = cestodes, context_name = "Platyhelminthes")
-trem_search <- tnrs_match_names(names = trematodes, context_name = "Platyhelminthes")
-nema_search <- tnrs_match_names(names = nematodes, context_name = "Nematodes")
-acan_search <- tnrs_match_names(names = acanths, context_name = "Animals")
+#mono_search <- tnrs_match_names(names = monogenes, context_name = "Platyhelminthes")
+#cest_search <- tnrs_match_names(names = cestodes, context_name = "Platyhelminthes")
+#trem_search <- tnrs_match_names(names = trematodes, context_name = "Platyhelminthes")
+#nema_search <- tnrs_match_names(names = nematodes, context_name = "Nematodes")
+#acan_search <- tnrs_match_names(names = acanths, context_name = "Animals")
 # only cest fams have problem - subfamilies of Anoplocephalidae not all recognized
 ```
 
-
 ```{r}
 # make a tree with helminth families in ungulates
-
 # combine taxa and check whether they are in treee
-ott <- c(ott_id(mono_search), ott_id(cest_search), ott_id(trem_search), ott_id(nema_search), ott_id(acan_search))
-ott_in_tree <- ott[is_in_tree(ott)]
+#ott <- c(ott_id(mono_search), ott_id(cest_search), ott_id(trem_search), ott_id(nema_search), ott_id(acan_search))
+#ott_in_tree <- ott[is_in_tree(ott)]
 # attributes erased by appending lists together - re-add so subtree function works
-attr(ott_in_tree, 'class') <- c("otl_ott_id", "list")
+#attr(ott_in_tree, 'class') <- c("otl_ott_id", "list")
 # get subtree
-tree1 <- tol_induced_subtree(ott_ids = ott_in_tree, label_format = 'name')
+#tree1 <- tol_induced_subtree(ott_ids = ott_in_tree, label_format = 'name')
 ```
 
 ```{r}
-plot(tree1, show.node.label = T)
+#plot(tree1, show.node.label = T)
 # looks ok
 ```
 
+Now, to map the occurrence of ungulate parasitism, we need to get the taxa that do not parasitize ungulates as well. For this we query COL and ITIS with `taxize`.
+
+Start small with acanths.
 
 ```{r}
-# list of all helminth families - from OTL
+# from COL
+aca_col_id <- "29cf5a3a0cad337a0216edca32bab745" # fetched before
+aca_col_fams <- downstream(aca_col_id, downto = 'family', db = 'col')
+aca_col_fams <- aca_col_fams$`29cf5a3a0cad337a0216edca32bab745`$childtaxa_name
+# from ITIS
+aca_itis_id <- 64238 # looked it up online
+aca_itis_fams <- downstream(aca_itis_id, downto = 'family', db = 'itis')
+aca_itis_fams <- aca_itis_fams$`64238`$taxonname
+
+#sum(aca_col_fams %in% aca_itis_fams)/length(aca_col_fams) # percent COL in ITIS
+#sum(aca_ung_fams %in% aca_col_fams)/length(aca_ung_fams) # percent helminth fams in COL
+#sum(aca_ung_fams %in% aca_itis_fams)/length(aca_ung_fams) # percent helminth fams in ITIS
+```
+The two acanth families recorded from ungulates are present in taxonomies.
+
+Now the nematodes.
+
+```{r}
+# get list of all nematode families
+# from COL
+nem_col_id <- get_colid(sciname = "Nematoda")
+nem_col_fams <- downstream(nem_col_id, downto = 'family', db = 'col')
+nem_col_fams <- nem_col_fams$`562405d59c95f93423494a00939ae2ff`$childtaxa_name
+# from ITIS
+nem_itis_id <- get_tsn(searchterm = "Nematoda")
+nem_itis_fams <- downstream(nem_itis_id, downto = 'family', db = 'itis')
+nem_itis_fams <- nem_itis_fams$`59490`$taxonname
+
+#sum(nem_col_fams %in% nem_itis_fams)/length(nem_col_fams) # percent COL in ITIS
+#sum(nem_ung_fams %in% nem_col_fams)/length(nem_ung_fams) # percent helminth fams in COL
+#sum(nem_ung_fams %in% nem_itis_fams)/length(nem_ung_fams) # percent helminth fams in ITIS
+```
+About 80% of helminth families in COL, only 50% in ITIS. Overlap between two databases about 80%
+
+Finally platyhelminthes.
+
+```{r}
+# get list of all platy families
+# from COL
+pla_col_id <- get_colid(sciname = "Platyhelminthes")
+pla_col_fams <- downstream(pla_col_id, downto = 'family', db = 'col')
+pla_col_fams <- pla_col_fams$`7253b0d111fd5eb0c6a9856e0d8d1cad`$childtaxa_name
+# from ITIS
+pla_itis_id <- get_tsn(searchterm = "Platyhelminthes")
+pla_itis_fams <- downstream(pla_itis_id, downto = 'family', db = 'itis')
+pla_itis_fams <- pla_itis_fams$`53963`$taxonname
+
+pla_ung_fams <- c(mon_ung_fams, tre_ung_fams, ces_ung_fams)
+sum(pla_col_fams %in% pla_itis_fams)/length(pla_col_fams) # percent COL in ITIS
+sum(pla_ung_fams %in% pla_col_fams)/length(pla_ung_fams) # percent helminth fams in COL
+sum(pla_ung_fams %in% pla_itis_fams)/length(pla_ung_fams) # percent helminth fams in ITIS
+```
+Not great overlap between platyhelminth list and those in databases (40-60%).
+
+Combine the family names from the two taxonomy databases and the list of ungulate helminths. Then, query these lists in OTL to get a tree.
+
+```{r}
+# combine theme all
+aca_fams_all <- unique(c(aca_ung_fams, aca_col_fams, aca_itis_fams))
+nem_fams_all <- unique(c(nem_ung_fams, nem_col_fams, nem_itis_fams))
+pla_fams_all <- unique(c(pla_ung_fams, pla_col_fams, pla_itis_fams))
 ```
 
 ```{r}
-# make dataset - Family, Ung inf, Route
+# search OTL db
+aca_search <- tnrs_match_names(names = aca_fams_all, context_name = "Animals")
+nem_search <- tnrs_match_names(names = nem_fams_all, context_name = "Nematodes")
+pla_search1 <- tnrs_match_names(names = pla_fams_all[1:240], context_name = "Platyhelminthes")
+pla_search2 <- tnrs_match_names(names = pla_fams_all[241:length(pla_fams_all)], context_name = "Platyhelminthes")
+```
+
+```{r}
+# which ones are in tree
+aca_ott_in_tree <- ott_id(aca_search)[is_in_tree(ott_id(aca_search))]
+nem_ott_in_tree <- ott_id(nem_search)[is_in_tree(ott_id(nem_search))]
+
+pla_ott <- c(ott_id(pla_search1), ott_id(pla_search2))
+pla_ott_in_tree <- pla_ott[is_in_tree(pla_ott)]
+# attributes erased by appending lists together - re-add so subtree function works
+attr(pla_ott_in_tree, 'class') <- c("otl_ott_id", "list")
+```
+
+```{r}
+# get subtrees
+aca_tree <- tol_induced_subtree(ott_ids = aca_ott_in_tree, label_format = 'name')
+nem_tree <- tol_induced_subtree(ott_ids = nem_ott_in_tree, label_format = 'name')
+pla_tree <- tol_induced_subtree(ott_ids = pla_ott_in_tree, label_format = 'name')
+```
+
+All acanth fams of ungulates in tree. Which nematode fams in ungulates, not tip in tree?
+
+```{r}
+# ungulate nem families not in nem tree
+nem_ung_fams[which(!(nem_ung_fams %in% nem_tree$tip.label))]
+```
+
+A fair number of platyhelminth families infecting ungulates are not in the tree.
+
+```{r}
+pla_ung_fams[which(!(pla_ung_fams %in% pla_tree$tip.label))]
+```
+
+Bind trees together to make full tree
+
+```{r}
+library(phytools)
+aca_tree$root.edge <- .2
+nem_tree$root.edge <- .2
+pla_tree$root.edge <- .2
+comb_tree <- bind.tree(pla_tree, aca_tree, position = .2)
+comb_tree <- bind.tree(comb_tree, nem_tree, position = .2)
 ```
 
 
 ```{r}
-# get tree of all helminth families
-nem <- tnrs_match_names(names = "Nematoda", context_name = "Nematodes")
+# make dataset (still need to add route)
+helminth_ungs <- data.frame(family = c(aca_fams_all, nem_fams_all, pla_fams_all))
+helminth_ungs <- mutate(helminth_ungs, group = if_else(family %in% aca_fams_all, "Acanthocephala",
+                                                       if_else(family %in% pla_fams_all, "Platyhelminthes", 
+                                                               "Nematoda")),
+                        ung_inf = family %in% c(aca_ung_fams, nem_ung_fams, pla_ung_fams),
+                        in_tree = family %in% comb_tree$tip.label)
 ```
+
+Taxa to add to tree, manually?
+
 ```{r}
-taxonomy_taxon_info(ott_id(nem), include_lineage = T)
-tax_lineage(taxonomy_taxon_info(ott_id(nem)))
+filter(helminth_ungs, ung_inf, !in_tree)
 ```
+
+```{r}
+# write files
+write.csv(helminth_ungs, file = "ungulate_helminth_tree_table.csv", row.names = F)
+write.nexus(comb_tree, file = "ungulate_helminth_tree.nex")
+```
+
 
 
 
