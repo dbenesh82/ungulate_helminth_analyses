@@ -1,7 +1,6 @@
 ---
-title: "Getting taxonomy / tree"
+title: "Getting taxonomic tree to map invasion of ungulates"
 author: "Dan Benesh"
-date: "February 5, 2019"
 output: html_document
 ---
 
@@ -9,85 +8,80 @@ output: html_document
 library(ggplot2)
 library(dplyr)
 library(tidyr)
+library(taxize)
+library(rotl)
+library(ape)
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 options(stringsAsFactors = FALSE)
 theme_set(new = theme_bw())
 ```
 
-I need several datasets to address these issues: (i) host associations for the parasites in the life cycle database,
-(ii) life history variables for species in the life cycle database (body sizes and development), (iii) host body masses, and (iv) host taxonomy.
-
-```{r importdata}
-hosts <- read.csv(file = "../data/CLC_database_hosts.csv", header = TRUE) 
-lh <- read.csv(file = "../data/CLC_database_lifehistory.csv", header = TRUE)
-host_mass <- read.csv(file = "../data/collated_host_mass_data.csv", header = TRUE)
-host_tax <- read.csv(file = "../data/ncbi_host_taxonomy.csv", header = TRUE)
+```{r}
+# list of helminth fams in ungulates - from MS
+monogenes <- "Polystomatidae"
+cestodes <- c('Diphyllobothridae', 'Anoplocephalinae', 'Linstowiinae', 'Thysanosomatinae', 'Inermicapsiferinae',
+              'Davaineidae', 'Taeniidae')
+trematodes <- c('Hasstilesiidae', 'Schistosomatidae', 'Echinostomatidae', 'Fasciolidae', 'Paramphistomidae',
+              'Balanorchiidae', 'Brumptiidae', 'Choerocotyloididae', 'Cladorchiidae', 'Gastrodiscidae',
+              'Gastrothylacidae', 'Olveriidae', 'Stephanopharyngidae', 'Zygocotylidae', 'Notocotylidae',
+              'Opisthorchiidae', 'Heterophyidae', 'Dicrocoeliidae', 'Paragonimidae')
+nematodes <- c('Capillariidae', 'Robertdollfusidae', 'Trichinellidae', 'Trichuridae', 'Ancylostomatidae',
+               'Ascarididae', 'Chabertiidae', 'Cooperiidae', 'Dictyocaulidae', 'Filariidae', 'Gnathostomatidae',
+               'Gongylonematidae', 'Habronematidae', 'Haemonchidae', 'Metastrongylidae', 'Molineidae',
+               'Onchocercidae', 'Oxyuridae', 'Protostrongylidae', 'Spirocercidae', 'Strongylidae', 'Strongyloididae',
+               'Syngamidae', 'Thelaziidae', 'Trichostrongylidae')
+acanths <- c('Oligacanthorhynchidae','Echinorhynchidae')
 ```
 
 ```{r}
-nem_genus <- filter(hosts, Parasite.group == 'nematode')%>%select(Parasite.genus)%>%distinct()
-nem_genus <- nem_genus$Parasite.genus
-ces_genus <- filter(hosts, Parasite.group == 'cestode')%>%select(Parasite.genus)%>%distinct()
-ces_genus <- ces_genus$Parasite.genus
-aca_genus <- filter(hosts, Parasite.group == 'acanthocephalan')%>%select(Parasite.genus)%>%distinct()
-aca_genus <- aca_genus$Parasite.genus
-```
-
-GET API KEY!
-
-```{r}
-library(taxize)
-
-# get taxonomic classification from ncbi; WARNING takes a while!
-genera_class <- classification(p_genus[1:10], db = 'ncbi', rows = 1, verbose = FALSE, )
-```
-
-```{r}
-# re-arrange data returned from ncbi database
-worm.taxonomy <- rbind(genera_class)%>%
-  select(name, rank, query)%>% # reduce list to df and select relevant columns
-  filter(rank != "no rank")%>% # remove unnecessary categories
-  spread(rank, name)%>% # long to wide data
-  select(query, genus, family, order, class, phylum, kingdom)
-
-# remove some obviously incorrect values
-worm.taxonomy <- filter(worm.taxonomy, kingdom == "Metazoa")
-worm.taxonomy <- filter(worm.taxonomy, phylum == "Acanthocephala" | phylum == "Nematoda" | phylum == "Platyhelminthes")
-```
-
-# SAVE IT NOW
-
-
-```{r}
-library(rotl)
-```
-
-```{r}
-tnrs_contexts()
+# check to see if they are all in tree
+mono_search <- tnrs_match_names(names = monogenes, context_name = "Platyhelminthes")
+cest_search <- tnrs_match_names(names = cestodes, context_name = "Platyhelminthes")
+trem_search <- tnrs_match_names(names = trematodes, context_name = "Platyhelminthes")
+nema_search <- tnrs_match_names(names = nematodes, context_name = "Nematodes")
+acan_search <- tnrs_match_names(names = acanths, context_name = "Animals")
+# only cest fams have problem - subfamilies of Anoplocephalidae not all recognized
 ```
 
 
 ```{r}
-aca_search <- tnrs_match_names(names = aca_genus[1:10], context_name = "Animals")
-ces_search <- tnrs_match_names(names = ces_genus[1:10], context_name = "Platyhelminthes")
-nem_search <- tnrs_match_names(names = nem_genus[1:10], context_name = "Nematodes")
+# make a tree with helminth families in ungulates
+
+# combine taxa and check whether they are in treee
+ott <- c(ott_id(mono_search), ott_id(cest_search), ott_id(trem_search), ott_id(nema_search), ott_id(acan_search))
+ott_in_tree <- ott[is_in_tree(ott)]
+# attributes erased by appending lists together - re-add so subtree function works
+attr(ott_in_tree, 'class') <- c("otl_ott_id", "list")
+# get subtree
+tree1 <- tol_induced_subtree(ott_ids = ott_in_tree, label_format = 'name')
 ```
 
 ```{r}
-taxonomy_taxon_info(ott_id(taxon_search))
-ott_in_tree <- ott_id(taxon_search)[is_in_tree(ott_id(taxon_search))]
-tr <- tol_induced_subtree(ott_ids = ott_in_tree, label_format = 'name')
+plot(tree1, show.node.label = T)
+# looks ok
 ```
+
+
 ```{r}
-plot(tr)
+# list of all helminth families - from OTL
 ```
 
 ```{r}
-tr
+# make dataset - Family, Ung inf, Route
 ```
+
 
 ```{r}
-taxon_search
-inspect(taxon_search, taxon_name = 'capillaria')
+# get tree of all helminth families
+nem <- tnrs_match_names(names = "Nematoda", context_name = "Nematodes")
+```
+```{r}
+taxonomy_taxon_info(ott_id(nem), include_lineage = T)
+tax_lineage(taxonomy_taxon_info(ott_id(nem)))
 ```
 
+
+
+```{r}
+# list of helminth taxa in ungulates - from London NHM DB, need ungulates for cross-checking
+```
