@@ -4,7 +4,7 @@ author: "Dan Benesh"
 output: html_document
 ---
 
-Get trees from OTL that includes the families in which helminth parasitism of ungulates occurs.
+In this script, I get a tree from the OTL that will be used to map ungulate parasitism across helminths. I want to know how often these hosts have been invaded and which are most commonly strategies used to do so.
 
 ```{r setup, include=FALSE}
 library(ggplot2)
@@ -18,7 +18,7 @@ options(stringsAsFactors = FALSE)
 theme_set(new = theme_bw())
 ```
 
-First, make a list of helminth families in which ungulate parasitism occurs. These were compiled by Jimmy Chubb.
+First, I make a list of helminth families in which ungulate parasitism occurs. These were compiled by Jimmy Chubb.
 
 ```{r}
 # list of helminth fams in ungulates - from MS
@@ -37,35 +37,9 @@ nem_ung_fams <- c('Capillariidae', 'Robertdollfusidae', 'Trichinellidae', 'Trich
 aca_ung_fams <- c('Oligacanthorhynchidae','Echinorhynchidae')
 ```
 
-```{r}
-# check to see if they are all in tree
-#mono_search <- tnrs_match_names(names = monogenes, context_name = "Platyhelminthes")
-#cest_search <- tnrs_match_names(names = cestodes, context_name = "Platyhelminthes")
-#trem_search <- tnrs_match_names(names = trematodes, context_name = "Platyhelminthes")
-#nema_search <- tnrs_match_names(names = nematodes, context_name = "Nematodes")
-#acan_search <- tnrs_match_names(names = acanths, context_name = "Animals")
-# only cest fams have problem - subfamilies of Anoplocephalidae not all recognized
-```
+To be able to map ancestral states, we also need to know in which helminths ungulate parasitism does not occur. In other words, we need to get the related taxa that are not parasites of ungulates. For this, I queried COL and ITIS with `taxize` to find all families in Acanthocephala, Nematoda, and Platyhelmintha.
 
-```{r}
-# make a tree with helminth families in ungulates
-# combine taxa and check whether they are in treee
-#ott <- c(ott_id(mono_search), ott_id(cest_search), ott_id(trem_search), ott_id(nema_search), ott_id(acan_search))
-#ott_in_tree <- ott[is_in_tree(ott)]
-# attributes erased by appending lists together - re-add so subtree function works
-#attr(ott_in_tree, 'class') <- c("otl_ott_id", "list")
-# get subtree
-#tree1 <- tol_induced_subtree(ott_ids = ott_in_tree, label_format = 'name')
-```
-
-```{r}
-#plot(tree1, show.node.label = T)
-# looks ok
-```
-
-Now, to map the occurrence of ungulate parasitism, we need to get the taxa that do not parasitize ungulates as well. For this we query COL and ITIS with `taxize`.
-
-Start small with acanths.
+Starting with the acanths, who have only sporadically been found in ungulates. Both families with records from ungulates were in the taxonomy databases.
 
 ```{r}
 # from COL
@@ -81,9 +55,8 @@ aca_itis_fams <- aca_itis_fams$`64238`$taxonname
 #sum(aca_ung_fams %in% aca_col_fams)/length(aca_ung_fams) # percent helminth fams in COL
 #sum(aca_ung_fams %in% aca_itis_fams)/length(aca_ung_fams) # percent helminth fams in ITIS
 ```
-The two acanth families recorded from ungulates are present in taxonomies.
 
-Now the nematodes.
+Twenty-five nematode families have been recorded in ungulate hosts. About 80% of these were in COL, but only about 50% in ITIS.
 
 ```{r}
 # get list of all nematode families
@@ -100,9 +73,8 @@ nem_itis_fams <- nem_itis_fams$`59490`$taxonname
 #sum(nem_ung_fams %in% nem_col_fams)/length(nem_ung_fams) # percent helminth fams in COL
 #sum(nem_ung_fams %in% nem_itis_fams)/length(nem_ung_fams) # percent helminth fams in ITIS
 ```
-About 80% of helminth families in COL, only 50% in ITIS. Overlap between two databases about 80%
 
-Finally platyhelminthes.
+Each of the three groups of parasitic playhelminths (Monogenea, Trematoda, Cestoda) have members infecting ungulates. But only about 40 to 60% of these 27 families have a match in the two taxonomy databases. The discrepancy suggests either Jimmy or the databases are using outdated family names, which is a common issue.
 
 ```{r}
 # get list of all platy families
@@ -120,9 +92,8 @@ sum(pla_col_fams %in% pla_itis_fams)/length(pla_col_fams) # percent COL in ITIS
 sum(pla_ung_fams %in% pla_col_fams)/length(pla_ung_fams) # percent helminth fams in COL
 sum(pla_ung_fams %in% pla_itis_fams)/length(pla_ung_fams) # percent helminth fams in ITIS
 ```
-Not great overlap between platyhelminth list and those in databases (40-60%).
 
-Combine the family names from the two taxonomy databases and the list of ungulate helminths. Then, query these lists in OTL to get a tree.
+Given that the helminth ungulate families and the taxonomy datasets are not completely congruent, I chose to Combine all three lists of family names to query the OTL. Some might be redundant or invalid, but this should give the largest, most complete tree with which to map ancestral states.
 
 ```{r}
 # combine theme all
@@ -143,7 +114,6 @@ pla_search2 <- tnrs_match_names(names = pla_fams_all[241:length(pla_fams_all)], 
 # which ones are in tree
 aca_ott_in_tree <- ott_id(aca_search)[is_in_tree(ott_id(aca_search))]
 nem_ott_in_tree <- ott_id(nem_search)[is_in_tree(ott_id(nem_search))]
-
 pla_ott <- c(ott_id(pla_search1), ott_id(pla_search2))
 pla_ott_in_tree <- pla_ott[is_in_tree(pla_ott)]
 # attributes erased by appending lists together - re-add so subtree function works
@@ -156,25 +126,29 @@ aca_tree <- tol_induced_subtree(ott_ids = aca_ott_in_tree, label_format = 'name'
 nem_tree <- tol_induced_subtree(ott_ids = nem_ott_in_tree, label_format = 'name')
 pla_tree <- tol_induced_subtree(ott_ids = pla_ott_in_tree, label_format = 'name')
 ```
+```{r}
+taxa_searched <- length(aca_fams_all) + length(nem_fams_all) + length(pla_fams_all)
+taxa_in_tree <- length(aca_tree$tip.label) + length(nem_tree$tip.label) + length(pla_tree$tip.label)
+```
 
-All acanth fams of ungulates in tree. Which nematode fams in ungulates, not tip in tree?
+Of `r length(taxa_searched)` families queried, `r length(taxa_in_tree)` were included in the tree. All acanth families of ungulates were in the tree. Here are the nematodes families of ungulates that were not included.
 
 ```{r}
 # ungulate nem families not in nem tree
 nem_ung_fams[which(!(nem_ung_fams %in% nem_tree$tip.label))]
 ```
 
-A fair number of platyhelminth families infecting ungulates are not in the tree.
+And here are the platyhelminth families infecting ungulates not in the tree.
 
 ```{r}
 pla_ung_fams[which(!(pla_ung_fams %in% pla_tree$tip.label))]
 ```
 
+Some of these do not need to be added to the tree, such as the subfamilies of Anoplocephalidae (Linstowiinae, Thysanosomatinae, Inermicapsiferinae), because a similar type of transmission route applies to all these families (mite transmission). For other cases, a closer look at the tree is warranted.
 Bind trees together to make full tree
 
 ```{r}
-library(phytools)
-aca_tree$root.edge <- .2
+aca_tree$root.edge <- .2 # root edge needed to bind trees not exactly at root
 nem_tree$root.edge <- .2
 pla_tree$root.edge <- .2
 comb_tree <- bind.tree(pla_tree, aca_tree, position = .2)
