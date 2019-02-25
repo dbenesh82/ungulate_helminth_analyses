@@ -33,7 +33,7 @@ Families and transmission styles were compiled by Jimmy Chubb.
 ```{r}
 # list of helminth fams in ungulates - from MS
 mon_ung_fams <- "Polystomatidae"
-ces_ung_fams <- c('Diphyllobothridae', 'Anoplocephalinae', 'Linstowiinae', 'Thysanosomatinae', 'Inermicapsiferinae',
+ces_ung_fams <- c('Diphyllobothridae', 'Anoplocephalidae', 'Linstowiidae', 'Thysanosomatinae', 'Inermicapsiferinae',
               'Davaineidae', 'Taeniidae')
 tre_ung_fams <- c('Hasstilesiidae', 'Schistosomatidae', 'Echinostomatidae', 'Fasciolidae', 'Paramphistomidae',
               'Balanorchiidae', 'Brumptiidae', 'Choerocotyloididae', 'Cladorchiidae', 'Gastrodiscidae',
@@ -224,8 +224,9 @@ And here are the platyhelminth families infecting ungulates not in the tree.
 pla_ung_fams[which(!(pla_ung_fams %in% pla_tree$tip.label))]
 ```
 
-Some of these do not need to be added to the tree, such as the subfamilies of Anoplocephalidae (Linstowiinae, Thysanosomatinae, Inermicapsiferinae), because a similar type of transmission route applies to all these families (mite transmission). For other cases, a closer look at the tree is warranted.
-Bind trees together to make full tree
+Some of these do not need to be added to the tree, such as the subfamilies of Anoplocephalidae (Linstowiinae, Thysanosomatinae, Inermicapsiferinae), because a similar type of transmission route applies to all these families (mite transmission). In other cases, the families are in the tree, but their name was changed, e.g. Diphyllobothridae to Diphyllobothriidae. For other cases, a closer look at the tree is warranted.
+
+I bound the trees together to create a single tree for the helminth taxa.
 
 ```{r}
 aca_tree$root.edge <- .2 # root edge needed to bind trees not exactly at root
@@ -235,30 +236,43 @@ comb_tree <- bind.tree(pla_tree, aca_tree, position = .2)
 comb_tree <- bind.tree(comb_tree, nem_tree, position = .2)
 ```
 
-
 ```{r}
-# make dataset (still need to add route)
+# make dataset
 helminth_ungs <- data.frame(family = c(aca_fams_all, nem_fams_all, pla_fams_all))
 helminth_ungs <- mutate(helminth_ungs, group = if_else(family %in% aca_fams_all, "Acanthocephala",
-                                                       if_else(family %in% pla_fams_all, "Platyhelminthes", 
-                                                               "Nematoda")),
-                        ung_inf = family %in% c(aca_ung_fams, nem_ung_fams, pla_ung_fams),
-                        in_tree = family %in% comb_tree$tip.label)
+                                                       if_else(family %in% pla_fams_all, "Platyhelminthes",
+                                                               if_else(family %in% nem_fams_all, "Nematoda", '?'))),
+                        ung_inf = family %in% c(aca_ung_fams, nem_ung_fams, pla_ung_fams))
+
+# add names from OTL into data
+search_all <- rbind(aca_search, nem_search, pla_search1, pla_search2)
+mv <- match(tolower(helminth_ungs$family), search_all$search_string)
+helminth_ungs$otl_name <- search_all$unique_name[mv]
+
+# add transmission route
+helminth_ungs <- left_join(helminth_ungs, trans_routes, by = 'family')
+helminth_ungs <- mutate(helminth_ungs,
+                        trans_route = if_else(is.na(trans_route), "not ungulate parasites", trans_route))
+
+# which ones are in tree?
+helminth_ungs <- mutate(helminth_ungs, in_tree = otl_name %in% comb_tree$tip.label)
 ```
 
-Taxa to add to tree, manually?
+Here are the helminth taxa of ungulates that were not included in the tree.
 
 ```{r}
 filter(helminth_ungs, ung_inf, !in_tree)
 ```
+
+A couple can be ignored - Thysanosomatinae and Inermicapsiferinae are subfamilies of Anoplocephalidae, which is in the tree and exhibits no variation in transmission strategy. The nematode groups, like Ancylostomatidae and Ascarididae, are well studied and their exclusion probably represents evolving taxonomy. They can very likely be added manually. The 3 trematodes (Balanorchiidae, Choerocotyloididae, and Zygocotylidae) are closely related (same superfamily). Given they exhibit the same transmission strategy, their inclusion or exclusion may have no effect on the evolutionary counts.
+
+I wrote two files - a nexus file with the tree and a csv with data on the families queried here.
 
 ```{r}
 # write files
 write.csv(helminth_ungs, file = "ungulate_helminth_tree_table.csv", row.names = F)
 write.nexus(comb_tree, file = "ungulate_helminth_tree.nex")
 ```
-
-
 
 
 ```{r}

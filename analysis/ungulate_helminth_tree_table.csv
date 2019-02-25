@@ -1,743 +1,743 @@
-"family","group","ung_inf","in_tree"
-"Oligacanthorhynchidae","Acanthocephala",TRUE,TRUE
-"Echinorhynchidae","Acanthocephala",TRUE,TRUE
-"Apororhynchidae","Acanthocephala",FALSE,TRUE
-"Giganthorhynchidae","Acanthocephala",FALSE,TRUE
-"Moniliformidae","Acanthocephala",FALSE,TRUE
-"Quadrigyridae","Acanthocephala",FALSE,TRUE
-"Dendronucleatidae","Acanthocephala",FALSE,TRUE
-"Neoechinorhynchidae","Acanthocephala",FALSE,TRUE
-"Tenuisentidae","Acanthocephala",FALSE,TRUE
-"Arhythmacanthidae","Acanthocephala",FALSE,TRUE
-"Cavisomidae","Acanthocephala",FALSE,TRUE
-"Diplosentidae","Acanthocephala",FALSE,TRUE
-"Fessisentidae","Acanthocephala",FALSE,TRUE
-"Gymnorhadinorhynchidae","Acanthocephala",FALSE,TRUE
-"Heteracanthocephalidae","Acanthocephala",FALSE,TRUE
-"Illiosentidae","Acanthocephala",FALSE,TRUE
-"Isthmosacanthidae","Acanthocephala",FALSE,TRUE
-"Pomphorhynchidae","Acanthocephala",FALSE,TRUE
-"Rhadinorhynchidae","Acanthocephala",FALSE,TRUE
-"Sauracanthorhynchidae","Acanthocephala",FALSE,TRUE
-"Transvenidae","Acanthocephala",FALSE,TRUE
-"Pyrirhynchidae","Acanthocephala",FALSE,TRUE
-"Centrorhynchidae","Acanthocephala",FALSE,TRUE
-"Plagiorhynchidae","Acanthocephala",FALSE,TRUE
-"Polymorphidae","Acanthocephala",FALSE,TRUE
-"Polyacanthorhynchidae","Acanthocephala",FALSE,TRUE
-"Capillariidae","Nematoda",TRUE,TRUE
-"Robertdollfusidae","Nematoda",TRUE,TRUE
-"Trichinellidae","Nematoda",TRUE,TRUE
-"Trichuridae","Nematoda",TRUE,TRUE
-"Ancylostomatidae","Nematoda",TRUE,FALSE
-"Ascarididae","Nematoda",TRUE,FALSE
-"Chabertiidae","Nematoda",TRUE,TRUE
-"Cooperiidae","Nematoda",TRUE,TRUE
-"Dictyocaulidae","Nematoda",TRUE,TRUE
-"Filariidae","Nematoda",TRUE,TRUE
-"Gnathostomatidae","Nematoda",TRUE,TRUE
-"Gongylonematidae","Nematoda",TRUE,TRUE
-"Habronematidae","Nematoda",TRUE,TRUE
-"Haemonchidae","Nematoda",TRUE,TRUE
-"Metastrongylidae","Nematoda",TRUE,TRUE
-"Molineidae","Nematoda",TRUE,TRUE
-"Onchocercidae","Nematoda",TRUE,TRUE
-"Oxyuridae","Nematoda",TRUE,TRUE
-"Protostrongylidae","Nematoda",TRUE,TRUE
-"Spirocercidae","Nematoda",TRUE,TRUE
-"Strongylidae","Nematoda",TRUE,TRUE
-"Strongyloididae","Nematoda",TRUE,TRUE
-"Syngamidae","Nematoda",TRUE,TRUE
-"Thelaziidae","Nematoda",TRUE,TRUE
-"Trichostrongylidae","Nematoda",TRUE,FALSE
-"Aulolaimidae","Nematoda",FALSE,TRUE
-"Axonolaimidae","Nematoda",FALSE,TRUE
-"Bastianiidae","Nematoda",FALSE,TRUE
-"Haliplectidae","Nematoda",FALSE,TRUE
-"Isolaimiidae","Nematoda",FALSE,TRUE
-"Leptolaimidae","Nematoda",FALSE,TRUE
-"Plectidae","Nematoda",FALSE,FALSE
-"Rhabdolaimidae","Nematoda",FALSE,TRUE
-"Teratocephalidae","Nematoda",FALSE,TRUE
-"Tripyloididae","Nematoda",FALSE,TRUE
-"Ceramonematidae","Nematoda",FALSE,TRUE
-"Choniolaimidae","Nematoda",FALSE,FALSE
-"Chromadoridae","Nematoda",FALSE,TRUE
-"Comesomatidae","Nematoda",FALSE,TRUE
-"Cyatholaimidae","Nematoda",FALSE,TRUE
-"Desmodoridae","Nematoda",FALSE,TRUE
-"Draconematidae","Nematoda",FALSE,TRUE
-"Epsilonematidae","Nematoda",FALSE,TRUE
-"Microlaimidae","Nematoda",FALSE,TRUE
-"Monoposthiidae","Nematoda",FALSE,TRUE
-"Richtersiidae","Nematoda",FALSE,FALSE
-"Selachinematidae","Nematoda",FALSE,TRUE
-"Xennellidae","Nematoda",FALSE,TRUE
-"Desmoscolecidae","Nematoda",FALSE,TRUE
-"Actinolaimidae","Nematoda",FALSE,TRUE
-"Alaimidae","Nematoda",FALSE,TRUE
-"Anatonchidae","Nematoda",FALSE,TRUE
-"Aporcelaimidae","Nematoda",FALSE,TRUE
-"Belondiridae","Nematoda",FALSE,TRUE
-"Campgdoridae","Nematoda",FALSE,FALSE
-"Carcharolaimidae","Nematoda",FALSE,FALSE
-"Cobbonchidae","Nematoda",FALSE,FALSE
-"Diphterophoridae","Nematoda",FALSE,TRUE
-"Dorylaimidae","Nematoda",FALSE,TRUE
-"Falcihastidae","Nematoda",FALSE,TRUE
-"Iotonchusidae","Nematoda",FALSE,FALSE
-"Leptonchidae","Nematoda",FALSE,TRUE
-"Longidoridae","Nematoda",FALSE,TRUE
-"Mononchidae","Nematoda",FALSE,TRUE
-"Mononchulidae","Nematoda",FALSE,TRUE
-"Nygolaimellidae","Nematoda",FALSE,TRUE
-"Nygolaimidae","Nematoda",FALSE,TRUE
-"Opailaimidae","Nematoda",FALSE,TRUE
-"Oxydiridae","Nematoda",FALSE,FALSE
-"Qudsianematidae","Nematoda",FALSE,TRUE
-"Trachypleurosidae","Nematoda",FALSE,TRUE
-"Tylencholaimellidae","Nematoda",FALSE,TRUE
-"Tylencholaimidae","Nematoda",FALSE,TRUE
-"Anoplostomatidae","Nematoda",FALSE,TRUE
-"Anticomidae","Nematoda",FALSE,TRUE
-"Cryptonchidae","Nematoda",FALSE,TRUE
-"Enchelidiidae","Nematoda",FALSE,TRUE
-"Enoplidae","Nematoda",FALSE,TRUE
-"Eurystominidae","Nematoda",FALSE,FALSE
-"Ironidae","Nematoda",FALSE,TRUE
-"Lauratonematidae","Nematoda",FALSE,TRUE
-"Leptosomatidae","Nematoda",FALSE,TRUE
-"Oncholaimidae","Nematoda",FALSE,TRUE
-"Onchulidae","Nematoda",FALSE,FALSE
-"Oxystominidae","Nematoda",FALSE,TRUE
-"Phanodermatidae","Nematoda",FALSE,TRUE
-"Prismatolaimidae","Nematoda",FALSE,TRUE
-"Rhabdodemaniidae","Nematoda",FALSE,TRUE
-"Symplocostomatidae","Nematoda",FALSE,FALSE
-"Thoracostomopsidae","Nematoda",FALSE,TRUE
-"Trefusiidae","Nematoda",FALSE,TRUE
-"Triodontolaimidae","Nematoda",FALSE,FALSE
-"Tripylidae","Nematoda",FALSE,TRUE
-"Mermithidae","Nematoda",FALSE,TRUE
-"Aponchiidae","Nematoda",FALSE,FALSE
-"Linhomoeidae","Nematoda",FALSE,TRUE
-"Monhysteridae","Nematoda",FALSE,TRUE
-"Scaptrellidae","Nematoda",FALSE,FALSE
-"Siphonolaimidae","Nematoda",FALSE,TRUE
-"Sphaerolaimidae","Nematoda",FALSE,TRUE
-"Xyalidae","Nematoda",FALSE,TRUE
-"Not assigned","Platyhelminthes",FALSE,FALSE
-"Cystoopsidae","Nematoda",FALSE,TRUE
-"Diphtherophoridae","Nematoda",FALSE,TRUE
-"Trichodoridae","Nematoda",FALSE,TRUE
-"Aphelenchidae","Nematoda",FALSE,TRUE
-"Aphelenchoididae","Nematoda",FALSE,TRUE
-"Paraphelenchidae","Nematoda",FALSE,FALSE
-"Anisakidae","Nematoda",FALSE,TRUE
-"Ascaridiidae","Nematoda",FALSE,TRUE
-"Cosmocercidae","Nematoda",FALSE,TRUE
-"Cucullanidae","Nematoda",FALSE,TRUE
-"Heterakidae","Nematoda",FALSE,TRUE
-"Maupasinidae","Nematoda",FALSE,FALSE
-"Toxocaridae","Nematoda",FALSE,TRUE
-"Cylindrocorporidae","Nematoda",FALSE,TRUE
-"Diplogasteridae","Nematoda",FALSE,TRUE
-"Diplogasteroididae","Nematoda",FALSE,TRUE
-"Neodiplogasteridae","Nematoda",FALSE,TRUE
-"Odontopharyngidae","Nematoda",FALSE,FALSE
-"Pharyngodonidae","Nematoda",FALSE,TRUE
-"Rhigonematidae","Nematoda",FALSE,TRUE
-"Thelastomatidae","Nematoda",FALSE,TRUE
-"Agfidae","Nematoda",FALSE,TRUE
-"Alirhabditidae","Nematoda",FALSE,TRUE
-"Alloionematidae","Nematoda",FALSE,TRUE
-"Brevibuccidae","Nematoda",FALSE,TRUE
-"Bunonematidae","Nematoda",FALSE,TRUE
-"Cephalobidae","Nematoda",FALSE,TRUE
-"Elaphonematidae","Nematoda",FALSE,TRUE
-"Heterohabditidae","Nematoda",FALSE,TRUE
-"Heterorhabditidae","Nematoda",FALSE,TRUE
-"Odontorhabditidae","Nematoda",FALSE,FALSE
-"Panagrolaimidae","Nematoda",FALSE,TRUE
-"Pangrolaimidae","Nematoda",FALSE,FALSE
-"Pterygorhabditidae","Nematoda",FALSE,FALSE
-"Rhabdiasidae","Nematoda",FALSE,TRUE
-"Rhabditidae","Nematoda",FALSE,FALSE
-"Robertiidae","Nematoda",FALSE,FALSE
-"Steinernematidae","Nematoda",FALSE,TRUE
-"Syrphonematidae","Nematoda",FALSE,TRUE
-"Acuariidae","Nematoda",FALSE,TRUE
-"Anguillicolidae","Nematoda",FALSE,TRUE
-"Cystidicolidae","Nematoda",FALSE,TRUE
-"Drilonematidae","Nematoda",FALSE,TRUE
-"Physalopteridae","Nematoda",FALSE,TRUE
-"Spiruridae","Nematoda",FALSE,TRUE
-"Amidostomatidae","Nematoda",FALSE,TRUE
-"Angiostrongylidae","Nematoda",FALSE,TRUE
-"Cloacinidae","Nematoda",FALSE,TRUE
-"Crenosomatidae","Nematoda",FALSE,TRUE
-"Filaroididae","Nematoda",FALSE,TRUE
-"Heligosomidae","Nematoda",FALSE,FALSE
-"Herpetostrongylidae","Nematoda",FALSE,TRUE
-"Ornithostrongylidae","Nematoda",FALSE,FALSE
-"Pharyngostrongylidae","Nematoda",FALSE,FALSE
-"Pseudaliidae","Nematoda",FALSE,TRUE
-"Skrjabingylidae","Nematoda",FALSE,FALSE
-"Uncinariidae","Nematoda",FALSE,FALSE
-"Allantonematidae","Nematoda",FALSE,TRUE
-"Anguinidae","Nematoda",FALSE,TRUE
-"Belonolaimidae","Nematoda",FALSE,TRUE
-"Criconematidae","Nematoda",FALSE,TRUE
-"Dolichodoridae","Nematoda",FALSE,TRUE
-"Fergusobiidae","Nematoda",FALSE,FALSE
-"Heteroderidae","Nematoda",FALSE,TRUE
-"Hoplolaimidae","Nematoda",FALSE,TRUE
-"Iotonchiidae","Nematoda",FALSE,TRUE
-"Neotylenchidae","Nematoda",FALSE,TRUE
-"Pratylenchidae","Nematoda",FALSE,FALSE
-"Sphaerulariidae","Nematoda",FALSE,TRUE
-"Tylenchidae","Nematoda",FALSE,TRUE
-"Tylenchulidae","Nematoda",FALSE,TRUE
-"Camallanidae","Nematoda",FALSE,TRUE
-"Philometridae","Nematoda",FALSE,TRUE
-"Setariidae","Nematoda",FALSE,TRUE
-"Psilenchidae","Nematoda",FALSE,FALSE
-"Tylenchorhynchidae","Nematoda",FALSE,FALSE
-"Bathyodontidae","Nematoda",FALSE,TRUE
-"Tetradonematidae","Nematoda",FALSE,TRUE
-"Muspiceidae","Nematoda",FALSE,TRUE
-"Phlyctainophoridae","Nematoda",FALSE,FALSE
-"Angiostomatidae","Nematoda",FALSE,TRUE
-"Chambersiellidae","Nematoda",FALSE,TRUE
-"Rhabditonematidae","Nematoda",FALSE,TRUE
-"Carabonematidae","Nematoda",FALSE,FALSE
-"Pseudogasteroididae","Nematoda",FALSE,FALSE
-"Daubayliidae","Nematoda",FALSE,TRUE
-"Hedruridae","Nematoda",FALSE,TRUE
-"Tetrameridae","Nematoda",FALSE,TRUE
-"Heterocheilidae","Nematoda",FALSE,FALSE
-"Dioctophymatidae","Nematoda",FALSE,FALSE
-"Atractidae","Nematoda",FALSE,TRUE
-"Kathlanidae","Nematoda",FALSE,FALSE
-"Acanthocheilidae","Nematoda",FALSE,FALSE
-"Goeziidae","Nematoda",FALSE,FALSE
-"Crossophoridae","Nematoda",FALSE,TRUE
-"Subuluridae","Nematoda",FALSE,FALSE
-"Seuratidae","Nematoda",FALSE,TRUE
-"Schneidernematidae","Nematoda",FALSE,TRUE
-"Quimperiidae","Nematoda",FALSE,TRUE
-"Soboliphymatidae","Nematoda",FALSE,TRUE
-"Diaphanocephalidae","Nematoda",FALSE,TRUE
-"Ancylostomidae","Nematoda",FALSE,FALSE
-"Strongyidae","Nematoda",FALSE,FALSE
-"Globocephalidae","Nematoda",FALSE,FALSE
-"Strongylacanthidae","Nematoda",FALSE,FALSE
-"Heligosomatidae","Nematoda",FALSE,FALSE
-"Ollulanidae","Nematoda",FALSE,TRUE
-"Myenchildae","Nematoda",FALSE,FALSE
-"Araeolaimidae","Nematoda",FALSE,FALSE
-"Diplopeltidae","Nematoda",FALSE,TRUE
-"Camacolaimidae","Nematoda",FALSE,FALSE
-"Spiriniidae","Nematoda",FALSE,FALSE
-"Meyliidae","Nematoda",FALSE,TRUE
-"Greeffiellidae","Nematoda",FALSE,FALSE
-"Synochidae","Nematoda",FALSE,FALSE
-"Rhaptothyreidae","Nematoda",FALSE,TRUE
-"Soboliphymidae","Nematoda",FALSE,FALSE
-"Aproctidae","Nematoda",FALSE,FALSE
-"Ungellidae","Nematoda",FALSE,TRUE
-"Scolecophilidae","Nematoda",FALSE,TRUE
-"Creagrocercidae","Nematoda",FALSE,TRUE
-"Mesidionematidae","Nematoda",FALSE,TRUE
-"Homungellidae","Nematoda",FALSE,TRUE
-"Dracunculidae","Nematoda",FALSE,TRUE
-"Micropleudidae","Nematoda",FALSE,FALSE
-"Polystomatidae","Platyhelminthes",TRUE,TRUE
-"Hasstilesiidae","Platyhelminthes",TRUE,TRUE
-"Schistosomatidae","Platyhelminthes",TRUE,TRUE
-"Echinostomatidae","Platyhelminthes",TRUE,TRUE
-"Fasciolidae","Platyhelminthes",TRUE,TRUE
-"Paramphistomidae","Platyhelminthes",TRUE,TRUE
-"Balanorchiidae","Platyhelminthes",TRUE,FALSE
-"Brumptiidae","Platyhelminthes",TRUE,FALSE
-"Choerocotyloididae","Platyhelminthes",TRUE,FALSE
-"Cladorchiidae","Platyhelminthes",TRUE,TRUE
-"Gastrodiscidae","Platyhelminthes",TRUE,TRUE
-"Gastrothylacidae","Platyhelminthes",TRUE,TRUE
-"Olveriidae","Platyhelminthes",TRUE,TRUE
-"Stephanopharyngidae","Platyhelminthes",TRUE,TRUE
-"Zygocotylidae","Platyhelminthes",TRUE,FALSE
-"Notocotylidae","Platyhelminthes",TRUE,TRUE
-"Opisthorchiidae","Platyhelminthes",TRUE,TRUE
-"Heterophyidae","Platyhelminthes",TRUE,TRUE
-"Dicrocoeliidae","Platyhelminthes",TRUE,TRUE
-"Paragonimidae","Platyhelminthes",TRUE,FALSE
-"Diphyllobothridae","Platyhelminthes",TRUE,FALSE
-"Anoplocephalinae","Platyhelminthes",TRUE,FALSE
-"Linstowiinae","Platyhelminthes",TRUE,FALSE
-"Thysanosomatinae","Platyhelminthes",TRUE,FALSE
-"Inermicapsiferinae","Platyhelminthes",TRUE,FALSE
-"Davaineidae","Platyhelminthes",TRUE,TRUE
-"Taeniidae","Platyhelminthes",TRUE,TRUE
-"Catenulidae","Platyhelminthes",FALSE,TRUE
-"Chordariidae","Platyhelminthes",FALSE,TRUE
-"Retronectidae","Platyhelminthes",FALSE,TRUE
-"Stenostomidae","Platyhelminthes",FALSE,TRUE
-"Tyrrheniellidae","Platyhelminthes",FALSE,TRUE
-"Leimacopsidae","Platyhelminthes",FALSE,FALSE
-"Not assigned","Platyhelminthes",FALSE,FALSE
-"Bothrioplanidae","Platyhelminthes",FALSE,TRUE
-"Aberrapecidae","Platyhelminthes",FALSE,TRUE
-"Acoleidae","Platyhelminthes",FALSE,TRUE
-"Acrobothriidae","Platyhelminthes",FALSE,TRUE
-"Amabiliidae","Platyhelminthes",FALSE,TRUE
-"Amphilinidae","Platyhelminthes",FALSE,TRUE
-"Anthocephaliidae","Platyhelminthes",FALSE,TRUE
-"Balanobothriidae","Platyhelminthes",FALSE,FALSE
-"Bothriocephalidae","Platyhelminthes",FALSE,TRUE
-"Calliobothriidae","Platyhelminthes",FALSE,FALSE
-"Capingentidae","Platyhelminthes",FALSE,TRUE
-"Caryophyllaeidae","Platyhelminthes",FALSE,TRUE
-"Cathetocephalidae","Platyhelminthes",FALSE,TRUE
-"Cephalobothriidae","Platyhelminthes",FALSE,TRUE
-"Cephalochlamydidae","Platyhelminthes",FALSE,TRUE
-"Chimaerocestidae","Platyhelminthes",FALSE,TRUE
-"Dilepididae","Platyhelminthes",FALSE,TRUE
-"Dioecotaeniidae","Platyhelminthes",FALSE,TRUE
-"Diphyllobothriidae","Platyhelminthes",FALSE,TRUE
-"Disculicepitidae","Platyhelminthes",FALSE,FALSE
-"Echeneibothriidae","Platyhelminthes",FALSE,TRUE
-"Echinobothriidae","Platyhelminthes",FALSE,TRUE
-"Echinophallidae","Platyhelminthes",FALSE,TRUE
-"Eniochobothriidae","Platyhelminthes",FALSE,FALSE
-"Escherbothriidae","Platyhelminthes",FALSE,TRUE
-"Gastrolecithidae","Platyhelminthes",FALSE,FALSE
-"Gryporhynchidae","Platyhelminthes",FALSE,TRUE
-"Gyrocotylidae","Platyhelminthes",FALSE,TRUE
-"Haplobothriidae","Platyhelminthes",FALSE,TRUE
-"Hymenolepididae","Platyhelminthes",FALSE,TRUE
-"Lecanicephalidae","Platyhelminthes",FALSE,TRUE
-"Litobothriidae","Platyhelminthes",FALSE,TRUE
-"Nippotaeniidae","Platyhelminthes",FALSE,TRUE
-"Onchobothriidae","Platyhelminthes",FALSE,TRUE
-"Paraberrapecidae","Platyhelminthes",FALSE,FALSE
-"Phyllobothriidae","Platyhelminthes",FALSE,TRUE
-"Polypocephalidae","Platyhelminthes",FALSE,TRUE
-"Progynotaeniidae","Platyhelminthes",FALSE,TRUE
-"Prosobothriidae","Platyhelminthes",FALSE,TRUE
-"Proteocephalidae","Platyhelminthes",FALSE,TRUE
-"Rhinebothriidae","Platyhelminthes",FALSE,TRUE
-"Rhoptrobothriidae","Platyhelminthes",FALSE,FALSE
-"Schistotaeniidae","Platyhelminthes",FALSE,TRUE
-"Schizochoeridae","Platyhelminthes",FALSE,TRUE
-"Serendipidae","Platyhelminthes",FALSE,FALSE
-"Shindeobothriiidae","Platyhelminthes",FALSE,FALSE
-"Solenophoridae","Platyhelminthes",FALSE,FALSE
-"Spathebothriidae","Platyhelminthes",FALSE,TRUE
-"Tetrabothriidae","Platyhelminthes",FALSE,TRUE
-"Tetragonocephalidae","Platyhelminthes",FALSE,TRUE
-"Triaenophoridae","Platyhelminthes",FALSE,TRUE
-"Zanobatocestidae","Platyhelminthes",FALSE,TRUE
-"Dolichomacrostomidae","Platyhelminthes",FALSE,TRUE
-"Microstomidae","Platyhelminthes",FALSE,TRUE
-"Fecampiidae","Platyhelminthes",FALSE,FALSE
-"Notenteridae","Platyhelminthes",FALSE,FALSE
-"Piscinquilinidae","Platyhelminthes",FALSE,FALSE
-"Urastomidae","Platyhelminthes",FALSE,TRUE
-"Gnosonesimidae","Platyhelminthes",FALSE,TRUE
-"Prorhynchidae","Platyhelminthes",FALSE,TRUE
-"Acanthocotylidae","Platyhelminthes",FALSE,TRUE
-"Allodiscocotylidae","Platyhelminthes",FALSE,TRUE
-"Allopyragraphoridae","Platyhelminthes",FALSE,TRUE
-"Amphibdellatidae","Platyhelminthes",FALSE,TRUE
-"Anchorophoridae","Platyhelminthes",FALSE,TRUE
-"Ancylodiscoididae","Platyhelminthes",FALSE,TRUE
-"Ancyrocephalidae","Platyhelminthes",FALSE,TRUE
-"Anoplodiscidae","Platyhelminthes",FALSE,TRUE
-"Axinidae","Platyhelminthes",FALSE,TRUE
-"Bothitrematidae","Platyhelminthes",FALSE,TRUE
-"Bychowskicotylidae","Platyhelminthes",FALSE,TRUE
-"Calceostomatidae","Platyhelminthes",FALSE,TRUE
-"Capsalidae","Platyhelminthes",FALSE,TRUE
-"Cemocotylidae","Platyhelminthes",FALSE,FALSE
-"Chauhaneidae","Platyhelminthes",FALSE,TRUE
-"Chimaericolidae","Platyhelminthes",FALSE,TRUE
-"Dactylogyridae","Platyhelminthes",FALSE,TRUE
-"Diclidophoridae","Platyhelminthes",FALSE,TRUE
-"Diclybothriidae","Platyhelminthes",FALSE,TRUE
-"Dionchidae","Platyhelminthes",FALSE,TRUE
-"Diplectanidae","Platyhelminthes",FALSE,TRUE
-"Diplozoidae","Platyhelminthes",FALSE,TRUE
-"Discocotylidae","Platyhelminthes",FALSE,TRUE
-"Enoplocotylidae","Platyhelminthes",FALSE,TRUE
-"Fridericianellidae","Platyhelminthes",FALSE,TRUE
-"Gastrocotylidae","Platyhelminthes",FALSE,TRUE
-"Gotocotylidae","Platyhelminthes",FALSE,TRUE
-"Gyrodactylidae","Platyhelminthes",FALSE,TRUE
-"Heteraxinidae","Platyhelminthes",FALSE,TRUE
-"Heteromicrocotylidae","Platyhelminthes",FALSE,TRUE
-"Hexabothriidae","Platyhelminthes",FALSE,TRUE
-"Hexostomatidae","Platyhelminthes",FALSE,TRUE
-"Loimoidae","Platyhelminthes",FALSE,TRUE
-"Macrovalvitrematidae","Platyhelminthes",FALSE,TRUE
-"Mazocraeidae","Platyhelminthes",FALSE,TRUE
-"Mazoplectidae","Platyhelminthes",FALSE,TRUE
-"Megamicrocotylidae","Platyhelminthes",FALSE,TRUE
-"Microbothriidae","Platyhelminthes",FALSE,TRUE
-"Microcotylidae","Platyhelminthes",FALSE,FALSE
-"Monaxinoididae","Platyhelminthes",FALSE,TRUE
-"Monocotylidae","Platyhelminthes",FALSE,TRUE
-"Montchadskyellidae","Platyhelminthes",FALSE,TRUE
-"Neocalceostomatidae","Platyhelminthes",FALSE,TRUE
-"Neotetraonchidae","Platyhelminthes",FALSE,TRUE
-"Octolabeidae","Platyhelminthes",FALSE,TRUE
-"Octomacridae","Platyhelminthes",FALSE,TRUE
-"Paramonaxinidae","Platyhelminthes",FALSE,TRUE
-"Plectanocotylidae","Platyhelminthes",FALSE,TRUE
-"Protogyrodactylidae","Platyhelminthes",FALSE,FALSE
-"Protomicrocotylidae","Platyhelminthes",FALSE,TRUE
-"Pseudodactylogyridae","Platyhelminthes",FALSE,TRUE
-"Pseudodiclidophoridae","Platyhelminthes",FALSE,TRUE
-"Pterinotrematidae","Platyhelminthes",FALSE,TRUE
-"Pyragraphoridae","Platyhelminthes",FALSE,TRUE
-"Rhinecotylidae","Platyhelminthes",FALSE,FALSE
-"Tetraonchidae","Platyhelminthes",FALSE,TRUE
-"Tetraonchoididae","Platyhelminthes",FALSE,TRUE
-"Thoracocotylidae","Platyhelminthes",FALSE,FALSE
-"Udonellidae","Platyhelminthes",FALSE,TRUE
-"Urogyridae","Platyhelminthes",FALSE,FALSE
-"Genostomatidae","Platyhelminthes",FALSE,TRUE
-"Haplopharyngidae","Platyhelminthes",FALSE,TRUE
-"Macrostomidae","Platyhelminthes",FALSE,TRUE
-"Anocellidae","Platyhelminthes",FALSE,TRUE
-"Apidioplanidae","Platyhelminthes",FALSE,TRUE
-"Dicteroidae","Platyhelminthes",FALSE,FALSE
-"Didangiidae","Platyhelminthes",FALSE,TRUE
-"Diposthidae","Platyhelminthes",FALSE,TRUE
-"Enantiidae","Platyhelminthes",FALSE,TRUE
-"Euplanidae","Platyhelminthes",FALSE,TRUE
-"Latocestidae","Platyhelminthes",FALSE,TRUE
-"Limnostylochidae","Platyhelminthes",FALSE,TRUE
-"Stylochocestidae","Platyhelminthes",FALSE,TRUE
-"Multipeniatidae","Platyhelminthes",FALSE,TRUE
-"Plagiostomidae","Platyhelminthes",FALSE,TRUE
-"Protomonotresidae","Platyhelminthes",FALSE,TRUE
-"Pseudostomidae","Platyhelminthes",FALSE,TRUE
-"Scleraulophoridae","Platyhelminthes",FALSE,FALSE
-"Archimonocelidae","Platyhelminthes",FALSE,FALSE
-"Calviriidae","Platyhelminthes",FALSE,TRUE
-"Ciliopharyngiellidae","Platyhelminthes",FALSE,FALSE
-"Coelogynoporidae","Platyhelminthes",FALSE,TRUE
-"Meidiamidae","Platyhelminthes",FALSE,TRUE
-"Monocelididae","Platyhelminthes",FALSE,TRUE
-"Monotoplanidae","Platyhelminthes",FALSE,TRUE
-"Nematoplanidae","Platyhelminthes",FALSE,TRUE
-"Otomesostomatidae","Platyhelminthes",FALSE,TRUE
-"Otoplanidae","Platyhelminthes",FALSE,TRUE
-"Polystyliphoridae","Platyhelminthes",FALSE,TRUE
-"Acholadidae","Platyhelminthes",FALSE,TRUE
-"Aculeorhynchidae","Platyhelminthes",FALSE,TRUE
-"Bertiliellidae","Platyhelminthes",FALSE,TRUE
-"Byrsophlebidae","Platyhelminthes",FALSE,TRUE
-"Cheliplanidae","Platyhelminthes",FALSE,TRUE
-"Cicerinidae","Platyhelminthes",FALSE,TRUE
-"Crassicollidae","Platyhelminthes",FALSE,TRUE
-"Cystiplanidae","Platyhelminthes",FALSE,TRUE
-"Cytocystididae","Platyhelminthes",FALSE,FALSE
-"Dalyelliidae","Platyhelminthes",FALSE,TRUE
-"Diascorhynchidae","Platyhelminthes",FALSE,TRUE
-"Gnathorhynchidae","Platyhelminthes",FALSE,TRUE
-"Graffillidae","Platyhelminthes",FALSE,TRUE
-"Hypoblepharinidae","Platyhelminthes",FALSE,FALSE
-"Karkinorhynchidae","Platyhelminthes",FALSE,TRUE
-"Koinocystididae","Platyhelminthes",FALSE,TRUE
-"Kytorhynchidae","Platyhelminthes",FALSE,TRUE
-"Luridae","Platyhelminthes",FALSE,TRUE
-"Nannorhynchididae","Platyhelminthes",FALSE,FALSE
-"Nematorhynchidae","Platyhelminthes",FALSE,TRUE
-"Placorhynchidae","Platyhelminthes",FALSE,TRUE
-"Polycystididae","Platyhelminthes",FALSE,TRUE
-"Promesostomidae","Platyhelminthes",FALSE,TRUE
-"Provorticidae","Platyhelminthes",FALSE,TRUE
-"Psammorhynchidae","Platyhelminthes",FALSE,TRUE
-"Pterastericolidae","Platyhelminthes",FALSE,TRUE
-"Rhynchokarlingiidae","Platyhelminthes",FALSE,TRUE
-"Schizorhynchidae","Platyhelminthes",FALSE,TRUE
-"Solenopharyngidae","Platyhelminthes",FALSE,TRUE
-"Trigonostomidae","Platyhelminthes",FALSE,TRUE
-"Typhloplanidae","Platyhelminthes",FALSE,TRUE
-"Umagillidae","Platyhelminthes",FALSE,TRUE
-"Stichocotylidae","Platyhelminthes",FALSE,TRUE
-"Dimarcusidae","Platyhelminthes",FALSE,TRUE
-"Rhynchodemidae","Platyhelminthes",FALSE,FALSE
-"Eutetrarhynchidae","Platyhelminthes",FALSE,TRUE
-"Mixodigmatidae","Platyhelminthes",FALSE,TRUE
-"Progrillotiidae","Platyhelminthes",FALSE,TRUE
-"Rhinoptericolidae","Platyhelminthes",FALSE,TRUE
-"Aporhynchidae","Platyhelminthes",FALSE,TRUE
-"Gilquiniidae","Platyhelminthes",FALSE,TRUE
-"Gymnorhynchidae","Platyhelminthes",FALSE,TRUE
-"Rhopalothylacidae","Platyhelminthes",FALSE,TRUE
-"Lacistorhynchidae","Platyhelminthes",FALSE,TRUE
-"Pterobothriidae","Platyhelminthes",FALSE,TRUE
-"Otobothriidae","Platyhelminthes",FALSE,TRUE
-"Paranybeliniidae","Platyhelminthes",FALSE,TRUE
-"Pseudotobothriidae","Platyhelminthes",FALSE,TRUE
-"Sphyriocephalidae","Platyhelminthes",FALSE,TRUE
-"Tentaculariidae","Platyhelminthes",FALSE,TRUE
-"Cestoplanidae","Platyhelminthes",FALSE,TRUE
-"Amyellidae","Platyhelminthes",FALSE,TRUE
-"Boniniidae","Platyhelminthes",FALSE,TRUE
-"Chromoplanidae","Platyhelminthes",FALSE,TRUE
-"Theamatidae","Platyhelminthes",FALSE,TRUE
-"Cryptocelidae","Platyhelminthes",FALSE,TRUE
-"Discocelididae","Platyhelminthes",FALSE,FALSE
-"Plehniidae","Platyhelminthes",FALSE,TRUE
-"Polyposthiidae","Platyhelminthes",FALSE,TRUE
-"Ditremageniidae","Platyhelminthes",FALSE,TRUE
-"Euryleptidae","Platyhelminthes",FALSE,TRUE
-"Discocelidae","Platyhelminthes",FALSE,TRUE
-"Candimboididae","Platyhelminthes",FALSE,TRUE
-"Faubelidae","Platyhelminthes",FALSE,FALSE
-"Gnesiocerotidae","Platyhelminthes",FALSE,TRUE
-"Ilyplanidae","Platyhelminthes",FALSE,TRUE
-"Leptoplanidae","Platyhelminthes",FALSE,TRUE
-"Mucroplanidae","Platyhelminthes",FALSE,TRUE
-"Notoplanidae","Platyhelminthes",FALSE,TRUE
-"Palauidae","Platyhelminthes",FALSE,TRUE
-"Pleioplanidae","Platyhelminthes",FALSE,TRUE
-"Stylochoplanidae","Platyhelminthes",FALSE,TRUE
-"Opisthogeniidae","Platyhelminthes",FALSE,TRUE
-"Pericelidae","Platyhelminthes",FALSE,TRUE
-"Prosthiostomidae","Platyhelminthes",FALSE,TRUE
-"Anonymidae","Platyhelminthes",FALSE,TRUE
-"Euryleptididae","Platyhelminthes",FALSE,TRUE
-"Laidlawiidae","Platyhelminthes",FALSE,TRUE
-"Pseudocerotidae","Platyhelminthes",FALSE,TRUE
-"Stylochoididae","Platyhelminthes",FALSE,TRUE
-"Callioplanidae","Platyhelminthes",FALSE,TRUE
-"Discoprosthididae","Platyhelminthes",FALSE,TRUE
-"Planoceridae","Platyhelminthes",FALSE,TRUE
-"Pseudostylochidae","Platyhelminthes",FALSE,TRUE
-"Stylochidae","Platyhelminthes",FALSE,TRUE
-"Scutariellidae","Platyhelminthes",FALSE,TRUE
-"Actinodactylellidae","Platyhelminthes",FALSE,TRUE
-"Diceratocephalidae","Platyhelminthes",FALSE,FALSE
-"Temnocephalidae","Platyhelminthes",FALSE,TRUE
-"Acanthocolpidae","Platyhelminthes",FALSE,TRUE
-"Allocreadiidae","Platyhelminthes",FALSE,TRUE
-"Brachycladiidae","Platyhelminthes",FALSE,TRUE
-"Opecoelidae","Platyhelminthes",FALSE,TRUE
-"Apocreadiidae","Platyhelminthes",FALSE,TRUE
-"Aspidogastridae","Platyhelminthes",FALSE,TRUE
-"Multicalycidae","Platyhelminthes",FALSE,TRUE
-"Rugogastridae","Platyhelminthes",FALSE,TRUE
-"Azygiidae","Platyhelminthes",FALSE,TRUE
-"Bivesiculidae","Platyhelminthes",FALSE,TRUE
-"Brachylaimidae","Platyhelminthes",FALSE,TRUE
-"Leucochloridiidae","Platyhelminthes",FALSE,TRUE
-"Bucephalidae","Platyhelminthes",FALSE,TRUE
-"Brauninidae","Platyhelminthes",FALSE,TRUE
-"Cyathocotylidae","Platyhelminthes",FALSE,TRUE
-"Diplostomidae","Platyhelminthes",FALSE,FALSE
-"Proterodiplostomidae","Platyhelminthes",FALSE,FALSE
-"Strigeidae","Platyhelminthes",FALSE,TRUE
-"Calycodidae","Platyhelminthes",FALSE,TRUE
-"Cyclocoelidae","Platyhelminthes",FALSE,TRUE
-"Echinochasmidae","Platyhelminthes",FALSE,TRUE
-"Eucotylidae","Platyhelminthes",FALSE,TRUE
-"Himasthlidae","Platyhelminthes",FALSE,TRUE
-"Philophthalmidae","Platyhelminthes",FALSE,TRUE
-"Psilostomidae","Platyhelminthes",FALSE,TRUE
-"Rhytidodidae","Platyhelminthes",FALSE,TRUE
-"Typhlocoelidae","Platyhelminthes",FALSE,FALSE
-"Callodistomidae","Platyhelminthes",FALSE,TRUE
-"Gorgoderidae","Platyhelminthes",FALSE,TRUE
-"Botulisaccidae","Platyhelminthes",FALSE,TRUE
-"Fellodistomidae","Platyhelminthes",FALSE,TRUE
-"Gymnophallidae","Platyhelminthes",FALSE,TRUE
-"Tandanicolidae","Platyhelminthes",FALSE,TRUE
-"Atractotrematidae","Platyhelminthes",FALSE,TRUE
-"Haploporidae","Platyhelminthes",FALSE,TRUE
-"Haplosplanchnidae","Platyhelminthes",FALSE,TRUE
-"Accacoeliidae","Platyhelminthes",FALSE,TRUE
-"Bathycotylidae","Platyhelminthes",FALSE,FALSE
-"Derogenidae","Platyhelminthes",FALSE,TRUE
-"Dictysarcidae","Platyhelminthes",FALSE,TRUE
-"Didymozoidae","Platyhelminthes",FALSE,TRUE
-"Gonocercidae","Platyhelminthes",FALSE,FALSE
-"Hemiuridae","Platyhelminthes",FALSE,TRUE
-"Hirudinellidae","Platyhelminthes",FALSE,TRUE
-"Isoparorchiidae","Platyhelminthes",FALSE,TRUE
-"Lecithasteridae","Platyhelminthes",FALSE,TRUE
-"Ptychogonimidae","Platyhelminthes",FALSE,TRUE
-"Sclerodistomidae","Platyhelminthes",FALSE,TRUE
-"Sclerodistomoididae","Platyhelminthes",FALSE,TRUE
-"Syncoeliidae","Platyhelminthes",FALSE,TRUE
-"Aephnidiogenidae","Platyhelminthes",FALSE,TRUE
-"Deropristidae","Platyhelminthes",FALSE,TRUE
-"Enenteridae","Platyhelminthes",FALSE,TRUE
-"Gibsonivermidae","Platyhelminthes",FALSE,FALSE
-"Gorgocephalidae","Platyhelminthes",FALSE,TRUE
-"Gyliauchenidae","Platyhelminthes",FALSE,TRUE
-"Lepidapedidae","Platyhelminthes",FALSE,TRUE
-"Lepocreadiidae","Platyhelminthes",FALSE,TRUE
-"Liliatrematidae","Platyhelminthes",FALSE,TRUE
-"Diplangidae","Platyhelminthes",FALSE,TRUE
-"Exotidendriidae","Platyhelminthes",FALSE,TRUE
-"Faustulidae","Platyhelminthes",FALSE,TRUE
-"Microphallidae","Platyhelminthes",FALSE,TRUE
-"Pachypsolidae","Platyhelminthes",FALSE,TRUE
-"Prosthogonimidae","Platyhelminthes",FALSE,TRUE
-"Renicolidae","Platyhelminthes",FALSE,TRUE
-"Zoogonidae","Platyhelminthes",FALSE,TRUE
-"Lissorchiidae","Platyhelminthes",FALSE,TRUE
-"Monorchiidae","Platyhelminthes",FALSE,TRUE
-"Cryptogonimidae","Platyhelminthes",FALSE,TRUE
-"Mesometridae","Platyhelminthes",FALSE,TRUE
-"Microscaphidiidae","Platyhelminthes",FALSE,FALSE
-"Brachycoeliidae","Platyhelminthes",FALSE,TRUE
-"Cephalogonimidae","Platyhelminthes",FALSE,TRUE
-"Macroderoididae","Platyhelminthes",FALSE,TRUE
-"Meristocotylidae","Platyhelminthes",FALSE,TRUE
-"Orientocreadiidae","Platyhelminthes",FALSE,TRUE
-"Plagiorchiidae","Platyhelminthes",FALSE,TRUE
-"Styphlotrematidae","Platyhelminthes",FALSE,TRUE
-"Telorchiidae","Platyhelminthes",FALSE,TRUE
-"Labicolidae","Platyhelminthes",FALSE,TRUE
-"Nudacotylidae","Platyhelminthes",FALSE,TRUE
-"Opisthotrematidae","Platyhelminthes",FALSE,TRUE
-"Pronocephalidae","Platyhelminthes",FALSE,TRUE
-"Rhabdiopoeidae","Platyhelminthes",FALSE,TRUE
-"Aporocotylidae","Platyhelminthes",FALSE,TRUE
-"Clinostomidae","Platyhelminthes",FALSE,TRUE
-"Spirorchiidae","Platyhelminthes",FALSE,TRUE
-"Transversotrematidae","Platyhelminthes",FALSE,TRUE
-"Bdellouridae","Platyhelminthes",FALSE,TRUE
-"Uteriporidae","Platyhelminthes",FALSE,TRUE
-"Centrovarioplanidae","Platyhelminthes",FALSE,TRUE
-"Cercyridae","Platyhelminthes",FALSE,TRUE
-"Meixnerididae","Platyhelminthes",FALSE,TRUE
-"Dugesiidae","Platyhelminthes",FALSE,TRUE
-"Geoplanidae","Platyhelminthes",FALSE,TRUE
-"Dendrocoelidae","Platyhelminthes",FALSE,TRUE
-"Kenkiidae","Platyhelminthes",FALSE,FALSE
-"Planariidae","Platyhelminthes",FALSE,TRUE
-"Procerodidae","Platyhelminthes",FALSE,TRUE
-"Gekkonotrematidae","Platyhelminthes",FALSE,TRUE
-"Jubilariidae","Platyhelminthes",FALSE,TRUE
-"Echinoporidae","Platyhelminthes",FALSE,TRUE
-"Mesotretidae","Platyhelminthes",FALSE,FALSE
-"Acanthocollaritrematidae","Platyhelminthes",FALSE,FALSE
-"Balanotaeniidae","Platyhelminthes",FALSE,TRUE
-"Lytocestidae","Platyhelminthes",FALSE,TRUE
-"Dioicocestidae","Platyhelminthes",FALSE,FALSE
-"Dipylidiidae","Platyhelminthes",FALSE,TRUE
-"Metadilepididae","Platyhelminthes",FALSE,TRUE
-"Paruterinidae","Platyhelminthes",FALSE,TRUE
-"Cephalobothiidae","Platyhelminthes",FALSE,FALSE
-"Dactylocotylidae","Platyhelminthes",FALSE,FALSE
-"Megalonchidae","Platyhelminthes",FALSE,TRUE
-"Sphyranuridae","Platyhelminthes",FALSE,TRUE
-"Aviellidae","Platyhelminthes",FALSE,TRUE
-"Allomicrocotylidae","Platyhelminthes",FALSE,FALSE
-"Aspidogasteridae","Platyhelminthes",FALSE,FALSE
-"Diplostomatidae","Platyhelminthes",FALSE,TRUE
-"Protrodiplostomatidae","Platyhelminthes",FALSE,TRUE
-"Bolbocephalodidae","Platyhelminthes",FALSE,TRUE
-"Clinostomatidae","Platyhelminthes",FALSE,FALSE
-"Sanguinicolidae","Platyhelminthes",FALSE,FALSE
-"Ophiodiplostomatidae","Platyhelminthes",FALSE,FALSE
-"Neostrigeidae","Platyhelminthes",FALSE,FALSE
-"Mesocestoididae","Platyhelminthes",FALSE,TRUE
-"Nematotaeniidae","Platyhelminthes",FALSE,TRUE
-"Catenotaeniidae","Platyhelminthes",FALSE,TRUE
-"Anoplocephalidae","Platyhelminthes",FALSE,TRUE
-"Diplopharyngeatidae","Platyhelminthes",FALSE,FALSE
-"Fellodistomatidae","Platyhelminthes",FALSE,FALSE
-"Harmotrematidae","Platyhelminthes",FALSE,TRUE
-"Leucochloridiomorphidae","Platyhelminthes",FALSE,TRUE
-"Urotrematidae","Platyhelminthes",FALSE,TRUE
-"Monascidae","Platyhelminthes",FALSE,FALSE
-"Liolopidae","Platyhelminthes",FALSE,TRUE
-"Moreauiidae","Platyhelminthes",FALSE,FALSE
-"Ovariopteridae","Platyhelminthes",FALSE,TRUE
-"Thapariellidae","Platyhelminthes",FALSE,TRUE
-"Monodhelminthidae","Platyhelminthes",FALSE,FALSE
-"Ratziidae","Platyhelminthes",FALSE,FALSE
-"Dinuridae","Platyhelminthes",FALSE,FALSE
-"Lecithochiridae","Platyhelminthes",FALSE,FALSE
-"Aphanhysteridae","Platyhelminthes",FALSE,FALSE
-"Bothrigastridae","Platyhelminthes",FALSE,FALSE
-"Lampritrematidae","Platyhelminthes",FALSE,FALSE
-"Albulatrematidae","Platyhelminthes",FALSE,FALSE
-"Halipegidae","Platyhelminthes",FALSE,FALSE
-"Mabiaramidae","Platyhelminthes",FALSE,FALSE
-"Prosogonotrematidae","Platyhelminthes",FALSE,FALSE
-"Oesophagicolidae","Platyhelminthes",FALSE,TRUE
-"Arnolidae","Platyhelminthes",FALSE,FALSE
-"Lobatovitelliovariidae","Platyhelminthes",FALSE,FALSE
-"Areobiotrematidae","Platyhelminthes",FALSE,TRUE
-"Tetrasteridae","Platyhelminthes",FALSE,FALSE
-"Pelorohelminthidae","Platyhelminthes",FALSE,FALSE
-"Cylindrorchiidae","Platyhelminthes",FALSE,TRUE
-"Psilostomatidae","Platyhelminthes",FALSE,FALSE
-"Cathaemasiidae","Platyhelminthes",FALSE,FALSE
-"Rhopaliidae","Platyhelminthes",FALSE,FALSE
-"Megaperidae","Platyhelminthes",FALSE,FALSE
-"Orchipedidae","Platyhelminthes",FALSE,TRUE
-"Botulidae","Platyhelminthes",FALSE,FALSE
-"Saakotrematidae","Platyhelminthes",FALSE,FALSE
-"Balfouriidae","Platyhelminthes",FALSE,FALSE
-"Ommatobrephidae","Platyhelminthes",FALSE,FALSE
-"Achillurbaniidae","Platyhelminthes",FALSE,FALSE
-"Campululidae","Platyhelminthes",FALSE,TRUE
-"Rowpaliidae","Platyhelminthes",FALSE,FALSE
-"Diplodiscidae","Platyhelminthes",FALSE,TRUE
-"Rhabdopoeidae","Platyhelminthes",FALSE,FALSE
-"Paramphistomatidae","Platyhelminthes",FALSE,TRUE
-"Heronimidae","Platyhelminthes",FALSE,TRUE
-"Brumptidae","Platyhelminthes",FALSE,TRUE
-"Haematoloechidae","Platyhelminthes",FALSE,TRUE
-"Mesocoeliidae","Platyhelminthes",FALSE,FALSE
-"Auridistomidae","Platyhelminthes",FALSE,TRUE
-"Cephaloporidae","Platyhelminthes",FALSE,FALSE
-"Ochetosomatidae","Platyhelminthes",FALSE,FALSE
-"Lecithodendriidae","Platyhelminthes",FALSE,TRUE
-"Allassogonoporidae","Platyhelminthes",FALSE,FALSE
-"Stomylotrematidae","Platyhelminthes",FALSE,TRUE
-"Laterotrematidae","Platyhelminthes",FALSE,TRUE
-"Omphalometridae","Platyhelminthes",FALSE,TRUE
-"Encyclometridae","Platyhelminthes",FALSE,TRUE
-"Opisthogonimidae","Platyhelminthes",FALSE,TRUE
-"Dolichoperidae","Platyhelminthes",FALSE,FALSE
-"Macroderidae","Platyhelminthes",FALSE,FALSE
-"Eumegacetidae","Platyhelminthes",FALSE,FALSE
-"Pleurogenidae","Platyhelminthes",FALSE,TRUE
-"Anenterotrematidae","Platyhelminthes",FALSE,TRUE
-"Cortrematidae","Platyhelminthes",FALSE,TRUE
-"Anchitrematidae","Platyhelminthes",FALSE,FALSE
-"Octotestidae","Platyhelminthes",FALSE,FALSE
-"Steganodermatidae","Platyhelminthes",FALSE,FALSE
-"Troglotrematidae","Platyhelminthes",FALSE,TRUE
-"Nanophyetidae","Platyhelminthes",FALSE,TRUE
-"Collyriclidae","Platyhelminthes",FALSE,TRUE
-"Homalometridae","Platyhelminthes",FALSE,FALSE
-"Deropristiidae","Platyhelminthes",FALSE,FALSE
-"Pleorchiidae","Platyhelminthes",FALSE,FALSE
-"Batrachotrematidae","Platyhelminthes",FALSE,TRUE
-"Maseniidae","Platyhelminthes",FALSE,FALSE
-"Opistholebetidae","Platyhelminthes",FALSE,TRUE
-"Callodistomatidae","Platyhelminthes",FALSE,FALSE
-"Encotylidae","Platyhelminthes",FALSE,FALSE
-"Haplometridae","Platyhelminthes",FALSE,FALSE
-"Eurotrematidae","Platyhelminthes",FALSE,FALSE
-"Nasitrematidae","Platyhelminthes",FALSE,FALSE
-"Acanthostomatidae","Platyhelminthes",FALSE,FALSE
-"Pachytrematidae","Platyhelminthes",FALSE,TRUE
-"Campulidae","Platyhelminthes",FALSE,FALSE
-"Ulianiniidae","Platyhelminthes",FALSE,FALSE
-"Grillotiidae","Platyhelminthes",FALSE,FALSE
-"Cylindrostomidae","Platyhelminthes",FALSE,FALSE
-"Dasyrhynchidae","Platyhelminthes",FALSE,TRUE
-"Hornelliellidae","Platyhelminthes",FALSE,TRUE
+"family","group","ung_inf","otl_name","trans_route","in_tree"
+"Oligacanthorhynchidae","Acanthocephala",TRUE,"Oligacanthorhynchidae","intermediate host eaten",TRUE
+"Echinorhynchidae","Acanthocephala",TRUE,"Echinorhynchidae","intermediate host eaten",TRUE
+"Apororhynchidae","Acanthocephala",FALSE,"Apororhynchidae","not ungulate parasites",TRUE
+"Giganthorhynchidae","Acanthocephala",FALSE,"Giganthorhynchidae","not ungulate parasites",TRUE
+"Moniliformidae","Acanthocephala",FALSE,"Moniliformidae","not ungulate parasites",TRUE
+"Quadrigyridae","Acanthocephala",FALSE,"Quadrigyridae","not ungulate parasites",TRUE
+"Dendronucleatidae","Acanthocephala",FALSE,"Dendronucleatidae","not ungulate parasites",TRUE
+"Neoechinorhynchidae","Acanthocephala",FALSE,"Neoechinorhynchidae","not ungulate parasites",TRUE
+"Tenuisentidae","Acanthocephala",FALSE,"Tenuisentidae","not ungulate parasites",TRUE
+"Arhythmacanthidae","Acanthocephala",FALSE,"Arhythmacanthidae","not ungulate parasites",TRUE
+"Cavisomidae","Acanthocephala",FALSE,"Cavisomidae","not ungulate parasites",TRUE
+"Diplosentidae","Acanthocephala",FALSE,"Diplosentidae","not ungulate parasites",TRUE
+"Fessisentidae","Acanthocephala",FALSE,"Fessisentidae","not ungulate parasites",TRUE
+"Gymnorhadinorhynchidae","Acanthocephala",FALSE,"Gymnorhadinorhynchidae","not ungulate parasites",TRUE
+"Heteracanthocephalidae","Acanthocephala",FALSE,"Heteracanthocephalidae","not ungulate parasites",TRUE
+"Illiosentidae","Acanthocephala",FALSE,"Illiosentidae","not ungulate parasites",TRUE
+"Isthmosacanthidae","Acanthocephala",FALSE,"Isthmosacanthidae","not ungulate parasites",TRUE
+"Pomphorhynchidae","Acanthocephala",FALSE,"Pomphorhynchidae","not ungulate parasites",TRUE
+"Rhadinorhynchidae","Acanthocephala",FALSE,"Rhadinorhynchidae","not ungulate parasites",TRUE
+"Sauracanthorhynchidae","Acanthocephala",FALSE,"Sauracanthorhynchidae","not ungulate parasites",TRUE
+"Transvenidae","Acanthocephala",FALSE,"Transvenidae","not ungulate parasites",TRUE
+"Pyrirhynchidae","Acanthocephala",FALSE,"Pyrirhynchidae","not ungulate parasites",TRUE
+"Centrorhynchidae","Acanthocephala",FALSE,"Centrorhynchidae","not ungulate parasites",TRUE
+"Plagiorhynchidae","Acanthocephala",FALSE,"Plagiorhynchidae","not ungulate parasites",TRUE
+"Polymorphidae","Acanthocephala",FALSE,"Polymorphidae","not ungulate parasites",TRUE
+"Polyacanthorhynchidae","Acanthocephala",FALSE,"Polyacanthorhynchidae","not ungulate parasites",TRUE
+"Capillariidae","Nematoda",TRUE,"Capillariidae","eggs ingested",TRUE
+"Robertdollfusidae","Nematoda",TRUE,"Robertdollfusidae","vector-transmission",TRUE
+"Trichinellidae","Nematoda",TRUE,"Trichinellidae","no free propagule",TRUE
+"Trichuridae","Nematoda",TRUE,"Trichuridae","eggs ingested",TRUE
+"Ancylostomatidae","Nematoda",TRUE,"Ancylostomatidae","larvae seek/penetrate",FALSE
+"Ascarididae","Nematoda",TRUE,"Ascarididae","eggs ingested",FALSE
+"Toxocaridae","Nematoda",TRUE,"Toxocaridae","eggs ingested",TRUE
+"Chabertiidae","Nematoda",TRUE,"Chabertiidae","larvae on herbage",TRUE
+"Cooperiidae","Nematoda",TRUE,"Cooperiidae","larvae on herbage",TRUE
+"Dictyocaulidae","Nematoda",TRUE,"Dictyocaulidae","larvae on herbage",TRUE
+"Filariidae","Nematoda",TRUE,"Filariidae","vector-transmission",TRUE
+"Gnathostomatidae","Nematoda",TRUE,"Gnathostomatidae","intermediate host eaten",TRUE
+"Gongylonematidae","Nematoda",TRUE,"Gongylonematidae","intermediate host eaten",TRUE
+"Habronematidae","Nematoda",TRUE,"Habronematidae","vector-transmission",TRUE
+"Haemonchidae","Nematoda",TRUE,"Haemonchidae","larvae on herbage",TRUE
+"Metastrongylidae","Nematoda",TRUE,"Metastrongylidae","intermediate host eaten",TRUE
+"Molineidae","Nematoda",TRUE,"Molineidae","larvae on herbage",TRUE
+"Onchocercidae","Nematoda",TRUE,"Onchocercidae","vector-transmission",TRUE
+"Oxyuridae","Nematoda",TRUE,"Oxyuridae","eggs ingested",TRUE
+"Protostrongylidae","Nematoda",TRUE,"Protostrongylidae","intermediate host eaten",TRUE
+"Spirocercidae","Nematoda",TRUE,"Spirocercidae","intermediate host eaten",TRUE
+"Strongylidae","Nematoda",TRUE,"Strongylidae","larvae on herbage",TRUE
+"Strongyloididae","Nematoda",TRUE,"Strongyloididae","larvae seek/penetrate",TRUE
+"Syngamidae","Nematoda",TRUE,"Syngamidae","intermediate host eaten",TRUE
+"Thelaziidae","Nematoda",TRUE,"Thelaziidae","vector-transmission",TRUE
+"Trichostrongylidae","Nematoda",TRUE,"Trichostrongylidae","larvae on herbage",FALSE
+"Aulolaimidae","Nematoda",FALSE,"Aulolaimidae","not ungulate parasites",TRUE
+"Axonolaimidae","Nematoda",FALSE,"Axonolaimidae","not ungulate parasites",TRUE
+"Bastianiidae","Nematoda",FALSE,"Bastianiidae","not ungulate parasites",TRUE
+"Haliplectidae","Nematoda",FALSE,"Haliplectidae","not ungulate parasites",TRUE
+"Isolaimiidae","Nematoda",FALSE,"Isolaimiidae","not ungulate parasites",TRUE
+"Leptolaimidae","Nematoda",FALSE,"Leptolaimidae","not ungulate parasites",TRUE
+"Plectidae","Nematoda",FALSE,"Plectidae","not ungulate parasites",FALSE
+"Rhabdolaimidae","Nematoda",FALSE,"Rhabdolaimidae","not ungulate parasites",TRUE
+"Teratocephalidae","Nematoda",FALSE,"Teratocephalidae","not ungulate parasites",TRUE
+"Tripyloididae","Nematoda",FALSE,"Tripyloididae","not ungulate parasites",TRUE
+"Ceramonematidae","Nematoda",FALSE,"Ceramonematidae","not ungulate parasites",TRUE
+"Choniolaimidae","Nematoda",FALSE,"Choanolaimidae","not ungulate parasites",TRUE
+"Chromadoridae","Nematoda",FALSE,"Chromadoridae","not ungulate parasites",TRUE
+"Comesomatidae","Nematoda",FALSE,"Comesomatidae","not ungulate parasites",TRUE
+"Cyatholaimidae","Nematoda",FALSE,"Cyatholaimidae","not ungulate parasites",TRUE
+"Desmodoridae","Nematoda",FALSE,"Desmodoridae","not ungulate parasites",TRUE
+"Draconematidae","Nematoda",FALSE,"Draconematidae","not ungulate parasites",TRUE
+"Epsilonematidae","Nematoda",FALSE,"Epsilonematidae","not ungulate parasites",TRUE
+"Microlaimidae","Nematoda",FALSE,"Microlaimidae","not ungulate parasites",TRUE
+"Monoposthiidae","Nematoda",FALSE,"Monoposthiidae","not ungulate parasites",TRUE
+"Richtersiidae","Nematoda",FALSE,"Richtersiidae","not ungulate parasites",FALSE
+"Selachinematidae","Nematoda",FALSE,"Selachinematidae","not ungulate parasites",TRUE
+"Xennellidae","Nematoda",FALSE,"Xennellidae","not ungulate parasites",TRUE
+"Desmoscolecidae","Nematoda",FALSE,"Desmoscolecidae","not ungulate parasites",TRUE
+"Actinolaimidae","Nematoda",FALSE,"Actinolaimidae","not ungulate parasites",TRUE
+"Alaimidae","Nematoda",FALSE,"Alaimidae","not ungulate parasites",TRUE
+"Anatonchidae","Nematoda",FALSE,"Anatonchidae","not ungulate parasites",TRUE
+"Aporcelaimidae","Nematoda",FALSE,"Aporcelaimidae","not ungulate parasites",TRUE
+"Belondiridae","Nematoda",FALSE,"Belondiridae","not ungulate parasites",TRUE
+"Campgdoridae","Nematoda",FALSE,"Campgdoridae (merged with Dorylaimida)","not ungulate parasites",FALSE
+"Carcharolaimidae","Nematoda",FALSE,"Carcharolaimidae","not ungulate parasites",FALSE
+"Cobbonchidae","Nematoda",FALSE,"Cobbonchidae","not ungulate parasites",FALSE
+"Diphterophoridae","Nematoda",FALSE,"Diphterophoridae","not ungulate parasites",TRUE
+"Dorylaimidae","Nematoda",FALSE,"Dorylaimidae","not ungulate parasites",TRUE
+"Falcihastidae","Nematoda",FALSE,"Falcihastidae","not ungulate parasites",TRUE
+"Iotonchusidae","Nematoda",FALSE,"Iotonchusidae (merged with Dorylaimida)","not ungulate parasites",FALSE
+"Leptonchidae","Nematoda",FALSE,"Leptonchidae","not ungulate parasites",TRUE
+"Longidoridae","Nematoda",FALSE,"Longidoridae","not ungulate parasites",TRUE
+"Mononchidae","Nematoda",FALSE,"Mononchidae","not ungulate parasites",TRUE
+"Mononchulidae","Nematoda",FALSE,"Mononchulidae","not ungulate parasites",TRUE
+"Nygolaimellidae","Nematoda",FALSE,"Nygolaimellidae","not ungulate parasites",TRUE
+"Nygolaimidae","Nematoda",FALSE,"Nygolaimidae","not ungulate parasites",TRUE
+"Opailaimidae","Nematoda",FALSE,"Opailaimidae","not ungulate parasites",TRUE
+"Oxydiridae","Nematoda",FALSE,"Oxydiridae (merged with Belondiridae)","not ungulate parasites",FALSE
+"Qudsianematidae","Nematoda",FALSE,"Qudsianematidae","not ungulate parasites",TRUE
+"Trachypleurosidae","Nematoda",FALSE,"Trachypleurosidae","not ungulate parasites",TRUE
+"Tylencholaimellidae","Nematoda",FALSE,"Tylencholaimellidae","not ungulate parasites",TRUE
+"Tylencholaimidae","Nematoda",FALSE,"Tylencholaimidae","not ungulate parasites",TRUE
+"Anoplostomatidae","Nematoda",FALSE,"Anoplostomatidae","not ungulate parasites",TRUE
+"Anticomidae","Nematoda",FALSE,"Anticomidae","not ungulate parasites",TRUE
+"Cryptonchidae","Nematoda",FALSE,"Cryptonchidae","not ungulate parasites",TRUE
+"Enchelidiidae","Nematoda",FALSE,"Enchelidiidae","not ungulate parasites",TRUE
+"Enoplidae","Nematoda",FALSE,"Enoplidae","not ungulate parasites",TRUE
+"Eurystominidae","Nematoda",FALSE,"Eurystominidae (merged with Enchelidiidae)","not ungulate parasites",FALSE
+"Ironidae","Nematoda",FALSE,"Ironidae","not ungulate parasites",TRUE
+"Lauratonematidae","Nematoda",FALSE,"Lauratonematidae","not ungulate parasites",TRUE
+"Leptosomatidae","Nematoda",FALSE,"Leptosomatidae","not ungulate parasites",TRUE
+"Oncholaimidae","Nematoda",FALSE,"Oncholaimidae","not ungulate parasites",TRUE
+"Onchulidae","Nematoda",FALSE,"Onchulidae","not ungulate parasites",FALSE
+"Oxystominidae","Nematoda",FALSE,"Oxystominidae","not ungulate parasites",TRUE
+"Phanodermatidae","Nematoda",FALSE,"Phanodermatidae","not ungulate parasites",TRUE
+"Prismatolaimidae","Nematoda",FALSE,"Prismatolaimidae","not ungulate parasites",TRUE
+"Rhabdodemaniidae","Nematoda",FALSE,"Rhabdodemaniidae","not ungulate parasites",TRUE
+"Symplocostomatidae","Nematoda",FALSE,"Symplocostomatidae (inconsistent in Enoplida)","not ungulate parasites",FALSE
+"Thoracostomopsidae","Nematoda",FALSE,"Thoracostomopsidae","not ungulate parasites",TRUE
+"Trefusiidae","Nematoda",FALSE,"Trefusiidae","not ungulate parasites",TRUE
+"Triodontolaimidae","Nematoda",FALSE,"Triodontolaimidae","not ungulate parasites",FALSE
+"Tripylidae","Nematoda",FALSE,"Tripylidae","not ungulate parasites",TRUE
+"Mermithidae","Nematoda",FALSE,"Mermithidae","not ungulate parasites",TRUE
+"Aponchiidae","Nematoda",FALSE,"Aponchiidae","not ungulate parasites",FALSE
+"Linhomoeidae","Nematoda",FALSE,"Linhomoeidae","not ungulate parasites",TRUE
+"Monhysteridae","Nematoda",FALSE,"Monhysteridae","not ungulate parasites",TRUE
+"Scaptrellidae","Nematoda",FALSE,"Scaptrellidae (merged with Xyalidae)","not ungulate parasites",FALSE
+"Siphonolaimidae","Nematoda",FALSE,"Siphonolaimidae","not ungulate parasites",TRUE
+"Sphaerolaimidae","Nematoda",FALSE,"Sphaerolaimidae","not ungulate parasites",TRUE
+"Xyalidae","Nematoda",FALSE,"Xyalidae","not ungulate parasites",TRUE
+"Not assigned","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Cystoopsidae","Nematoda",FALSE,"Cystoopsidae","not ungulate parasites",TRUE
+"Diphtherophoridae","Nematoda",FALSE,"Diphtherophoridae","not ungulate parasites",TRUE
+"Trichodoridae","Nematoda",FALSE,"Trichodoridae","not ungulate parasites",TRUE
+"Aphelenchidae","Nematoda",FALSE,"Aphelenchidae","not ungulate parasites",TRUE
+"Aphelenchoididae","Nematoda",FALSE,"Aphelenchoididae","not ungulate parasites",TRUE
+"Paraphelenchidae","Nematoda",FALSE,"Paraphelenchidae","not ungulate parasites",FALSE
+"Anisakidae","Nematoda",FALSE,"Anisakidae","not ungulate parasites",TRUE
+"Ascaridiidae","Nematoda",FALSE,"Ascaridiidae","not ungulate parasites",TRUE
+"Cosmocercidae","Nematoda",FALSE,"Cosmocercidae","not ungulate parasites",TRUE
+"Cucullanidae","Nematoda",FALSE,"Cucullanidae","not ungulate parasites",TRUE
+"Heterakidae","Nematoda",FALSE,"Heterakidae","not ungulate parasites",TRUE
+"Maupasinidae","Nematoda",FALSE,"Maupasinidae","not ungulate parasites",FALSE
+"Cylindrocorporidae","Nematoda",FALSE,"Cylindrocorporidae","not ungulate parasites",TRUE
+"Diplogasteridae","Nematoda",FALSE,"Diplogasteridae","not ungulate parasites",TRUE
+"Diplogasteroididae","Nematoda",FALSE,"Diplogasteroididae","not ungulate parasites",TRUE
+"Neodiplogasteridae","Nematoda",FALSE,"Neodiplogasteridae","not ungulate parasites",TRUE
+"Odontopharyngidae","Nematoda",FALSE,"Odontopharyngidae","not ungulate parasites",FALSE
+"Pharyngodonidae","Nematoda",FALSE,"Pharyngodonidae","not ungulate parasites",TRUE
+"Rhigonematidae","Nematoda",FALSE,"Rhigonematidae","not ungulate parasites",TRUE
+"Thelastomatidae","Nematoda",FALSE,"Thelastomatidae","not ungulate parasites",TRUE
+"Agfidae","Nematoda",FALSE,"Agfidae","not ungulate parasites",TRUE
+"Alirhabditidae","Nematoda",FALSE,"Alirhabditidae","not ungulate parasites",TRUE
+"Alloionematidae","Nematoda",FALSE,"Alloionematidae","not ungulate parasites",TRUE
+"Brevibuccidae","Nematoda",FALSE,"Brevibuccidae","not ungulate parasites",TRUE
+"Bunonematidae","Nematoda",FALSE,"Bunonematidae","not ungulate parasites",TRUE
+"Cephalobidae","Nematoda",FALSE,"Cephalobidae","not ungulate parasites",TRUE
+"Elaphonematidae","Nematoda",FALSE,"Elaphonematidae","not ungulate parasites",TRUE
+"Heterohabditidae","Nematoda",FALSE,"Heterohabditidae","not ungulate parasites",TRUE
+"Heterorhabditidae","Nematoda",FALSE,"Heterorhabditidae","not ungulate parasites",TRUE
+"Odontorhabditidae","Nematoda",FALSE,"Odontorhabditidae (merged with Rhabditidae)","not ungulate parasites",FALSE
+"Panagrolaimidae","Nematoda",FALSE,"Panagrolaimidae","not ungulate parasites",TRUE
+"Pangrolaimidae","Nematoda",FALSE,"Pangrolaimidae (merged with Panagrolaimidae)","not ungulate parasites",FALSE
+"Pterygorhabditidae","Nematoda",FALSE,"Pterygorhabditidae","not ungulate parasites",FALSE
+"Rhabdiasidae","Nematoda",FALSE,"Rhabdiasidae","not ungulate parasites",TRUE
+"Rhabditidae","Nematoda",FALSE,"Rhabditidae","not ungulate parasites",FALSE
+"Robertiidae","Nematoda",FALSE,"Robertiidae (family in Protostomia)","not ungulate parasites",FALSE
+"Steinernematidae","Nematoda",FALSE,"Steinernematidae","not ungulate parasites",TRUE
+"Syrphonematidae","Nematoda",FALSE,"Syrphonematidae","not ungulate parasites",TRUE
+"Acuariidae","Nematoda",FALSE,"Acuariidae","not ungulate parasites",TRUE
+"Anguillicolidae","Nematoda",FALSE,"Anguillicolidae","not ungulate parasites",TRUE
+"Cystidicolidae","Nematoda",FALSE,"Cystidicolidae","not ungulate parasites",TRUE
+"Drilonematidae","Nematoda",FALSE,"Drilonematidae","not ungulate parasites",TRUE
+"Physalopteridae","Nematoda",FALSE,"Physalopteridae","not ungulate parasites",TRUE
+"Spiruridae","Nematoda",FALSE,"Spiruridae","not ungulate parasites",TRUE
+"Amidostomatidae","Nematoda",FALSE,"Amidostomatidae","not ungulate parasites",TRUE
+"Angiostrongylidae","Nematoda",FALSE,"Angiostrongylidae","not ungulate parasites",TRUE
+"Cloacinidae","Nematoda",FALSE,"Cloacinidae","not ungulate parasites",TRUE
+"Crenosomatidae","Nematoda",FALSE,"Crenosomatidae","not ungulate parasites",TRUE
+"Filaroididae","Nematoda",FALSE,"Filaroididae","not ungulate parasites",TRUE
+"Heligosomidae","Nematoda",FALSE,"Heligosomidae","not ungulate parasites",FALSE
+"Herpetostrongylidae","Nematoda",FALSE,"Herpetostrongylidae","not ungulate parasites",TRUE
+"Ornithostrongylidae","Nematoda",FALSE,"Ornithostrongylidae","not ungulate parasites",FALSE
+"Pharyngostrongylidae","Nematoda",FALSE,"Pharyngostrongylidae","not ungulate parasites",FALSE
+"Pseudaliidae","Nematoda",FALSE,"Pseudaliidae","not ungulate parasites",TRUE
+"Skrjabingylidae","Nematoda",FALSE,"Skrjabingylidae","not ungulate parasites",FALSE
+"Uncinariidae","Nematoda",FALSE,"Uncinariidae (merged with Bunostominae)","not ungulate parasites",FALSE
+"Allantonematidae","Nematoda",FALSE,"Allantonematidae","not ungulate parasites",TRUE
+"Anguinidae","Nematoda",FALSE,"Anguinidae","not ungulate parasites",TRUE
+"Belonolaimidae","Nematoda",FALSE,"Belonolaimidae","not ungulate parasites",TRUE
+"Criconematidae","Nematoda",FALSE,"Criconematidae","not ungulate parasites",TRUE
+"Dolichodoridae","Nematoda",FALSE,"Dolichodoridae","not ungulate parasites",TRUE
+"Fergusobiidae","Nematoda",FALSE,"Fergusobiidae (merged with Neotylenchidae)","not ungulate parasites",FALSE
+"Heteroderidae","Nematoda",FALSE,"Heteroderidae","not ungulate parasites",TRUE
+"Hoplolaimidae","Nematoda",FALSE,"Hoplolaimidae","not ungulate parasites",TRUE
+"Iotonchiidae","Nematoda",FALSE,"Iotonchiidae","not ungulate parasites",TRUE
+"Neotylenchidae","Nematoda",FALSE,"Neotylenchidae","not ungulate parasites",TRUE
+"Pratylenchidae","Nematoda",FALSE,"Pratylenchidae","not ungulate parasites",FALSE
+"Sphaerulariidae","Nematoda",FALSE,"Sphaerulariidae","not ungulate parasites",TRUE
+"Tylenchidae","Nematoda",FALSE,"Tylenchidae","not ungulate parasites",TRUE
+"Tylenchulidae","Nematoda",FALSE,"Tylenchulidae","not ungulate parasites",TRUE
+"Camallanidae","Nematoda",FALSE,"Camallanidae","not ungulate parasites",TRUE
+"Philometridae","Nematoda",FALSE,"Philometridae","not ungulate parasites",TRUE
+"Setariidae","Nematoda",FALSE,"Setariidae","not ungulate parasites",TRUE
+"Psilenchidae","Nematoda",FALSE,"Psilenchidae","not ungulate parasites",FALSE
+"Tylenchorhynchidae","Nematoda",FALSE,"Tylenchorhynchidae","not ungulate parasites",FALSE
+"Bathyodontidae","Nematoda",FALSE,"Bathyodontidae","not ungulate parasites",TRUE
+"Tetradonematidae","Nematoda",FALSE,"Tetradonematidae","not ungulate parasites",TRUE
+"Muspiceidae","Nematoda",FALSE,"Muspiceidae","not ungulate parasites",TRUE
+"Phlyctainophoridae","Nematoda",FALSE,"Phlyctainophoridae","not ungulate parasites",FALSE
+"Angiostomatidae","Nematoda",FALSE,"Angiostomatidae","not ungulate parasites",TRUE
+"Chambersiellidae","Nematoda",FALSE,"Chambersiellidae","not ungulate parasites",TRUE
+"Rhabditonematidae","Nematoda",FALSE,"Rhabditonematidae","not ungulate parasites",TRUE
+"Carabonematidae","Nematoda",FALSE,"Carabonematidae","not ungulate parasites",FALSE
+"Pseudogasteroididae","Nematoda",FALSE,"Pseudogasteroididae","not ungulate parasites",FALSE
+"Daubayliidae","Nematoda",FALSE,"Daubayliidae","not ungulate parasites",TRUE
+"Hedruridae","Nematoda",FALSE,"Hedruridae","not ungulate parasites",TRUE
+"Tetrameridae","Nematoda",FALSE,"Tetrameridae","not ungulate parasites",TRUE
+"Heterocheilidae","Nematoda",FALSE,"Heterocheilidae (family in phylum Nematoda)","not ungulate parasites",FALSE
+"Dioctophymatidae","Nematoda",FALSE,"Dioctophymatidae","not ungulate parasites",FALSE
+"Atractidae","Nematoda",FALSE,"Atractidae","not ungulate parasites",TRUE
+"Kathlanidae","Nematoda",FALSE,"Kathlaniidae","not ungulate parasites",TRUE
+"Acanthocheilidae","Nematoda",FALSE,"Anisakidae","not ungulate parasites",TRUE
+"Goeziidae","Nematoda",FALSE,"Goeziidae","not ungulate parasites",FALSE
+"Crossophoridae","Nematoda",FALSE,"Crossophoridae","not ungulate parasites",TRUE
+"Subuluridae","Nematoda",FALSE,"Subuluridae","not ungulate parasites",FALSE
+"Seuratidae","Nematoda",FALSE,"Seuratidae","not ungulate parasites",TRUE
+"Schneidernematidae","Nematoda",FALSE,"Schneidernematidae","not ungulate parasites",TRUE
+"Quimperiidae","Nematoda",FALSE,"Quimperiidae","not ungulate parasites",TRUE
+"Soboliphymatidae","Nematoda",FALSE,"Soboliphymatidae","not ungulate parasites",TRUE
+"Diaphanocephalidae","Nematoda",FALSE,"Diaphanocephalidae","not ungulate parasites",TRUE
+"Ancylostomidae","Nematoda",FALSE,"Ancylostomidae (merged with Chabertiidae)","not ungulate parasites",FALSE
+"Strongyidae","Nematoda",FALSE,"Strongyidae","not ungulate parasites",FALSE
+"Globocephalidae","Nematoda",FALSE,"Globocephalidae","not ungulate parasites",FALSE
+"Strongylacanthidae","Nematoda",FALSE,"Strongylacanthidae","not ungulate parasites",FALSE
+"Heligosomatidae","Nematoda",FALSE,"Heligosomatidae","not ungulate parasites",FALSE
+"Ollulanidae","Nematoda",FALSE,"Ollulanidae","not ungulate parasites",TRUE
+"Myenchildae","Nematoda",FALSE,"Myenchildae","not ungulate parasites",FALSE
+"Araeolaimidae","Nematoda",FALSE,"Araeolaimidae","not ungulate parasites",FALSE
+"Diplopeltidae","Nematoda",FALSE,"Diplopeltidae","not ungulate parasites",TRUE
+"Camacolaimidae","Nematoda",FALSE,"Camacolaimidae","not ungulate parasites",FALSE
+"Spiriniidae","Nematoda",FALSE,"Spiriniidae","not ungulate parasites",FALSE
+"Meyliidae","Nematoda",FALSE,"Meyliidae","not ungulate parasites",TRUE
+"Greeffiellidae","Nematoda",FALSE,"Greeffiellidae","not ungulate parasites",FALSE
+"Synochidae","Nematoda",FALSE,"Synochidae","not ungulate parasites",FALSE
+"Rhaptothyreidae","Nematoda",FALSE,"Rhaptothyreidae","not ungulate parasites",TRUE
+"Soboliphymidae","Nematoda",FALSE,"Soboliphymidae","not ungulate parasites",FALSE
+"Aproctidae","Nematoda",FALSE,"Aproctidae","not ungulate parasites",FALSE
+"Ungellidae","Nematoda",FALSE,"Ungellidae","not ungulate parasites",TRUE
+"Scolecophilidae","Nematoda",FALSE,"Scolecophilidae","not ungulate parasites",TRUE
+"Creagrocercidae","Nematoda",FALSE,"Creagrocercidae","not ungulate parasites",TRUE
+"Mesidionematidae","Nematoda",FALSE,"Mesidionematidae","not ungulate parasites",TRUE
+"Homungellidae","Nematoda",FALSE,"Homungellidae","not ungulate parasites",TRUE
+"Dracunculidae","Nematoda",FALSE,"Dracunculidae","not ungulate parasites",TRUE
+"Micropleudidae","Nematoda",FALSE,"Micropleudidae","not ungulate parasites",FALSE
+"Polystomatidae","Platyhelminthes",TRUE,"Polystomatidae","larvae seek/penetrate",TRUE
+"Hasstilesiidae","Platyhelminthes",TRUE,"Hasstilesiidae","intermediate host eaten",TRUE
+"Schistosomatidae","Platyhelminthes",TRUE,"Schistosomatidae","larvae seek/penetrate",TRUE
+"Echinostomatidae","Platyhelminthes",TRUE,"Echinostomatidae","intermediate host eaten",TRUE
+"Fasciolidae","Platyhelminthes",TRUE,"Fasciolidae","larvae on herbage",TRUE
+"Paramphistomidae","Platyhelminthes",TRUE,"Paramphistomidae","larvae on herbage",TRUE
+"Balanorchiidae","Platyhelminthes",TRUE,"Balanorchiidae","larvae on herbage",FALSE
+"Brumptiidae","Platyhelminthes",TRUE,"Brumptidae","larvae on herbage",TRUE
+"Choerocotyloididae","Platyhelminthes",TRUE,"Choerocotylidae","larvae on herbage",FALSE
+"Cladorchiidae","Platyhelminthes",TRUE,"Cladorchiidae","larvae on herbage",TRUE
+"Gastrodiscidae","Platyhelminthes",TRUE,"Gastrodiscidae","larvae on herbage",TRUE
+"Gastrothylacidae","Platyhelminthes",TRUE,"Gastrothylacidae","larvae on herbage",TRUE
+"Olveriidae","Platyhelminthes",TRUE,"Olveriidae","larvae on herbage",TRUE
+"Stephanopharyngidae","Platyhelminthes",TRUE,"Stephanopharyngidae","larvae on herbage",TRUE
+"Zygocotylidae","Platyhelminthes",TRUE,"Zygocotylidae","larvae on herbage",FALSE
+"Notocotylidae","Platyhelminthes",TRUE,"Notocotylidae","larvae on herbage",TRUE
+"Opisthorchiidae","Platyhelminthes",TRUE,"Opisthorchiidae","intermediate host eaten",TRUE
+"Heterophyidae","Platyhelminthes",TRUE,"Heterophyidae","intermediate host eaten",TRUE
+"Dicrocoeliidae","Platyhelminthes",TRUE,"Dicrocoeliidae","intermediate host eaten",TRUE
+"Paragonimidae","Platyhelminthes",TRUE,"Troglotrematidae","intermediate host eaten",TRUE
+"Diphyllobothridae","Platyhelminthes",TRUE,"Diphyllobothriidae","intermediate host eaten",TRUE
+"Anoplocephalinae","Platyhelminthes",TRUE,"Anoplocephalidae","not ungulate parasites",TRUE
+"Linstowiinae","Platyhelminthes",TRUE,"Linstowiidae","not ungulate parasites",TRUE
+"Thysanosomatinae","Platyhelminthes",TRUE,NA,"not ungulate parasites",FALSE
+"Inermicapsiferinae","Platyhelminthes",TRUE,NA,"not ungulate parasites",FALSE
+"Davaineidae","Platyhelminthes",TRUE,"Davaineidae","intermediate host eaten",TRUE
+"Taeniidae","Platyhelminthes",TRUE,"Taeniidae","eggs ingested",TRUE
+"Catenulidae","Platyhelminthes",FALSE,"Catenulidae","not ungulate parasites",TRUE
+"Chordariidae","Platyhelminthes",FALSE,"Chordariidae","not ungulate parasites",TRUE
+"Retronectidae","Platyhelminthes",FALSE,"Retronectidae","not ungulate parasites",TRUE
+"Stenostomidae","Platyhelminthes",FALSE,"Stenostomidae","not ungulate parasites",TRUE
+"Tyrrheniellidae","Platyhelminthes",FALSE,"Tyrrheniellidae","not ungulate parasites",TRUE
+"Leimacopsidae","Platyhelminthes",FALSE,"Leimacopsidae","not ungulate parasites",FALSE
+"Not assigned","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Bothrioplanidae","Platyhelminthes",FALSE,"Bothrioplanidae","not ungulate parasites",TRUE
+"Aberrapecidae","Platyhelminthes",FALSE,"Aberrapecidae","not ungulate parasites",TRUE
+"Acoleidae","Platyhelminthes",FALSE,"Acoleidae","not ungulate parasites",TRUE
+"Acrobothriidae","Platyhelminthes",FALSE,"Acrobothriidae","not ungulate parasites",TRUE
+"Amabiliidae","Platyhelminthes",FALSE,"Amabiliidae","not ungulate parasites",TRUE
+"Amphilinidae","Platyhelminthes",FALSE,"Amphilinidae","not ungulate parasites",TRUE
+"Anthocephaliidae","Platyhelminthes",FALSE,"Anthocephaliidae","not ungulate parasites",TRUE
+"Balanobothriidae","Platyhelminthes",FALSE,"Balanobothriidae","not ungulate parasites",FALSE
+"Bothriocephalidae","Platyhelminthes",FALSE,"Bothriocephalidae","not ungulate parasites",TRUE
+"Calliobothriidae","Platyhelminthes",FALSE,"Balanobothriidae","not ungulate parasites",FALSE
+"Capingentidae","Platyhelminthes",FALSE,"Capingentidae","not ungulate parasites",TRUE
+"Caryophyllaeidae","Platyhelminthes",FALSE,"Caryophyllaeidae","not ungulate parasites",TRUE
+"Cathetocephalidae","Platyhelminthes",FALSE,"Cathetocephalidae","not ungulate parasites",TRUE
+"Cephalobothriidae","Platyhelminthes",FALSE,"Cephalobothriidae","not ungulate parasites",TRUE
+"Cephalochlamydidae","Platyhelminthes",FALSE,"Cephalochlamydidae","not ungulate parasites",TRUE
+"Chimaerocestidae","Platyhelminthes",FALSE,"Chimaerocestidae","not ungulate parasites",TRUE
+"Dilepididae","Platyhelminthes",FALSE,"Dilepididae","not ungulate parasites",TRUE
+"Dioecotaeniidae","Platyhelminthes",FALSE,"Dioecotaeniidae","not ungulate parasites",TRUE
+"Diphyllobothriidae","Platyhelminthes",FALSE,"Diphyllobothriidae","not ungulate parasites",TRUE
+"Disculicepitidae","Platyhelminthes",FALSE,"Disculicepitidae","not ungulate parasites",FALSE
+"Echeneibothriidae","Platyhelminthes",FALSE,"Echeneibothriidae","not ungulate parasites",TRUE
+"Echinobothriidae","Platyhelminthes",FALSE,"Echinobothriidae","not ungulate parasites",TRUE
+"Echinophallidae","Platyhelminthes",FALSE,"Echinophallidae","not ungulate parasites",TRUE
+"Eniochobothriidae","Platyhelminthes",FALSE,"Eniochobothriidae","not ungulate parasites",FALSE
+"Escherbothriidae","Platyhelminthes",FALSE,"Escherbothriidae","not ungulate parasites",TRUE
+"Gastrolecithidae","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Gryporhynchidae","Platyhelminthes",FALSE,"Gryporhynchidae","not ungulate parasites",TRUE
+"Gyrocotylidae","Platyhelminthes",FALSE,"Gyrocotylidae","not ungulate parasites",TRUE
+"Haplobothriidae","Platyhelminthes",FALSE,"Haplobothriidae","not ungulate parasites",TRUE
+"Hymenolepididae","Platyhelminthes",FALSE,"Hymenolepididae","not ungulate parasites",TRUE
+"Lecanicephalidae","Platyhelminthes",FALSE,"Lecanicephalidae","not ungulate parasites",TRUE
+"Litobothriidae","Platyhelminthes",FALSE,"Litobothriidae","not ungulate parasites",TRUE
+"Nippotaeniidae","Platyhelminthes",FALSE,"Nippotaeniidae","not ungulate parasites",TRUE
+"Onchobothriidae","Platyhelminthes",FALSE,"Onchobothriidae","not ungulate parasites",TRUE
+"Paraberrapecidae","Platyhelminthes",FALSE,"Paraberrapecidae","not ungulate parasites",FALSE
+"Phyllobothriidae","Platyhelminthes",FALSE,"Phyllobothriidae","not ungulate parasites",TRUE
+"Polypocephalidae","Platyhelminthes",FALSE,"Polypocephalidae","not ungulate parasites",TRUE
+"Progynotaeniidae","Platyhelminthes",FALSE,"Progynotaeniidae","not ungulate parasites",TRUE
+"Prosobothriidae","Platyhelminthes",FALSE,"Prosobothriidae","not ungulate parasites",TRUE
+"Proteocephalidae","Platyhelminthes",FALSE,"Proteocephalidae","not ungulate parasites",TRUE
+"Rhinebothriidae","Platyhelminthes",FALSE,"Rhinebothriidae","not ungulate parasites",TRUE
+"Rhoptrobothriidae","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Schistotaeniidae","Platyhelminthes",FALSE,"Schistotaeniidae","not ungulate parasites",TRUE
+"Schizochoeridae","Platyhelminthes",FALSE,"Schizochoeridae","not ungulate parasites",TRUE
+"Serendipidae","Platyhelminthes",FALSE,"Serendipidae (family in Lophotrochozoa)","not ungulate parasites",FALSE
+"Shindeobothriiidae","Platyhelminthes",FALSE,"Shindeobothriiidae","not ungulate parasites",FALSE
+"Solenophoridae","Platyhelminthes",FALSE,"Bolbophoridae","not ungulate parasites",TRUE
+"Spathebothriidae","Platyhelminthes",FALSE,"Spathebothriidae","not ungulate parasites",TRUE
+"Tetrabothriidae","Platyhelminthes",FALSE,"Tetrabothriidae","not ungulate parasites",TRUE
+"Tetragonocephalidae","Platyhelminthes",FALSE,"Tetragonocephalidae","not ungulate parasites",TRUE
+"Triaenophoridae","Platyhelminthes",FALSE,"Triaenophoridae","not ungulate parasites",TRUE
+"Zanobatocestidae","Platyhelminthes",FALSE,"Zanobatocestidae","not ungulate parasites",TRUE
+"Dolichomacrostomidae","Platyhelminthes",FALSE,"Dolichomacrostomidae","not ungulate parasites",TRUE
+"Microstomidae","Platyhelminthes",FALSE,"Microstomidae","not ungulate parasites",TRUE
+"Fecampiidae","Platyhelminthes",FALSE,"Fecampiidae","not ungulate parasites",FALSE
+"Notenteridae","Platyhelminthes",FALSE,"Notenteridae","not ungulate parasites",FALSE
+"Piscinquilinidae","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Urastomidae","Platyhelminthes",FALSE,"Urastomidae","not ungulate parasites",TRUE
+"Gnosonesimidae","Platyhelminthes",FALSE,"Gnosonesimidae","not ungulate parasites",TRUE
+"Prorhynchidae","Platyhelminthes",FALSE,"Prorhynchidae","not ungulate parasites",TRUE
+"Acanthocotylidae","Platyhelminthes",FALSE,"Acanthocotylidae","not ungulate parasites",TRUE
+"Allodiscocotylidae","Platyhelminthes",FALSE,"Allodiscocotylidae","not ungulate parasites",TRUE
+"Allopyragraphoridae","Platyhelminthes",FALSE,"Allopyragraphoridae","not ungulate parasites",TRUE
+"Amphibdellatidae","Platyhelminthes",FALSE,"Amphibdellatidae","not ungulate parasites",TRUE
+"Anchorophoridae","Platyhelminthes",FALSE,"Anchorophoridae","not ungulate parasites",TRUE
+"Ancylodiscoididae","Platyhelminthes",FALSE,"Ancylodiscoididae","not ungulate parasites",TRUE
+"Ancyrocephalidae","Platyhelminthes",FALSE,"Ancyrocephalidae","not ungulate parasites",TRUE
+"Anoplodiscidae","Platyhelminthes",FALSE,"Anoplodiscidae","not ungulate parasites",TRUE
+"Axinidae","Platyhelminthes",FALSE,"Axinidae","not ungulate parasites",TRUE
+"Bothitrematidae","Platyhelminthes",FALSE,"Bothitrematidae","not ungulate parasites",TRUE
+"Bychowskicotylidae","Platyhelminthes",FALSE,"Bychowskicotylidae","not ungulate parasites",TRUE
+"Calceostomatidae","Platyhelminthes",FALSE,"Calceostomatidae","not ungulate parasites",TRUE
+"Capsalidae","Platyhelminthes",FALSE,"Capsalidae","not ungulate parasites",TRUE
+"Cemocotylidae","Platyhelminthes",FALSE,"Heteraxinidae","not ungulate parasites",TRUE
+"Chauhaneidae","Platyhelminthes",FALSE,"Chauhaneidae","not ungulate parasites",TRUE
+"Chimaericolidae","Platyhelminthes",FALSE,"Chimaericolidae","not ungulate parasites",TRUE
+"Dactylogyridae","Platyhelminthes",FALSE,"Dactylogyridae","not ungulate parasites",TRUE
+"Diclidophoridae","Platyhelminthes",FALSE,"Diclidophoridae","not ungulate parasites",TRUE
+"Diclybothriidae","Platyhelminthes",FALSE,"Diclybothriidae","not ungulate parasites",TRUE
+"Dionchidae","Platyhelminthes",FALSE,"Dionchidae","not ungulate parasites",TRUE
+"Diplectanidae","Platyhelminthes",FALSE,"Diplectanidae","not ungulate parasites",TRUE
+"Diplozoidae","Platyhelminthes",FALSE,"Diplozoidae","not ungulate parasites",TRUE
+"Discocotylidae","Platyhelminthes",FALSE,"Discocotylidae","not ungulate parasites",TRUE
+"Enoplocotylidae","Platyhelminthes",FALSE,"Enoplocotylidae","not ungulate parasites",TRUE
+"Fridericianellidae","Platyhelminthes",FALSE,"Fridericianellidae","not ungulate parasites",TRUE
+"Gastrocotylidae","Platyhelminthes",FALSE,"Gastrocotylidae","not ungulate parasites",TRUE
+"Gotocotylidae","Platyhelminthes",FALSE,"Gotocotylidae","not ungulate parasites",TRUE
+"Gyrodactylidae","Platyhelminthes",FALSE,"Gyrodactylidae","not ungulate parasites",TRUE
+"Heteraxinidae","Platyhelminthes",FALSE,"Heteraxinidae","not ungulate parasites",TRUE
+"Heteromicrocotylidae","Platyhelminthes",FALSE,"Heteromicrocotylidae","not ungulate parasites",TRUE
+"Hexabothriidae","Platyhelminthes",FALSE,"Hexabothriidae","not ungulate parasites",TRUE
+"Hexostomatidae","Platyhelminthes",FALSE,"Hexostomatidae","not ungulate parasites",TRUE
+"Loimoidae","Platyhelminthes",FALSE,"Loimoidae","not ungulate parasites",TRUE
+"Macrovalvitrematidae","Platyhelminthes",FALSE,"Macrovalvitrematidae","not ungulate parasites",TRUE
+"Mazocraeidae","Platyhelminthes",FALSE,"Mazocraeidae","not ungulate parasites",TRUE
+"Mazoplectidae","Platyhelminthes",FALSE,"Mazoplectidae","not ungulate parasites",TRUE
+"Megamicrocotylidae","Platyhelminthes",FALSE,"Megamicrocotylidae","not ungulate parasites",TRUE
+"Microbothriidae","Platyhelminthes",FALSE,"Microbothriidae","not ungulate parasites",TRUE
+"Microcotylidae","Platyhelminthes",FALSE,"Microcotylidae","not ungulate parasites",FALSE
+"Monaxinoididae","Platyhelminthes",FALSE,"Monaxinoididae","not ungulate parasites",TRUE
+"Monocotylidae","Platyhelminthes",FALSE,"Monocotylidae","not ungulate parasites",TRUE
+"Montchadskyellidae","Platyhelminthes",FALSE,"Montchadskyellidae","not ungulate parasites",TRUE
+"Neocalceostomatidae","Platyhelminthes",FALSE,"Neocalceostomatidae","not ungulate parasites",TRUE
+"Neotetraonchidae","Platyhelminthes",FALSE,"Neotetraonchidae","not ungulate parasites",TRUE
+"Octolabeidae","Platyhelminthes",FALSE,"Octolabeidae","not ungulate parasites",TRUE
+"Octomacridae","Platyhelminthes",FALSE,"Octomacridae","not ungulate parasites",TRUE
+"Paramonaxinidae","Platyhelminthes",FALSE,"Paramonaxinidae","not ungulate parasites",TRUE
+"Plectanocotylidae","Platyhelminthes",FALSE,"Plectanocotylidae","not ungulate parasites",TRUE
+"Protogyrodactylidae","Platyhelminthes",FALSE,"Protogyrodactylidae","not ungulate parasites",FALSE
+"Protomicrocotylidae","Platyhelminthes",FALSE,"Protomicrocotylidae","not ungulate parasites",TRUE
+"Pseudodactylogyridae","Platyhelminthes",FALSE,"Pseudodactylogyridae","not ungulate parasites",TRUE
+"Pseudodiclidophoridae","Platyhelminthes",FALSE,"Pseudodiclidophoridae","not ungulate parasites",TRUE
+"Pterinotrematidae","Platyhelminthes",FALSE,"Pterinotrematidae","not ungulate parasites",TRUE
+"Pyragraphoridae","Platyhelminthes",FALSE,"Pyragraphoridae","not ungulate parasites",TRUE
+"Rhinecotylidae","Platyhelminthes",FALSE,"Rhinecotyle","not ungulate parasites",TRUE
+"Tetraonchidae","Platyhelminthes",FALSE,"Tetraonchidae","not ungulate parasites",TRUE
+"Tetraonchoididae","Platyhelminthes",FALSE,"Tetraonchoididae","not ungulate parasites",TRUE
+"Thoracocotylidae","Platyhelminthes",FALSE,"Neothoracocotylidae","not ungulate parasites",TRUE
+"Udonellidae","Platyhelminthes",FALSE,"Udonellidae","not ungulate parasites",TRUE
+"Urogyridae","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Genostomatidae","Platyhelminthes",FALSE,"Genostomatidae","not ungulate parasites",TRUE
+"Haplopharyngidae","Platyhelminthes",FALSE,"Haplopharyngidae","not ungulate parasites",TRUE
+"Macrostomidae","Platyhelminthes",FALSE,"Macrostomidae","not ungulate parasites",TRUE
+"Anocellidae","Platyhelminthes",FALSE,"Anocellidae","not ungulate parasites",TRUE
+"Apidioplanidae","Platyhelminthes",FALSE,"Apidioplanidae","not ungulate parasites",TRUE
+"Dicteroidae","Platyhelminthes",FALSE,"Dicteroidae","not ungulate parasites",FALSE
+"Didangiidae","Platyhelminthes",FALSE,"Didangiidae","not ungulate parasites",TRUE
+"Diposthidae","Platyhelminthes",FALSE,"Diposthidae","not ungulate parasites",TRUE
+"Enantiidae","Platyhelminthes",FALSE,"Enantiidae","not ungulate parasites",TRUE
+"Euplanidae","Platyhelminthes",FALSE,"Euplanidae","not ungulate parasites",TRUE
+"Latocestidae","Platyhelminthes",FALSE,"Latocestidae","not ungulate parasites",TRUE
+"Limnostylochidae","Platyhelminthes",FALSE,"Limnostylochidae","not ungulate parasites",TRUE
+"Stylochocestidae","Platyhelminthes",FALSE,"Stylochocestidae","not ungulate parasites",TRUE
+"Multipeniatidae","Platyhelminthes",FALSE,"Multipeniatidae","not ungulate parasites",TRUE
+"Plagiostomidae","Platyhelminthes",FALSE,"Plagiostomidae","not ungulate parasites",TRUE
+"Protomonotresidae","Platyhelminthes",FALSE,"Protomonotresidae","not ungulate parasites",TRUE
+"Pseudostomidae","Platyhelminthes",FALSE,"Pseudostomidae","not ungulate parasites",TRUE
+"Scleraulophoridae","Platyhelminthes",FALSE,"Scleraulophoridae","not ungulate parasites",FALSE
+"Archimonocelidae","Platyhelminthes",FALSE,"Archimonocelidae","not ungulate parasites",FALSE
+"Calviriidae","Platyhelminthes",FALSE,"Calviriidae","not ungulate parasites",TRUE
+"Ciliopharyngiellidae","Platyhelminthes",FALSE,"Ciliopharyngiellidae","not ungulate parasites",FALSE
+"Coelogynoporidae","Platyhelminthes",FALSE,"Coelogynoporidae","not ungulate parasites",TRUE
+"Meidiamidae","Platyhelminthes",FALSE,"Meidiamidae","not ungulate parasites",TRUE
+"Monocelididae","Platyhelminthes",FALSE,"Monocelididae","not ungulate parasites",TRUE
+"Monotoplanidae","Platyhelminthes",FALSE,"Monotoplanidae","not ungulate parasites",TRUE
+"Nematoplanidae","Platyhelminthes",FALSE,"Nematoplanidae","not ungulate parasites",TRUE
+"Otomesostomatidae","Platyhelminthes",FALSE,"Otomesostomatidae","not ungulate parasites",TRUE
+"Otoplanidae","Platyhelminthes",FALSE,"Otoplanidae","not ungulate parasites",TRUE
+"Polystyliphoridae","Platyhelminthes",FALSE,"Polystyliphoridae","not ungulate parasites",TRUE
+"Acholadidae","Platyhelminthes",FALSE,"Acholadidae","not ungulate parasites",TRUE
+"Aculeorhynchidae","Platyhelminthes",FALSE,"Aculeorhynchidae","not ungulate parasites",TRUE
+"Bertiliellidae","Platyhelminthes",FALSE,"Bertiliellidae","not ungulate parasites",TRUE
+"Byrsophlebidae","Platyhelminthes",FALSE,"Byrsophlebidae","not ungulate parasites",TRUE
+"Cheliplanidae","Platyhelminthes",FALSE,"Cheliplanidae","not ungulate parasites",TRUE
+"Cicerinidae","Platyhelminthes",FALSE,"Cicerinidae","not ungulate parasites",TRUE
+"Crassicollidae","Platyhelminthes",FALSE,"Crassicollidae","not ungulate parasites",TRUE
+"Cystiplanidae","Platyhelminthes",FALSE,"Cystiplanidae","not ungulate parasites",TRUE
+"Cytocystididae","Platyhelminthes",FALSE,"Cytocystididae","not ungulate parasites",FALSE
+"Dalyelliidae","Platyhelminthes",FALSE,"Dalyelliidae","not ungulate parasites",TRUE
+"Diascorhynchidae","Platyhelminthes",FALSE,"Diascorhynchidae","not ungulate parasites",TRUE
+"Gnathorhynchidae","Platyhelminthes",FALSE,"Gnathorhynchidae","not ungulate parasites",TRUE
+"Graffillidae","Platyhelminthes",FALSE,"Graffillidae","not ungulate parasites",TRUE
+"Hypoblepharinidae","Platyhelminthes",FALSE,"Hypoblepharinidae","not ungulate parasites",FALSE
+"Karkinorhynchidae","Platyhelminthes",FALSE,"Karkinorhynchidae","not ungulate parasites",TRUE
+"Koinocystididae","Platyhelminthes",FALSE,"Koinocystididae","not ungulate parasites",TRUE
+"Kytorhynchidae","Platyhelminthes",FALSE,"Kytorhynchidae","not ungulate parasites",TRUE
+"Luridae","Platyhelminthes",FALSE,"Luridae","not ungulate parasites",TRUE
+"Nannorhynchididae","Platyhelminthes",FALSE,"Nannorhynchididae","not ungulate parasites",FALSE
+"Nematorhynchidae","Platyhelminthes",FALSE,"Nematorhynchidae","not ungulate parasites",TRUE
+"Placorhynchidae","Platyhelminthes",FALSE,"Placorhynchidae","not ungulate parasites",TRUE
+"Polycystididae","Platyhelminthes",FALSE,"Polycystididae","not ungulate parasites",TRUE
+"Promesostomidae","Platyhelminthes",FALSE,"Promesostomidae","not ungulate parasites",TRUE
+"Provorticidae","Platyhelminthes",FALSE,"Provorticidae","not ungulate parasites",TRUE
+"Psammorhynchidae","Platyhelminthes",FALSE,"Psammorhynchidae","not ungulate parasites",TRUE
+"Pterastericolidae","Platyhelminthes",FALSE,"Pterastericolidae","not ungulate parasites",TRUE
+"Rhynchokarlingiidae","Platyhelminthes",FALSE,"Rhynchokarlingiidae","not ungulate parasites",TRUE
+"Schizorhynchidae","Platyhelminthes",FALSE,"Schizorhynchidae","not ungulate parasites",TRUE
+"Solenopharyngidae","Platyhelminthes",FALSE,"Solenopharyngidae","not ungulate parasites",TRUE
+"Trigonostomidae","Platyhelminthes",FALSE,"Trigonostomidae","not ungulate parasites",TRUE
+"Typhloplanidae","Platyhelminthes",FALSE,"Typhloplanidae","not ungulate parasites",TRUE
+"Umagillidae","Platyhelminthes",FALSE,"Umagillidae","not ungulate parasites",TRUE
+"Stichocotylidae","Platyhelminthes",FALSE,"Stichocotylidae","not ungulate parasites",TRUE
+"Dimarcusidae","Platyhelminthes",FALSE,"Dimarcusidae","not ungulate parasites",TRUE
+"Rhynchodemidae","Platyhelminthes",FALSE,"Rhynchodemidae","not ungulate parasites",FALSE
+"Eutetrarhynchidae","Platyhelminthes",FALSE,"Eutetrarhynchidae","not ungulate parasites",TRUE
+"Mixodigmatidae","Platyhelminthes",FALSE,"Mixodigmatidae","not ungulate parasites",TRUE
+"Progrillotiidae","Platyhelminthes",FALSE,"Progrillotiidae","not ungulate parasites",TRUE
+"Rhinoptericolidae","Platyhelminthes",FALSE,"Rhinoptericolidae","not ungulate parasites",TRUE
+"Aporhynchidae","Platyhelminthes",FALSE,"Aporhynchidae","not ungulate parasites",TRUE
+"Gilquiniidae","Platyhelminthes",FALSE,"Gilquiniidae","not ungulate parasites",TRUE
+"Gymnorhynchidae","Platyhelminthes",FALSE,"Gymnorhynchidae","not ungulate parasites",TRUE
+"Rhopalothylacidae","Platyhelminthes",FALSE,"Rhopalothylacidae","not ungulate parasites",TRUE
+"Lacistorhynchidae","Platyhelminthes",FALSE,"Lacistorhynchidae","not ungulate parasites",TRUE
+"Pterobothriidae","Platyhelminthes",FALSE,"Pterobothriidae","not ungulate parasites",TRUE
+"Otobothriidae","Platyhelminthes",FALSE,"Otobothriidae","not ungulate parasites",TRUE
+"Paranybeliniidae","Platyhelminthes",FALSE,"Paranybeliniidae","not ungulate parasites",TRUE
+"Pseudotobothriidae","Platyhelminthes",FALSE,"Pseudotobothriidae","not ungulate parasites",TRUE
+"Sphyriocephalidae","Platyhelminthes",FALSE,"Sphyriocephalidae","not ungulate parasites",TRUE
+"Tentaculariidae","Platyhelminthes",FALSE,"Tentaculariidae","not ungulate parasites",TRUE
+"Cestoplanidae","Platyhelminthes",FALSE,"Cestoplanidae","not ungulate parasites",TRUE
+"Amyellidae","Platyhelminthes",FALSE,"Amyellidae","not ungulate parasites",TRUE
+"Boniniidae","Platyhelminthes",FALSE,"Boniniidae","not ungulate parasites",TRUE
+"Chromoplanidae","Platyhelminthes",FALSE,"Chromoplanidae","not ungulate parasites",TRUE
+"Theamatidae","Platyhelminthes",FALSE,"Theamatidae","not ungulate parasites",TRUE
+"Cryptocelidae","Platyhelminthes",FALSE,"Cryptocelidae","not ungulate parasites",TRUE
+"Discocelididae","Platyhelminthes",FALSE,"Discocelidae","not ungulate parasites",TRUE
+"Plehniidae","Platyhelminthes",FALSE,"Plehniidae","not ungulate parasites",TRUE
+"Polyposthiidae","Platyhelminthes",FALSE,"Polyposthiidae","not ungulate parasites",TRUE
+"Ditremageniidae","Platyhelminthes",FALSE,"Ditremageniidae","not ungulate parasites",TRUE
+"Euryleptidae","Platyhelminthes",FALSE,"Euryleptidae","not ungulate parasites",TRUE
+"Discocelidae","Platyhelminthes",FALSE,"Discocelidae","not ungulate parasites",TRUE
+"Candimboididae","Platyhelminthes",FALSE,"Candimboididae","not ungulate parasites",TRUE
+"Faubelidae","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
+"Gnesiocerotidae","Platyhelminthes",FALSE,"Gnesiocerotidae","not ungulate parasites",TRUE
+"Ilyplanidae","Platyhelminthes",FALSE,"Ilyplanidae","not ungulate parasites",TRUE
+"Leptoplanidae","Platyhelminthes",FALSE,"Leptoplanidae","not ungulate parasites",TRUE
+"Mucroplanidae","Platyhelminthes",FALSE,"Mucroplanidae","not ungulate parasites",TRUE
+"Notoplanidae","Platyhelminthes",FALSE,"Notoplanidae","not ungulate parasites",TRUE
+"Palauidae","Platyhelminthes",FALSE,"Palauidae","not ungulate parasites",TRUE
+"Pleioplanidae","Platyhelminthes",FALSE,"Pleioplanidae","not ungulate parasites",TRUE
+"Stylochoplanidae","Platyhelminthes",FALSE,"Stylochoplanidae","not ungulate parasites",TRUE
+"Opisthogeniidae","Platyhelminthes",FALSE,"Opisthogeniidae","not ungulate parasites",TRUE
+"Pericelidae","Platyhelminthes",FALSE,"Pericelidae","not ungulate parasites",TRUE
+"Prosthiostomidae","Platyhelminthes",FALSE,"Prosthiostomidae","not ungulate parasites",TRUE
+"Anonymidae","Platyhelminthes",FALSE,"Anonymidae","not ungulate parasites",TRUE
+"Euryleptididae","Platyhelminthes",FALSE,"Euryleptididae","not ungulate parasites",TRUE
+"Laidlawiidae","Platyhelminthes",FALSE,"Laidlawiidae","not ungulate parasites",TRUE
+"Pseudocerotidae","Platyhelminthes",FALSE,"Pseudocerotidae","not ungulate parasites",TRUE
+"Stylochoididae","Platyhelminthes",FALSE,"Stylochoididae","not ungulate parasites",TRUE
+"Callioplanidae","Platyhelminthes",FALSE,"Callioplanidae","not ungulate parasites",TRUE
+"Discoprosthididae","Platyhelminthes",FALSE,"Discoprosthididae","not ungulate parasites",TRUE
+"Planoceridae","Platyhelminthes",FALSE,"Planoceridae","not ungulate parasites",TRUE
+"Pseudostylochidae","Platyhelminthes",FALSE,"Pseudostylochidae","not ungulate parasites",TRUE
+"Stylochidae","Platyhelminthes",FALSE,"Stylochidae","not ungulate parasites",TRUE
+"Scutariellidae","Platyhelminthes",FALSE,"Scutariellidae","not ungulate parasites",TRUE
+"Actinodactylellidae","Platyhelminthes",FALSE,"Actinodactylellidae","not ungulate parasites",TRUE
+"Diceratocephalidae","Platyhelminthes",FALSE,"Diceratocephalidae (family in Lophotrochozoa)","not ungulate parasites",FALSE
+"Temnocephalidae","Platyhelminthes",FALSE,"Temnocephalidae","not ungulate parasites",TRUE
+"Acanthocolpidae","Platyhelminthes",FALSE,"Acanthocolpidae","not ungulate parasites",TRUE
+"Allocreadiidae","Platyhelminthes",FALSE,"Allocreadiidae","not ungulate parasites",TRUE
+"Brachycladiidae","Platyhelminthes",FALSE,"Brachycladiidae","not ungulate parasites",TRUE
+"Opecoelidae","Platyhelminthes",FALSE,"Opecoelidae","not ungulate parasites",TRUE
+"Apocreadiidae","Platyhelminthes",FALSE,"Apocreadiidae","not ungulate parasites",TRUE
+"Aspidogastridae","Platyhelminthes",FALSE,"Aspidogastridae","not ungulate parasites",TRUE
+"Multicalycidae","Platyhelminthes",FALSE,"Multicalycidae","not ungulate parasites",TRUE
+"Rugogastridae","Platyhelminthes",FALSE,"Rugogastridae","not ungulate parasites",TRUE
+"Azygiidae","Platyhelminthes",FALSE,"Azygiidae","not ungulate parasites",TRUE
+"Bivesiculidae","Platyhelminthes",FALSE,"Bivesiculidae","not ungulate parasites",TRUE
+"Brachylaimidae","Platyhelminthes",FALSE,"Brachylaimidae","not ungulate parasites",TRUE
+"Leucochloridiidae","Platyhelminthes",FALSE,"Leucochloridiidae","not ungulate parasites",TRUE
+"Bucephalidae","Platyhelminthes",FALSE,"Bucephalidae","not ungulate parasites",TRUE
+"Brauninidae","Platyhelminthes",FALSE,"Brauninidae","not ungulate parasites",TRUE
+"Cyathocotylidae","Platyhelminthes",FALSE,"Cyathocotylidae","not ungulate parasites",TRUE
+"Diplostomidae","Platyhelminthes",FALSE,"Diplostomatidae","not ungulate parasites",TRUE
+"Proterodiplostomidae","Platyhelminthes",FALSE,"Proterodiplostomidae","not ungulate parasites",FALSE
+"Strigeidae","Platyhelminthes",FALSE,"Strigeidae","not ungulate parasites",TRUE
+"Calycodidae","Platyhelminthes",FALSE,"Calycodidae","not ungulate parasites",TRUE
+"Cyclocoelidae","Platyhelminthes",FALSE,"Cyclocoelidae","not ungulate parasites",TRUE
+"Echinochasmidae","Platyhelminthes",FALSE,"Echinochasmidae","not ungulate parasites",TRUE
+"Eucotylidae","Platyhelminthes",FALSE,"Eucotylidae","not ungulate parasites",TRUE
+"Himasthlidae","Platyhelminthes",FALSE,"Himasthlidae","not ungulate parasites",TRUE
+"Philophthalmidae","Platyhelminthes",FALSE,"Philophthalmidae","not ungulate parasites",TRUE
+"Psilostomidae","Platyhelminthes",FALSE,"Psilostomidae","not ungulate parasites",TRUE
+"Rhytidodidae","Platyhelminthes",FALSE,"Rhytidodidae","not ungulate parasites",TRUE
+"Typhlocoelidae","Platyhelminthes",FALSE,"Cyclocoelidae","not ungulate parasites",TRUE
+"Callodistomidae","Platyhelminthes",FALSE,"Callodistomidae","not ungulate parasites",TRUE
+"Gorgoderidae","Platyhelminthes",FALSE,"Gorgoderidae","not ungulate parasites",TRUE
+"Botulisaccidae","Platyhelminthes",FALSE,"Botulisaccidae","not ungulate parasites",TRUE
+"Fellodistomidae","Platyhelminthes",FALSE,"Fellodistomidae","not ungulate parasites",TRUE
+"Gymnophallidae","Platyhelminthes",FALSE,"Gymnophallidae","not ungulate parasites",TRUE
+"Tandanicolidae","Platyhelminthes",FALSE,"Tandanicolidae","not ungulate parasites",TRUE
+"Atractotrematidae","Platyhelminthes",FALSE,"Atractotrematidae","not ungulate parasites",TRUE
+"Haploporidae","Platyhelminthes",FALSE,"Haploporidae","not ungulate parasites",TRUE
+"Haplosplanchnidae","Platyhelminthes",FALSE,"Haplosplanchnidae","not ungulate parasites",TRUE
+"Accacoeliidae","Platyhelminthes",FALSE,"Accacoeliidae","not ungulate parasites",TRUE
+"Bathycotylidae","Platyhelminthes",FALSE,"Bathycotylidae","not ungulate parasites",FALSE
+"Derogenidae","Platyhelminthes",FALSE,"Derogenidae","not ungulate parasites",TRUE
+"Dictysarcidae","Platyhelminthes",FALSE,"Dictysarcidae","not ungulate parasites",TRUE
+"Didymozoidae","Platyhelminthes",FALSE,"Didymozoidae","not ungulate parasites",TRUE
+"Gonocercidae","Platyhelminthes",FALSE,"Gonocercinae","not ungulate parasites",FALSE
+"Hemiuridae","Platyhelminthes",FALSE,"Hemiuridae","not ungulate parasites",TRUE
+"Hirudinellidae","Platyhelminthes",FALSE,"Hirudinellidae","not ungulate parasites",TRUE
+"Isoparorchiidae","Platyhelminthes",FALSE,"Isoparorchiidae","not ungulate parasites",TRUE
+"Lecithasteridae","Platyhelminthes",FALSE,"Lecithasteridae","not ungulate parasites",TRUE
+"Ptychogonimidae","Platyhelminthes",FALSE,"Ptychogonimidae","not ungulate parasites",TRUE
+"Sclerodistomidae","Platyhelminthes",FALSE,"Sclerodistomidae","not ungulate parasites",TRUE
+"Sclerodistomoididae","Platyhelminthes",FALSE,"Sclerodistomoididae","not ungulate parasites",TRUE
+"Syncoeliidae","Platyhelminthes",FALSE,"Syncoeliidae","not ungulate parasites",TRUE
+"Aephnidiogenidae","Platyhelminthes",FALSE,"Aephnidiogenidae","not ungulate parasites",TRUE
+"Deropristidae","Platyhelminthes",FALSE,"Deropristidae","not ungulate parasites",TRUE
+"Enenteridae","Platyhelminthes",FALSE,"Enenteridae","not ungulate parasites",TRUE
+"Gibsonivermidae","Platyhelminthes",FALSE,"Gibsonivermis","not ungulate parasites",FALSE
+"Gorgocephalidae","Platyhelminthes",FALSE,"Gorgocephalidae","not ungulate parasites",TRUE
+"Gyliauchenidae","Platyhelminthes",FALSE,"Gyliauchenidae","not ungulate parasites",TRUE
+"Lepidapedidae","Platyhelminthes",FALSE,"Lepidapedidae","not ungulate parasites",TRUE
+"Lepocreadiidae","Platyhelminthes",FALSE,"Lepocreadiidae","not ungulate parasites",TRUE
+"Liliatrematidae","Platyhelminthes",FALSE,"Liliatrematidae","not ungulate parasites",TRUE
+"Diplangidae","Platyhelminthes",FALSE,"Diplangidae","not ungulate parasites",TRUE
+"Exotidendriidae","Platyhelminthes",FALSE,"Exotidendriidae","not ungulate parasites",TRUE
+"Faustulidae","Platyhelminthes",FALSE,"Faustulidae","not ungulate parasites",TRUE
+"Microphallidae","Platyhelminthes",FALSE,"Microphallidae","not ungulate parasites",TRUE
+"Pachypsolidae","Platyhelminthes",FALSE,"Pachypsolidae","not ungulate parasites",TRUE
+"Prosthogonimidae","Platyhelminthes",FALSE,"Prosthogonimidae","not ungulate parasites",TRUE
+"Renicolidae","Platyhelminthes",FALSE,"Renicolidae","not ungulate parasites",TRUE
+"Zoogonidae","Platyhelminthes",FALSE,"Zoogonidae","not ungulate parasites",TRUE
+"Lissorchiidae","Platyhelminthes",FALSE,"Lissorchiidae","not ungulate parasites",TRUE
+"Monorchiidae","Platyhelminthes",FALSE,"Monorchiidae","not ungulate parasites",TRUE
+"Cryptogonimidae","Platyhelminthes",FALSE,"Cryptogonimidae","not ungulate parasites",TRUE
+"Mesometridae","Platyhelminthes",FALSE,"Mesometridae","not ungulate parasites",TRUE
+"Microscaphidiidae","Platyhelminthes",FALSE,"Angiodictyidae","not ungulate parasites",TRUE
+"Brachycoeliidae","Platyhelminthes",FALSE,"Brachycoeliidae","not ungulate parasites",TRUE
+"Cephalogonimidae","Platyhelminthes",FALSE,"Cephalogonimidae","not ungulate parasites",TRUE
+"Macroderoididae","Platyhelminthes",FALSE,"Macroderoididae","not ungulate parasites",TRUE
+"Meristocotylidae","Platyhelminthes",FALSE,"Meristocotylidae","not ungulate parasites",TRUE
+"Orientocreadiidae","Platyhelminthes",FALSE,"Orientocreadiidae","not ungulate parasites",TRUE
+"Plagiorchiidae","Platyhelminthes",FALSE,"Plagiorchiidae","not ungulate parasites",TRUE
+"Styphlotrematidae","Platyhelminthes",FALSE,"Styphlotrematidae","not ungulate parasites",TRUE
+"Telorchiidae","Platyhelminthes",FALSE,"Telorchiidae","not ungulate parasites",TRUE
+"Labicolidae","Platyhelminthes",FALSE,"Labicolidae","not ungulate parasites",TRUE
+"Nudacotylidae","Platyhelminthes",FALSE,"Nudacotylidae","not ungulate parasites",TRUE
+"Opisthotrematidae","Platyhelminthes",FALSE,"Opisthotrematidae","not ungulate parasites",TRUE
+"Pronocephalidae","Platyhelminthes",FALSE,"Pronocephalidae","not ungulate parasites",TRUE
+"Rhabdiopoeidae","Platyhelminthes",FALSE,"Rhabdiopoeidae","not ungulate parasites",TRUE
+"Aporocotylidae","Platyhelminthes",FALSE,"Aporocotylidae","not ungulate parasites",TRUE
+"Clinostomidae","Platyhelminthes",FALSE,"Clinostomidae","not ungulate parasites",TRUE
+"Spirorchiidae","Platyhelminthes",FALSE,"Spirorchiidae","not ungulate parasites",TRUE
+"Transversotrematidae","Platyhelminthes",FALSE,"Transversotrematidae","not ungulate parasites",TRUE
+"Bdellouridae","Platyhelminthes",FALSE,"Bdellouridae","not ungulate parasites",TRUE
+"Uteriporidae","Platyhelminthes",FALSE,"Uteriporidae","not ungulate parasites",TRUE
+"Centrovarioplanidae","Platyhelminthes",FALSE,"Centrovarioplanidae","not ungulate parasites",TRUE
+"Cercyridae","Platyhelminthes",FALSE,"Cercyridae","not ungulate parasites",TRUE
+"Meixnerididae","Platyhelminthes",FALSE,"Meixnerididae","not ungulate parasites",TRUE
+"Dugesiidae","Platyhelminthes",FALSE,"Dugesiidae","not ungulate parasites",TRUE
+"Geoplanidae","Platyhelminthes",FALSE,"Geoplanidae","not ungulate parasites",TRUE
+"Dendrocoelidae","Platyhelminthes",FALSE,"Dendrocoelidae","not ungulate parasites",TRUE
+"Kenkiidae","Platyhelminthes",FALSE,"Kenkiidae","not ungulate parasites",FALSE
+"Planariidae","Platyhelminthes",FALSE,"Planariidae","not ungulate parasites",TRUE
+"Procerodidae","Platyhelminthes",FALSE,"Procerodidae","not ungulate parasites",TRUE
+"Gekkonotrematidae","Platyhelminthes",FALSE,"Gekkonotrematidae","not ungulate parasites",TRUE
+"Jubilariidae","Platyhelminthes",FALSE,"Jubilariidae","not ungulate parasites",TRUE
+"Echinoporidae","Platyhelminthes",FALSE,"Echinoporidae","not ungulate parasites",TRUE
+"Mesotretidae","Platyhelminthes",FALSE,"Mesotretidae","not ungulate parasites",FALSE
+"Acanthocollaritrematidae","Platyhelminthes",FALSE,"Cryptogonimidae","not ungulate parasites",TRUE
+"Balanotaeniidae","Platyhelminthes",FALSE,"Balanotaeniidae","not ungulate parasites",TRUE
+"Lytocestidae","Platyhelminthes",FALSE,"Lytocestidae","not ungulate parasites",TRUE
+"Dioicocestidae","Platyhelminthes",FALSE,"Dioecocestidae","not ungulate parasites",TRUE
+"Dipylidiidae","Platyhelminthes",FALSE,"Dipylidiidae","not ungulate parasites",TRUE
+"Metadilepididae","Platyhelminthes",FALSE,"Metadilepididae","not ungulate parasites",TRUE
+"Paruterinidae","Platyhelminthes",FALSE,"Paruterinidae","not ungulate parasites",TRUE
+"Cephalobothiidae","Platyhelminthes",FALSE,"Cephalobothriidae","not ungulate parasites",TRUE
+"Dactylocotylidae","Platyhelminthes",FALSE,"Dactylocotylidae","not ungulate parasites",FALSE
+"Megalonchidae","Platyhelminthes",FALSE,"Megalonchidae","not ungulate parasites",TRUE
+"Sphyranuridae","Platyhelminthes",FALSE,"Sphyranuridae","not ungulate parasites",TRUE
+"Aviellidae","Platyhelminthes",FALSE,"Aviellidae","not ungulate parasites",TRUE
+"Allomicrocotylidae","Platyhelminthes",FALSE,"Allomicrocotylidae","not ungulate parasites",FALSE
+"Aspidogasteridae","Platyhelminthes",FALSE,"Aspidogastridae","not ungulate parasites",TRUE
+"Diplostomatidae","Platyhelminthes",FALSE,"Diplostomatidae","not ungulate parasites",TRUE
+"Protrodiplostomatidae","Platyhelminthes",FALSE,"Protrodiplostomatidae","not ungulate parasites",TRUE
+"Bolbocephalodidae","Platyhelminthes",FALSE,"Bolbocephalodidae","not ungulate parasites",TRUE
+"Clinostomatidae","Platyhelminthes",FALSE,"Clinostomidae","not ungulate parasites",TRUE
+"Sanguinicolidae","Platyhelminthes",FALSE,"Aporocotylidae","not ungulate parasites",TRUE
+"Ophiodiplostomatidae","Platyhelminthes",FALSE,"Ophiodiplostomatidae","not ungulate parasites",FALSE
+"Neostrigeidae","Platyhelminthes",FALSE,"Neostrigeidae","not ungulate parasites",FALSE
+"Mesocestoididae","Platyhelminthes",FALSE,"Mesocestoididae","not ungulate parasites",TRUE
+"Nematotaeniidae","Platyhelminthes",FALSE,"Nematotaeniidae","not ungulate parasites",TRUE
+"Catenotaeniidae","Platyhelminthes",FALSE,"Catenotaeniidae","not ungulate parasites",TRUE
+"Anoplocephalidae","Platyhelminthes",FALSE,"Anoplocephalidae","intermediate host eaten",TRUE
+"Diplopharyngeatidae","Platyhelminthes",FALSE,"Diplopharyngeatidae","not ungulate parasites",FALSE
+"Fellodistomatidae","Platyhelminthes",FALSE,"Fellodistomatidae","not ungulate parasites",FALSE
+"Harmotrematidae","Platyhelminthes",FALSE,"Harmotrematidae","not ungulate parasites",TRUE
+"Leucochloridiomorphidae","Platyhelminthes",FALSE,"Leucochloridiomorphidae","not ungulate parasites",TRUE
+"Urotrematidae","Platyhelminthes",FALSE,"Urotrematidae","not ungulate parasites",TRUE
+"Monascidae","Platyhelminthes",FALSE,"Monascidae","not ungulate parasites",FALSE
+"Liolopidae","Platyhelminthes",FALSE,"Liolopidae","not ungulate parasites",TRUE
+"Moreauiidae","Platyhelminthes",FALSE,"Moreauiidae (family in superfamily Brachylaimoidea)","not ungulate parasites",FALSE
+"Ovariopteridae","Platyhelminthes",FALSE,"Ovariopteridae","not ungulate parasites",TRUE
+"Thapariellidae","Platyhelminthes",FALSE,"Thapariellidae","not ungulate parasites",TRUE
+"Monodhelminthidae","Platyhelminthes",FALSE,"Tandanicolidae","not ungulate parasites",TRUE
+"Ratziidae","Platyhelminthes",FALSE,"Ratziidae","not ungulate parasites",FALSE
+"Dinuridae","Platyhelminthes",FALSE,"Hemiuridae","not ungulate parasites",TRUE
+"Lecithochiridae","Platyhelminthes",FALSE,"Lecithochiriinae","not ungulate parasites",FALSE
+"Aphanhysteridae","Platyhelminthes",FALSE,"Azygiidae","not ungulate parasites",TRUE
+"Bothrigastridae","Platyhelminthes",FALSE,"Bothrigastridae","not ungulate parasites",FALSE
+"Lampritrematidae","Platyhelminthes",FALSE,"Hirudinellidae","not ungulate parasites",TRUE
+"Albulatrematidae","Platyhelminthes",FALSE,"Albulatrematidae","not ungulate parasites",FALSE
+"Halipegidae","Platyhelminthes",FALSE,"Halipegidae","not ungulate parasites",FALSE
+"Mabiaramidae","Platyhelminthes",FALSE,"Sclerodistomidae","not ungulate parasites",TRUE
+"Prosogonotrematidae","Platyhelminthes",FALSE,"Sclerodistomidae","not ungulate parasites",TRUE
+"Oesophagicolidae","Platyhelminthes",FALSE,"Oesophagicolidae","not ungulate parasites",TRUE
+"Arnolidae","Platyhelminthes",FALSE,"Arnolidae","not ungulate parasites",FALSE
+"Lobatovitelliovariidae","Platyhelminthes",FALSE,"Lobatovitelliovariidae","not ungulate parasites",FALSE
+"Areobiotrematidae","Platyhelminthes",FALSE,"Areobiotrematidae","not ungulate parasites",TRUE
+"Tetrasteridae","Platyhelminthes",FALSE,"Tetrasteridae","not ungulate parasites",FALSE
+"Pelorohelminthidae","Platyhelminthes",FALSE,"Pelorohelminthidae","not ungulate parasites",FALSE
+"Cylindrorchiidae","Platyhelminthes",FALSE,"Cylindrorchiidae","not ungulate parasites",TRUE
+"Psilostomatidae","Platyhelminthes",FALSE,"Psilostomidae","not ungulate parasites",TRUE
+"Cathaemasiidae","Platyhelminthes",FALSE,"Echinostomatidae","not ungulate parasites",TRUE
+"Rhopaliidae","Platyhelminthes",FALSE,"Echinostomatidae","not ungulate parasites",TRUE
+"Megaperidae","Platyhelminthes",FALSE,"Apocreadiidae","not ungulate parasites",TRUE
+"Orchipedidae","Platyhelminthes",FALSE,"Orchipedidae","not ungulate parasites",TRUE
+"Botulidae","Platyhelminthes",FALSE,"Hirudinellidae","not ungulate parasites",TRUE
+"Saakotrematidae","Platyhelminthes",FALSE,"Echinochasmidae","not ungulate parasites",TRUE
+"Balfouriidae","Platyhelminthes",FALSE,"Echinostomatidae","not ungulate parasites",TRUE
+"Ommatobrephidae","Platyhelminthes",FALSE,"Ommatobrephidae","not ungulate parasites",FALSE
+"Achillurbaniidae","Platyhelminthes",FALSE,"Achillurbaniidae","not ungulate parasites",FALSE
+"Campululidae","Platyhelminthes",FALSE,"Campululidae","not ungulate parasites",TRUE
+"Rowpaliidae","Platyhelminthes",FALSE,"Rowpaliidae","not ungulate parasites",FALSE
+"Diplodiscidae","Platyhelminthes",FALSE,"Diplodiscidae","not ungulate parasites",TRUE
+"Rhabdopoeidae","Platyhelminthes",FALSE,"Rhabdopoeidae","not ungulate parasites",FALSE
+"Paramphistomatidae","Platyhelminthes",FALSE,"Paramphistomatidae","not ungulate parasites",TRUE
+"Heronimidae","Platyhelminthes",FALSE,"Heronimidae","not ungulate parasites",TRUE
+"Brumptidae","Platyhelminthes",FALSE,"Brumptidae","not ungulate parasites",TRUE
+"Haematoloechidae","Platyhelminthes",FALSE,"Haematoloechidae","not ungulate parasites",TRUE
+"Mesocoeliidae","Platyhelminthes",FALSE,"Mesocoeliidae","not ungulate parasites",FALSE
+"Auridistomidae","Platyhelminthes",FALSE,"Auridistomidae","not ungulate parasites",TRUE
+"Cephaloporidae","Platyhelminthes",FALSE,"Zoogonidae","not ungulate parasites",TRUE
+"Ochetosomatidae","Platyhelminthes",FALSE,"Reniferidae","not ungulate parasites",TRUE
+"Lecithodendriidae","Platyhelminthes",FALSE,"Lecithodendriidae","not ungulate parasites",TRUE
+"Allassogonoporidae","Platyhelminthes",FALSE,"Allassogonoporidae","not ungulate parasites",FALSE
+"Stomylotrematidae","Platyhelminthes",FALSE,"Stomylotrematidae","not ungulate parasites",TRUE
+"Laterotrematidae","Platyhelminthes",FALSE,"Laterotrematidae","not ungulate parasites",TRUE
+"Omphalometridae","Platyhelminthes",FALSE,"Omphalometridae","not ungulate parasites",TRUE
+"Encyclometridae","Platyhelminthes",FALSE,"Encyclometridae","not ungulate parasites",TRUE
+"Opisthogonimidae","Platyhelminthes",FALSE,"Opisthogonimidae","not ungulate parasites",TRUE
+"Dolichoperidae","Platyhelminthes",FALSE,"Dolichoperidae","not ungulate parasites",FALSE
+"Macroderidae","Platyhelminthes",FALSE,"Macroderidae","not ungulate parasites",FALSE
+"Eumegacetidae","Platyhelminthes",FALSE,"Eumegacetidae","not ungulate parasites",FALSE
+"Pleurogenidae","Platyhelminthes",FALSE,"Pleurogenidae","not ungulate parasites",TRUE
+"Anenterotrematidae","Platyhelminthes",FALSE,"Anenterotrematidae","not ungulate parasites",TRUE
+"Cortrematidae","Platyhelminthes",FALSE,"Cortrematidae","not ungulate parasites",TRUE
+"Anchitrematidae","Platyhelminthes",FALSE,"Anchitrematidae","not ungulate parasites",FALSE
+"Octotestidae","Platyhelminthes",FALSE,"Octotestidae","not ungulate parasites",FALSE
+"Steganodermatidae","Platyhelminthes",FALSE,"Zoogonidae","not ungulate parasites",TRUE
+"Troglotrematidae","Platyhelminthes",FALSE,"Troglotrematidae","not ungulate parasites",TRUE
+"Nanophyetidae","Platyhelminthes",FALSE,"Nanophyetidae","not ungulate parasites",TRUE
+"Collyriclidae","Platyhelminthes",FALSE,"Collyriclidae","not ungulate parasites",TRUE
+"Homalometridae","Platyhelminthes",FALSE,"Apocreadiidae","not ungulate parasites",TRUE
+"Deropristiidae","Platyhelminthes",FALSE,"Deropristidae","not ungulate parasites",TRUE
+"Pleorchiidae","Platyhelminthes",FALSE,"Acanthocolpidae","not ungulate parasites",TRUE
+"Batrachotrematidae","Platyhelminthes",FALSE,"Batrachotrematidae","not ungulate parasites",TRUE
+"Maseniidae","Platyhelminthes",FALSE,"Cephalogonimidae","not ungulate parasites",TRUE
+"Opistholebetidae","Platyhelminthes",FALSE,"Opistholebetidae","not ungulate parasites",TRUE
+"Callodistomatidae","Platyhelminthes",FALSE,"Callodistomatidae","not ungulate parasites",FALSE
+"Encotylidae","Platyhelminthes",FALSE,"Encotylidae","not ungulate parasites",FALSE
+"Haplometridae","Platyhelminthes",FALSE,"Haplometridae","not ungulate parasites",FALSE
+"Eurotrematidae","Platyhelminthes",FALSE,"Eurotrematidae","not ungulate parasites",FALSE
+"Nasitrematidae","Platyhelminthes",FALSE,"Brachycladiidae","not ungulate parasites",TRUE
+"Acanthostomatidae","Platyhelminthes",FALSE,"Acanthostomatidae","not ungulate parasites",FALSE
+"Pachytrematidae","Platyhelminthes",FALSE,"Pachytrematidae","not ungulate parasites",TRUE
+"Campulidae","Platyhelminthes",FALSE,"Brachycladiidae","not ungulate parasites",TRUE
+"Ulianiniidae","Platyhelminthes",FALSE,"Ulianiniidae","not ungulate parasites",FALSE
+"Grillotiidae","Platyhelminthes",FALSE,"Lacistorhynchidae","not ungulate parasites",TRUE
+"Cylindrostomidae","Platyhelminthes",FALSE,"Cylindrostomidae","not ungulate parasites",FALSE
+"Dasyrhynchidae","Platyhelminthes",FALSE,"Dasyrhynchidae","not ungulate parasites",TRUE
+"Hornelliellidae","Platyhelminthes",FALSE,"Hornelliellidae","not ungulate parasites",TRUE
