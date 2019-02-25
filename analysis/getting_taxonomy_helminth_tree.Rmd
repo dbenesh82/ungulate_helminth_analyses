@@ -18,7 +18,17 @@ options(stringsAsFactors = FALSE)
 theme_set(new = theme_bw())
 ```
 
-First, I make a list of helminth families in which ungulate parasitism occurs. These were compiled by Jimmy Chubb.
+First, I make a list of helminth families in which ungulate parasitism occurs. I also listed the transmission routes for each of these families. I defined 6 routes to ungulates - the first three are trophic (ungulate eats propagule), the last three are not:
+1. Eggs are ingested by ungulate
+2. Larvae on herbage eaten (free L3s in nematodes, encysted metacercariae in trematodes)
+3. Intermediate host ingested by ungulate
+4. Larvae actively seek host, usually penetrate it
+5. Vector-transmission
+6. No free propagule stage - transmammary, transplacental, or cannibalistic transmission
+
+The last group is kind of a miscellaneous category, where none of the strategies are widespread. Some worms do not fit neatly into these categories. For instance, *Toxocaris* is a nematode that, like most ascarids, is transmitted through ingestion of eggs. However, it can also be transmitted from cow to calf via the milk. Thus, it could be assigned two 'states' simultaneously (1 or 6). Similarly, *Strongyloides* can be transmitted vertically from mother to offspring, but it also produces free L3 larvae that penetrate skin (4 or 6). And in one final case, the pig kidney worm *Stephanurus* (Syngamidae) can be transmitted via skin penetration (unusual in the species), ingestion of free larvae, or via a paratenic earthworm host (probably the most common case) (routes 2, 3, or 4 exist here). Since I am interested in mapping how many times different transmission strategies evolved, it may be worthwhile to look at the phylogeny, see what the relatives of these flexible species are doing, and then assign them a strategy to ensure the novel innovations in these taxa are counted.
+
+Families and transmission styles were compiled by Jimmy Chubb.
 
 ```{r}
 # list of helminth fams in ungulates - from MS
@@ -30,14 +40,84 @@ tre_ung_fams <- c('Hasstilesiidae', 'Schistosomatidae', 'Echinostomatidae', 'Fas
               'Gastrothylacidae', 'Olveriidae', 'Stephanopharyngidae', 'Zygocotylidae', 'Notocotylidae',
               'Opisthorchiidae', 'Heterophyidae', 'Dicrocoeliidae', 'Paragonimidae')
 nem_ung_fams <- c('Capillariidae', 'Robertdollfusidae', 'Trichinellidae', 'Trichuridae', 'Ancylostomatidae',
-               'Ascarididae', 'Chabertiidae', 'Cooperiidae', 'Dictyocaulidae', 'Filariidae', 'Gnathostomatidae',
-               'Gongylonematidae', 'Habronematidae', 'Haemonchidae', 'Metastrongylidae', 'Molineidae',
-               'Onchocercidae', 'Oxyuridae', 'Protostrongylidae', 'Spirocercidae', 'Strongylidae', 'Strongyloididae',
-               'Syngamidae', 'Thelaziidae', 'Trichostrongylidae')
+               'Ascarididae', 'Toxocaridae', 'Chabertiidae', 'Cooperiidae', 'Dictyocaulidae', 'Filariidae',
+               'Gnathostomatidae', 'Gongylonematidae', 'Habronematidae', 'Haemonchidae', 'Metastrongylidae',
+               'Molineidae', 'Onchocercidae', 'Oxyuridae', 'Protostrongylidae', 'Spirocercidae', 'Strongylidae',
+               'Strongyloididae', 'Syngamidae', 'Thelaziidae', 'Trichostrongylidae')
 aca_ung_fams <- c('Oligacanthorhynchidae','Echinorhynchidae')
 ```
+```{r}
+route1 <- "eggs ingested"
+route2 <- "larvae on herbage"
+route3 <- "intermediate host eaten"
+route4 <- "larvae seek/penetrate"
+route5 <- "vector-transmission"
+route6 <- "no free propagule"
+trans_routes <- data.frame(rbind(c("Polystomatidae", route4),
+                                 c("Diphyllobothridae", route3),
+                                 c('Anoplocephalidae', route3),
+                                 c('Linstowiidae', route3),
+                                 c('Davaineidae', route3),
+                                 c('Taeniidae', route1),
+                                 c('Hasstilesiidae', route3),
+                                 c('Schistosomatidae', route4),
+                                 c('Echinostomatidae', route3),
+                                 c('Fasciolidae', route2),
+                                 c('Paramphistomidae',route2),
+                                 c('Balanorchiidae', route2),
+                                 c('Brumptiidae', route2),
+                                 c('Choerocotyloididae', route2),
+                                 c('Cladorchiidae', route2),
+                                 c('Gastrodiscidae', route2),
+                                 c('Gastrothylacidae', route2),
+                                 c('Olveriidae', route2),
+                                 c('Stephanopharyngidae', route2),
+                                 c('Zygocotylidae', route2),
+                                 c('Notocotylidae', route2),
+                                 c('Opisthorchiidae', route3),
+                                 c('Heterophyidae', route3),
+                                 c('Dicrocoeliidae', route3),
+                                 c('Paragonimidae', route3),
+                                 c('Capillariidae', route1),
+                                 c('Robertdollfusidae', route5),
+                                 c('Trichinellidae', route6),
+                                 c('Trichuridae', route1),
+                                 c('Ancylostomatidae', route4),
+                                 c('Ascarididae', route1),
+                                 c('Toxocaridae', route1),
+                                 c('Chabertiidae', route2),
+                                 c('Cooperiidae', route2),
+                                 c('Dictyocaulidae', route2),
+                                 c('Filariidae', route5),
+                                 c('Gnathostomatidae', route3),
+                                 c('Gongylonematidae', route3),
+                                 c('Habronematidae', route5),
+                                 c('Haemonchidae', route2),
+                                 c('Metastrongylidae', route3),
+                                 c('Molineidae', route2),
+                                 c('Onchocercidae', route5),
+                                 c('Oxyuridae', route1),
+                                 c('Protostrongylidae', route3),
+                                 c('Spirocercidae', route3),
+                                 c('Strongylidae', route2),
+                                 c('Strongyloididae', route4),
+                                 c('Syngamidae', route3),
+                                 c('Thelaziidae', route5),
+                                 c('Trichostrongylidae', route2),
+                                 c('Oligacanthorhynchidae', route3),
+                                 c('Echinorhynchidae', route3)
+))
+names(trans_routes) <- c('family', 'trans_route')
+rm(route1, route2, route3, route4, route5, route6)
+```
 
-To be able to map ancestral states, we also need to know in which helminths ungulate parasitism does not occur. In other words, we need to get the related taxa that are not parasites of ungulates. For this, I queried COL and ITIS with `taxize` to find all families in Acanthocephala, Nematoda, and Platyhelmintha.
+A table of the different transmission routes shows that 1) trophic transmission dominates (`r 6+18+19` families versus `r 4+1+5` families with non-trophic infection routes), and 2) egg ingestion is the least common trophic route, consistent with the idea of a vacuum caused by faecal avoidance.
+
+```{r}
+knitr::kable(table(trans_routes$trans_route))
+```
+
+Instead of counting families, though, we want to count the independent evolutionary transitions to helminth parasitism. To be able to map these ancestral states, we also need to know in which helminths ungulate parasitism does not occur. In other words, we need to get the related taxa that are not parasites of ungulates. For this, I queried COL and ITIS with `taxize` to find all families in Acanthocephala, Nematoda, and Platyhelmintha.
 
 Starting with the acanths, who have only sporadically been found in ungulates. Both families with records from ungulates were in the taxonomy databases.
 
