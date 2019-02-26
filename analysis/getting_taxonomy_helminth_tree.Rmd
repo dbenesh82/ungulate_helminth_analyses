@@ -168,9 +168,9 @@ pla_itis_fams <- downstream(pla_itis_id, downto = 'family', db = 'itis')
 pla_itis_fams <- pla_itis_fams$`53963`$taxonname
 
 pla_ung_fams <- c(mon_ung_fams, tre_ung_fams, ces_ung_fams)
-sum(pla_col_fams %in% pla_itis_fams)/length(pla_col_fams) # percent COL in ITIS
-sum(pla_ung_fams %in% pla_col_fams)/length(pla_ung_fams) # percent helminth fams in COL
-sum(pla_ung_fams %in% pla_itis_fams)/length(pla_ung_fams) # percent helminth fams in ITIS
+#sum(pla_col_fams %in% pla_itis_fams)/length(pla_col_fams) # percent COL in ITIS
+#sum(pla_ung_fams %in% pla_col_fams)/length(pla_ung_fams) # percent helminth fams in COL
+#sum(pla_ung_fams %in% pla_itis_fams)/length(pla_ung_fams) # percent helminth fams in ITIS
 ```
 
 Given that the helminth ungulate families and the taxonomy datasets are not completely congruent, I chose to Combine all three lists of family names to query the OTL. Some might be redundant or invalid, but this should give the largest, most complete tree with which to map ancestral states.
@@ -206,12 +206,8 @@ aca_tree <- tol_induced_subtree(ott_ids = aca_ott_in_tree, label_format = 'name'
 nem_tree <- tol_induced_subtree(ott_ids = nem_ott_in_tree, label_format = 'name')
 pla_tree <- tol_induced_subtree(ott_ids = pla_ott_in_tree, label_format = 'name')
 ```
-```{r}
-taxa_searched <- length(aca_fams_all) + length(nem_fams_all) + length(pla_fams_all)
-taxa_in_tree <- length(aca_tree$tip.label) + length(nem_tree$tip.label) + length(pla_tree$tip.label)
-```
 
-Of `r length(taxa_searched)` families queried, `r length(taxa_in_tree)` were included in the tree. All acanth families of ungulates were in the tree. Here are the nematodes families of ungulates that were not included.
+Of `r length(aca_fams_all) + length(nem_fams_all) + length(pla_fams_all)` families queried, `r length(aca_tree$tip.label) + length(nem_tree$tip.label) + length(pla_tree$tip.label)` were included in the tree. All acanth families of ungulates were in the tree. Here are the nematodes families of ungulates that were not included.
 
 ```{r}
 # ungulate nem families not in nem tree
@@ -248,6 +244,7 @@ helminth_ungs <- mutate(helminth_ungs, group = if_else(family %in% aca_fams_all,
 search_all <- rbind(aca_search, nem_search, pla_search1, pla_search2)
 mv <- match(tolower(helminth_ungs$family), search_all$search_string)
 helminth_ungs$otl_name <- search_all$unique_name[mv]
+helminth_ungs <- mutate(helminth_ungs, otl_name = gsub(" ", "_", otl_name)) # replace spaces with underscores to match tip labels
 
 # add transmission route
 helminth_ungs <- left_join(helminth_ungs, trans_routes, by = 'family')
@@ -256,6 +253,9 @@ helminth_ungs <- mutate(helminth_ungs,
 
 # which ones are in tree?
 helminth_ungs <- mutate(helminth_ungs, in_tree = otl_name %in% comb_tree$tip.label)
+
+# remove 'not assigned' row
+helminth_ungs <- filter(helminth_ungs, family != 'Not assigned')
 ```
 
 Here are the helminth taxa of ungulates that were not included in the tree.

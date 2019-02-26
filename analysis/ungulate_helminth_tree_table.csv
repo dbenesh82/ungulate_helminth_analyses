@@ -80,13 +80,13 @@
 "Anatonchidae","Nematoda",FALSE,"Anatonchidae","not ungulate parasites",TRUE
 "Aporcelaimidae","Nematoda",FALSE,"Aporcelaimidae","not ungulate parasites",TRUE
 "Belondiridae","Nematoda",FALSE,"Belondiridae","not ungulate parasites",TRUE
-"Campgdoridae","Nematoda",FALSE,"Campgdoridae (merged with Dorylaimida)","not ungulate parasites",FALSE
+"Campgdoridae","Nematoda",FALSE,"Campgdoridae_(merged_with_Dorylaimida)","not ungulate parasites",FALSE
 "Carcharolaimidae","Nematoda",FALSE,"Carcharolaimidae","not ungulate parasites",FALSE
 "Cobbonchidae","Nematoda",FALSE,"Cobbonchidae","not ungulate parasites",FALSE
 "Diphterophoridae","Nematoda",FALSE,"Diphterophoridae","not ungulate parasites",TRUE
 "Dorylaimidae","Nematoda",FALSE,"Dorylaimidae","not ungulate parasites",TRUE
 "Falcihastidae","Nematoda",FALSE,"Falcihastidae","not ungulate parasites",TRUE
-"Iotonchusidae","Nematoda",FALSE,"Iotonchusidae (merged with Dorylaimida)","not ungulate parasites",FALSE
+"Iotonchusidae","Nematoda",FALSE,"Iotonchusidae_(merged_with_Dorylaimida)","not ungulate parasites",FALSE
 "Leptonchidae","Nematoda",FALSE,"Leptonchidae","not ungulate parasites",TRUE
 "Longidoridae","Nematoda",FALSE,"Longidoridae","not ungulate parasites",TRUE
 "Mononchidae","Nematoda",FALSE,"Mononchidae","not ungulate parasites",TRUE
@@ -94,7 +94,7 @@
 "Nygolaimellidae","Nematoda",FALSE,"Nygolaimellidae","not ungulate parasites",TRUE
 "Nygolaimidae","Nematoda",FALSE,"Nygolaimidae","not ungulate parasites",TRUE
 "Opailaimidae","Nematoda",FALSE,"Opailaimidae","not ungulate parasites",TRUE
-"Oxydiridae","Nematoda",FALSE,"Oxydiridae (merged with Belondiridae)","not ungulate parasites",FALSE
+"Oxydiridae","Nematoda",FALSE,"Oxydiridae_(merged_with_Belondiridae)","not ungulate parasites",FALSE
 "Qudsianematidae","Nematoda",FALSE,"Qudsianematidae","not ungulate parasites",TRUE
 "Trachypleurosidae","Nematoda",FALSE,"Trachypleurosidae","not ungulate parasites",TRUE
 "Tylencholaimellidae","Nematoda",FALSE,"Tylencholaimellidae","not ungulate parasites",TRUE
@@ -104,7 +104,7 @@
 "Cryptonchidae","Nematoda",FALSE,"Cryptonchidae","not ungulate parasites",TRUE
 "Enchelidiidae","Nematoda",FALSE,"Enchelidiidae","not ungulate parasites",TRUE
 "Enoplidae","Nematoda",FALSE,"Enoplidae","not ungulate parasites",TRUE
-"Eurystominidae","Nematoda",FALSE,"Eurystominidae (merged with Enchelidiidae)","not ungulate parasites",FALSE
+"Eurystominidae","Nematoda",FALSE,"Eurystominidae_(merged_with_Enchelidiidae)","not ungulate parasites",FALSE
 "Ironidae","Nematoda",FALSE,"Ironidae","not ungulate parasites",TRUE
 "Lauratonematidae","Nematoda",FALSE,"Lauratonematidae","not ungulate parasites",TRUE
 "Leptosomatidae","Nematoda",FALSE,"Leptosomatidae","not ungulate parasites",TRUE
@@ -114,7 +114,7 @@
 "Phanodermatidae","Nematoda",FALSE,"Phanodermatidae","not ungulate parasites",TRUE
 "Prismatolaimidae","Nematoda",FALSE,"Prismatolaimidae","not ungulate parasites",TRUE
 "Rhabdodemaniidae","Nematoda",FALSE,"Rhabdodemaniidae","not ungulate parasites",TRUE
-"Symplocostomatidae","Nematoda",FALSE,"Symplocostomatidae (inconsistent in Enoplida)","not ungulate parasites",FALSE
+"Symplocostomatidae","Nematoda",FALSE,"Symplocostomatidae_(inconsistent_in_Enoplida)","not ungulate parasites",FALSE
 "Thoracostomopsidae","Nematoda",FALSE,"Thoracostomopsidae","not ungulate parasites",TRUE
 "Trefusiidae","Nematoda",FALSE,"Trefusiidae","not ungulate parasites",TRUE
 "Triodontolaimidae","Nematoda",FALSE,"Triodontolaimidae","not ungulate parasites",FALSE
@@ -123,11 +123,10 @@
 "Aponchiidae","Nematoda",FALSE,"Aponchiidae","not ungulate parasites",FALSE
 "Linhomoeidae","Nematoda",FALSE,"Linhomoeidae","not ungulate parasites",TRUE
 "Monhysteridae","Nematoda",FALSE,"Monhysteridae","not ungulate parasites",TRUE
-"Scaptrellidae","Nematoda",FALSE,"Scaptrellidae (merged with Xyalidae)","not ungulate parasites",FALSE
+"Scaptrellidae","Nematoda",FALSE,"Scaptrellidae_(merged_with_Xyalidae)","not ungulate parasites",FALSE
 "Siphonolaimidae","Nematoda",FALSE,"Siphonolaimidae","not ungulate parasites",TRUE
 "Sphaerolaimidae","Nematoda",FALSE,"Sphaerolaimidae","not ungulate parasites",TRUE
 "Xyalidae","Nematoda",FALSE,"Xyalidae","not ungulate parasites",TRUE
-"Not assigned","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
 "Cystoopsidae","Nematoda",FALSE,"Cystoopsidae","not ungulate parasites",TRUE
 "Diphtherophoridae","Nematoda",FALSE,"Diphtherophoridae","not ungulate parasites",TRUE
 "Trichodoridae","Nematoda",FALSE,"Trichodoridae","not ungulate parasites",TRUE
@@ -157,13 +156,13 @@
 "Elaphonematidae","Nematoda",FALSE,"Elaphonematidae","not ungulate parasites",TRUE
 "Heterohabditidae","Nematoda",FALSE,"Heterohabditidae","not ungulate parasites",TRUE
 "Heterorhabditidae","Nematoda",FALSE,"Heterorhabditidae","not ungulate parasites",TRUE
-"Odontorhabditidae","Nematoda",FALSE,"Odontorhabditidae (merged with Rhabditidae)","not ungulate parasites",FALSE
+"Odontorhabditidae","Nematoda",FALSE,"Odontorhabditidae_(merged_with_Rhabditidae)","not ungulate parasites",FALSE
 "Panagrolaimidae","Nematoda",FALSE,"Panagrolaimidae","not ungulate parasites",TRUE
-"Pangrolaimidae","Nematoda",FALSE,"Pangrolaimidae (merged with Panagrolaimidae)","not ungulate parasites",FALSE
+"Pangrolaimidae","Nematoda",FALSE,"Pangrolaimidae_(merged_with_Panagrolaimidae)","not ungulate parasites",FALSE
 "Pterygorhabditidae","Nematoda",FALSE,"Pterygorhabditidae","not ungulate parasites",FALSE
 "Rhabdiasidae","Nematoda",FALSE,"Rhabdiasidae","not ungulate parasites",TRUE
 "Rhabditidae","Nematoda",FALSE,"Rhabditidae","not ungulate parasites",FALSE
-"Robertiidae","Nematoda",FALSE,"Robertiidae (family in Protostomia)","not ungulate parasites",FALSE
+"Robertiidae","Nematoda",FALSE,"Robertiidae_(family_in_Protostomia)","not ungulate parasites",TRUE
 "Steinernematidae","Nematoda",FALSE,"Steinernematidae","not ungulate parasites",TRUE
 "Syrphonematidae","Nematoda",FALSE,"Syrphonematidae","not ungulate parasites",TRUE
 "Acuariidae","Nematoda",FALSE,"Acuariidae","not ungulate parasites",TRUE
@@ -183,13 +182,13 @@
 "Pharyngostrongylidae","Nematoda",FALSE,"Pharyngostrongylidae","not ungulate parasites",FALSE
 "Pseudaliidae","Nematoda",FALSE,"Pseudaliidae","not ungulate parasites",TRUE
 "Skrjabingylidae","Nematoda",FALSE,"Skrjabingylidae","not ungulate parasites",FALSE
-"Uncinariidae","Nematoda",FALSE,"Uncinariidae (merged with Bunostominae)","not ungulate parasites",FALSE
+"Uncinariidae","Nematoda",FALSE,"Uncinariidae_(merged_with_Bunostominae)","not ungulate parasites",FALSE
 "Allantonematidae","Nematoda",FALSE,"Allantonematidae","not ungulate parasites",TRUE
 "Anguinidae","Nematoda",FALSE,"Anguinidae","not ungulate parasites",TRUE
 "Belonolaimidae","Nematoda",FALSE,"Belonolaimidae","not ungulate parasites",TRUE
 "Criconematidae","Nematoda",FALSE,"Criconematidae","not ungulate parasites",TRUE
 "Dolichodoridae","Nematoda",FALSE,"Dolichodoridae","not ungulate parasites",TRUE
-"Fergusobiidae","Nematoda",FALSE,"Fergusobiidae (merged with Neotylenchidae)","not ungulate parasites",FALSE
+"Fergusobiidae","Nematoda",FALSE,"Fergusobiidae_(merged_with_Neotylenchidae)","not ungulate parasites",FALSE
 "Heteroderidae","Nematoda",FALSE,"Heteroderidae","not ungulate parasites",TRUE
 "Hoplolaimidae","Nematoda",FALSE,"Hoplolaimidae","not ungulate parasites",TRUE
 "Iotonchiidae","Nematoda",FALSE,"Iotonchiidae","not ungulate parasites",TRUE
@@ -215,7 +214,7 @@
 "Daubayliidae","Nematoda",FALSE,"Daubayliidae","not ungulate parasites",TRUE
 "Hedruridae","Nematoda",FALSE,"Hedruridae","not ungulate parasites",TRUE
 "Tetrameridae","Nematoda",FALSE,"Tetrameridae","not ungulate parasites",TRUE
-"Heterocheilidae","Nematoda",FALSE,"Heterocheilidae (family in phylum Nematoda)","not ungulate parasites",FALSE
+"Heterocheilidae","Nematoda",FALSE,"Heterocheilidae_(family_in_phylum_Nematoda)","not ungulate parasites",TRUE
 "Dioctophymatidae","Nematoda",FALSE,"Dioctophymatidae","not ungulate parasites",FALSE
 "Atractidae","Nematoda",FALSE,"Atractidae","not ungulate parasites",TRUE
 "Kathlanidae","Nematoda",FALSE,"Kathlaniidae","not ungulate parasites",TRUE
@@ -228,7 +227,7 @@
 "Quimperiidae","Nematoda",FALSE,"Quimperiidae","not ungulate parasites",TRUE
 "Soboliphymatidae","Nematoda",FALSE,"Soboliphymatidae","not ungulate parasites",TRUE
 "Diaphanocephalidae","Nematoda",FALSE,"Diaphanocephalidae","not ungulate parasites",TRUE
-"Ancylostomidae","Nematoda",FALSE,"Ancylostomidae (merged with Chabertiidae)","not ungulate parasites",FALSE
+"Ancylostomidae","Nematoda",FALSE,"Ancylostomidae_(merged_with_Chabertiidae)","not ungulate parasites",FALSE
 "Strongyidae","Nematoda",FALSE,"Strongyidae","not ungulate parasites",FALSE
 "Globocephalidae","Nematoda",FALSE,"Globocephalidae","not ungulate parasites",FALSE
 "Strongylacanthidae","Nematoda",FALSE,"Strongylacanthidae","not ungulate parasites",FALSE
@@ -273,8 +272,8 @@
 "Dicrocoeliidae","Platyhelminthes",TRUE,"Dicrocoeliidae","intermediate host eaten",TRUE
 "Paragonimidae","Platyhelminthes",TRUE,"Troglotrematidae","intermediate host eaten",TRUE
 "Diphyllobothridae","Platyhelminthes",TRUE,"Diphyllobothriidae","intermediate host eaten",TRUE
-"Anoplocephalinae","Platyhelminthes",TRUE,"Anoplocephalidae","not ungulate parasites",TRUE
-"Linstowiinae","Platyhelminthes",TRUE,"Linstowiidae","not ungulate parasites",TRUE
+"Anoplocephalidae","Platyhelminthes",TRUE,"Anoplocephalidae","intermediate host eaten",TRUE
+"Linstowiidae","Platyhelminthes",TRUE,"Linstowiidae","intermediate host eaten",TRUE
 "Thysanosomatinae","Platyhelminthes",TRUE,NA,"not ungulate parasites",FALSE
 "Inermicapsiferinae","Platyhelminthes",TRUE,NA,"not ungulate parasites",FALSE
 "Davaineidae","Platyhelminthes",TRUE,"Davaineidae","intermediate host eaten",TRUE
@@ -285,7 +284,6 @@
 "Stenostomidae","Platyhelminthes",FALSE,"Stenostomidae","not ungulate parasites",TRUE
 "Tyrrheniellidae","Platyhelminthes",FALSE,"Tyrrheniellidae","not ungulate parasites",TRUE
 "Leimacopsidae","Platyhelminthes",FALSE,"Leimacopsidae","not ungulate parasites",FALSE
-"Not assigned","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
 "Bothrioplanidae","Platyhelminthes",FALSE,"Bothrioplanidae","not ungulate parasites",TRUE
 "Aberrapecidae","Platyhelminthes",FALSE,"Aberrapecidae","not ungulate parasites",TRUE
 "Acoleidae","Platyhelminthes",FALSE,"Acoleidae","not ungulate parasites",TRUE
@@ -330,7 +328,7 @@
 "Rhoptrobothriidae","Platyhelminthes",FALSE,NA,"not ungulate parasites",FALSE
 "Schistotaeniidae","Platyhelminthes",FALSE,"Schistotaeniidae","not ungulate parasites",TRUE
 "Schizochoeridae","Platyhelminthes",FALSE,"Schizochoeridae","not ungulate parasites",TRUE
-"Serendipidae","Platyhelminthes",FALSE,"Serendipidae (family in Lophotrochozoa)","not ungulate parasites",FALSE
+"Serendipidae","Platyhelminthes",FALSE,"Serendipidae_(family_in_Lophotrochozoa)","not ungulate parasites",TRUE
 "Shindeobothriiidae","Platyhelminthes",FALSE,"Shindeobothriiidae","not ungulate parasites",FALSE
 "Solenophoridae","Platyhelminthes",FALSE,"Bolbophoridae","not ungulate parasites",TRUE
 "Spathebothriidae","Platyhelminthes",FALSE,"Spathebothriidae","not ungulate parasites",TRUE
@@ -522,7 +520,7 @@
 "Stylochidae","Platyhelminthes",FALSE,"Stylochidae","not ungulate parasites",TRUE
 "Scutariellidae","Platyhelminthes",FALSE,"Scutariellidae","not ungulate parasites",TRUE
 "Actinodactylellidae","Platyhelminthes",FALSE,"Actinodactylellidae","not ungulate parasites",TRUE
-"Diceratocephalidae","Platyhelminthes",FALSE,"Diceratocephalidae (family in Lophotrochozoa)","not ungulate parasites",FALSE
+"Diceratocephalidae","Platyhelminthes",FALSE,"Diceratocephalidae_(family_in_Lophotrochozoa)","not ungulate parasites",TRUE
 "Temnocephalidae","Platyhelminthes",FALSE,"Temnocephalidae","not ungulate parasites",TRUE
 "Acanthocolpidae","Platyhelminthes",FALSE,"Acanthocolpidae","not ungulate parasites",TRUE
 "Allocreadiidae","Platyhelminthes",FALSE,"Allocreadiidae","not ungulate parasites",TRUE
@@ -652,7 +650,6 @@
 "Mesocestoididae","Platyhelminthes",FALSE,"Mesocestoididae","not ungulate parasites",TRUE
 "Nematotaeniidae","Platyhelminthes",FALSE,"Nematotaeniidae","not ungulate parasites",TRUE
 "Catenotaeniidae","Platyhelminthes",FALSE,"Catenotaeniidae","not ungulate parasites",TRUE
-"Anoplocephalidae","Platyhelminthes",FALSE,"Anoplocephalidae","intermediate host eaten",TRUE
 "Diplopharyngeatidae","Platyhelminthes",FALSE,"Diplopharyngeatidae","not ungulate parasites",FALSE
 "Fellodistomatidae","Platyhelminthes",FALSE,"Fellodistomatidae","not ungulate parasites",FALSE
 "Harmotrematidae","Platyhelminthes",FALSE,"Harmotrematidae","not ungulate parasites",TRUE
@@ -660,7 +657,7 @@
 "Urotrematidae","Platyhelminthes",FALSE,"Urotrematidae","not ungulate parasites",TRUE
 "Monascidae","Platyhelminthes",FALSE,"Monascidae","not ungulate parasites",FALSE
 "Liolopidae","Platyhelminthes",FALSE,"Liolopidae","not ungulate parasites",TRUE
-"Moreauiidae","Platyhelminthes",FALSE,"Moreauiidae (family in superfamily Brachylaimoidea)","not ungulate parasites",FALSE
+"Moreauiidae","Platyhelminthes",FALSE,"Moreauiidae_(family_in_superfamily_Brachylaimoidea)","not ungulate parasites",FALSE
 "Ovariopteridae","Platyhelminthes",FALSE,"Ovariopteridae","not ungulate parasites",TRUE
 "Thapariellidae","Platyhelminthes",FALSE,"Thapariellidae","not ungulate parasites",TRUE
 "Monodhelminthidae","Platyhelminthes",FALSE,"Tandanicolidae","not ungulate parasites",TRUE
