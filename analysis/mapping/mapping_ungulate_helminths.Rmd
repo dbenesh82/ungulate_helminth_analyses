@@ -219,16 +219,16 @@ tree_df$state <- levels(tre_dat_red$trans_route)[state]
 
 ```{r}
 # plot tree
-p <- ggtree(tree_df) + 
-  geom_tree(aes(color = state)) + 
-  geom_tiplab(data = filter(tree_df, state != 'not ungulate parasites'),
-              size = 1.5) +
-  xlim(0, max(tree_df$x) + 0.09) +
-  theme(legend.position = c(0.5, 1), 
-        legend.justification = c(1,1),
-        legend.title = element_blank(),
-        legend.text = element_text(size = 14))
-p
+#p <- ggtree(tree_df) + 
+#  geom_tree(aes(color = state)) + 
+#  geom_tiplab(data = filter(tree_df, state != 'not ungulate parasites'),
+#              size = 1.5) +
+#  xlim(0, max(tree_df$x) + 0.09) +
+#  theme(legend.position = c(0.5, 1), 
+#        legend.justification = c(1,1),
+#        legend.title = element_blank(),
+#        legend.text = element_text(size = 14))
+#p
 ```
 
 Find the nodes with the transitions
@@ -253,14 +253,22 @@ trans_states <- filter(trans_states, child_state != parent_state)%>%
   filter(child_state != "not ungulate parasites")
 
 tree_df <- mutate(tree_df, trans_node = if_else(node %in% trans_states$parent_node, TRUE, FALSE))
-filter(tree_df, trans_node)
+
 # only cases where parent and child have different states
 #filter(tree_df, node %in% trans_states$child_node) # check if transitions correctly identified - looks good
 
 ```
 
 ```{r}
-head(tree_df)
+#head(tree_df2)
+#tree_df2 <- filter(tree_df, trans_node)
+#tree_df2 <- left_join(tree_df2, 
+#                     select(trans_states, parent_node, child_state),
+#                      by = c("parent" = "parent_node"))
+
+```
+```{r}
+head(trans_states)
 ```
 
 ```{r}
@@ -270,9 +278,9 @@ p <- ggtree(tree_df) +
               aes(color = child_state),
               size = 1.5) +
   geom_nodepoint(data = filter(tree_df, trans_node),
-                 aes(color = child_state),
-                 shape = 19, size = 3, alpha = 0.75) +
+                 shape = 19, size = 3, alpha = 0.5) +
   xlim(0, max(tree_df$x) + 0.09) +
+  scale_color_manual(values = c(mypalette[1:5], 'light gray', mypalette[6])) +
   theme(legend.position = c(0.5, 1), 
         legend.justification = c(1,1),
         legend.title = element_blank(),
@@ -283,5 +291,9 @@ p <- ggtree(tree_df) +
   #               aes(color = child_state),
    #              shape = 19, size = 3, alpha = 0.75)
 p
+```
+
+```{r}
+ggsave(filename = 'test2.pdf', width = 297, height = 210, units = "mm")
 ```
 
