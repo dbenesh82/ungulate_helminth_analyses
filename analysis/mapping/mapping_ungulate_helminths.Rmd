@@ -5,6 +5,8 @@ date: "February 25, 2019"
 output: html_document
 ---
 
+Here I want to determine how often different transmission strategies to ungulate hosts have evolved. To that end, I want to map anceestral states to see 1) how often ungulates have been invaded and 2) what routes were taken to infect them.
+
 ```{r setup, include=FALSE}
 library(ggplot2)
 library(dplyr)
@@ -27,11 +29,20 @@ tree$edge.length <- NULL # remove branch lengths
 tre_dat <- read.csv(file = "ungulate_helminth_tree_table.csv")
 ```
 
-Probably need to fix some stuff, like internal organization of platyhelminths.
+Here is the tree of helminth families, acquired from the open tree of life. Some parts of it need to be resolved using phylogenies that are not included in the open tree.
+
 ```{r}
 plot(tree, cex = 0.5, show.tip.label = F, show.node.label = T)
 ```
 
+```{r}
+# bifurcating produces slightly different mapping - better if non-random, i.e. I manually resolve tree
+# tree <- compute.brlen(tree)
+# tree <- multi2di(tree)
+# tree$edge.length[which(tree$edge.length == 0)] <- 0.0001
+```
+
+I reduced the dataset of family names to just include the ones in the tree.
 
 ```{r}
 # reduce to just that in tree
@@ -39,10 +50,10 @@ tre_dat <- filter(tre_dat, in_tree)
 
 # which OTL names not in tree
 uniq_otl_names <- unique(tre_dat$otl_name)
-tree$tip.label[!(tree$tip.label %in% uniq_otl_names)] # hopefully none after fixing last group
+#tree$tip.label[!(tree$tip.label %in% uniq_otl_names)] # none after fixing group names in get_tree.rmd
 ```
 
-There are more rows in data than tip labels. This is because some families were synonomized, resulting in several rows in the data with the same otl name.
+There are more rows in data than tip labels. This is because some families were synonomized, resulting in several rows in the data with the same family (otl) name.
 
 ```{r}
 group_by(tre_dat, otl_name)%>%
@@ -50,7 +61,7 @@ group_by(tre_dat, otl_name)%>%
   filter(n>1)
 ```
 
-Go through and just take first one for those with multiple OTL entries for a given OTL name.
+For those with multiple OTL entries for a given OTL name, I just took the first name.
 
 ```{r}
 rm(tre_dat_red)
@@ -79,26 +90,22 @@ tre_dat_red <- tre_dat_red[mv,]
 rm(mv)
 ```
 
-Mapping! First ungulate vs non-ungulate.
+After making the trait data and tree consistent regarding names and order, I can start mapping. I am going to keep things simple and use a parsimony algorithm. It is fast and requires few assumptions about transition costs.
 
 ```{r}
 # PARSIMONY
-states_int <- map_to_state_space(tre_dat_red$ung_inf)
+states_int <- map_to_state_space(tre_dat_red$ung_inf) # for the castor functions, trait has to be integer (faster)
 ac1 <- asr_max_parsimony(tree, states_int$mapped_states, Nstates = 2)
 ```
-
-PLOT
 
 ```{r}
 # palette for two states
 mypalette <- brewer.pal(n = states_int$Nstates, "Set1")[1:2]
 ```
 
-
 ```{r}
 tree_df <- fortify(tree) # make a df
 ```
-
 
 ```{r}
 # ancestral state reconstructions to add to tree
@@ -113,6 +120,8 @@ tree_df <- mutate(tree_df,
                   state = if_else(state == 1, "not ungulate parasite", "ungulate parasite"))
 ```
 
+After running the parsimony algorithm, let's plot the output, with ancestral states represented by colors on the tree.
+
 ```{r}
 # plot tree
 p <- ggtree(tree_df) + 
@@ -126,6 +135,7 @@ p <- ggtree(tree_df) +
         legend.text = element_text(size = 14))
 p
 ```
+Evolutionary invasions of ungulates has occurred multiple times throughout the tree. This is no surprise; ungulates harbor a diverse and phylogenetically distant group of parasitic worms.
 ```{r}
 # # plot tree with all tip labels
 # p <- ggtree(tree_df) + 
@@ -144,7 +154,7 @@ p
 # p + geom_text2(aes(subset=!isTip, label=node), hjust=-.3)
 ```
 
-Find the nodes with the transitions
+Let's highlight the spots on the tree where transitions occured.
 
 ```{r}
 # reduce to just tree structure and states
@@ -170,13 +180,23 @@ p <- p +
 p
 ```
 
+We can write this tree to file.
+
 ```{r}
 ggsave(filename = 'test.pdf', width = 297, height = 210, units = "mm")
 ```
 
+Now let's split the 'ungulate parasite' group into multiple groups, depending on how they infect ungulates. First, we define three trophic transmission strategies:
+1. eggs ingested
+2. free larvae ingested
+3. intermediate host ingested
 
+And then 3 additional non-trophic strategies:
+4. active larvae, seek/penetrate
+5. vector transmission
+6. no free propagule - transmammary, transplacental or cannabilistic transmission
 
-Now map the transmission strategies!
+Then we re-map these onto the tree with parsimony.
 
 ```{r}
 tre_dat_red <- mutate(tre_dat_red, trans_route = factor(trans_route, 
@@ -194,8 +214,6 @@ tre_dat_red <- mutate(tre_dat_red, trans_route = factor(trans_route,
 states_int <- as.integer(tre_dat_red$trans_route)
 ac2 <- asr_max_parsimony(tree, states_int, Nstates = max(states_int))
 ```
-
-PLOT
 
 ```{r}
 # palette for seven states
@@ -231,8 +249,6 @@ tree_df$state <- levels(tre_dat_red$trans_route)[state]
 #p
 ```
 
-Find the nodes with the transitions
-
 ```{r}
 # reduce to just tree structure and states
 trans_states <- select(tree_df, child_node = node, parent_node = parent, child_state = state)
@@ -256,10 +272,10 @@ tree_df <- mutate(tree_df, trans_node = if_else(node %in% trans_states$parent_no
 
 # only cases where parent and child have different states
 #filter(tree_df, node %in% trans_states$child_node) # check if transitions correctly identified - looks good
-
 ```
 
 ```{r}
+#filter(trans_node)
 #head(tree_df2)
 #tree_df2 <- filter(tree_df, trans_node)
 #tree_df2 <- left_join(tree_df2, 
@@ -292,6 +308,8 @@ p <- ggtree(tree_df) +
    #              shape = 19, size = 3, alpha = 0.75)
 p
 ```
+
+The plot shows the transitions.
 
 ```{r}
 ggsave(filename = 'test2.pdf', width = 297, height = 210, units = "mm")
