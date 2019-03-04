@@ -1,0 +1,971 @@
+#NEXUS
+[R-package APE, Mon Mar 04 13:42:12 2019]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 479;
+	TAXLABELS
+		Ancyrocephalidae
+		Gyrodactylidae
+		Monocotylidae
+		Ancylodiscoididae
+		Dactylogyridae
+		Diplectanidae
+		Capsalidae
+		Pseudodactylogyridae
+		Udonellidae
+		Microbothriidae
+		Bothitrematidae
+		Neocalceostomatidae
+		Amphibdellatidae
+		Calceostomatidae
+		Hexabothriidae
+		Tetraonchidae
+		Anoplodiscidae
+		Acanthocotylidae
+		Enoplocotylidae
+		Neotetraonchidae
+		Fridericianellidae
+		Tetraonchoididae
+		Loimoidae
+		Dionchidae
+		Montchadskyellidae
+		Octomacridae
+		Polystomatidae
+		Diclidophoridae
+		Gotocotylidae
+		Neothoracocotylidae
+		Mazocraeidae
+		Axinidae
+		Plectanocotylidae
+		Pyragraphoridae
+		Diplozoidae
+		Gastrocotylidae
+		Chimaericolidae
+		Heteraxinidae
+		Hexostomatidae
+		Discocotylidae
+		Allodiscocotylidae
+		Sphyranuridae
+		Chauhaneidae
+		Allopyragraphoridae
+		Protomicrocotylidae
+		Pterinotrematidae
+		Pseudodiclidophoridae
+		Megalonchidae
+		Paramonaxinidae
+		Diclybothriidae
+		Heteromicrocotylidae
+		Macrovalvitrematidae
+		Bychowskicotylidae
+		Anchorophoridae
+		Aviellidae
+		Octolabeidae
+		Monaxinoididae
+		Megamicrocotylidae
+		Mazoplectidae
+		Rhinecotyle
+		Rhinebothriidae
+		Echeneibothriidae
+		Anthocephaliidae
+		Escherbothriidae
+		Bothriocephalidae
+		Triaenophoridae
+		Echinophallidae
+		Mesocestoididae
+		Hymenolepididae
+		Anoplocephalidae
+		Taeniidae
+		Catenotaeniidae
+		Davaineidae
+		Dilepididae
+		Dipylidiidae
+		Metadilepididae
+		Amabiliidae
+		Nematotaeniidae
+		Paruterinidae
+		Linstowiidae
+		Gryporhynchidae
+		Schistotaeniidae
+		Progynotaeniidae
+		Acoleidae
+		Dioecocestidae
+		Caryophyllaeidae
+		Lytocestidae
+		Capingentidae
+		Balanotaeniidae
+		Phyllobothriidae
+		Chimaerocestidae
+		Diphyllobothriidae
+		Lacistorhynchidae
+		Otobothriidae
+		Eutetrarhynchidae
+		Tentaculariidae
+		Gymnorhynchidae
+		Pseudotobothriidae
+		Sphyriocephalidae
+		Gilquiniidae
+		Dasyrhynchidae
+		Rhinoptericolidae
+		Mixodigmatidae
+		Pterobothriidae
+		Hornelliellidae
+		Aporhynchidae
+		Rhopalothylacidae
+		Progrillotiidae
+		Paranybeliniidae
+		Onchobothriidae
+		Serendipidae
+		Dioecotaeniidae
+		Prosobothriidae
+		Lecanicephalidae
+		Tetragonocephalidae
+		Polypocephalidae
+		Aberrapecidae
+		Zanobatocestidae
+		Cephalobothriidae
+		Echinobothriidae
+		Proteocephalidae
+		Acrobothriidae
+		Spathebothriidae
+		Litobothriidae
+		Cathetocephalidae
+		Tetrabothriidae
+		Nippotaeniidae
+		Haplobothriidae
+		Cephalochlamydidae
+		Gyrocotylidae
+		Amphilinidae
+		Schizochoeridae
+		Gastrodiscidae
+		Opisthogonimidae
+		Areobiotrematidae
+		Stomylotrematidae
+		Oesophagicolidae
+		Cylindrorchiidae
+		Laterotrematidae
+		Gekkonotrematidae
+		Campululidae
+		Brumptidae
+		Anenterotrematidae
+		Lepocreadiidae
+		Lepidapedidae
+		Aephnidiogenidae
+		Gorgocephalidae
+		Enenteridae
+		Deropristidae
+		Liliatrematidae
+		Apocreadiidae
+		Harmotrematidae
+		Microphallidae
+		Zoogonidae
+		Faustulidae
+		Pleurogenidae
+		Renicolidae
+		Prosthogonimidae
+		Lecithodendriidae
+		Pachypsolidae
+		Cortrematidae
+		Diplangidae
+		Exotidendriidae
+		Haploporidae
+		Atractotrematidae
+		Opecoelidae
+		Allocreadiidae
+		Brachycladiidae
+		Opistholebetidae
+		Batrachotrematidae
+		Cephalogonimidae
+		Plagiorchiidae
+		Reniferidae
+		Gorgoderidae
+		Brachycoeliidae
+		Telorchiidae
+		Dicrocoeliidae
+		Encyclometridae
+		Haematoloechidae
+		Macroderoididae
+		Omphalometridae
+		Auridistomidae
+		Styphlotrematidae
+		Meristocotylidae
+		Echinoporidae
+		Urotrematidae
+		Orientocreadiidae
+		Angiodictyidae
+		Notocotylidae
+		Rhabdiopoeidae
+		Labicolidae
+		Opisthotrematidae
+		Nudacotylidae
+		Pronocephalidae
+		Zygocotylidae
+		Choerocotylidae
+		Balanorchiidae
+		Paramphistomidae
+		Gastrothylacidae
+		Paramphistomatidae
+		Mesometridae
+		Heronimidae
+		Diplodiscidae
+		Cladorchiidae
+		Olveriidae
+		Stephanopharyngidae
+		Fasciolidae
+		Echinostomatidae
+		Himasthlidae
+		Philophthalmidae
+		Eucotylidae
+		Psilostomidae
+		Echinochasmidae
+		Cyclocoelidae
+		Calycodidae
+		Rhytidodidae
+		Haplosplanchnidae
+		Troglotrematidae
+		Collyriclidae
+		Nanophyetidae
+		Orchipedidae
+		Monorchiidae
+		Lissorchiidae
+		Jubilariidae
+		Cryptogonimidae
+		Opisthorchiidae
+		Heterophyidae
+		Pachytrematidae
+		Acanthocolpidae
+		Gyliauchenidae
+		Lecithasteridae
+		Transversotrematidae
+		Isoparorchiidae
+		Bivesiculidae
+		Hirudinellidae
+		Didymozoidae
+		Hemiuridae
+		Accacoeliidae
+		Azygiidae
+		Ptychogonimidae
+		Derogenidae
+		Sclerodistomidae
+		Syncoeliidae
+		Dictysarcidae
+		Sclerodistomoididae
+		Liolopidae
+		Leucochloridiidae
+		Bolbophoridae
+		Protrodiplostomatidae
+		Schistosomatidae
+		Aporocotylidae
+		Spirorchiidae
+		Diplostomatidae
+		Strigeidae
+		Cyathocotylidae
+		Bolbocephalodidae
+		Brauninidae
+		Gymnophallidae
+		Tandanicolidae
+		Callodistomidae
+		Botulisaccidae
+		Leucochloridiomorphidae
+		Clinostomidae
+		Bucephalidae
+		Fellodistomidae
+		Brachylaimidae
+		Thapariellidae
+		Ovariopteridae
+		Hasstilesiidae
+		Multicalycidae
+		Aspidogastridae
+		Rugogastridae
+		Stichocotylidae
+		Moniliformidae
+		Giganthorhynchidae
+		Oligacanthorhynchidae
+		Apororhynchidae
+		Echinorhynchidae
+		Rhadinorhynchidae
+		Arhythmacanthidae
+		Transvenidae
+		Illiosentidae
+		Pomphorhynchidae
+		Cavisomidae
+		Heteracanthocephalidae
+		Diplosentidae
+		Fessisentidae
+		Gymnorhadinorhynchidae
+		Isthmosacanthidae
+		Sauracanthorhynchidae
+		Polymorphidae
+		Plagiorhynchidae
+		Centrorhynchidae
+		Pyrirhynchidae
+		Neoechinorhynchidae
+		Tenuisentidae
+		Dendronucleatidae
+		Quadrigyridae
+		Polyacanthorhynchidae
+		Rhabditonematidae
+		Heterohabditidae
+		Robertiidae
+		Syrphonematidae
+		Crossophoridae
+		Heterocheilidae
+		Quimperiidae
+		Anisakidae
+		Toxocaridae
+		Ascarididae
+		Ascarididae2
+		Toxocaridae2
+		Cosmocercidae
+		Kathlaniidae
+		Atractidae
+		Heterakidae
+		Ascaridiidae
+		Seuratidae
+		Cucullanidae
+		Schneidernematidae
+		Scolecophilidae
+		Philometridae
+		Dracunculidae
+		Anguillicolidae
+		Physalopteridae
+		Camallanidae
+		Onchocercidae
+		Mesidionematidae
+		Homungellidae
+		Setariidae
+		Filariidae
+		Cystidicolidae
+		Spirocercidae
+		Gongylonematidae
+		Spiruridae
+		Acuariidae
+		Habronematidae
+		Tetrameridae
+		Hedruridae
+		Thelaziidae
+		Gnathostomatidae
+		Rhigonematidae
+		Thelastomatidae
+		Oxyuridae
+		Pharyngodonidae
+		Rhabdiasidae
+		Angiostomatidae
+		Agfidae
+		Daubayliidae
+		Neodiplogasteridae
+		Diplogasteridae
+		Cylindrocorporidae
+		Diplogasteroididae
+		Heterorhabditidae
+		Ollulanidae
+		Amidostomatidae
+		Dictyocaulidae
+		Molineidae
+		Herpetostrongylidae
+		Haemonchidae
+		Trichostrongylidae
+		Cooperiidae
+		Syngamidae
+		Syngamidae2
+		Strongylidae
+		Cloacinidae
+		Chabertiidae
+		Ancylostomatidae
+		Angiostrongylidae
+		Filaroididae
+		Crenosomatidae
+		Pseudaliidae
+		Protostrongylidae
+		Metastrongylidae
+		Diaphanocephalidae
+		Neotylenchidae
+		Sphaerulariidae
+		Allantonematidae
+		Iotonchiidae
+		Aphelenchidae
+		Anguinidae
+		Hoplolaimidae
+		Belonolaimidae
+		Tylenchidae
+		Dolichodoridae
+		Heteroderidae
+		Criconematidae
+		Tylenchulidae
+		Cephalobidae
+		Elaphonematidae
+		Alirhabditidae
+		Aphelenchoididae
+		Steinernematidae
+		Brevibuccidae
+		Alloionematidae
+		Chambersiellidae
+		Panagrolaimidae
+		Strongyloididae
+		Strongyloididae2
+		Teratocephalidae
+		Rhabdolaimidae
+		Aulolaimidae
+		Axonolaimidae
+		Diplopeltidae
+		Leptolaimidae
+		Haliplectidae
+		Creagrocercidae
+		Xyalidae
+		Monhysteridae
+		Comesomatidae
+		Sphaerolaimidae
+		Linhomoeidae
+		Siphonolaimidae
+		Bunonematidae
+		Drilonematidae
+		Ungellidae
+		Desmodoridae
+		Monoposthiidae
+		Draconematidae
+		Epsilonematidae
+		Microlaimidae
+		Choanolaimidae
+		Cyatholaimidae
+		Chromadoridae
+		Ceramonematidae
+		Selachinematidae
+		Desmoscolecidae
+		Meyliidae
+		Trachypleurosidae
+		Opailaimidae
+		Falcihastidae
+		Qudsianematidae
+		Dorylaimidae
+		Aporcelaimidae
+		Longidoridae
+		Actinolaimidae
+		Belondiridae
+		Leptonchidae
+		Tylencholaimidae
+		Tylencholaimellidae
+		Diphterophoridae
+		Nygolaimidae
+		Nygolaimellidae
+		Tetradonematidae
+		Mermithidae
+		Mononchidae
+		Anatonchidae
+		Bathyodontidae
+		Mononchulidae
+		Isolaimiidae
+		Rhabdodemaniidae
+		Cryptonchidae
+		Oncholaimidae
+		Enchelidiidae
+		Thoracostomopsidae
+		Anoplostomatidae
+		Enoplidae
+		Phanodermatidae
+		Leptosomatidae
+		Anticomidae
+		Tripylidae
+		Ironidae
+		Oxystominidae
+		Alaimidae
+		Trichuridae
+		Trichinellidae
+		Capillariidae
+		Cystoopsidae
+		Tripyloididae
+		Bastianiidae
+		Prismatolaimidae
+		Diphtherophoridae
+		Trichodoridae
+		Trefusiidae
+		Xennellidae
+		Lauratonematidae
+		Soboliphymatidae
+		Muspiceidae
+		Robertdollfusidae
+		Rhaptothyreidae
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Ancyrocephalidae,
+		2	Gyrodactylidae,
+		3	Monocotylidae,
+		4	Ancylodiscoididae,
+		5	Dactylogyridae,
+		6	Diplectanidae,
+		7	Capsalidae,
+		8	Pseudodactylogyridae,
+		9	Udonellidae,
+		10	Microbothriidae,
+		11	Bothitrematidae,
+		12	Neocalceostomatidae,
+		13	Amphibdellatidae,
+		14	Calceostomatidae,
+		15	Hexabothriidae,
+		16	Tetraonchidae,
+		17	Anoplodiscidae,
+		18	Acanthocotylidae,
+		19	Enoplocotylidae,
+		20	Neotetraonchidae,
+		21	Fridericianellidae,
+		22	Tetraonchoididae,
+		23	Loimoidae,
+		24	Dionchidae,
+		25	Montchadskyellidae,
+		26	Octomacridae,
+		27	Polystomatidae,
+		28	Diclidophoridae,
+		29	Gotocotylidae,
+		30	Neothoracocotylidae,
+		31	Mazocraeidae,
+		32	Axinidae,
+		33	Plectanocotylidae,
+		34	Pyragraphoridae,
+		35	Diplozoidae,
+		36	Gastrocotylidae,
+		37	Chimaericolidae,
+		38	Heteraxinidae,
+		39	Hexostomatidae,
+		40	Discocotylidae,
+		41	Allodiscocotylidae,
+		42	Sphyranuridae,
+		43	Chauhaneidae,
+		44	Allopyragraphoridae,
+		45	Protomicrocotylidae,
+		46	Pterinotrematidae,
+		47	Pseudodiclidophoridae,
+		48	Megalonchidae,
+		49	Paramonaxinidae,
+		50	Diclybothriidae,
+		51	Heteromicrocotylidae,
+		52	Macrovalvitrematidae,
+		53	Bychowskicotylidae,
+		54	Anchorophoridae,
+		55	Aviellidae,
+		56	Octolabeidae,
+		57	Monaxinoididae,
+		58	Megamicrocotylidae,
+		59	Mazoplectidae,
+		60	Rhinecotyle,
+		61	Rhinebothriidae,
+		62	Echeneibothriidae,
+		63	Anthocephaliidae,
+		64	Escherbothriidae,
+		65	Bothriocephalidae,
+		66	Triaenophoridae,
+		67	Echinophallidae,
+		68	Mesocestoididae,
+		69	Hymenolepididae,
+		70	Anoplocephalidae,
+		71	Taeniidae,
+		72	Catenotaeniidae,
+		73	Davaineidae,
+		74	Dilepididae,
+		75	Dipylidiidae,
+		76	Metadilepididae,
+		77	Amabiliidae,
+		78	Nematotaeniidae,
+		79	Paruterinidae,
+		80	Linstowiidae,
+		81	Gryporhynchidae,
+		82	Schistotaeniidae,
+		83	Progynotaeniidae,
+		84	Acoleidae,
+		85	Dioecocestidae,
+		86	Caryophyllaeidae,
+		87	Lytocestidae,
+		88	Capingentidae,
+		89	Balanotaeniidae,
+		90	Phyllobothriidae,
+		91	Chimaerocestidae,
+		92	Diphyllobothriidae,
+		93	Lacistorhynchidae,
+		94	Otobothriidae,
+		95	Eutetrarhynchidae,
+		96	Tentaculariidae,
+		97	Gymnorhynchidae,
+		98	Pseudotobothriidae,
+		99	Sphyriocephalidae,
+		100	Gilquiniidae,
+		101	Dasyrhynchidae,
+		102	Rhinoptericolidae,
+		103	Mixodigmatidae,
+		104	Pterobothriidae,
+		105	Hornelliellidae,
+		106	Aporhynchidae,
+		107	Rhopalothylacidae,
+		108	Progrillotiidae,
+		109	Paranybeliniidae,
+		110	Onchobothriidae,
+		111	Serendipidae,
+		112	Dioecotaeniidae,
+		113	Prosobothriidae,
+		114	Lecanicephalidae,
+		115	Tetragonocephalidae,
+		116	Polypocephalidae,
+		117	Aberrapecidae,
+		118	Zanobatocestidae,
+		119	Cephalobothriidae,
+		120	Echinobothriidae,
+		121	Proteocephalidae,
+		122	Acrobothriidae,
+		123	Spathebothriidae,
+		124	Litobothriidae,
+		125	Cathetocephalidae,
+		126	Tetrabothriidae,
+		127	Nippotaeniidae,
+		128	Haplobothriidae,
+		129	Cephalochlamydidae,
+		130	Gyrocotylidae,
+		131	Amphilinidae,
+		132	Schizochoeridae,
+		133	Gastrodiscidae,
+		134	Opisthogonimidae,
+		135	Areobiotrematidae,
+		136	Stomylotrematidae,
+		137	Oesophagicolidae,
+		138	Cylindrorchiidae,
+		139	Laterotrematidae,
+		140	Gekkonotrematidae,
+		141	Campululidae,
+		142	Brumptidae,
+		143	Anenterotrematidae,
+		144	Lepocreadiidae,
+		145	Lepidapedidae,
+		146	Aephnidiogenidae,
+		147	Gorgocephalidae,
+		148	Enenteridae,
+		149	Deropristidae,
+		150	Liliatrematidae,
+		151	Apocreadiidae,
+		152	Harmotrematidae,
+		153	Microphallidae,
+		154	Zoogonidae,
+		155	Faustulidae,
+		156	Pleurogenidae,
+		157	Renicolidae,
+		158	Prosthogonimidae,
+		159	Lecithodendriidae,
+		160	Pachypsolidae,
+		161	Cortrematidae,
+		162	Diplangidae,
+		163	Exotidendriidae,
+		164	Haploporidae,
+		165	Atractotrematidae,
+		166	Opecoelidae,
+		167	Allocreadiidae,
+		168	Brachycladiidae,
+		169	Opistholebetidae,
+		170	Batrachotrematidae,
+		171	Cephalogonimidae,
+		172	Plagiorchiidae,
+		173	Reniferidae,
+		174	Gorgoderidae,
+		175	Brachycoeliidae,
+		176	Telorchiidae,
+		177	Dicrocoeliidae,
+		178	Encyclometridae,
+		179	Haematoloechidae,
+		180	Macroderoididae,
+		181	Omphalometridae,
+		182	Auridistomidae,
+		183	Styphlotrematidae,
+		184	Meristocotylidae,
+		185	Echinoporidae,
+		186	Urotrematidae,
+		187	Orientocreadiidae,
+		188	Angiodictyidae,
+		189	Notocotylidae,
+		190	Rhabdiopoeidae,
+		191	Labicolidae,
+		192	Opisthotrematidae,
+		193	Nudacotylidae,
+		194	Pronocephalidae,
+		195	Zygocotylidae,
+		196	Choerocotylidae,
+		197	Balanorchiidae,
+		198	Paramphistomidae,
+		199	Gastrothylacidae,
+		200	Paramphistomatidae,
+		201	Mesometridae,
+		202	Heronimidae,
+		203	Diplodiscidae,
+		204	Cladorchiidae,
+		205	Olveriidae,
+		206	Stephanopharyngidae,
+		207	Fasciolidae,
+		208	Echinostomatidae,
+		209	Himasthlidae,
+		210	Philophthalmidae,
+		211	Eucotylidae,
+		212	Psilostomidae,
+		213	Echinochasmidae,
+		214	Cyclocoelidae,
+		215	Calycodidae,
+		216	Rhytidodidae,
+		217	Haplosplanchnidae,
+		218	Troglotrematidae,
+		219	Collyriclidae,
+		220	Nanophyetidae,
+		221	Orchipedidae,
+		222	Monorchiidae,
+		223	Lissorchiidae,
+		224	Jubilariidae,
+		225	Cryptogonimidae,
+		226	Opisthorchiidae,
+		227	Heterophyidae,
+		228	Pachytrematidae,
+		229	Acanthocolpidae,
+		230	Gyliauchenidae,
+		231	Lecithasteridae,
+		232	Transversotrematidae,
+		233	Isoparorchiidae,
+		234	Bivesiculidae,
+		235	Hirudinellidae,
+		236	Didymozoidae,
+		237	Hemiuridae,
+		238	Accacoeliidae,
+		239	Azygiidae,
+		240	Ptychogonimidae,
+		241	Derogenidae,
+		242	Sclerodistomidae,
+		243	Syncoeliidae,
+		244	Dictysarcidae,
+		245	Sclerodistomoididae,
+		246	Liolopidae,
+		247	Leucochloridiidae,
+		248	Bolbophoridae,
+		249	Protrodiplostomatidae,
+		250	Schistosomatidae,
+		251	Aporocotylidae,
+		252	Spirorchiidae,
+		253	Diplostomatidae,
+		254	Strigeidae,
+		255	Cyathocotylidae,
+		256	Bolbocephalodidae,
+		257	Brauninidae,
+		258	Gymnophallidae,
+		259	Tandanicolidae,
+		260	Callodistomidae,
+		261	Botulisaccidae,
+		262	Leucochloridiomorphidae,
+		263	Clinostomidae,
+		264	Bucephalidae,
+		265	Fellodistomidae,
+		266	Brachylaimidae,
+		267	Thapariellidae,
+		268	Ovariopteridae,
+		269	Hasstilesiidae,
+		270	Multicalycidae,
+		271	Aspidogastridae,
+		272	Rugogastridae,
+		273	Stichocotylidae,
+		274	Moniliformidae,
+		275	Giganthorhynchidae,
+		276	Oligacanthorhynchidae,
+		277	Apororhynchidae,
+		278	Echinorhynchidae,
+		279	Rhadinorhynchidae,
+		280	Arhythmacanthidae,
+		281	Transvenidae,
+		282	Illiosentidae,
+		283	Pomphorhynchidae,
+		284	Cavisomidae,
+		285	Heteracanthocephalidae,
+		286	Diplosentidae,
+		287	Fessisentidae,
+		288	Gymnorhadinorhynchidae,
+		289	Isthmosacanthidae,
+		290	Sauracanthorhynchidae,
+		291	Polymorphidae,
+		292	Plagiorhynchidae,
+		293	Centrorhynchidae,
+		294	Pyrirhynchidae,
+		295	Neoechinorhynchidae,
+		296	Tenuisentidae,
+		297	Dendronucleatidae,
+		298	Quadrigyridae,
+		299	Polyacanthorhynchidae,
+		300	Rhabditonematidae,
+		301	Heterohabditidae,
+		302	Robertiidae,
+		303	Syrphonematidae,
+		304	Crossophoridae,
+		305	Heterocheilidae,
+		306	Quimperiidae,
+		307	Anisakidae,
+		308	Toxocaridae,
+		309	Ascarididae,
+		310	Ascarididae2,
+		311	Toxocaridae2,
+		312	Cosmocercidae,
+		313	Kathlaniidae,
+		314	Atractidae,
+		315	Heterakidae,
+		316	Ascaridiidae,
+		317	Seuratidae,
+		318	Cucullanidae,
+		319	Schneidernematidae,
+		320	Scolecophilidae,
+		321	Philometridae,
+		322	Dracunculidae,
+		323	Anguillicolidae,
+		324	Physalopteridae,
+		325	Camallanidae,
+		326	Onchocercidae,
+		327	Mesidionematidae,
+		328	Homungellidae,
+		329	Setariidae,
+		330	Filariidae,
+		331	Cystidicolidae,
+		332	Spirocercidae,
+		333	Gongylonematidae,
+		334	Spiruridae,
+		335	Acuariidae,
+		336	Habronematidae,
+		337	Tetrameridae,
+		338	Hedruridae,
+		339	Thelaziidae,
+		340	Gnathostomatidae,
+		341	Rhigonematidae,
+		342	Thelastomatidae,
+		343	Oxyuridae,
+		344	Pharyngodonidae,
+		345	Rhabdiasidae,
+		346	Angiostomatidae,
+		347	Agfidae,
+		348	Daubayliidae,
+		349	Neodiplogasteridae,
+		350	Diplogasteridae,
+		351	Cylindrocorporidae,
+		352	Diplogasteroididae,
+		353	Heterorhabditidae,
+		354	Ollulanidae,
+		355	Amidostomatidae,
+		356	Dictyocaulidae,
+		357	Molineidae,
+		358	Herpetostrongylidae,
+		359	Haemonchidae,
+		360	Trichostrongylidae,
+		361	Cooperiidae,
+		362	Syngamidae,
+		363	Syngamidae2,
+		364	Strongylidae,
+		365	Cloacinidae,
+		366	Chabertiidae,
+		367	Ancylostomatidae,
+		368	Angiostrongylidae,
+		369	Filaroididae,
+		370	Crenosomatidae,
+		371	Pseudaliidae,
+		372	Protostrongylidae,
+		373	Metastrongylidae,
+		374	Diaphanocephalidae,
+		375	Neotylenchidae,
+		376	Sphaerulariidae,
+		377	Allantonematidae,
+		378	Iotonchiidae,
+		379	Aphelenchidae,
+		380	Anguinidae,
+		381	Hoplolaimidae,
+		382	Belonolaimidae,
+		383	Tylenchidae,
+		384	Dolichodoridae,
+		385	Heteroderidae,
+		386	Criconematidae,
+		387	Tylenchulidae,
+		388	Cephalobidae,
+		389	Elaphonematidae,
+		390	Alirhabditidae,
+		391	Aphelenchoididae,
+		392	Steinernematidae,
+		393	Brevibuccidae,
+		394	Alloionematidae,
+		395	Chambersiellidae,
+		396	Panagrolaimidae,
+		397	Strongyloididae,
+		398	Strongyloididae2,
+		399	Teratocephalidae,
+		400	Rhabdolaimidae,
+		401	Aulolaimidae,
+		402	Axonolaimidae,
+		403	Diplopeltidae,
+		404	Leptolaimidae,
+		405	Haliplectidae,
+		406	Creagrocercidae,
+		407	Xyalidae,
+		408	Monhysteridae,
+		409	Comesomatidae,
+		410	Sphaerolaimidae,
+		411	Linhomoeidae,
+		412	Siphonolaimidae,
+		413	Bunonematidae,
+		414	Drilonematidae,
+		415	Ungellidae,
+		416	Desmodoridae,
+		417	Monoposthiidae,
+		418	Draconematidae,
+		419	Epsilonematidae,
+		420	Microlaimidae,
+		421	Choanolaimidae,
+		422	Cyatholaimidae,
+		423	Chromadoridae,
+		424	Ceramonematidae,
+		425	Selachinematidae,
+		426	Desmoscolecidae,
+		427	Meyliidae,
+		428	Trachypleurosidae,
+		429	Opailaimidae,
+		430	Falcihastidae,
+		431	Qudsianematidae,
+		432	Dorylaimidae,
+		433	Aporcelaimidae,
+		434	Longidoridae,
+		435	Actinolaimidae,
+		436	Belondiridae,
+		437	Leptonchidae,
+		438	Tylencholaimidae,
+		439	Tylencholaimellidae,
+		440	Diphterophoridae,
+		441	Nygolaimidae,
+		442	Nygolaimellidae,
+		443	Tetradonematidae,
+		444	Mermithidae,
+		445	Mononchidae,
+		446	Anatonchidae,
+		447	Bathyodontidae,
+		448	Mononchulidae,
+		449	Isolaimiidae,
+		450	Rhabdodemaniidae,
+		451	Cryptonchidae,
+		452	Oncholaimidae,
+		453	Enchelidiidae,
+		454	Thoracostomopsidae,
+		455	Anoplostomatidae,
+		456	Enoplidae,
+		457	Phanodermatidae,
+		458	Leptosomatidae,
+		459	Anticomidae,
+		460	Tripylidae,
+		461	Ironidae,
+		462	Oxystominidae,
+		463	Alaimidae,
+		464	Trichuridae,
+		465	Trichinellidae,
+		466	Capillariidae,
+		467	Cystoopsidae,
+		468	Tripyloididae,
+		469	Bastianiidae,
+		470	Prismatolaimidae,
+		471	Diphtherophoridae,
+		472	Trichodoridae,
+		473	Trefusiidae,
+		474	Xennellidae,
+		475	Lauratonematidae,
+		476	Soboliphymatidae,
+		477	Muspiceidae,
+		478	Robertdollfusidae,
+		479	Rhaptothyreidae
+	;
+	TREE * UNTITLED = [&R] (((((1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)Monopisthocotylea,(26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60)Polyopisthocotylea)Monogenea,(((61,62,63,64)Rhinebothriidea,(65,66,67)Bothriocephalidea,(68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85)Cyclophyllidea,(86,87,88,89)Caryophyllidea,(90,91)Phyllobothriidea,92,(93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109)Trypanorhyncha,(110,111,112,113)Tetraphyllidea,(114,115,116,117,118,119)Lecanicephalidea,120,121,(122,123)Spathebothriidea,124,125,126,127,128,129)Eucestoda,(130,(131,132)Amphilinidea)Cestodaria)Cestoda,(((133,134,135,136,137,138,139,140,141,142,143,(144,145,146,147,148,149,150)Lepocreadioidea,151,(152,(153,154,155,156,157,158,159,160,161,162,163)Microphalloidea,(164,165)Haploporoidea,(166,167,168,169,170)Allocreadioidea,(171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187)Plagiorchioidea)Xiphidiata,((188,189,190,191,192,193,194)Pronocephaloidea,(195,196,197,198,199,200,201,202,203,204,205,206)Paramphistomoidea)Pronocephalata,((207,208,209,210,211,212,213,214,215,216)Echinostomatoidea,217)Echinostomata,(218,219,220,221)Troglotremata,(222,223)Monorchioidea)Plagiorchiida,(224,(225,226,227,228)Opisthorchiata,(229,230)Acanthocolpioidea)Opisthorchiida,(231,232,233,234,235,(236,237,238,239,240,241,242,243,244,245)Hemiuroidea)Azygiida,(246,247,248,249,(250,251,252)Schistosomatoidea,(253,254,255,256,257)Diplostomoidea,(258,259,260,261,262)Gymnophalloidea,263,(264,265)Strigeoidea)Strigeidida,(266,267,268,269)Brachylaimoidea)Digenea,((270,271,272)Aspidogastrioidea,273)Aspidogastrea)Trematoda)Platyhelminthes,((274,275,276,277)Archiacanthocephala,((278,279,280,281,282,283,284,285,286,287,288,289,290)Echinorhynchida,(291,292,293)Polymorphida,294)Palaeacanthocephala,((295,296,297)Neoechinorhynchida,298)Eoacanthocephala,299)Acanthocephala)NA,(((((300,301,302,303,((((((304,(305,306,(307,((308,309)NA,(310,311)NA)NA)mrcaott230ott69811)Ascaridoidea,(312,313,314)Cosmocercoidea,(315,316)Heterakoidea,(317,318,319)Seuratoidea)Ascaridida,(320,(321,322,323)Dracunculoidea,324,325,(326,327,328,329,330)Filarioidea,(331,332,333,334)Spiruroidea,335,(336,337,338)Habronematoidea,339,340)Spirurida,341)mrcaott230ott1437,(342,(343,344)Oxyuroidea)Oxyurida)mrcaott230ott67814,((345,346,347,348,((349,350,351,352)Diplogasterida,(353,(354,((355,356,357,358,(359,360)NA,361)Trichostrongyloidea,((362,363)NA,((364,(365,366)mrcaott67070ott224368)mrcaott46769ott67070,367)NA)mrcaott46769ott198806)mrcaott10063ott46769,(368,369,370,371,372,373)Metastrongyloidea,374)Strongylida)mrcaott10063ott10878)mrcaott1429ott10063)mrcaott1429ott14315,(((375,376,377)Sphaerularioidea,378)Hexatylina,((379,((380,381,382,383,384,385)Tylenchoidea,(386,387)Criconematoidea)Tylenchina)mrcaott2229ott28497,(388,389,390)Cephaloboidea)mrcaott2229ott11704,(391,(392,393,394,395,(396,(397,398)NA)mrcaott5576ott119521)Panagrolaimoidea)mrcaott5576ott6520)mrcaott1958ott2229)mrcaott1429ott1958)mrcaott230ott1429,399)mrcaott230ott54366,(400,401,(402,403)Axonolaimoidea,(404,405,406)Leptolaimoidea)Araeolaimida)mrcaott230ott4595,((407,408,409,410,411,412)Monhysterida,413)mrcaott10161ott51028,(414,415)Drilonematoidea)mrcaott230ott10161,(416,417,418,419,420)Desmodorida)mrcaott230ott67219,(421,422,423,424,425)Chromadorida,(426,427)Desmoscolecoidea)Chromadorea,((428,429,430,((((431,432,433)Dorylaimoidea,(434,435)mrcaott13557ott85016)mrcaott7162ott13557,436)mrcaott7162ott129556,(437,438,439)Tylencholaimoidea,440)Dorylaimina,(441,442)Nygolaimoidea)Dorylaimida,((443,444)Mermithoidea,((445,446)Mononchina,(447,448)Bathyodontina)Mononchida)mrcaott18708ott25194,449)mrcaott7162ott18708)mrcaott230ott7162,((450,451,(((452,453)Oncholaimoidea,(((454,455,456,457,458,459)Enoploidea,460)mrcaott29037ott56219,461)mrcaott29037ott39575)mrcaott10154ott29037,(462,463)Oxystominoidea)mrcaott10154ott22678,(464,465,466,467)Trichocephalida,468,469)mrcaott10154ott14737,(470,(471,472)Diphtherophorina)mrcaott13059ott20286)mrcaott10154ott13059,(473,474,475)Trefusiida,476,(477,478)Muspiceida,479)Nematoda)NA;
+END;

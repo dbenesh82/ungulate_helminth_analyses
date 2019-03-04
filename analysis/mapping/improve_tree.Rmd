@@ -1,0 +1,207 @@
+---
+title: "Improve tree"
+author: "Dan Benesh"
+date: "February 27, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(ape)
+library(castor) # for ancestral state mapping
+library(ggtree)
+library(RColorBrewer)
+library(phytools)
+library(geiger)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+```{r get tree}
+tree <- read.nexus(file = "ungulate_helminth_tree.nex")
+tree$edge.length <- NULL # remove branch lengths
+```
+
+```{r get data}
+tre_dat <- read.csv(file = "ungulate_helminth_tree_table.csv")
+```
+
+```{r}
+source("tree_checking_function.R")
+```
+
+
+Make the names in the data and tree consistent
+
+```{r}
+# in tree
+fix_tip_names <- substr(tree$tip.label, start = 1, stop = regexpr(tree$tip.label, pattern = "_") - 1 )
+tree$tip.label[which(fix_tip_names!="")] <- fix_tip_names[which(fix_tip_names!="")]
+
+fix_node_names <- substr(tree$node.label, start = 1, stop = regexpr(tree$node.label, pattern = "_") - 1 )
+tree$node.label[which(fix_node_names!="")] <- fix_node_names[which(fix_node_names!="")]
+
+# in data
+fix_data_names <- substr(tre_dat$otl_name, start = 1, stop = regexpr(tre_dat$otl_name, pattern = "_") - 1 )
+tre_dat$otl_name_red <- tre_dat$otl_name
+tre_dat$otl_name_red[which(fix_data_names!="")] <- fix_data_names[which(fix_data_names!="")]
+
+rm(fix_data_names, fix_node_names, fix_tip_names)
+```
+
+
+```{r}
+tree_plot <- tree_checking(tree, tre_dat)
+
+ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
+```
+
+## Add missing tips
+
+OK, now we want to add the following nematode tips to the tree: Ancylostomatidae, Ascarididae, Trichostrongylidae.
+
+```{r}
+tree <- compute.brlen(tree, power = 1 ) # add branch lengths, so taxa can be add along branch, not just at node
+
+# add taxa to branch below internal node
+tree <- bind.tip(tree, tip.label = "Ancylostomatidae", 
+                 position = 0.0001,
+                 where = length(tree$tip.label) + which(tree$node.label == "mrcaott46769ott67070"))
+tre_dat$in_tree[which(tre_dat$family == 'Ancylostomatidae')] <- TRUE
+
+# add to tip
+tree <- bind.tip(tree, tip.label = "Ascarididae", 
+                 where = which(tree$tip.label == "Toxocaridae"))
+tre_dat$in_tree[which(tre_dat$family == 'Ascarididae')] <- TRUE
+
+
+tree <- bind.tip(tree, tip.label = "Trichostrongylidae", 
+                 where = which(tree$tip.label == "Haemonchidae"))
+tre_dat$in_tree[which(tre_dat$family == 'Trichostrongylidae')] <- TRUE
+```
+
+
+Then we want to add the following trematode tips to the tree: Balanorchiidae, Choerocotyloididae, Zygocotylidae.
+
+```{r}
+filter(tre_dat, grepl(otl_name, pattern = "Choer"))
+```
+
+
+```{r}
+# add taxa to internal node
+tree <- bind.tip(tree, tip.label = "Balanorchiidae", 
+                 where = length(tree$tip.label) + which(tree$node.label == "Paramphistomoidea"))
+tre_dat$in_tree[which(tre_dat$family == 'Balanorchiidae')] <- TRUE
+
+tree <- bind.tip(tree, tip.label = "Choerocotylidae", 
+                 where = length(tree$tip.label) + which(tree$node.label == "Paramphistomoidea"))
+tre_dat$in_tree[which(tre_dat$otl_name == 'Choerocotylidae')] <- TRUE
+
+tree <- bind.tip(tree, tip.label = "Zygocotylidae", 
+                 where = length(tree$tip.label) + which(tree$node.label == "Paramphistomoidea"))
+tre_dat$in_tree[which(tre_dat$family == 'Zygocotylidae')] <- TRUE
+```
+
+
+## Double the taxa in cases where multiple strategies used
+
+Which taxa? 
+Syngamidae - int host, hatch and eaten
+Ascarididae - transplacental, egg ingestion
+Strongyloididae - transplacental, penetration
+
+```{r}
+filter(tre_dat, grepl(family, pattern = 'Strongylo'))
+```
+
+```{r}
+# add to tip
+tree <- bind.tip(tree, tip.label = "Syngamidae2", 
+                 where = which(tree$tip.label == "Syngamidae"))
+
+tree <- bind.tip(tree, tip.label = "Strongyloididae2", 
+                 where = which(tree$tip.label == "Strongyloididae"))
+
+tree <- bind.tip(tree, tip.label = "Ascarididae2", 
+                 position = 0.0001,
+                 where = getMRCA(tree, tip = c("Ascarididae", "Toxocaridae")))
+
+tree <- bind.tip(tree, tip.label = "Toxocaridae2", 
+                 where = which(tree$tip.label == "Ascarididae2"))
+
+```
+
+```{r}
+# update data
+syg2 <- data.frame(family = 'Syngamidae2', group = 'Nematoda', ung_inf = TRUE,
+                   otl_name = 'Syngamidae2', trans_route = 'larvae on herbage', 
+                   in_tree = TRUE, otl_name_red = 'Syngamidae2')
+
+str2 <- data.frame(family = 'Strongyloididae2', group = 'Nematoda', ung_inf = TRUE,
+                   otl_name = 'Strongyloididae2', trans_route = 'no free propagule', 
+                   in_tree = TRUE, otl_name_red = 'Strongyloididae2')
+
+asc2 <- data.frame(family = 'Ascarididae2', group = 'Nematoda', ung_inf = TRUE,
+                   otl_name = 'Ascarididae2', trans_route = 'no free propagule', 
+                   in_tree = TRUE, otl_name_red = 'Ascarididae2')
+
+tox2 <- data.frame(family = 'Toxocaridae2', group = 'Nematoda', ung_inf = TRUE,
+                   otl_name = 'Toxocaridae2', trans_route = 'no free propagule', 
+                   in_tree = TRUE, otl_name_red = 'Toxocaridae2')
+
+tre_dat <- bind_rows(tre_dat, syg2, str2, asc2, tox2)
+rm(asc2, str2, syg2, tox2)
+```
+
+
+## Tidy up tree
+
+Next, I'll remove the clades of free-living flatworms
+
+```{r}
+rem_platy <- tips(tree, length(tree$tip.label) + which(tree$node.label == 'Rhabditophora'))
+rem_platy2 <- tips(tree, length(tree$tip.label) + which(tree$node.label == 'Catenulida'))
+```
+
+```{r}
+# drop tips
+tree <- drop.tip(tree, tip = rem_platy)
+tree <- drop.tip(tree, tip = rem_platy2)
+# revise data
+tre_dat$in_tree[which(tre_dat$otl_name_red %in%  c(rem_platy, rem_platy2))] <- FALSE
+```
+
+```{r}
+tree$edge.length <- NULL # remove branch lengths
+tree_plot <- tree_checking(tree, tre_dat)
+tree_plot
+ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
+```
+
+```{r}
+write.nexus(tree, file = "ungulate_helminth_tree_toresolve.nex")
+```
+
+```{r}
+write.csv(tre_dat, file = "ungulate_helminth_tree_table.csv", row.names = F)
+```
+
+
+
+# Mess around with resolving tree
+
+```{r}
+tree <- read.nexus(file = "ungulate_helminth_tree_toresolve.nex")
+tree$edge.length <- NULL # remove branch lengths
+```
+
+```{r}
+tree_plot <- tree_checking(tree, tre_dat)
+
+ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
+```
+
