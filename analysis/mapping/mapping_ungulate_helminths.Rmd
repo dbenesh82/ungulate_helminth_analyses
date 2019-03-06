@@ -21,7 +21,7 @@ theme_set(new = theme_bw())
 ```
 
 ```{r get tree}
-tree <- read.nexus(file = "ungulate_helminth_tree.nex")
+tree <- read.nexus(file = "ungulate_helminth_tree_toresolve.nex")
 tree$edge.length <- NULL # remove branch lengths
 ```
 
@@ -49,7 +49,7 @@ I reduced the dataset of family names to just include the ones in the tree.
 tre_dat <- filter(tre_dat, in_tree)
 
 # which OTL names not in tree
-uniq_otl_names <- unique(tre_dat$otl_name)
+uniq_otl_names <- unique(tre_dat$otl_name_red)
 #tree$tip.label[!(tree$tip.label %in% uniq_otl_names)] # none after fixing group names in get_tree.rmd
 ```
 
@@ -67,7 +67,7 @@ For those with multiple OTL entries for a given OTL name, I just took the first 
 rm(tre_dat_red)
 for(otl in uniq_otl_names){
   # if otl just
-  dx <- filter(tre_dat, otl_name == otl)
+  dx <- filter(tre_dat, otl_name_red == otl)
   if(dim(dx)[1] > 1) {
     # if more than one entry for otl name, just take first
     print
@@ -85,12 +85,18 @@ rm(otl, dx)
 
 ```{r}
 # put data in same order as tree tip labels
-mv <- match(tree$tip.label, tre_dat_red$otl_name)
+mv <- match(tree$tip.label, tre_dat_red$otl_name_red)
 tre_dat_red <- tre_dat_red[mv,]
 rm(mv)
 ```
 
-After making the trait data and tree consistent regarding names and order, I can start mapping. I am going to keep things simple and use a parsimony algorithm. It is fast and requires few assumptions about transition costs.
+After making the trait data and tree consistent regarding names and order, I can start mapping. First things first, make a table showing the distribution of tip states.
+```{r}
+sort(table(tre_dat_red$trans_route), decreasing = T)
+```
+
+
+I am going to keep things simple and use a parsimony algorithm. It is fast and requires few assumptions about transition costs.
 
 ```{r}
 # PARSIMONY
@@ -169,21 +175,32 @@ trans_states <- filter(trans_states, child_state != parent_state)%>%
 #filter(tree_df, node %in% trans_statesx$child_node) # check if transitions correctly identified - looks good
 ```
 
+How many transitions occurred?
+```{r}
+length(unique(trans_states$parent_node))
+```
+
 ```{r}
 # add transitions to plotting df
 tree_df <- mutate(tree_df, trans_node = if_else(node %in% trans_states$parent_node, TRUE, FALSE))
 
-# add points onto plot
-p <- p +
+# re-plot with points
+p <- ggtree(tree_df, aes(color = state), size = 0.7, layout = 'circular') + 
+  geom_tiplab2(hjust = -0.1, size = 1.25) +
   geom_nodepoint(data = filter(tree_df, trans_node), 
-                 shape = 19, size = 3, color = mypalette[2], alpha = 0.75)
+                 shape = 19, size = 2, color = mypalette[2], alpha = 0.75) +
+  scale_color_manual(values = mypalette) +
+  theme(legend.position = c(0.2, 0.95), 
+        legend.justification = c(1,1),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 15))
 p
 ```
 
 We can write this tree to file.
 
 ```{r}
-ggsave(filename = 'test.pdf', width = 297, height = 210, units = "mm")
+ggsave(filename = 'transitions_to_ung_parasitism.pdf', width = 297, height = 210, units = "mm")
 ```
 
 Now let's split the 'ungulate parasite' group into multiple groups, depending on how they infect ungulates. First, we define three trophic transmission strategies:
@@ -237,81 +254,63 @@ tree_df$state <- levels(tre_dat_red$trans_route)[state]
 
 ```{r}
 # plot tree
-#p <- ggtree(tree_df) + 
-#  geom_tree(aes(color = state)) + 
-#  geom_tiplab(data = filter(tree_df, state != 'not ungulate parasites'),
-#              size = 1.5) +
-#  xlim(0, max(tree_df$x) + 0.09) +
-#  theme(legend.position = c(0.5, 1), 
-#        legend.justification = c(1,1),
-#        legend.title = element_blank(),
-#        legend.text = element_text(size = 14))
-#p
+# p <- ggtree(tree_df, aes(color = state), size = 0.7, layout = 'circular') + 
+#   geom_tiplab2(hjust = -0.1, size = 1.25) +
+#   scale_color_manual(values = c(mypalette[1:5], 'light gray', mypalette[6])) +
+#   theme(legend.position = c(0.1, 1), 
+#         legend.justification = c(1,1),
+#         legend.title = element_blank(),
+#         legend.text = element_text(size = 15))
+# p
 ```
 
 ```{r}
 # reduce to just tree structure and states
-trans_states <- select(tree_df, child_node = node, parent_node = parent, child_state = state)
+trans_states2 <- select(tree_df, child_node = node, parent_node = parent, child_state = state)
 # self join to get states for both parent and child side by side
-trans_states <- left_join(trans_states, 
-                           select(trans_states, child_node, parent_state = child_state),
+trans_states2 <- left_join(trans_states2, 
+                           select(trans_states2, child_node, parent_state = child_state),
                            by = c("parent_node" = "child_node") ) 
-
 
 # add states to tree df - important for plotting
 tree_df <- left_join(tree_df, 
-                     select(trans_states, child_node, parent_node, child_state, parent_state),
+                     select(trans_states2, child_node, parent_node, child_state, parent_state),
                      by = c("node" = "child_node"))
-tree_df <- select(tree_df, -state) # use more useful cols - child and parent states
+tree_df <- select(tree_df, -state) # use more useful columns - child and parent states
 
 # id transition nodes
-trans_states <- filter(trans_states, child_state != parent_state)%>%
+trans_states2 <- filter(trans_states2, child_state != parent_state)%>%
   filter(child_state != "not ungulate parasites")
 
-tree_df <- mutate(tree_df, trans_node = if_else(node %in% trans_states$parent_node, TRUE, FALSE))
+tree_df <- mutate(tree_df, trans_node = if_else(node %in% trans_states2$parent_node, TRUE, FALSE))
 
 # only cases where parent and child have different states
-#filter(tree_df, node %in% trans_states$child_node) # check if transitions correctly identified - looks good
+#filter(tree_df, node %in% trans_states2$child_node) # check if transitions correctly identified - looks good
 ```
 
 ```{r}
-#filter(trans_node)
-#head(tree_df2)
-#tree_df2 <- filter(tree_df, trans_node)
-#tree_df2 <- left_join(tree_df2, 
-#                     select(trans_states, parent_node, child_state),
-#                      by = c("parent" = "parent_node"))
-
-```
-```{r}
-head(trans_states)
+filter(trans_states2, !(parent_node %in% trans_states$parent_node))
 ```
 
 ```{r}
-p <- ggtree(tree_df) + 
-  geom_tree(aes(color = child_state)) + 
-  geom_tiplab(data = filter(tree_df, child_state != 'not ungulate parasites'),
-              aes(color = child_state),
-              size = 1.5) +
-  geom_nodepoint(data = filter(tree_df, trans_node),
-                 shape = 19, size = 3, alpha = 0.5) +
-  xlim(0, max(tree_df$x) + 0.09) +
+# re-plot with points
+p <- ggtree(tree_df, aes(color = child_state), size = 0.7, layout = 'circular') +
+  geom_tiplab2(hjust = -0.1, size = 1.25) +
   scale_color_manual(values = c(mypalette[1:5], 'light gray', mypalette[6])) +
-  theme(legend.position = c(0.5, 1), 
+  geom_nodepoint(data = filter(tree_df, trans_node), aes(color = parent_state),
+                 shape = 19, size = 2, 
+                 #color = "gray", 
+                 alpha = 0.75) +
+  theme(legend.position = c(0.1, 1),
         legend.justification = c(1,1),
         legend.title = element_blank(),
-        legend.text = element_text(size = 14))
-# add points onto plot
-#p <- p +
- # geom_nodepoint(data = filter(tree_df, trans_node),
-  #               aes(color = child_state),
-   #              shape = 19, size = 3, alpha = 0.75)
+        legend.text = element_text(size = 15))
+
 p
 ```
 
 The plot shows the transitions.
 
 ```{r}
-ggsave(filename = 'test2.pdf', width = 297, height = 210, units = "mm")
+ggsave(filename = 'transitions_to_ung_trans_routes.pdf', width = 297, height = 210, units = "mm")
 ```
-
