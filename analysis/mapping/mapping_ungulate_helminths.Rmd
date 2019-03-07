@@ -1,7 +1,6 @@
 ---
 title: "Map states onto trees"
 author: "Dan Benesh"
-date: "February 25, 2019"
 output: html_document
 ---
 
@@ -21,7 +20,7 @@ theme_set(new = theme_bw())
 ```
 
 ```{r get tree}
-tree <- read.nexus(file = "ungulate_helminth_tree_toresolve.nex")
+tree <- read.nexus(file = "ungulate_helminth_tree_resolved.nex")
 tree$edge.length <- NULL # remove branch lengths
 ```
 
