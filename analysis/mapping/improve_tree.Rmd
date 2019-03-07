@@ -1,9 +1,10 @@
 ---
 title: "Improve tree"
 author: "Dan Benesh"
-date: "February 27, 2019"
 output: html_document
 ---
+
+This document improves the tree output by the [get tree](getting_taxonomy_helminth_tree.Rmd) notebook.
 
 ```{r setup, include=FALSE}
 library(ggplot2)
@@ -29,10 +30,11 @@ tree$edge.length <- NULL # remove branch lengths
 tre_dat <- read.csv(file = "ungulate_helminth_tree_table.csv")
 ```
 
+I wrote a function that takes in a tree and the associated data and outputs a figure with ancestral states mapped onto it. I used the function to iteratively improve the tree and to visualize the improvements.
+
 ```{r}
 source("tree_checking_function.R")
 ```
-
 
 Make the names in the data and tree consistent
 
@@ -56,12 +58,10 @@ rm(fix_data_names, fix_node_names, fix_tip_names)
 ```{r}
 tree_plot <- tree_checking(tree, tre_dat)
 
-ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
+#ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
 ```
 
-## Add missing tips
-
-OK, now we want to add the following nematode tips to the tree: Ancylostomatidae, Ascarididae, Trichostrongylidae.
+The first needed step is to **add missing tips** to the tree. The following nematode families were added: Ancylostomatidae, Ascarididae, Trichostrongylidae.
 
 ```{r}
 tree <- compute.brlen(tree, power = 1 ) # add branch lengths, so taxa can be add along branch, not just at node
@@ -83,13 +83,7 @@ tree <- bind.tip(tree, tip.label = "Trichostrongylidae",
 tre_dat$in_tree[which(tre_dat$family == 'Trichostrongylidae')] <- TRUE
 ```
 
-
-Then we want to add the following trematode tips to the tree: Balanorchiidae, Choerocotyloididae, Zygocotylidae.
-
-```{r}
-filter(tre_dat, grepl(otl_name, pattern = "Choer"))
-```
-
+Then the following trematode tips are grafted to the tree: Balanorchiidae, Choerocotyloididae, Zygocotylidae.
 
 ```{r}
 # add taxa to internal node
@@ -106,17 +100,12 @@ tree <- bind.tip(tree, tip.label = "Zygocotylidae",
 tre_dat$in_tree[which(tre_dat$family == 'Zygocotylidae')] <- TRUE
 ```
 
+After adding these families, all the taxa listed in the manuscript's Table 1 are included in the helminth tree. The next step is to add an additional tip for the families exhibiting **multiple strategies** to infect ungulates. For example, the ascarids can be transmitted via egg or transplacentally. Two tips are needed in this case so as to record each strategy as an evolutionary 'event'. 
 
-## Double the taxa in cases where multiple strategies used
-
-Which taxa? 
-Syngamidae - int host, hatch and eaten
-Ascarididae - transplacental, egg ingestion
-Strongyloididae - transplacental, penetration
-
-```{r}
-filter(tre_dat, grepl(family, pattern = 'Strongylo'))
-```
+Here are the groups to which this applies:
+Syngamidae (via intermediate host or hatched larvae)
+Ascarididae & Toxocaridae (via eggs or trans-placentally, -maternally)
+Strongyloididae (via larval penetration or trans-placentally, -maternally)
 
 ```{r}
 # add to tip
@@ -132,7 +121,6 @@ tree <- bind.tip(tree, tip.label = "Ascarididae2",
 
 tree <- bind.tip(tree, tip.label = "Toxocaridae2", 
                  where = which(tree$tip.label == "Ascarididae2"))
-
 ```
 
 ```{r}
@@ -157,10 +145,7 @@ tre_dat <- bind_rows(tre_dat, syg2, str2, asc2, tox2)
 rm(asc2, str2, syg2, tox2)
 ```
 
-
-## Tidy up tree
-
-Next, I'll remove the clades of free-living flatworms
+Next, I decided to **remove the clades** of free-living flatworms. These have no effect on the mapping, as they are not parasites, and they make the figures more cluttered.
 
 ```{r}
 rem_platy <- tips(tree, length(tree$tip.label) + which(tree$node.label == 'Rhabditophora'))
@@ -176,32 +161,30 @@ tre_dat$in_tree[which(tre_dat$otl_name_red %in%  c(rem_platy, rem_platy2))] <- F
 ```
 
 ```{r}
-tree$edge.length <- NULL # remove branch lengths
-tree_plot <- tree_checking(tree, tre_dat)
-tree_plot
-ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
+#tree$edge.length <- NULL # remove branch lengths
+#tree_plot <- tree_checking(tree, tre_dat)
+#tree_plot
+#ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
 ```
+
+The improved tree and associated data file were exported.
 
 ```{r}
-write.nexus(tree, file = "ungulate_helminth_tree_toresolve.nex")
+#write.nexus(tree, file = "ungulate_helminth_tree_toresolve.nex")
 ```
+```{r}
+#write.csv(tre_dat, file = "ungulate_helminth_tree_table.csv", row.names = F)
+```
+
+Finally, I manually **resolved the tree**. I did this in two steps. First, I rearranged the major clades within each helminth group (i.e. an order level phylogeny). Then, I specifically looked at the ungulate parasites to see if those groups could be resolved, which affects the mapping. 
+
+To resolve the tree, I manually modified the nexus file and then ran the following code block to visually check the modifications.
 
 ```{r}
-write.csv(tre_dat, file = "ungulate_helminth_tree_table.csv", row.names = F)
+#tre_dat <- read.csv(file = "ungulate_helminth_tree_table.csv")
+#tree <- read.nexus(file = "ungulate_helminth_tree_toresolve.nex")
+#tree$edge.length <- NULL # remove branch lengths
+#
+#tree_plot <- tree_checking(tree, tre_dat)
+#ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
 ```
-
-
-
-# Mess around with resolving tree
-
-```{r}
-tree <- read.nexus(file = "ungulate_helminth_tree_toresolve.nex")
-tree$edge.length <- NULL # remove branch lengths
-```
-
-```{r}
-tree_plot <- tree_checking(tree, tre_dat)
-
-ggsave(filename = 'for_resolving.pdf', width = 500, height = 400, units = "mm")
-```
-
