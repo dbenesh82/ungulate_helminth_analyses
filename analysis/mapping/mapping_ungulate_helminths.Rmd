@@ -186,6 +186,7 @@ p
 ```
 
 How many transitions to ungulate parasitism were counted?
+
 ```{r}
 length(unique(trans_states$parent_node))
 ```
@@ -216,8 +217,9 @@ tre_dat_red <- mutate(tre_dat_red, trans_route = factor(trans_route,
                                                                    "intermediate host eaten",
                                                                    "larvae seek/penetrate",
                                                                    "vector-transmission",
-                                                                   "no free propagule")))
+                                                                   "trans-placental/mammary")))
 ```
+
 
 ```{r}
 # PARSIMONY
@@ -293,7 +295,7 @@ Why were more transitions identified when mapping transmission routes, as oppose
 # re-plot with points
 p <- ggtree(tree_df, aes(color = child_state), size = 0.7, layout = 'circular') +
   geom_tiplab2(hjust = -0.1, size = 1.25) +
-  scale_color_manual(values = c(mypalette[1:5], 'light gray', mypalette[6])) +
+  scale_color_manual(values = c(mypalette[1:4], 'light gray', mypalette[6:7])) +
   geom_nodepoint(data = filter(tree_df, trans_node), aes(color = parent_state),
                  shape = 19, size = 2, 
                  #color = "gray", 
