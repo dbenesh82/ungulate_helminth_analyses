@@ -28,17 +28,10 @@ tree$edge.length <- NULL # remove branch lengths
 tre_dat <- read.csv(file = "ungulate_helminth_tree_table.csv")
 ```
 
-Here is the tree of helminth families, acquired from the open tree of life. Some parts of it need to be resolved using phylogenies that are not included in the open tree.
+Here is the tree of helminth families, acquired from the open tree of life. I [improved](improve_tree.Rmd) the tree manually using taxonomy and existing phylogenies.
 
 ```{r}
 plot(tree, cex = 0.5, show.tip.label = F, show.node.label = T)
-```
-
-```{r}
-# bifurcating produces slightly different mapping - better if non-random, i.e. I manually resolve tree
-# tree <- compute.brlen(tree)
-# tree <- multi2di(tree)
-# tree$edge.length[which(tree$edge.length == 0)] <- 0.0001
 ```
 
 I reduced the dataset of family names to just include the ones in the tree.
@@ -89,13 +82,14 @@ tre_dat_red <- tre_dat_red[mv,]
 rm(mv)
 ```
 
-After making the trait data and tree consistent regarding names and order, I can start mapping. First things first, make a table showing the distribution of tip states.
+After making the trait data and tree consistent regarding names and order, I can start mapping. Let's look at the distribution of tip states.
 ```{r}
 sort(table(tre_dat_red$trans_route), decreasing = T)
 ```
 
+Most families of ungulate parasites are transmitted either as larvae on herbage or via an intermediate host. Non-trophic strategies, like vector-transmission and penetration are less common.
 
-I am going to keep things simple and use a parsimony algorithm. It is fast and requires few assumptions about transition costs.
+I am going to keep the mapping simple and use a parsimony algorithm. It is fast and requires few assumptions about transition costs, reversibility, and so on.
 
 ```{r}
 # PARSIMONY
@@ -140,7 +134,8 @@ p <- ggtree(tree_df) +
         legend.text = element_text(size = 14))
 p
 ```
-Evolutionary invasions of ungulates has occurred multiple times throughout the tree. This is no surprise; ungulates harbor a diverse and phylogenetically distant group of parasitic worms.
+Evolutionary invasions of ungulates has occurred throughout the tree. This is no surprise. I did not need to do mapping to know that ungulates harbor a phylogenetically diverse community of parasitic worms.
+
 ```{r}
 # # plot tree with all tip labels
 # p <- ggtree(tree_df) + 
@@ -153,13 +148,12 @@ Evolutionary invasions of ungulates has occurred multiple times throughout the t
 #         legend.title = element_blank(),
 #         legend.text = element_text(size = 14))
 ```
-
 ```{r}
 # plot with node labels
 # p + geom_text2(aes(subset=!isTip, label=node), hjust=-.3)
 ```
 
-Let's highlight the spots on the tree where transitions occured.
+Let's highlight the spots on the tree where transitions occured. We'll also plot as a circular phylogeny to improve the figures 'readability'.
 
 ```{r}
 # reduce to just tree structure and states
@@ -172,11 +166,6 @@ trans_states <- left_join(trans_states,
 trans_states <- filter(trans_states, child_state != parent_state)%>%
   filter(child_state == "ungulate parasite")
 #filter(tree_df, node %in% trans_statesx$child_node) # check if transitions correctly identified - looks good
-```
-
-How many transitions occurred?
-```{r}
-length(unique(trans_states$parent_node))
 ```
 
 ```{r}
@@ -194,6 +183,11 @@ p <- ggtree(tree_df, aes(color = state), size = 0.7, layout = 'circular') +
         legend.title = element_blank(),
         legend.text = element_text(size = 15))
 p
+```
+
+How many transitions to ungulate parasitism were counted?
+```{r}
+length(unique(trans_states$parent_node))
 ```
 
 We can write this tree to file.
@@ -287,9 +281,13 @@ tree_df <- mutate(tree_df, trans_node = if_else(node %in% trans_states2$parent_n
 #filter(tree_df, node %in% trans_states2$child_node) # check if transitions correctly identified - looks good
 ```
 
+How many transitions were identified here?
+
 ```{r}
-filter(trans_states2, !(parent_node %in% trans_states$parent_node))
+length(unique(trans_states2$parent_node))
 ```
+
+Why were more transitions identified when mapping transmission routes, as opposed to just ungulate parasitism? Shouldn't every transition to ungulate parasitism be associated with one evolutionary change in transmission route? The additional transitions can be understood, because each transition to ungulate parasitism can be associated with multiple transmission strategies. For example, the clade of trichinellid and trichurid nematodes both infect ungulates (one origin), but they use different strategies to do so.
 
 ```{r}
 # re-plot with points
