@@ -182,7 +182,7 @@ p <- ggtree(tree_df, aes(color = state), size = 0.7, layout = 'circular') +
         legend.justification = c(1,1),
         legend.title = element_blank(),
         legend.text = element_text(size = 15))
-p
+p # if published - need to remove fams like 'Ascarid2', 'Strongyloides2'
 ```
 
 How many transitions to ungulate parasitism were counted?
@@ -313,3 +313,59 @@ The plot shows the transitions.
 ```{r}
 ggsave(filename = 'transitions_to_ung_trans_routes.pdf', width = 297, height = 210, units = "mm")
 ```
+
+A few descriptive stats mentioned in [BOX](../../BOX_transitions.docx)...
+
+How many taxa were in tree?
+
+```{r}
+length(tree$tip.label) - length(grep(tree$tip.label, pattern = '2'))
+```
+
+How many origins were counted manually?
+
+```{r}
+origins_ih <- 15
+origins_egg <- 4
+origins_herb <- 4
+origins_pen <- 4
+origins_vec <- 3
+origins_trans <- 2
+
+tot_origins <- origins_ih + origins_egg + origins_herb + origins_pen + origins_vec + origins_trans
+tot_origins
+```
+
+How many ungulate families were in data?
+
+```{r}
+ung_fams <- filter(tre_dat_red, ung_inf)$family
+length(ung_fams)
+```
+
+How many families result from each origin of ungulate parasitism?
+
+```{r}
+length(ung_fams)/tot_origins
+```
+
+How does this 'diversification rate' compare across transmission types?
+
+```{r}
+ung_fams_df <- filter(tre_dat_red, ung_inf)%>%
+  group_by(trans_route)%>%
+  summarize(n_fams = n())
+ung_fams_df <- bind_cols(ung_fams_df,
+          data.frame(origins = c(origins_egg, origins_herb, origins_ih,
+                                 origins_pen, origins_vec, origins_trans)))
+
+ung_fams_df%>%mutate(fams_origin = n_fams/origins)
+```
+
+Herbage transmission is the outlier with seemingly higher diversification rates. What is the diversification rate across the rest of the tree, excluding this transmission route?
+
+```{r}
+sum(filter(ung_fams_df, trans_route != 'larvae on herbage')$n_fams)/
+  sum(filter(ung_fams_df, trans_route != 'larvae on herbage')$origins)
+```
+
