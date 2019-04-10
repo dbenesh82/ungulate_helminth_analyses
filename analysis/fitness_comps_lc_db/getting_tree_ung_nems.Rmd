@@ -1,0 +1,170 @@
+---
+title: "Getting tree for ungulate nematodes"
+author: "Dan Benesh"
+date: "February 5, 2019"
+output: html_document
+---
+
+With this notebook, I download a phylogenetic tree file for the nematodes infecting ungulates.
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(rotl)
+library(phytools)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+I loaded several datasets: (i) host associations for the parasites in the life cycle database,
+(ii) host body masses, and (iii) host taxonomy.
+
+```{r importdata}
+hosts <- read.csv(file = "../../data/CLC_database_hosts.csv", header = TRUE) 
+host_mass <- read.csv(file = "../../data/collated_host_mass_data.csv", header = TRUE)
+host_tax <- read.csv(file = "../../data/ncbi_host_taxonomy.csv", header = TRUE)
+```
+
+```{r}
+# filter out ungulate host species
+ungulate_host_species <- filter(host_tax, order == "Perissodactyla" | order == "Laurasiatheria")%>%
+  select(sp.query, phylum, class, order, family, genus)
+```
+
+```{r}
+# identify ungulates in list of hosts, add var
+hosts <- mutate(hosts, 
+                ungulate = if_else(Host.species %in% ungulate_host_species$sp.query, 1, 0))
+# print common names
+# filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
+#   knitr::kable(format = 'html')
+```
+
+For each parasite species, I calculated the mean biomass of its hosts. For parasite species infecting multiple ungulate host species, I averaged body masses across host species.
+
+```{r}
+# calc mean host sizes
+host_mass_avg <- group_by(host_mass, binomial)%>%
+  summarize(body.mass = mean(body.mass, na.rm=T))
+# add to hosts db
+hosts <- left_join(hosts, host_mass_avg, by = c("Host.species" = "binomial"))
+```
+
+I then filtered the dataset to just parasites infecting ungulates. 
+
+```{r}
+# filter to ungulate-infecting helminths, excluding those accidentally or atypically found in ungulates
+ung_parasites <- filter(hosts, ungulate == 1, Typical.host == 'typical')%>%
+  group_by(Parasite.species, Host.no, Def.int)%>%
+  summarize(host.bm = mean(body.mass, na.rm = T))
+```
+
+More specifically, I just took the nematode species, because they exhibit the most variation in their transmission strategies to ungulates.
+
+```{r}
+# reduce to just nematodes
+ung_parasites_nem <- left_join(ung_parasites, select(hosts, Parasite.species, Parasite.group, Parasite.genus)%>%distinct())%>%
+  filter(Parasite.group == 'nematode')
+```
+
+I queried these ungulate nematodes in the Open Tree of Life. Most returned hits, but not all, and a few had some issues (e.g. incertae sedis).
+
+```{r}
+nem_search <- tnrs_match_names(names = ung_parasites_nem$Parasite.species, context_name = "Nematodes")
+
+# filter search results - excludes a few species, because of missing hits or flags
+nem_search2 <- filter(nem_search, !is.na(search_string), flags != "INCERTAE_SEDIS_INHERITED")
+```
+
+```{r}
+# get tree OTL
+nem_tree <- tol_induced_subtree(ott_ids = nem_search2$ott_id, label_format = 'name')
+```
+
+After downloading the subtree for these species, how many were not in the tree?
+
+```{r}
+# how many species not in tree?
+length(ung_parasites_nem$Parasite.species) - length(nem_tree$tip.label)
+```
+
+Which ones? 
+
+```{r}
+filter(ung_parasites_nem, !(Parasite.species %in% gsub(nem_tree$tip.label, pattern = "_", replacement = " ")))
+```
+
+These species were added to the tree manually.
+
+```{r}
+nem_tree2 <- nem_tree
+# add missing tips to tree
+# Physocephalus dromedarii
+nem_tree2 <- bind.tip(nem_tree2, tip.label = "Physocephalus_dromedarii", 
+                   where = which(nem_tree2$tip.label == "Physocephalus_sexalatus"))
+nem_tree2$node.label[nem_tree2$node.label == "NA"] <- "Physocephalus" # give newly created node a name
+
+
+# add to internal nodes - need to add number of tips to node number to get correct position
+# Oesophagostomum kansuensis
+nem_tree2 <- bind.tip(nem_tree2, tip.label = "Oesophagostomum_kansuensis", 
+                   where = length(nem_tree2$tip.label) + which(nem_tree2$node.label == "Oesophagostomum"))
+nem_tree2 <- drop.tip(nem_tree2, tip = "Oesophagostomum_granatensis")
+# Protostrongylus davtiani
+nem_tree2 <- bind.tip(nem_tree2, tip.label = "Protostrongylus_davtiani", 
+                   where = length(nem_tree2$tip.label) + which(nem_tree2$node.label == "Protostrongylus"))
+# Protostrongylus skrjabini
+nem_tree2 <- bind.tip(nem_tree2, tip.label = "Protostrongylus_skrjabini", 
+                   where = length(nem_tree2$tip.label) + which(nem_tree2$node.label == "Protostrongylus"))
+# Protostrongylus stilesi/rushi
+nem_tree2 <- bind.tip(nem_tree2, tip.label = "Protostrongylus_stilesi", 
+                   where = length(nem_tree2$tip.label) + which(nem_tree2$node.label == "Protostrongylus"))
+# Hyostrongylus rubidus
+nem_tree2 <- bind.tip(nem_tree2, tip.label = "Hyostrongylus_rubidus", 
+                   where = length(nem_tree2$tip.label) + which(nem_tree2$node.label == "Trichostrongyloidea"))
+
+```
+
+```{r}
+# plot(nem_tree2, cex = 0.5, show.tip.label = T, show.node.label = F)
+```
+
+I assigned branch lengths to the tree with Grafen's method and a power parameter of 0.75. That makes the tree a little less 'tippy'. I did this because very closely related species are assumed to have very high covariance and if they do not appear quite similar it can drive the results of the comparative analysis.
+
+```{r}
+# assign branch lengths
+nem_tree2 <- compute.brlen(nem_tree2, power = 0.75)
+```
+
+I also created a data frame that allows us to match up tree and data names.
+
+```{r}
+# data frame for matching
+match_df <- ungroup(ung_parasites_nem)%>%
+  select(data_name = Parasite.species)
+# match ott hits
+mv <- match(tolower(match_df$data_name), nem_search$search_string)
+match_df$ott_name <- nem_search$unique_name[mv]
+
+# match tree names
+mv <- match(gsub(match_df$data_name, pattern = " ", replacement = "_"), nem_tree2$tip.label)
+match_df$tree_name <- nem_tree2$tip.label[mv]
+
+
+# add a few manually
+match_df$tree_name[which(match_df$data_name == "Aonchotheca bovis")] <- "Aonchontheca_bovis"
+match_df$tree_name[which(match_df$data_name == "Protostrongylus stilesi/rushi")] <- "Protostrongylus_stilesi"
+```
+
+Then, I wrote the tree and matching data frame to file. They can be used in the analyses.
+
+```{r}
+write.nexus(nem_tree2, file = "tree_for_ung_nematodes.nex")
+```
+
+```{r}
+write.csv(match_df, file = "tree_for_ung_name_matching.csv", row.names = F)
+```
+

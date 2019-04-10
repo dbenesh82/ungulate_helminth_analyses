@@ -1,0 +1,177 @@
+#NEXUS
+[R-package APE, Wed Apr 10 12:46:01 2019]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 82;
+	TAXLABELS
+		Toxocara_vitulorum
+		Ascaris_suum
+		Parascaris_equorum
+		Ascarops_strongylina
+		Simondsia_paradoxa
+		Physocephalus_sexalatus
+		Physocephalus_dromedarii
+		Gongylonema_pulchrum
+		Spirocerca_lupi
+		Gnathostoma_hispidum
+		Gnathostoma_doloresi
+		Skrjabinema_ovis
+		Oxyuris_equi
+		Hyostrongylus_rubidus
+		Dictyocaulus_eckerti
+		Dictyocaulus_arnfieldi
+		Dictyocaulus_filaria
+		Dictyocaulus_viviparus
+		Haemonchus_placei
+		Haemonchus_contortus
+		Trichostrongylus_vitrinus
+		Trichostrongylus_colubriformis
+		Trichostrongylus_axei
+		Trichostrongylus_rugatus
+		Trichostrongylus_skrjabini
+		Nematodirus_spathiger
+		Nematodirus_helvetianus
+		Nematodirus_filicollis
+		Nematodirus_battus
+		Nematodirus_abnormalis
+		Ostertagia_ostertagi
+		Teladorsagia_circumcincta
+		Cooperia_punctata
+		Cooperia_curticei
+		Cooperia_pectinata
+		Cooperia_oncophora
+		Cooperia_fuelleborni
+		Cyathostomum_catinatum
+		Cylicocyclus_nassatus
+		Cylicostephanus_longibursatus
+		Triodontophorus_tenuicollis
+		Strongylus_edentatus
+		Strongylus_equinus
+		Strongylus_vulgaris
+		Oesophagostomum_kansuensis
+		Oesophagostomum_radiatum
+		Oesophagostomum_asperum
+		Oesophagostomum_venulosum
+		Oesophagostomum_quadrispinulatum
+		Oesophagostomum_dentatum
+		Oesophagostomum_columbianum
+		Chabertia_ovina
+		Stephanurus_dentatus
+		Protostrongylus_stilesi
+		Protostrongylus_skrjabini
+		Protostrongylus_davtiani
+		Protostrongylus_rufescens
+		Protostrongylus_hobmaieri
+		Elaphostrongylus_rangiferi
+		Elaphostrongylus_cervi
+		Elaphostrongylus_alces
+		Parelaphostrongylus_odocoilei
+		Parelaphostrongylus_andersoni
+		Parelaphostrongylus_tenuis
+		Muellerius_capillaris
+		Umingmakstrongylus_pallikuukensis
+		Varestrongylus_alpenae
+		Varestrongylus_capreoli
+		Varestrongylus_sagittatus
+		Varestrongylus_pneumonicus
+		Varestrongylus_eleguneniensis
+		Neostrongylus_linearis
+		Cystocaulus_ocreatus
+		Pneumostrongylus_calcaratus
+		Metastrongylus_pudendotectus
+		Metastrongylus_salmi
+		Metastrongylus_apri
+		Trichuris_ovis
+		Trichuris_discolor
+		Trichuris_suis
+		Trichuris_skrjabini
+		Aonchontheca_bovis
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Toxocara_vitulorum,
+		2	Ascaris_suum,
+		3	Parascaris_equorum,
+		4	Ascarops_strongylina,
+		5	Simondsia_paradoxa,
+		6	Physocephalus_sexalatus,
+		7	Physocephalus_dromedarii,
+		8	Gongylonema_pulchrum,
+		9	Spirocerca_lupi,
+		10	Gnathostoma_hispidum,
+		11	Gnathostoma_doloresi,
+		12	Skrjabinema_ovis,
+		13	Oxyuris_equi,
+		14	Hyostrongylus_rubidus,
+		15	Dictyocaulus_eckerti,
+		16	Dictyocaulus_arnfieldi,
+		17	Dictyocaulus_filaria,
+		18	Dictyocaulus_viviparus,
+		19	Haemonchus_placei,
+		20	Haemonchus_contortus,
+		21	Trichostrongylus_vitrinus,
+		22	Trichostrongylus_colubriformis,
+		23	Trichostrongylus_axei,
+		24	Trichostrongylus_rugatus,
+		25	Trichostrongylus_skrjabini,
+		26	Nematodirus_spathiger,
+		27	Nematodirus_helvetianus,
+		28	Nematodirus_filicollis,
+		29	Nematodirus_battus,
+		30	Nematodirus_abnormalis,
+		31	Ostertagia_ostertagi,
+		32	Teladorsagia_circumcincta,
+		33	Cooperia_punctata,
+		34	Cooperia_curticei,
+		35	Cooperia_pectinata,
+		36	Cooperia_oncophora,
+		37	Cooperia_fuelleborni,
+		38	Cyathostomum_catinatum,
+		39	Cylicocyclus_nassatus,
+		40	Cylicostephanus_longibursatus,
+		41	Triodontophorus_tenuicollis,
+		42	Strongylus_edentatus,
+		43	Strongylus_equinus,
+		44	Strongylus_vulgaris,
+		45	Oesophagostomum_kansuensis,
+		46	Oesophagostomum_radiatum,
+		47	Oesophagostomum_asperum,
+		48	Oesophagostomum_venulosum,
+		49	Oesophagostomum_quadrispinulatum,
+		50	Oesophagostomum_dentatum,
+		51	Oesophagostomum_columbianum,
+		52	Chabertia_ovina,
+		53	Stephanurus_dentatus,
+		54	Protostrongylus_stilesi,
+		55	Protostrongylus_skrjabini,
+		56	Protostrongylus_davtiani,
+		57	Protostrongylus_rufescens,
+		58	Protostrongylus_hobmaieri,
+		59	Elaphostrongylus_rangiferi,
+		60	Elaphostrongylus_cervi,
+		61	Elaphostrongylus_alces,
+		62	Parelaphostrongylus_odocoilei,
+		63	Parelaphostrongylus_andersoni,
+		64	Parelaphostrongylus_tenuis,
+		65	Muellerius_capillaris,
+		66	Umingmakstrongylus_pallikuukensis,
+		67	Varestrongylus_alpenae,
+		68	Varestrongylus_capreoli,
+		69	Varestrongylus_sagittatus,
+		70	Varestrongylus_pneumonicus,
+		71	Varestrongylus_eleguneniensis,
+		72	Neostrongylus_linearis,
+		73	Cystocaulus_ocreatus,
+		74	Pneumostrongylus_calcaratus,
+		75	Metastrongylus_pudendotectus,
+		76	Metastrongylus_salmi,
+		77	Metastrongylus_apri,
+		78	Trichuris_ovis,
+		79	Trichuris_discolor,
+		80	Trichuris_suis,
+		81	Trichuris_skrjabini,
+		82	Aonchontheca_bovis
+	;
+	TREE * UNTITLED = [&R] (((((1:0.06228862335,(2:0.03703703704,3:0.03703703704)mrcaott276008ott345764:0.02525158632)mrcaott230ott197556:0.1459859415,(((4:0.08442618729,5:0.08442618729,(6:0.03703703704,7:0.03703703704)Physocephalus:0.04738915026)Spirocercidae:0.02033037288,8:0.1047565602)Spiruroidea:0.05463296096,9:0.1593895211,(10:0.03703703704,11:0.03703703704)Gnathostoma:0.1223524841)Spirurida:0.04888504375)mrcaott230ott1437:0.0305187533,(12:0.03703703704,13:0.03703703704)Oxyuridae:0.2017562811)mrcaott230ott67814:0.7145436407,(((14:0.3889843358,(15:0.08442618729,16:0.08442618729,17:0.08442618729,18:0.08442618729)Dictyocaulus:0.3045581485,((19:0.03703703704,20:0.03703703704)Haemonchus:0.1049503195,(21:0.1047565602,22:0.1047565602,23:0.1047565602,24:0.1047565602,25:0.1047565602)Trichostrongylus:0.03723079632)mrcaott13815ott64526:0.2469969793,(26:0.1047565602,27:0.1047565602,28:0.1047565602,29:0.1047565602,30:0.1047565602)Nematodirus:0.2842277756,31:0.3889843358,(32:0.1238407972,(33:0.1047565602,34:0.1047565602,35:0.1047565602,36:0.1047565602,37:0.1047565602)Cooperia_-genus_in_Protostomia:0.01908423704)mrcaott173017ott362925:0.2651435386)Trichostrongyloidea:0.1890247845,((((38:0.06228862335,39:0.06228862335,40:0.06228862335)Cyathostominae:0.07969873315,(41:0.08442618729,(42:0.06228862335,43:0.06228862335,44:0.06228862335)Strongylus:0.02213756394)Strongylinae:0.0575611692)Strongylidae:0.1260727974,((45:0.1419873565,46:0.1419873565,47:0.1419873565,48:0.1419873565,49:0.1419873565,50:0.1419873565,51:0.1419873565)Oesophagostomum:0.01740216464,52:0.1593895211)mrcaott67070ott224368:0.1086706328)mrcaott46769ott67070:0.01423581729,53:0.2822959712)mrcaott46769ott198806:0.2957131491)mrcaott10063ott46769:0.2502031261,(((54:0.1047565602,55:0.1047565602,56:0.1047565602,57:0.1047565602,58:0.1047565602)Protostrongylus:0.2455181098,((59:0.06228862335,60:0.06228862335,61:0.06228862335)Elaphostrongylus:0.07969873315,(62:0.06228862335,63:0.06228862335,64:0.06228862335)Parelaphostrongylus:0.07969873315,65:0.1419873565)Elaphostrongylinae:0.2082873135,66:0.35027467,(67:0.1047565602,68:0.1047565602,69:0.1047565602,70:0.1047565602,71:0.1047565602)Varestrongylus:0.2455181098,72:0.35027467,73:0.35027467,74:0.35027467)Protostrongylidae:0.03870966579,(75:0.06228862335,76:0.06228862335,77:0.06228862335)Metastrongylus:0.3266957124)Metastrongyloidea:0.4392279106)Strongylida:0.1251247125)mrcaott230ott1429:0.04666304109,((78:0.08442618729,79:0.08442618729,80:0.08442618729,81:0.08442618729)Trichuris:0.02033037288,82:0.1047565602)Trichocephalida:0.8952434398)Nematoda;
+END;
