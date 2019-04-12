@@ -4,7 +4,7 @@ author: "Dan Benesh"
 output: html_document
 ---
 
-In this document, I use the life cycle database to explore ideas about how and why helminths infect grazing mammals (ungulates).
+I use the life cycle database to explore ideas about the costs and benefits of different infection routes exhibited by helminths of grazing mammals (ungulates). In this document, I specifically focus on adult biomass of nematodes.
 
 ```{r setup, include=FALSE}
 library(ggplot2)
@@ -39,8 +39,8 @@ ungulate_host_species <- filter(host_tax, order == "Perissodactyla" | order == "
 hosts <- mutate(hosts, 
                 ungulate = if_else(Host.species %in% ungulate_host_species$sp.query, 1, 0))
 # print common names
-# filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
-#   knitr::kable(format = 'html')
+filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
+  knitr::kable(format = 'html')
 ```
 
 For each parasite species, I calculated the number of hosts in the life cycle. Some worms have facultative cycles where they can infect more or fewer hosts before reproducing, and here I assumed they took the longest route to the final host, i.e. through all facultative hosts, which may not be the most likely transmission route.
@@ -96,37 +96,39 @@ ung_parasites <- mutate(ung_parasites, complex = if_else(lcl == 1, "direct", "co
 
 # add hatching strategy to plot data
 hatch <- select(lh, Parasite.species, hatch = Egg.hatch)%>%
-  mutate(hatch = if_else(hatch == 'eaten', 'egg eaten', 'hatched larva'))%>% # simplify hatch strategy
+  mutate(hatch = if_else(hatch == 'eaten', 'egg eaten', 'hatched larva\neaten'))%>% # simplify hatch strategy
            na.omit()%>%distinct()
 ung_parasites <- left_join(ung_parasites, hatch)
 
 # make var combining hatching and life cycle strategies
-ung_parasites <- mutate(ung_parasites, trans_strat = if_else(complex == "complex", "int host", hatch))
+ung_parasites <- mutate(ung_parasites, 
+                        trans_strat = if_else(complex == "complex", "intermediate host\neaten", hatch))
 ```
+
+We make the argument that helminths face a trophic vacuum when transmitted to ungulates. Helminth propagules are voided into the environment with ungulate faeces, but ungulates avoid grazing near faeces. This faeces avoidance causes the trophic vacuum - eggs in or on faeces are unlikely to be consumed by ungulates.
+
+After surveying helminth transmission routes to ungulates, there appear to be two common ways to circumvent this transmission barrier, either parasite eggs hatch and larvae leave the faeces or parasites infect a transport/intermediate host, like mites, beetles, earthworms, etc. From the [mapping of transmission routes](../mapping/mapping_ungulate_helminths.Rmd), we found that intermediate host transmission evolved frequently, and that egg and hatched-larvae transmission evolved a similar number of times. However, the larvae transmission was associated with larger radiations. Let's check the number of species in the life cycle database exhibiting these different strategies. It seems to confirm the survey - hatching is common when directly-transmitted and egg ingestion is rare. If the life cycle is complex and ungulates are infected via intermediate hosts, then hatching may or may not be present. Maybe this depends on the kind of intermediate host.
 
 ```{r}
 with(ung_parasites, table(complex, hatch))
 ```
 
-
-Read in tree and then make sure the tip labels match the names in the data frame
+For nematode parasites of ungulates in the dataset, I downloaded a tree from the open tree of life (see [here](getting_tree_ung_nems.Rmd)). Let's import the tree and then plot some variables alongside the tree to understand the phylogenetic distribution of the different traits of interest.
 
 ```{r}
 tree <- read.nexus(file = "tree_for_ung_nematodes.nex")
 match_df <- read.csv(file = "tree_for_ung_name_matching.csv")
-
+# make sure the tip labels match the names in the data frame
 mv <- match(tree$tip.label, match_df$tree_name)
 tree$tip.label <- match_df$data_name[mv]
 ```
 
-
-Plot things on tree to get an idea of phy sig, etc.
 ```{r}
 library(ggtree)
 ```
 
 ```{r}
-# exclude missing values
+# exclude species with missing worm size
 red_dat_size <- filter(ung_parasites, !is.nan(adult_biov), !is.na(adult_biov))
 # reduce tree to just remaining spp
 tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
@@ -136,17 +138,28 @@ tree_df <- fortify(tree_x)
 tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
 ```
 
+Here is the tree on the left with bars representing adult worm size on the right.
+
 ```{r}
 p <- ggtree(tree_df)
 facet_plot(p, panel = 'Adult worm size', 
            data = select(ungroup(red_dat_size), id = Parasite.species, val = adult_biov),
            geom = geom_segment, aes(x=min(log10(adult_biov)), xend = log10(adult_biov), y = y, yend = y))
 ```
+
+There is some phylogenetic signal in worm size. For example, one clade, second from the bottom, seems to be characterized by large worms. Another thing to notice is that the tree is not resolved/bifurcating, i.e. it is strongly determined by taxonomy. 
+
+Here is the same plot with host (ungulate) mass on the right.
+
 ```{r}
 facet_plot(p, panel = 'Host Mass', 
            data = select(ungroup(red_dat_size), id = Parasite.species, val = host.bm),
            geom = geom_segment, aes(x=min(log10(host.bm)), xend = log10(host.bm), y = y, yend = y))
 ```
+
+There also seems to be some signal in this variable - related worms tend to be in similar sized hosts - though there is still a lot of variation.
+
+Next, we look at the distribution of egg hatching - whether the egg hatches or not before infecting the first host. This trait is clearly phylogenetically structured.
 
 ```{r}
 ggtree(tree_df) +
@@ -157,6 +170,9 @@ ggtree(tree_df) +
         legend.title = element_blank(),
         legend.text = element_text(size = 5))
 ```
+
+Whether these worms have direct or complex life cycles is also phylogenetically determined. Here species are labelled by the number of hosts in the life cycle.
+
 ```{r}
 ggtree(tree_df) +
   geom_tiplab(aes(color = factor(lcl)), size = 2) +
@@ -167,15 +183,26 @@ ggtree(tree_df) +
         legend.text = element_text(size = 5))
 ```
 
+When we combine these two aspects of transmission, life cycle complexity and egg hatching, we again see the clear phylogenetic structure in these traits.
 
-Make models
+```{r}
+ggtree(tree_df) +
+  geom_tiplab(aes(color = trans_strat), size = 2) +
+  guides(color = guide_legend(override.aes = list(size = 5))) +
+  theme(legend.position = c(0.3, 1),
+        legend.justification = c(1,1),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 5))
+```
+
+The phylogenetic structure of these strategies reduces the power of phylogenetic models. Nonetheless, let's make some models for the adult size of female nematodes. I fit phylogenetic regression models, which are generalized least squares models that assume the error structure in the data is phylogenetically structured.
 
 ```{r}
 library(MASS)
 library(nlme)
 ```
 
-Just role of phylogeny, no predictors.
+First, we'll quantify the role of phylogeny, without any predictors.
 
 ```{r}
 # exclude missing values
@@ -194,13 +221,13 @@ reg2 <- gls(log10(adult_biov) ~ 1,
 summary(reg2)
 ```
 
-The lambda parameter was moderate 0.4, suggesting some phylogenetic signal in nematode body sizes. It was enough to cause a significant difference from the intercept-only model.
+The lambda parameter, which ranges from 0 (no structure) to 1 (strong signal), was moderate 0.4, suggesting some phylogenetic signal in nematode body sizes. It was enough to cause a significant difference from the intercept-only model.
 
 ```{r}
 anova(reg1, reg2)
 ```
 
-Host size matters
+Now, we add host size to a 'base' model that includes phylogenetic error structure.
 
 ```{r}
 # exclude missing values
@@ -222,12 +249,18 @@ summary(reg2)
 anova(reg1, reg2)
 ```
 
+Host size has a marginally significant positive effect on nematode worm size.
+
 ```{r}
 ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov))) +
   geom_point(alpha = 0.5) + 
   geom_abline(intercept = reg2$coefficients[1], slope = reg2$coefficients[2]) +
   labs(x = "Log Host Body Mass", y = "Log Worm Mass")
 ```
+
+As a next step, we add worm transmission stategy. I added hatching vs life cycle complexity separately to evaluate their effects independently. 
+
+Here is a comparison of models with and without the life cycle complexity term (complex vs direct). There is not a significant improvement, suggesting worms with intermediate hosts reach a similar size to those with direct transmission.
 
 ```{r}
 # exclude missing values
@@ -253,9 +286,16 @@ reg3.2 <- gls(log10(adult_biov) ~ log10(host.bm) + hatch,
             data = red_dat_size,
             method="ML",
             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-anova(reg2, reg3.1) # no effect of int host
-anova(reg2, reg3.2) # effect of hatching
+anova(reg1, reg2, reg3.1) # no effect of int host
 ```
+
+There was a significant effect of adding a hatching term (hatch vs egg).
+
+```{r}
+anova(reg1, reg2, reg3.2) # effect of hatching
+```
+
+Specifically, worms from eggs tend to grow larger than those that hatch.
 
 ```{r}
 ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov), color = hatch)) +
@@ -264,6 +304,43 @@ ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov), color = hatc
   # geom_abline(intercept = reg2$coefficients[1], slope = reg2$coefficients[2]) +
   labs(x = "Log Host Body Mass", y = "Log Worm Mass")
 ```
+
+The point in the upper right corner is *Toxocara vitulorum*. The result are robust to excluding this species.
+
+```{r}
+# filter(red_dat_size, log10(adult_biov) > 3)
+# # Results still hold after excluding?
+# 
+# # exclude missing values
+# red_dat_size <- filter(ung_parasites, !is.nan(adult_biov), !is.na(adult_biov),
+#                        !is.nan(host.bm), !is.na(host.bm), !is.na(complex), !is.na(hatch),
+#                        Parasite.species != "Toxocara vitulorum")
+# # reduce tree to just remaining spp
+# tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+# 
+# # fit gls reg
+# reg1 <- gls(log10(adult_biov) ~ 1, 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# reg2 <- gls(log10(adult_biov) ~ log10(host.bm), 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# reg3.1 <- gls(log10(adult_biov) ~ log10(host.bm) + complex, 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# reg3.2 <- gls(log10(adult_biov) ~ log10(host.bm) + hatch, 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# anova(reg2, reg3.1) # no effect of int host
+# anova(reg2, reg3.2) # effect of hatching
+```
+
+And here is the non-significant difference between complex and direct life cycle nematodes.
+
 ```{r}
 ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov), color = complex)) +
   geom_point(alpha = 0.5) + 
@@ -272,53 +349,9 @@ ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov), color = comp
   labs(x = "Log Host Body Mass", y = "Log Worm Mass")
 ```
 
+Finally, in the context of the paper, it could make sense to pool all species transmitted by an intermediate host, regardless of whether they hatch from eggs or not. Then we have three transmission strategies to compare: (i) direct life cycle, egg ingested, (ii) direct life cycle, hatched larvae, or (iii) complex life cycle.
 
-```{r}
-reg4 <- gls(log10(adult_biov) ~ log10(host.bm) + complex*hatch, 
-            data = red_dat_size,
-            method="ML",
-            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-anova(reg4) # hatchers
-```
-
-Which one was up top?
-
-```{r}
-filter(red_dat_size, log10(adult_biov) > 3)
-```
-
-Results still hold after excluding?
-
-```{r}
-# exclude missing values
-red_dat_size <- filter(ung_parasites, !is.nan(adult_biov), !is.na(adult_biov),
-                       !is.nan(host.bm), !is.na(host.bm), !is.na(complex), !is.na(hatch),
-                       Parasite.species != "Toxocara vitulorum")
-# reduce tree to just remaining spp
-tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
-
-# fit gls reg
-reg1 <- gls(log10(adult_biov) ~ 1, 
-            data = red_dat_size,
-            method="ML",
-            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-reg2 <- gls(log10(adult_biov) ~ log10(host.bm), 
-            data = red_dat_size,
-            method="ML",
-            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-reg3.1 <- gls(log10(adult_biov) ~ log10(host.bm) + complex, 
-            data = red_dat_size,
-            method="ML",
-            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-reg3.2 <- gls(log10(adult_biov) ~ log10(host.bm) + hatch, 
-            data = red_dat_size,
-            method="ML",
-            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-anova(reg2, reg3.1) # no effect of int host
-anova(reg2, reg3.2) # effect of hatching
-```
-
-Try with trans strat
+Let's fit a model with those 3 groups. It is significant improvement over a model with just the host size covariate.
 
 ```{r}
 # exclude missing values
@@ -340,9 +373,11 @@ reg3.1 <- gls(log10(adult_biov) ~ log10(host.bm) + trans_strat,
             data = red_dat_size,
             method="ML",
             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
-summary(reg3.1)
+# summary(reg3.1)
 anova(reg2, reg3.1) # effect of trans stategy
 ```
+
+Here is the plot. Worms transmitted by ingested eggs are largest, those transmitted by hatched larvae are smallest, and those transmitted by intermediate hosts are in the middel. It is also tempting to see a host size by transmission strategy interaction, i.e. the slopes differ across strategies. However, I think trying to model this cuts the data quite thin.
 
 ```{r}
 ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov), color = trans_strat)) +
@@ -351,6 +386,35 @@ ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_biov), color = tran
   labs(x = "Log Host Body Mass", y = "Log Worm Mass")
 ```
 
+Here's a simpler way to look at the difference: plot the group means at the average host size. The differences may be significant, but they look rather small overall.
+
+```{r}
+# scaled, centered host mass
+red_dat_size$host.bm.cen <- scale(log10(red_dat_size$host.bm))
+
+reg3.1 <- gls(log10(adult_biov) ~ host.bm.cen + trans_strat - 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+
+bar_plot <- as.data.frame(summary(reg3.1)$tTable)
+bar_plot <- mutate(bar_plot, ciu = Value + 1.96*Std.Error,
+                   cil = Value - 1.96*Std.Error)
+bar_plot$trans_strat <- c("host.mass", "egg eaten", "hatched larva\neaten", "intermediate host\neaten")
+bar_plot <- filter(bar_plot, trans_strat != 'host.mass')
+```
+```{r}
+ggplot() +
+  geom_point(data = red_dat_size, aes(x = trans_strat, y = log10(adult_biov), color = trans_strat),
+             position = position_jitter(width = 0.2, height = 0), alpha = 0.5) +
+  geom_errorbar(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat, ymin = cil, ymax = ciu)) +
+  geom_point(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat), shape = 4, size = 4) +
+  labs(y = "Log adult worm mass") +
+  guides(color = FALSE) +
+  theme(axis.title.x = element_blank())
+
+```
+
 # Conclusions
 
-In nematodes of ungulates, adult worm size increases with host size. There is phylogenetic signal in adult size. There is phylogenetic signal in life cycles (hatching strategy and intermediate host use). Nonetheless, directly-transmitted hatched worms are slightly smaller.
+In nematodes of ungulates, adult worm size increases with host size. There is moderate phylogenetic signal in adult worm size, and clear phylogenetic signal in transmission strategies. Nonetheless, gls models suggested that for directly-transmitted worms, those transmitted via hatched larvae are slightly smaller than those transmitted via eggs. Complex life cycles (intermediate host transmission) does not seem to result in larger worms.
