@@ -1,0 +1,441 @@
+---
+title: "Ungulate nematode life history - Size"
+author: "Dan Benesh"
+output: html_document
+---
+
+I use the life cycle database to explore ideas about the costs and benefits of different infection routes exhibited by helminths of grazing mammals (ungulates). In this document, I specifically focus on adult developmental times, i.e. prepatent periods.
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(ape)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+I need several datasets to address these issues: (i) host associations for the parasites in the life cycle database,
+(ii) life history variables for species in the life cycle database (body sizes and development), (iii) host body masses, and (iv) host taxonomy.
+
+```{r importdata}
+hosts <- read.csv(file = "../../data/CLC_database_hosts.csv", header = TRUE) 
+lh <- read.csv(file = "../../data/CLC_database_lifehistory.csv", header = TRUE)
+host_mass <- read.csv(file = "../../data/collated_host_mass_data.csv", header = TRUE)
+host_tax <- read.csv(file = "../../data/ncbi_host_taxonomy.csv", header = TRUE)
+```
+
+Host taxonomies were downloaded from the NCBI database, and I used this taxonomic information to identify host species that are 'ungulates'. Specifically, I tagged species belonging to the orders Perissodactyla or Laurasiatheria.
+
+```{r}
+# filter out ungulate host species
+ungulate_host_species <- filter(host_tax, order == "Perissodactyla" | order == "Laurasiatheria")%>%
+  select(sp.query, phylum, class, order, family, genus)
+```
+
+```{r}
+# identify ungulates in list of hosts, add var
+hosts <- mutate(hosts, 
+                ungulate = if_else(Host.species %in% ungulate_host_species$sp.query, 1, 0))
+# print common names
+# filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
+#   knitr::kable(format = 'html')
+```
+
+For each parasite species, I calculated the number of hosts in the life cycle. Some worms have facultative cycles where they can infect more or fewer hosts before reproducing, and here I assumed they took the longest route to the final host, i.e. through all facultative hosts, which may not be the most likely transmission route.
+
+```{r}
+# sp by lc data table
+lcl <- group_by(hosts, Parasite.species, Parasite.group)%>%
+  summarise(lcl = max(Host.no))
+```
+
+I also calculated worm biovolume based on their shape, such as whether they are cylindrical or ellipsoid. I further assumed a tissue density of 1.1. g/cm^3^ to convert these to biomasses, and then averaged these values for each life stage within a species. Adult size was calculated excluding males, as helminths can be dimorphic with males typically being smaller than females.
+
+```{r}
+# calc biomasses
+lh <- mutate(lh, biovolume = 
+                  if_else(Shape %in% c("cylinder", "thread-like", "whip"), 
+                          pi * (Width/2)^2 * Length, # calculate volume as a cylinder
+                          if_else(Shape %in% c("coiled", "sphere", "ellipsoid"),
+                                  4/3 * pi * Length/2 * Width/4, # calculate volume as a ellipsoid
+                                  Length * Width # calculate volume as area for remaining ribbon, leaf shapes
+                                  )),
+                biovolume = biovolume * 1.1) # covert to biomass with assumed 1.1. g/cm3 tissue density 
+
+# species averages at adult stage
+lh_biov_sp <-filter(lh, Stage == 'adult', (Sex == 'f' | is.na(Sex)) )%>% # remove adult males
+  group_by(Parasite.species)%>%
+  summarize(adult_biov = mean(biovolume, na.rm=T),
+            adult_dt = mean(Development.time, na.rm = T))
+```
+```{r}
+# calc mean host sizes
+host_mass_avg <- group_by(host_mass, binomial)%>%
+  summarize(body.mass = mean(body.mass, na.rm=T))
+# add to hosts db
+hosts <- left_join(hosts, host_mass_avg, by = c("Host.species" = "binomial"))
+```
+
+I then filtered the dataset to just nematodes infecting ungulates. For parasite species infecting multiple ungulate host species, I averaged body masses across host species.
+
+```{r}
+# filter to ungulate-infecting helminths, excluding those accidentally or atypically found in ungulates
+ung_parasites <- filter(hosts, ungulate == 1, Typical.host == 'typical', Parasite.group == "nematode")%>%
+  group_by(Parasite.species, Host.no, Def.int)%>%
+  summarize(host.bm = mean(body.mass, na.rm = T))
+```
+
+```{r}
+# combine parasite sizes, host sizes, life cycle info for plotting
+ung_parasites <- left_join(ung_parasites, lcl)
+ung_parasites <- left_join(ung_parasites, lh_biov_sp)
+ung_parasites <- mutate(ung_parasites, complex = if_else(lcl == 1, "direct", "complex"))
+
+# add hatching strategy to plot data
+hatch <- select(lh, Parasite.species, hatch = Egg.hatch)%>%
+  mutate(hatch = if_else(hatch == 'eaten', 'egg eaten', 'hatched larva\neaten'))%>% # simplify hatch strategy
+           na.omit()%>%distinct()
+ung_parasites <- left_join(ung_parasites, hatch)
+
+# make var combining hatching and life cycle strategies
+ung_parasites <- mutate(ung_parasites, 
+                        trans_strat = if_else(complex == "complex", "intermediate host\neaten", hatch))
+```
+
+For nematode parasites of ungulates in the dataset, I downloaded a tree from the open tree of life (see [here](getting_tree_ung_nems.Rmd)). Let's import the tree and then plot some variables alongside the tree to understand the phylogenetic distribution of the different traits of interest.
+
+```{r}
+tree <- read.nexus(file = "tree_for_ung_nematodes.nex")
+match_df <- read.csv(file = "tree_for_ung_name_matching.csv")
+# make sure the tip labels match the names in the data frame
+mv <- match(tree$tip.label, match_df$tree_name)
+tree$tip.label <- match_df$data_name[mv]
+```
+
+```{r}
+library(ggtree)
+```
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(adult_dt), !is.na(adult_dt), 
+                       !is.nan(host.bm), !is.na(host.bm))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+```
+```{r}
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+```
+
+Here is the tree on the left with bars representing prepatent period in days on the right.
+
+```{r}
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Prepatent period', 
+           data = select(ungroup(red_dat_size), id = Parasite.species, val = adult_dt),
+           geom = geom_segment, aes(x=0, xend = val, y = y, yend = y))
+```
+
+It looks like the prepatent period is somewhat determined by phylogeny. For example, the species with the longest prepatent periods are related.
+
+Here is the same plot with host (ungulate) mass on the right.
+
+```{r}
+facet_plot(p, panel = 'Host Mass', 
+           data = select(ungroup(red_dat_size), id = Parasite.species, val = host.bm),
+           geom = geom_segment, aes(x=min(log10(val)), xend = log10(val), y = y, yend = y))
+```
+
+There also seems to be some signal in this variable - related worms tend to be in similar sized hosts - though there is a lot of variation.
+
+Next, we look at the distribution of egg hatching - whether the egg hatches or not before infecting the first host. This trait is clearly phylogenetically structured.
+
+```{r}
+ggtree(tree_df) +
+  geom_tiplab(aes(color = hatch), size = 2) +
+  guides(color = guide_legend(override.aes = list(size = 5))) +
+  theme(legend.position = c(0.3, 1),
+        legend.justification = c(1,1),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 5))
+```
+
+Whether these worms have direct or complex life cycles is also phylogenetically determined. Here species are labelled by the number of hosts in the life cycle.
+
+```{r}
+ggtree(tree_df) +
+  geom_tiplab(aes(color = factor(lcl)), size = 2) +
+  guides(color = guide_legend(override.aes = list(size = 5))) +
+  theme(legend.position = c(0.3, 1),
+        legend.justification = c(1,1),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 5))
+```
+
+When we combine these two aspects of transmission, life cycle complexity and egg hatching, we again see the clear phylogenetic structure in these traits.
+
+```{r}
+ggtree(tree_df) +
+  geom_tiplab(aes(color = trans_strat), size = 2) +
+  guides(color = guide_legend(override.aes = list(size = 5))) +
+  theme(legend.position = c(0.3, 1),
+        legend.justification = c(1,1),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 5))
+```
+
+The phylogenetic structure of these strategies reduces the power of phylogenetic models. Nonetheless, let's make some models for the prepatent period of female nematodes. I fit phylogenetic regression models, which are generalized least squares models that assume the error structure in the data is phylogenetically structured.
+
+```{r}
+library(MASS)
+library(nlme)
+```
+
+First, we'll quantify the role of phylogeny, without any predictors.
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(adult_dt), !is.na(adult_dt), 
+                       !is.nan(host.bm), !is.na(host.bm))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(adult_dt ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(adult_dt ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+summary(reg1)
+```
+
+The lambda parameter, which ranges from 0 (no structure) to 1 (strong signal), was fairly high at 0.67, suggesting clear phylogenetic signal in prepatent periods. The phylogenetic model was better than the intercept-only model.
+
+```{r}
+anova(reg0, reg1)
+```
+
+However, the model residuals are clearly skewed. This is not surprising - there were a few species with very long developmental times.
+
+```{r}
+qplot(reg1$residuals)
+```
+
+Let's log transform developmental time and refit the models. The residual plot looks much better.
+
+```{r}
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(log10(adult_dt) ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(log10(adult_dt) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# summary(reg1)
+qplot(reg1$residuals)
+```
+And the significance test is still positive - phylogeny matters.
+
+```{r}
+anova(reg0, reg1)
+```
+
+Let's use log-transformated developmental times going forward, given the better model diagnostics. Our next step is to add the host mass covariate.
+
+```{r}
+# fit gls reg with phylogeny, with and without host size
+reg1 <- gls(log10(adult_dt) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+reg2 <- gls(log10(adult_dt) ~ log10(host.bm), 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+anova(reg1, reg2)
+```
+
+It is not related to developmental time - worms do not develop faster or slower in larger hosts.
+
+```{r}
+ggplot(red_dat_size, aes(x = log10(host.bm), y = log10(adult_dt))) +
+  geom_point(alpha = 0.5) + 
+  geom_abline(intercept = reg2$coefficients[1], slope = reg2$coefficients[2]) +
+  labs(x = "Log Host Body Mass", y = "Log Prepatent Period")
+```
+
+Next, we add worm transmission stategy. I added hatching vs life cycle complexity separately to evaluate their effects independently. 
+
+Here is a comparison of models with and without the life cycle complexity term (complex vs direct). There is a significant effect.
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(adult_dt), !is.na(adult_dt),
+                       !is.nan(host.bm), !is.na(host.bm), !is.na(complex), !is.na(hatch))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+     
+# fit gls reg
+reg1 <- gls(log10(adult_dt) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+reg2 <- gls(log10(adult_dt) ~ log10(host.bm), 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+reg3.1 <- gls(log10(adult_dt) ~ log10(host.bm) + complex, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+reg3.2 <- gls(log10(adult_dt) ~ log10(host.bm) + hatch, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+anova(reg1, reg2, reg3.1) # no effect of int host
+```
+
+Specifically worms with intermediate hosts have longer prepatent periods, which I find surprising.
+
+```{r}
+ggplot(red_dat_size, aes(x = log10(host.bm), y = adult_dt, color = complex)) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(se = F, method = 'lm') +
+  scale_y_log10() +
+  labs(x = "Log Host Body Mass", y = "Prepatent period")
+```
+
+There was not significant effect of adding a hatching term (hatch vs egg).
+
+```{r}
+anova(reg1, reg2, reg3.2) # effect of hatching
+```
+
+Worms spend about the same time developing, regardless of whether transmitted by eggs or hatched larvae.
+
+```{r}
+ggplot(red_dat_size, aes(x = log10(host.bm), y = adult_dt, color = hatch)) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(se = F, method = 'lm') +
+  scale_y_log10() +
+  labs(x = "Log Host Body Mass", y = "Prepatent period")
+```
+
+Finally, in the context of the paper, it could make sense to pool all species transmitted by an intermediate host, regardless of whether they hatch from eggs or not. Then we have three transmission strategies to compare: (i) direct life cycle, egg ingested, (ii) direct life cycle, hatched larvae, or (iii) complex life cycle.
+
+Let's fit a model with those 3 groups. It is significant improvement over a model with just the host size covariate.
+
+```{r}
+# fit gls reg
+reg1 <- gls(log10(adult_dt) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+reg2 <- gls(log10(adult_dt) ~ log10(host.bm), 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+reg3.1 <- gls(log10(adult_dt) ~ log10(host.bm) + trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# summary(reg3.1)
+anova(reg2, reg3.1) # effect of trans stategy
+```
+
+Here is the plot. Now we see that the differences between complex and direct life cycle worms was driven exclusively by the short developmental times of directly-transmitted species with hatched larvae. Species transmitted by eggs or by intermediate hosts appear tot have comparable developmental times.
+
+```{r}
+ggplot(red_dat_size, aes(x = log10(host.bm), y = adult_dt, color = trans_strat)) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(se = F, method = 'lm') +
+  scale_y_log10() +
+  labs(x = "Log Host Body Mass", y = "Prepatent period")
+```
+
+Here's a simpler way to look at the difference: plot the group means at the average host size. The pattern actually mirrors that observed for adult size.
+
+```{r}
+# scaled, centered host mass
+red_dat_size$host.bm.cen <- scale(log10(red_dat_size$host.bm))
+
+reg3.1 <- gls(log10(adult_dt) ~ host.bm.cen + trans_strat - 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+
+bar_plot <- as.data.frame(summary(reg3.1)$tTable)
+bar_plot <- mutate(bar_plot, ciu = Value + 1.96*Std.Error,
+                   cil = Value - 1.96*Std.Error)
+bar_plot$trans_strat <- c("host.mass", "egg eaten", "hatched larva\neaten", "intermediate host\neaten")
+bar_plot <- filter(bar_plot, trans_strat != 'host.mass')
+```
+```{r}
+ggplot() +
+  geom_point(data = red_dat_size, aes(x = trans_strat, y = log10(adult_dt), color = trans_strat),
+             position = position_jitter(width = 0.2, height = 0), alpha = 0.5) +
+  geom_errorbar(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat, ymin = cil, ymax = ciu)) +
+  geom_point(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat), shape = 4, size = 4) +
+  labs(y = "Log prepatent period") +
+  guides(color = FALSE) +
+  theme(axis.title.x = element_blank())
+```
+
+That shouldn't be too surprising, because reproductive size and prepatent periods are correlated. The longer you wait to reproduce, the larger your size.
+
+```{r}
+ggplot(ung_parasites, aes(y = adult_biov, x = adult_dt)) +
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +
+  geom_smooth(se=F,method='lm')
+```
+
+Consequently, maybe we should consider adult size and developmental time in the same analysis. Then we can change our question from "Does development time differ among strategies" to "Does developmental time differ, under the assumption that they achieve similar reproductive sizes". The problem is that it reduces the amount of data available, because there are fewer species that have both size and development data. Here is the same plot, with the strategies separated.
+
+```{r}
+ggplot(ung_parasites, aes(y = adult_biov, x = adult_dt, color = trans_strat)) +
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +
+  geom_smooth(se=F,method='lm')
+```
+
+There are only 4 species for the 'egg eaten' strategy, and one is an outlier. Still, it looks like worms spend about the same about of time to reach similar sizes, regardless of their transmission strategy. When I tried to model this, I had trouble fitting the model, presumably due to the combination of small samples and high phylogenetic signal. A more thorough analysis would probably require imputation (to account for missing values) and a bivariate approach (size and development modelled jointly). However, I think that is beyond the scope of this study.
+
+```{r}
+# # exclude missing values
+# red_dat_size <- filter(ung_parasites, !is.nan(adult_biov), !is.na(adult_biov),
+#                        !is.nan(adult_dt), !is.na(adult_dt),
+#                        !is.nan(host.bm), !is.na(host.bm), !is.na(trans_strat))
+# # reduce tree to just remaining spp
+# tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+# 
+# # fit gls reg
+# reg1 <- gls(log10(adult_dt) ~ 1, 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# reg2 <- gls(log10(adult_dt) ~ log10(host.bm), 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# reg3 <- gls(log10(adult_dt) ~ log10(adult_biov), 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# reg4 <- gls(log10(adult_dt) ~ log10(host.bm) + + log10(adult_biov) + trans_strat, 
+#             data = red_dat_size,
+#             method="ML",
+#             correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+# # summary(reg3.1)
+# anova(reg1, reg2, reg3, reg4)
+```
+
+# Conclusions
+
+In nematodes of ungulates, there is rather high phylogenetic signal in prepatent periods and clear phylogenetic signal in transmission strategies. GLS models suggested that for directly-transmitted worms, those transmitted via hatched larvae reproduce at an earlier age than those transmitted via eggs. Complex life cycles (intermediate host transmission) was associated with longer prepatent periods. In combination with the previous results on adult size, it looks like 'hatchers' spend less time growing and reproduce at a smaller size than species transmitted via eggs or intermediate hosts.
