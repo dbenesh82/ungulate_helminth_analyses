@@ -1,0 +1,315 @@
+---
+title: "Ungulate nematode life history - Size"
+author: "Dan Benesh"
+output: html_document
+---
+
+I use the life cycle database to explore ideas about the costs and benefits of different infection routes exhibited by helminths of grazing mammals (ungulates). In this document, I specifically focus on egg sizes. The basic approach to data filtering and summarizing was described [previously](01LHcomps_Adult_Size.html).
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(ape)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+```{r importdata}
+hosts <- read.csv(file = "../../data/CLC_database_hosts.csv", header = TRUE) 
+lh <- read.csv(file = "../../data/CLC_database_lifehistory.csv", header = TRUE)
+host_mass <- read.csv(file = "../../data/collated_host_mass_data.csv", header = TRUE)
+host_tax <- read.csv(file = "../../data/ncbi_host_taxonomy.csv", header = TRUE)
+```
+```{r}
+# filter out ungulate host species
+ungulate_host_species <- filter(host_tax, order == "Perissodactyla" | order == "Laurasiatheria")%>%
+  select(sp.query, phylum, class, order, family, genus)
+```
+```{r}
+# identify ungulates in list of hosts, add var
+hosts <- mutate(hosts, 
+                ungulate = if_else(Host.species %in% ungulate_host_species$sp.query, 1, 0))
+# print common names
+# filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
+#   knitr::kable(format = 'html')
+```
+```{r}
+# sp by lc data table
+lcl <- group_by(hosts, Parasite.species, Parasite.group)%>%
+  summarise(lcl = max(Host.no))
+```
+```{r}
+# calc biomasses
+lh <- mutate(lh, biovolume = 
+                  if_else(Shape %in% c("cylinder", "thread-like", "whip"), 
+                          pi * (Width/2)^2 * Length, # calculate volume as a cylinder
+                          if_else(Shape %in% c("coiled", "sphere", "ellipsoid"),
+                                  4/3 * pi * Length/2 * Width/4, # calculate volume as a ellipsoid
+                                  Length * Width # calculate volume as area for remaining ribbon, leaf shapes
+                                  )),
+                biovolume = biovolume * 1.1) # covert to biomass with assumed 1.1. g/cm3 tissue density 
+
+# species averages at adult stage
+lh_biov_sp <-filter(lh, Stage == 'adult', (Sex == 'f' | is.na(Sex)) )%>% # remove adult males
+  group_by(Parasite.species)%>%
+  summarize(adult_biov = mean(biovolume, na.rm=T),
+            adult_dt = mean(Development.time, na.rm = T))
+```
+```{r}
+# calc mean host sizes
+host_mass_avg <- group_by(host_mass, binomial)%>%
+  summarize(body.mass = mean(body.mass, na.rm=T))
+# add to hosts db
+hosts <- left_join(hosts, host_mass_avg, by = c("Host.species" = "binomial"))
+```
+```{r}
+# filter to ungulate-infecting helminths, excluding those accidentally or atypically found in ungulates
+ung_parasites <- filter(hosts, ungulate == 1, Typical.host == 'typical', Parasite.group == "nematode")%>%
+  group_by(Parasite.species, Host.no, Def.int)%>%
+  summarize(host.bm = mean(body.mass, na.rm = T))
+```
+```{r}
+# combine parasite sizes, host sizes, life cycle info for plotting
+ung_parasites <- left_join(ung_parasites, lcl)
+ung_parasites <- left_join(ung_parasites, lh_biov_sp)
+ung_parasites <- mutate(ung_parasites, complex = if_else(lcl == 1, "direct", "complex"))
+
+# add hatching strategy to plot data
+hatch <- select(lh, Parasite.species, hatch = Egg.hatch)%>%
+  mutate(hatch = if_else(hatch == 'eaten', 'egg eaten', 'hatched larva\neaten'))%>% # simplify hatch strategy
+           na.omit()%>%distinct()
+ung_parasites <- left_join(ung_parasites, hatch)
+
+# make var combining hatching and life cycle strategies
+ung_parasites <- mutate(ung_parasites, 
+                        trans_strat = if_else(complex == "complex", "intermediate host\neaten", hatch))
+```
+
+Are propagules bigger or smaller depending on the transmission strategy? There are two ways to consider propagule size. First, we can look at the size at ingestion, i.e. the size of the parasite propagule that is consumed. Second, we can look at the size at the beginning of growth, which is smaller for worms that hatch out of the eggs after ingestion to begin growth.
+
+```{r}
+# filter propagule sizes, average them within species
+prop_sizes <- filter(lh, Host.no == 0)%>%
+  select(Parasite.species, Stage, biovolume)%>%
+  group_by(Parasite.species, Stage)%>%
+  summarize(propagule_size = mean(biovolume, na.rm = T))
+```
+```{r}
+# make variable for selecting transmission propagules eaten
+hatch$selector <- "free larva"
+hatch$selector[which(hatch$hatch == "egg eaten")] <- "egg"
+
+# make variable for selecting size at initiation of growth after infection
+hatch$selector2 <- "free larva"
+hatch$selector2[which(hatch$hatch == "egg eaten")] <- "embryo"
+```
+```{r}
+# reduce to just the transmission propagules to the ungulates
+prop_sizes <- left_join(prop_sizes, hatch, by = "Parasite.species")
+prop_sizes_eaten <- filter(prop_sizes, selector == Stage)%>%
+  select(Parasite.species, propagule_eaten = Stage, propagule_size_eaten = propagule_size)
+prop_sizes_growing <- filter(prop_sizes, selector2 == Stage)%>%
+  select(Parasite.species, propagule_growth_start = Stage, propagule_size_grow_start = propagule_size)
+prop_sizes <- left_join(prop_sizes_eaten, prop_sizes_growing)
+prop_sizes <- filter(prop_sizes, Parasite.species %in% ung_parasites$Parasite.species)
+```
+```{r}
+ung_parasites <- left_join(ung_parasites, prop_sizes)
+```
+
+For nematode parasites of ungulates in the dataset, I downloaded a tree from the open tree of life (see [here](getting_tree_ung_nems.Rmd)). Let's import the tree and then plot some variables alongside the tree to understand the phylogenetic distribution of the different traits of interest.
+
+```{r}
+tree <- read.nexus(file = "tree_for_ung_nematodes.nex")
+match_df <- read.csv(file = "tree_for_ung_name_matching.csv")
+# make sure the tip labels match the names in the data frame
+mv <- match(tree$tip.label, match_df$tree_name)
+tree$tip.label <- match_df$data_name[mv]
+```
+
+```{r}
+library(ggtree)
+```
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_eaten), !is.na(propagule_size_eaten))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+```
+```{r}
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+```
+
+Here is the tree on the left with bars representing propagule size consumed on the right.
+
+```{r}
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Propagule size eaten', 
+           data = select(ungroup(red_dat_size), id = Parasite.species, val = propagule_size_eaten),
+           geom = geom_segment, aes(x=min(log10(val)), xend = log10(val), y = y, yend = y, color = trans_strat))
+```
+
+It looks like the propagule size is phylogenetically structured, though some of this is the difference in strategy. Red bars are egg transmitted, while green are hatched larvae, which are smaller.
+
+Now the same plot for the propagule size at initiation of growth in the next host. The red values (for eggs) are now smaller, as this represents embryo size, i.e. this is a size estimate for the worm that hatches out of the egg after consumption by the first host.
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_grow_start), !is.na(propagule_size_grow_start))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Propagule size at growth start', 
+           data = select(ungroup(red_dat_size), id = Parasite.species, val = propagule_size_grow_start),
+           geom = geom_segment, aes(x=min(log10(val)), xend = log10(val), y = y, yend = y, color = trans_strat))
+```
+
+Previously, we saw that both hatching and life cycle complexity are phylogenetically structured, so we won't repeat those plots here.
+
+The phylogenetic structure of transmission strategies reduces the power of phylogenetic models. Nonetheless, let's make some models for propagule size. I fit phylogenetic regression models, which are generalized least squares models that assume the error structure in the data is phylogenetically structured.
+
+```{r}
+library(MASS)
+library(nlme)
+```
+
+We'll examine our two propagule size measures in succession, starting with propagule size at the initiation of growth. As a first modelling step, we'll quantify the role of phylogeny, without any predictors.
+
+```{r}
+# exclude species with missing data
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_grow_start), !is.na(propagule_size_grow_start))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(log10(propagule_size_grow_start) ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(log10(propagule_size_grow_start) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+summary(reg1)
+```
+
+The lambda parameter was actually negative, suggesting related species are more dissimilar to each other than expected. In my experience, this can happen when related species are mildly different, but separated by short branch lengths. These species can usually be identifed by looking at outliers in the residuals. In any case, adding phylogenetic structure significantly improves the model.
+
+```{r}
+anova(reg0, reg1)
+```
+
+As a next step, we add transmission strategy to the model. It is significant.
+
+```{r}
+reg2 <- gls(log10(propagule_size_grow_start) ~ trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=F))
+summary(reg2)
+```
+
+```{r}
+anova(reg1, reg2)
+```
+
+When we plot the group means from the model, we see that hatched larvae are largest when they infect their first host. The embryos in eggs that are ingested are smaller. The error bars are almost certainly overconfident - their small width is caused by the negative lambda value, which implies that the trait evolves fast enough to cause related species to be dissimilar to each other.
+
+```{r}
+reg3 <- gls(log10(propagule_size_grow_start) ~ trans_strat - 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=FALSE))
+
+bar_plot <- as.data.frame(summary(reg3)$tTable)
+bar_plot <- mutate(bar_plot, ciu = Value + 1.96*Std.Error,
+                   cil = Value - 1.96*Std.Error)
+bar_plot$trans_strat <- c("egg eaten", "hatched larva\neaten", "intermediate host\neaten")
+
+```
+```{r}
+ggplot() +
+  geom_point(data = red_dat_size, aes(x = trans_strat, y = log10(propagule_size_grow_start), color = trans_strat),
+             position = position_jitter(width = 0.2, height = 0), alpha = 0.5) +
+  geom_errorbar(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat, ymin = cil, ymax = ciu)) +
+  geom_point(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat), shape = 4, size = 4) +
+  labs(y = "Log propagule size growth start") +
+  guides(color = FALSE) +
+  theme(axis.title.x = element_blank())
+```
+
+
+Moving on to the second propagule size measurement, size when consumed. For hatched larvae this is the same, for species where eggs are consumed, this is the egg size, not the embryo size. Again, as a first step, we assess phylogenetic effects.
+
+```{r}
+# exclude species with missing data
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_eaten), !is.na(propagule_size_eaten))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+summary(reg1)
+```
+
+The lambda parameter was much higher, 0.69, suggesting relatively strong phylogenetic effects. This improves the model.
+
+```{r}
+anova(reg0, reg1)
+```
+
+Adding transmission strategy also improves the model.
+
+```{r}
+reg2 <- gls(log10(propagule_size_eaten) ~ trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=F))
+summary(reg2)
+```
+
+```{r}
+anova(reg1, reg2)
+```
+
+When, we plot the group means, we see that eggs tend to be larger than hatched larvae, which makes sense, assuming larvae hatched from similar sizes eggs.
+
+```{r}
+reg3 <- gls(log10(propagule_size_eaten) ~ trans_strat - 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=FALSE))
+
+bar_plot <- as.data.frame(summary(reg3)$tTable)
+bar_plot <- mutate(bar_plot, ciu = Value + 1.96*Std.Error,
+                   cil = Value - 1.96*Std.Error)
+bar_plot$trans_strat <- c("egg eaten", "hatched larva\neaten", "intermediate host\neaten")
+
+```
+```{r}
+ggplot() +
+  geom_point(data = red_dat_size, aes(x = trans_strat, y = log10(propagule_size_eaten), color = trans_strat),
+             position = position_jitter(width = 0.2, height = 0), alpha = 0.5) +
+  geom_errorbar(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat, ymin = cil, ymax = ciu)) +
+  geom_point(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat), shape = 4, size = 4) +
+  labs(y = "Log propagule size eaten") +
+  guides(color = FALSE) +
+  theme(axis.title.x = element_blank())
+```
+
+
+# Conclusions
+
+Ungulates may get infected with helminths by consuming their eggs or by eating their hatched larvae. Compared to hatched larvae, species with egg transmission have large propagules (eggs), but small worms/embryos within those propagules. One interpretation is that egg transmission requires durability, hence more investment into the shell at the expense of the offspring mass. Also, hatched larvae may need to be larger than egg embryos to survive for extended periods of time in the free environment. Species transmitted to intermediate hosts seem to invest less in their offspring - they are smaller when eaten than egg-transmitted species and they start growth at a smaller size than hatched larvae targeting ungulates.
