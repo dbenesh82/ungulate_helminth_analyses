@@ -160,11 +160,11 @@ An additional complication is that different species show different patterns of 
 ```
 
 ```{r}
-# write.csv(temp_test_sp2, file = "prop_devo_toedit.csv", row.names = F)
+write.csv(temp_test_sp2, file = "../../data/prop_devo_toedit.csv", row.names = F)
 ```
 
 ```{r}
-ed_devo <- read.csv(file = "prop_devo_edited.csv")
+ed_devo <- read.csv(file = "../../data/prop_devo_edited.csv")
 names(ed_devo)[1] <- "Parasite.species" # excel added weird thing to column name
 ```
 ```{r}

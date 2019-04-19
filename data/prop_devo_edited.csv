@@ -1,0 +1,83 @@
+﻿Parasite.species,Egg.hatch,Laid_infective,devo_egg,devo_free_larva,time_to_infectivity
+Aonchotheca bovis,eaten,no,831.875,NA,831.875
+Ascaris suum,eaten,no,464.8388258,NA,464.8388258
+Ascarops strongylina,eaten,yes,NA,NA,0
+Chabertia ovina,"hatch, grow, eaten",no,21.65277777,NA,
+Cooperia curticei,"hatch, grow, eaten",no,35.22916667,106.3958333,141.625
+Cooperia fuelleborni,"hatch, grow, eaten",no,NA,136.5,
+Cooperia oncophora,"hatch, grow, eaten",no,15.8125,118.8333333,134.6458333
+Cooperia pectinata,"hatch, grow, eaten",no,NA,NA,
+Cooperia punctata,"hatch, grow, eaten",no,14.99999999,71.9375,86.93749999
+Cyathostomum catinatum,"hatch, grow, eaten",no,NA,NA,
+Cylicocyclus nassatus,"hatch, grow, eaten",no,NA,33.161,
+Cylicostephanus longibursatus,"hatch, grow, eaten",no,NA,NA,
+Cystocaulus ocreatus,"hatch, penetrate",yes,NA,NA,0
+Dictyocaulus arnfieldi,"hatch, grow, eaten",no,NA,NA,
+Dictyocaulus eckerti,"hatch, grow, eaten",no,NA,NA,
+Dictyocaulus filaria,"hatch, grow, eaten",no,NA,72.76875,72.76875
+Dictyocaulus viviparus,"hatch, grow, eaten",no,NA,NA,
+Elaphostrongylus alces,"hatch, penetrate",yes,NA,NA,0
+Elaphostrongylus cervi,"hatch, penetrate",yes,NA,NA,0
+Elaphostrongylus rangiferi,"hatch, penetrate",yes,NA,NA,0
+Gnathostoma doloresi,"hatch, eaten",no,197.5,NA,197.5
+Gnathostoma hispidum,"hatch, eaten",no,206.3,NA,206.3
+Gongylonema pulchrum,eaten,yes,NA,NA,0
+Haemonchus contortus,"hatch, grow, eaten",no,24.12916667,61.94351852,86.07268518
+Haemonchus placei,"hatch, grow, eaten",no,NA,NA,
+Hyostrongylus rubidus,"hatch, grow, eaten",no,29.25,96.75,126
+Metastrongylus apri,eaten,yes,NA,NA,0
+Metastrongylus pudendotectus,eaten,yes,NA,NA,0
+Metastrongylus salmi,eaten,yes,NA,NA,0
+Muellerius capillaris,"hatch, eaten",yes,NA,NA,0
+Nematodirus abnormalis,"hatch, eaten",no,270.5714286,NA,270.5714286
+Nematodirus battus,"hatch, eaten",no,461.0714286,NA,461.0714286
+Nematodirus filicollis,"hatch, eaten",no,421.65,NA,421.65
+Nematodirus helvetianus,"hatch, eaten",no,211.5,NA,211.5
+Nematodirus spathiger,"hatch, eaten",no,292.23,NA,292.23
+Neostrongylus linearis,"hatch, penetrate",yes,NA,NA,0
+Oesophagostomum asperum,"hatch, grow, eaten",no,NA,NA,
+Oesophagostomum columbianum,"hatch, grow, eaten",no,23.15972222,96.95138889,120.1111111
+Oesophagostomum dentatum,"hatch, grow, eaten",no,17.24999999,84.3,101.55
+Oesophagostomum kansuensis,"hatch, grow, eaten",no,NA,NA,
+Oesophagostomum quadrispinulatum,"hatch, grow, eaten",no,NA,NA,
+Oesophagostomum radiatum,"hatch, grow, eaten",no,NA,NA,
+Oesophagostomum venulosum,"hatch, grow, eaten",no,NA,NA,
+Ostertagia ostertagi,"hatch, grow, eaten",no,17.8125,96.77083333,114.5833333
+Oxyuris equi,eaten,no,NA,NA,
+Parascaris equorum,eaten,no,250,NA,250
+Parelaphostrongylus andersoni,"hatch, penetrate",yes,NA,NA,0
+Parelaphostrongylus odocoilei,"hatch, penetrate",yes,NA,NA,0
+Parelaphostrongylus tenuis,"hatch, penetrate",yes,NA,NA,0
+Physocephalus dromedarii,eaten,yes,NA,NA,0
+Physocephalus sexalatus,eaten,yes,NA,NA,0
+Pneumostrongylus calcaratus,"hatch, penetrate",yes,NA,NA,0
+Protostrongylus davtiani,"hatch, penetrate",yes,NA,NA,0
+Protostrongylus hobmaieri,"hatch, penetrate",yes,NA,NA,0
+Protostrongylus rufescens,"hatch, eaten",yes,NA,NA,0
+Protostrongylus skrjabini,"hatch, penetrate",yes,NA,NA,0
+Protostrongylus stilesi/rushi,"hatch, penetrate",yes,NA,NA,0
+Simondsia paradoxa,eaten,yes,NA,NA,0
+Skrjabinema ovis,eaten,yes,NA,NA,0
+Spirocerca lupi,eaten,yes,NA,NA,0
+Stephanurus dentatus,"hatch, grow, eaten",no,25.265625,83.82552083,109.0911458
+Strongylus edentatus,"hatch, grow, eaten",no,21.27833333,42.77666667,64.055
+Strongylus equinus,"hatch, grow, eaten",no,21.806,45.264,67.07
+Strongylus vulgaris,"hatch, grow, eaten",no,21.69833333,66.045,87.74333333
+Teladorsagia circumcincta,"hatch, grow, eaten",no,NA,NA,
+Toxocara vitulorum,eaten,no,850,NA,850
+Trichostrongylus axei,"hatch, grow, eaten",no,NA,NA,
+Trichostrongylus colubriformis,"hatch, grow, eaten",no,11.47916667,36.25,47.72916667
+Trichostrongylus rugatus,"hatch, grow, eaten",no,NA,NA,
+Trichostrongylus skrjabini,"hatch, grow, eaten",no,33.25,76,109.25
+Trichostrongylus vitrinus,"hatch, grow, eaten",no,NA,NA,
+Trichuris discolor,eaten,no,NA,NA,NA
+Trichuris ovis,eaten,no,488.4,NA,488.4
+Trichuris skrjabini,eaten,no,1037.5,NA,1037.5
+Trichuris suis,eaten,no,749.8888889,NA,749.8888889
+Triodontophorus tenuicollis,"hatch, grow, eaten",no,35.00000001,84,119
+Umingmakstrongylus pallikuukensis,"hatch, penetrate",yes,NA,NA,0
+Varestrongylus alpenae,"hatch, penetrate",yes,NA,NA,0
+Varestrongylus capreoli,"hatch, penetrate",yes,NA,NA,0
+Varestrongylus eleguneniensis,"hatch, penetrate",yes,NA,NA,0
+Varestrongylus pneumonicus,"hatch, penetrate",yes,NA,NA,0
+Varestrongylus sagittatus,"hatch, penetrate",yes,NA,NA,0
