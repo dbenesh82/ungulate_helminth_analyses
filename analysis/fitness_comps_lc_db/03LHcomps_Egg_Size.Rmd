@@ -1,5 +1,5 @@
 ---
-title: "Ungulate nematode life history - Size"
+title: "Ungulate nematode life history - Propagule size"
 author: "Dan Benesh"
 output: html_document
 ---
