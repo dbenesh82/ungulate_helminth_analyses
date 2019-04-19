@@ -1,0 +1,362 @@
+---
+title: "Ungulate nematode life history - Propagule development"
+author: "Dan Benesh"
+output: html_document
+---
+
+I use the life cycle database to explore ideas about the costs and benefits of different infection routes exhibited by helminths of grazing mammals (ungulates). In this document, I specifically focus on propagule development. The basic approach to data filtering and summarizing was described [previously](01LHcomps_Adult_Size.html).
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(ape)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+```{r importdata}
+hosts <- read.csv(file = "../../data/CLC_database_hosts.csv", header = TRUE) 
+lh <- read.csv(file = "../../data/CLC_database_lifehistory.csv", header = TRUE)
+host_mass <- read.csv(file = "../../data/collated_host_mass_data.csv", header = TRUE)
+host_tax <- read.csv(file = "../../data/ncbi_host_taxonomy.csv", header = TRUE)
+```
+```{r}
+# filter out ungulate host species
+ungulate_host_species <- filter(host_tax, order == "Perissodactyla" | order == "Laurasiatheria")%>%
+  select(sp.query, phylum, class, order, family, genus)
+```
+```{r}
+# identify ungulates in list of hosts, add var
+hosts <- mutate(hosts, 
+                ungulate = if_else(Host.species %in% ungulate_host_species$sp.query, 1, 0))
+# print common names
+# filter(hosts, ungulate == 1)%>%select(Host.species, Host.common.name)%>%distinct()%>%
+#   knitr::kable(format = 'html')
+```
+```{r}
+# sp by lc data table
+lcl <- group_by(hosts, Parasite.species, Parasite.group)%>%
+  summarise(lcl = max(Host.no))
+```
+```{r}
+# calc biomasses
+lh <- mutate(lh, biovolume = 
+                  if_else(Shape %in% c("cylinder", "thread-like", "whip"), 
+                          pi * (Width/2)^2 * Length, # calculate volume as a cylinder
+                          if_else(Shape %in% c("coiled", "sphere", "ellipsoid"),
+                                  4/3 * pi * Length/2 * Width/4, # calculate volume as a ellipsoid
+                                  Length * Width # calculate volume as area for remaining ribbon, leaf shapes
+                                  )),
+                biovolume = biovolume * 1.1) # covert to biomass with assumed 1.1. g/cm3 tissue density 
+
+# species averages at adult stage
+lh_biov_sp <-filter(lh, Stage == 'adult', (Sex == 'f' | is.na(Sex)) )%>% # remove adult males
+  group_by(Parasite.species)%>%
+  summarize(adult_biov = mean(biovolume, na.rm=T),
+            adult_dt = mean(Development.time, na.rm = T))
+```
+
+```{r}
+# calc mean host sizes
+host_mass_avg <- group_by(host_mass, binomial)%>%
+  summarize(body.mass = mean(body.mass, na.rm=T))
+# add to hosts db
+hosts <- left_join(hosts, host_mass_avg, by = c("Host.species" = "binomial"))
+```
+```{r}
+# filter to ungulate-infecting helminths, excluding those accidentally or atypically found in ungulates
+ung_parasites <- filter(hosts, ungulate == 1, Typical.host == 'typical', Parasite.group == "nematode")%>%
+  group_by(Parasite.species, Host.no, Def.int)%>%
+  summarize(host.bm = mean(body.mass, na.rm = T))
+```
+```{r}
+# combine parasite sizes, host sizes, life cycle info for plotting
+ung_parasites <- left_join(ung_parasites, lcl)
+ung_parasites <- left_join(ung_parasites, lh_biov_sp)
+ung_parasites <- mutate(ung_parasites, complex = if_else(lcl == 1, "direct", "complex"))
+
+# add hatching strategy to plot data
+hatch <- select(lh, Parasite.species, hatch = Egg.hatch)%>%
+  mutate(hatch = if_else(hatch == 'eaten', 'egg eaten', 'hatched larva\neaten'))%>% # simplify hatch strategy
+           na.omit()%>%distinct()
+ung_parasites <- left_join(ung_parasites, hatch)
+
+# make var combining hatching and life cycle strategies
+ung_parasites <- mutate(ung_parasites, 
+                        trans_strat = if_else(complex == "complex", "intermediate host\neaten", hatch))
+```
+```{r}
+# filter propagule sizes, average them within species
+prop_sizes <- filter(lh, Host.no == 0)%>%
+  select(Parasite.species, Stage, biovolume)%>%
+  group_by(Parasite.species, Stage)%>%
+  summarize(propagule_size = mean(biovolume, na.rm = T))
+```
+```{r}
+# make variable for selecting transmission propagules eaten
+hatch$selector <- "free larva"
+hatch$selector[which(hatch$hatch == "egg eaten")] <- "egg"
+
+# make variable for selecting size at initiation of growth after infection
+hatch$selector2 <- "free larva"
+hatch$selector2[which(hatch$hatch == "egg eaten")] <- "embryo"
+```
+```{r}
+# reduce to just the transmission propagules to the ungulates
+prop_sizes <- left_join(prop_sizes, hatch, by = "Parasite.species")
+prop_sizes_eaten <- filter(prop_sizes, selector == Stage)%>%
+  select(Parasite.species, propagule_eaten = Stage, propagule_size_eaten = propagule_size)
+prop_sizes_growing <- filter(prop_sizes, selector2 == Stage)%>%
+  select(Parasite.species, propagule_growth_start = Stage, propagule_size_grow_start = propagule_size)
+prop_sizes <- left_join(prop_sizes_eaten, prop_sizes_growing)
+prop_sizes <- filter(prop_sizes, Parasite.species %in% ung_parasites$Parasite.species)
+```
+```{r}
+ung_parasites <- left_join(ung_parasites, prop_sizes)
+```
+
+Unlike the previous traits examined, for propagule development, it is tricky to get a single value for each species. When there are multiple measurements for a single species, it is usually because propagule development was studied across a temperature gradient. Obviously, development is temperature-sensitive, so development times, even within a species, can vary substantially depending on the temperature at which it was studied.
+
+```{r}
+temp_test <- filter(lh, Parasite.species %in% ung_parasites$Parasite.species, Host.no == 0)%>%
+  select(Parasite.species, Stage, Egg.hatch, Development.time, Temp, Development.remarks, Author)%>%
+  mutate(degree.days = Development.time*(Temp - 5))
+```
+
+Here is propagule development time as a function of temperature, with points from the same species connected by lines. The trend is negative - higher temps, shorter development times. It is also obvious that different transmission strategies (e.g. hatch or not) exhibit different developmental times, and that is what we are interested in (more detail on that below).
+
+```{r}
+ggplot(temp_test, aes(x = Temp, y = Development.time, color = Egg.hatch)) + geom_point() +
+  geom_line(aes(group = Parasite.species)) +
+  scale_y_log10()
+```
+
+But first we need to address this temperature variation, which from our perspective is noise. Optimally, one would make a model that accounts for both within-species variation due to temperature as well as the between-species effect of phylogeny and transmission strategy. That's possible, but perhaps overkill for our modest sample sizes and interests (i.e. we're not interested in temperature-dependence here). A simpler approach that I've used previously is to calculate development time in degree-days (essentially devo time * temperature).
+
+When we calculate and plot degree days, it looks like it does a fair job at removing the temperature effect - the lines are now flat. I thus took the multiple degree day measurments for a species and averaged them.
+
+```{r}
+ggplot(temp_test, aes(x = Temp, y = degree.days, color = Egg.hatch)) + geom_point() +
+  geom_line(aes(group = Parasite.species)) +
+  scale_y_log10()
+```
+
+An additional complication is that different species show different patterns of propagule development. For instance, some species are released from the host infective, while other species require time for eggs to embryonate or for free larvae to molt before they are infective. This info (laid infective or not) was not in the database, though it could be partially inferred (e.g. a species with data for propagule development time obviously requires some time developing in the environment before infectivity). Therefore, I created an additional data table with just ungulate nematodes and their average propagule development duration in degree days. In the table, I manually entered data on whether species were infective when released into the environment and, if not, their average time to infectivity. This data was used to compare the alternative transmission strategies.
+
+```{r}
+# # species level degree day data (excludes species without temp data)
+# temp_test_sp2 <- group_by(temp_test, Parasite.species, Stage, Egg.hatch)%>%
+#   summarize(degree.days = mean(degree.days, na.rm = T))
+# 
+# # make wide
+# temp_test_sp2 <- select(temp_test_sp2, Parasite.species, Stage, degree.days)%>%
+#   spread(Stage, degree.days)%>%
+#   select(-embryo)
+# 
+# # re-add hatch variable
+# temp_test_sp2 <- left_join(temp_test_sp2, select(temp_test, Parasite.species, Egg.hatch)%>%na.omit()%>%distinct())
+```
+
+```{r}
+# write.csv(temp_test_sp2, file = "prop_devo_toedit.csv", row.names = F)
+```
+
+```{r}
+ed_devo <- read.csv(file = "prop_devo_edited.csv")
+names(ed_devo)[1] <- "Parasite.species" # excel added weird thing to column name
+```
+```{r}
+ung_parasites <- left_join(ung_parasites, ed_devo)
+```
+
+Here is a table that shows the number of ungulate nematodes that exhibit the different transmission strategies and whether they are laid infective or not.
+
+```{r}
+with(ung_parasites, table(Laid_infective, trans_strat))
+```
+
+Strikingly, most egg-transmitted species (9/10) need to embryonate before becoming infective and all larvae-on-herbage species (39/39) need to molt before infectivity. By contrast, most intermediate host-transmitted species (30/33) are infective immediately. This makes sense - the next host is an ungulate for the egg- and larvae-transmitted species, which avoids faeces, while the next host is an invertebrate for the complex life cycle species, which may be attracted to faeces.
+
+Now, let's bring in the phylogeny (see [here](getting_tree_ung_nems.Rmd) to see how I created it). We'll plot some variables alongside the tree to understand the phylogenetic distribution of these propagule traits.
+
+```{r}
+tree <- read.nexus(file = "tree_for_ung_nematodes.nex")
+match_df <- read.csv(file = "tree_for_ung_name_matching.csv")
+# make sure the tip labels match the names in the data frame
+mv <- match(tree$tip.label, match_df$tree_name)
+tree$tip.label <- match_df$data_name[mv]
+```
+
+```{r}
+library(ggtree)
+```
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.na(Laid_infective))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+```
+```{r}
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+```
+
+The colors represent whether propagules are released infective or not. This trait has a clear phylogenetic structure, as we might expect.
+
+```{r}
+ggtree(tree_df) +
+  geom_tiplab(aes(color = Laid_infective), size = 2) +
+  guides(color = guide_legend(override.aes = list(size = 5))) +
+  theme(legend.position = c(0.3, 1),
+        legend.justification = c(1,1),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 5))
+```
+
+The next plot shows propagule developmental time in degree days in the right panel next to the tree. Colors represent transmission strategies (blue - intermediate host transmission, green - larvae on herbage, red - egg transmission). We can see how zero values (laid infective) align with strategies. Being infective when released is rare for direct life cycles (green and red) and common for complex life cycles (blue). Within clades, though, there does not seem to be too much variation in devo time.
+
+```{r}
+# exclude species with missing development data
+red_dat_size <- filter(ung_parasites, !is.na(time_to_infectivity))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Development in degree days', 
+           data = dplyr::select(ungroup(red_dat_size), id = Parasite.species, val = time_to_infectivity),
+           geom = geom_segment, aes(x=0, xend = log10(val), y = y, yend = y, color = trans_strat))
+```
+
+Let's try fitting a standard phylogenetic regression to this variable, time to infectivity. One obvious problem is that the variable is zero-inflated - there are a lot of species laid infective.
+
+```{r}
+qplot(ung_parasites$time_to_infectivity) + labs(x = "Degree days")
+```
+
+```{r}
+library(MASS)
+library(nlme)
+```
+
+Here is output from the first model of propagule development time, including all the zeros.
+
+```{r}
+# exclude species with missing data
+red_dat_size <- filter(ung_parasites, !is.na(time_to_infectivity))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(time_to_infectivity ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(time_to_infectivity ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+summary(reg1)
+```
+
+Lamda is negative, which suggests closely related species are less similar than expected by chance. This is suspicious, since the zero values (infective or not) are so strongly structured by phylogeny. Here is the model's residual plot. It is very skewed, which violates model assumptions.
+
+```{r}
+plot(reg1)
+```
+
+Thus, I think I need to treat propagule development as two traits: 1) are the propagules released infective into the environment, yes or no, and 2) if no, how long, in degree days, does it take to reach infectivity.
+
+The first trait is binomial (infective upon release or not) and thus requires a more complex model, a generalized linear model with binomial errors that are phylogenetically correlated. I could try to fit a model like that, but not quickly (it's more complicated than a standard GLS and would probably suffer from the limited variation within strategies). So I skip that for now and focus on the second trait, developmental time.
+
+When we exclude the species released infective (i.e. the zero values), we can see that there is not pronounced phylogenetic structure, i.e. devo time does not vary much clade to clade.
+
+```{r}
+# exclude species with missing data
+red_dat_size <- filter(ung_parasites, !is.na(time_to_infectivity), time_to_infectivity > 0)
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Development in degree days', 
+           data = dplyr::select(ungroup(red_dat_size), id = Parasite.species, val = time_to_infectivity),
+           geom = geom_segment, aes(x=0, xend = log10(val), y = y, yend = y, color = trans_strat))
+```
+
+When we log transform degree days and fit the same GLS model to this more limited dataset, then we have a much nicer (normally-distributed) residual plot.
+
+```{r}
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(log10(time_to_infectivity) ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(log10(time_to_infectivity) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+```
+
+```{r}
+plot(reg1)
+```
+
+Here's the model output.
+
+```{r}
+summary(reg1)
+```
+
+The lambda value is positive (0.3), but moderate enought to be insignificant, consistent with the notion that developmental times are not strongly determined by phylogeny.
+
+```{r}
+anova(reg0, reg1)
+```
+
+Now, let's add our transmission strategies to the model. This is a highly significant improvement. Interestingly, lambda goes way up to 0.8, suggesting strong phylogenetic structure once accounting for the transmission strategies.
+
+```{r}
+reg2 <- gls(log10(time_to_infectivity) ~ trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+summary(reg2)
+```
+```{r}
+anova(reg1, reg2)
+```
+
+This plot compares propagule developmental times. The species transmitted via eggs have the longest development times, while those that hatch have the shortest.
+
+```{r}
+reg3 <- gls(log10(time_to_infectivity) ~ trans_strat - 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=FALSE))
+
+bar_plot <- as.data.frame(summary(reg3)$tTable)
+bar_plot <- mutate(bar_plot, ciu = Value + 1.96*Std.Error,
+                   cil = Value - 1.96*Std.Error)
+bar_plot$trans_strat <- c("egg eaten", "hatched larva\neaten", "intermediate host\neaten")
+
+```
+```{r}
+ggplot() +
+  geom_point(data = red_dat_size, aes(x = trans_strat, y = log10(time_to_infectivity), color = trans_strat),
+             position = position_jitter(width = 0.2, height = 0), alpha = 0.5) +
+  geom_errorbar(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat, ymin = cil, ymax = ciu)) +
+  geom_point(data = bar_plot, aes(x = trans_strat, y = Value, color = trans_strat), shape = 4, size = 4) +
+  labs(y = "Log time to infectivity (degree days)") +
+  guides(color = FALSE) +
+  theme(axis.title.x = element_blank())
+```
+
+# Conclusions
+
+We argued that species transmitted to ungulates via eggs experience the most acute trophic vacuum, due to ungulate faeces avoidance. The pattern of egg development supports this. These species are usually released uninfective and then require long developmental times, presumably allowing time for dispersal away from the faeces. The opposite strategy is exhibited by complex life cycle parasites - they are usually released already infective and in the unusual case when not only require short developmental times. The species exhibiting the larvae-on-herbage transmission strategy appear intermediate. They belong to a single clade (Trichostrongyles) and always require time outside the host to molt to an infective stage. The time to infectivity is comparatively short, but combined with the larva's mobility, may be sufficient to promote some dispersal away from the faeces.
