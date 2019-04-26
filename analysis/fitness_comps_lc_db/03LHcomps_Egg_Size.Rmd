@@ -49,7 +49,7 @@ lh <- mutate(lh, biovolume =
                                   4/3 * pi * Length/2 * Width/4, # calculate volume as a ellipsoid
                                   Length * Width # calculate volume as area for remaining ribbon, leaf shapes
                                   )),
-                biovolume = biovolume * 1.1) # covert to biomass with assumed 1.1. g/cm3 tissue density 
+                biovolume = biovolume) # DON'T covert to biomass with assumed 1.1. g/cm3 tissue density 
 
 # species averages at adult stage
 lh_biov_sp <-filter(lh, Stage == 'adult', (Sex == 'f' | is.na(Sex)) )%>% # remove adult males
@@ -313,3 +313,72 @@ ggplot() +
 # Conclusions
 
 Ungulates may get infected with helminths by consuming their eggs or by eating their hatched larvae. Compared to hatched larvae, species with egg transmission have large propagules (eggs), but small worms/embryos within those propagules. One interpretation is that egg transmission requires durability, hence more investment into the shell at the expense of the offspring mass. Also, hatched larvae may need to be larger than egg embryos to survive for extended periods of time in the free environment. Species transmitted to intermediate hosts seem to invest less in their offspring - they are smaller when eaten than egg-transmitted species and they start growth at a smaller size than hatched larvae targeting ungulates.
+
+### Make a figure for publication
+
+```{r}
+#make new grouping variable
+ung_parasites <- mutate(ung_parasites, 
+                        complex2 = if_else(complex == 'direct', "Targets\nungulate", "Targets\ninvertebrate"))%>%
+  mutate(complex2 = factor(complex2, levels = c("Targets\nungulate", "Targets\ninvertebrate")))
+#plot
+mypal <- c("#d95f02","#7570b3")
+p <- ggplot(ung_parasites, aes(x = complex2, y = propagule_size_eaten, color = hatch)) +
+  geom_boxplot(outlier.size = NULL, outlier.alpha = 0) +
+  geom_point(position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
+  scale_y_log10() +
+  scale_color_manual(values = mypal) +
+  labs(y = "Propagule volume (mm3)") +
+  guides(color = FALSE) +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 9),
+    axis.text = element_text(size = 7)
+  )
+p
+```
+
+```{r}
+#ggsave(plot = p, filename = "figIa.svg", device = "svg", units = "cm", width = 6, height = 6)
+```
+
+The above figure was meant for the BOX in the manuscript. I also want to compare these groups statistically, so let's run one more set of phylogenetic regressions.
+
+```{r}
+# exclude species with missing data
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_eaten), !is.na(propagule_size_eaten))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+```
+
+When I compare a model with and without these four groups, the model with them is signficantly better.
+
+```{r}
+regx0 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=TRUE))
+
+regx <- gls(log10(propagule_size_eaten) ~ complex * hatch, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=TRUE))
+anova(regx0, regx)
+anova(regx)
+```
+
+Given the combination of phylogenetic structure and a lack of variation in some groups, the lambda parameter could not be estimated. Instead, I fixed it at one, which assumes high phylogenetic structure. The results are the same if I assume a lamda value of 0 (no phylogenetic structure).
+
+```{r}
+regx0 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=TRUE))
+
+regx <- gls(log10(propagule_size_eaten) ~ complex * hatch, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=TRUE))
+anova(regx0, regx)
+```
+

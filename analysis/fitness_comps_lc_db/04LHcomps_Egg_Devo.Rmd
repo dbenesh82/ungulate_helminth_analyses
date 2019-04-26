@@ -160,7 +160,7 @@ An additional complication is that different species show different patterns of 
 ```
 
 ```{r}
-write.csv(temp_test_sp2, file = "../../data/prop_devo_toedit.csv", row.names = F)
+# write.csv(temp_test_sp2, file = "../../data/prop_devo_toedit.csv", row.names = F)
 ```
 
 ```{r}
@@ -276,6 +276,9 @@ The first trait is binomial (infective upon release or not) and thus requires a 
 When we exclude the species released infective (i.e. the zero values), we can see that there is not pronounced phylogenetic structure, i.e. devo time does not vary much clade to clade.
 
 ```{r}
+# remove species infecting ungulates as int hosts (unusual)
+ung_parasites <- filter(ung_parasites, Def.int == 'def')
+
 # exclude species with missing data
 red_dat_size <- filter(ung_parasites, !is.na(time_to_infectivity), time_to_infectivity > 0)
 # reduce tree to just remaining spp
@@ -360,3 +363,81 @@ ggplot() +
 # Conclusions
 
 We argued that species transmitted to ungulates via eggs experience the most acute trophic vacuum, due to ungulate faeces avoidance. The pattern of egg development supports this. These species are usually released uninfective and then require long developmental times, presumably allowing time for dispersal away from the faeces. The opposite strategy is exhibited by complex life cycle parasites - they are usually released already infective and in the unusual case when not only require short developmental times. The species exhibiting the larvae-on-herbage transmission strategy appear intermediate. They belong to a single clade (Trichostrongyles) and always require time outside the host to molt to an infective stage. The time to infectivity is comparatively short, but combined with the larva's mobility, may be sufficient to promote some dispersal away from the faeces.
+
+### Make a figure for publication
+
+```{r}
+filter(ung_parasites, complex == 'complex', hatch != 'egg eaten')
+```
+
+```{r}
+#make new grouping variable
+ung_parasites <- mutate(ung_parasites, 
+                        complex2 = if_else(complex == 'direct', "Targets\nungulate", "Targets\ninvertebrate"))%>%
+  mutate(complex2 = factor(complex2, levels = c("Targets\nungulate", "Targets\ninvertebrate")))
+#plot
+mypal <- c("#d95f02","#7570b3")
+p <- ggplot(ung_parasites, aes(x = complex2, y = time_to_infectivity, color = hatch)) +
+  geom_boxplot(outlier.size = NULL, outlier.alpha = 0) +
+  geom_point(position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
+  #scale_y_log10() +
+  scale_color_manual(values = mypal) +
+  labs(y = "Time to infectivity (degree days)") +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 9),
+    axis.text = element_text(size = 7),
+    legend.title = element_blank(),
+    legend.position = c(1,1),
+    legend.justification = c(1,1),
+    legend.background = element_blank(),
+    legend.text = element_text(color = mypal[2]),
+    legend.key = element_blank()
+  )
+p
+```
+
+```{r}
+#ggsave(plot = p, filename = "figIb.svg", device = "svg", units = "cm", width = 6, height = 6)
+# Edit the colors of the legend text, increase point size
+```
+
+The above figure was meant for the BOX in the manuscript. I also want to compare these groups statistically, so let's run one more set of phylogenetic regressions.
+
+```{r}
+# exclude species with missing data
+red_dat_size <- filter(ung_parasites, !is.na(time_to_infectivity))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree, red_dat_size$Parasite.species)
+```
+
+When I compare a model with and without these four groups, the model with them is signficantly better.
+
+```{r}
+regx0 <- gls(time_to_infectivity ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=TRUE))
+
+regx <- gls(time_to_infectivity ~ complex * hatch, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=TRUE))
+anova(regx0, regx)
+```
+
+Given the combination of phylogenetic structure and a lack of variation in some groups, the lambda parameter could not be estimated. Instead, I fixed it at one, which assumes high phylogenetic structure. The results are the same if I assume a lamda value of 0 (no phylogenetic structure).
+
+```{r}
+regx0 <- gls(time_to_infectivity ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=TRUE))
+
+regx <- gls(time_to_infectivity ~ complex * hatch, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=TRUE))
+anova(regx0, regx)
+```
+
