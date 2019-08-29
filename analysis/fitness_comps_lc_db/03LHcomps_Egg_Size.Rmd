@@ -325,21 +325,29 @@ ung_parasites <- mutate(ung_parasites,
 mypal <- c("#d95f02","#7570b3")
 p <- ggplot(ung_parasites, aes(x = complex2, y = propagule_size_eaten, color = hatch)) +
   geom_boxplot(outlier.size = NULL, outlier.alpha = 0) +
-  geom_point(position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
+  geom_point(aes(shape = hatch), 
+             position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
   scale_y_log10() +
   scale_color_manual(values = mypal) +
-  labs(y = "Propagule volume (mm3)") +
-  guides(color = FALSE) +
+  scale_shape_manual(values = c(16,15)) +
+  ylab(bquote("Propagule volume (mm"^3*")" )) +
+  labs(title = "Nematodes") +
+  # labs(y = "Propagule volume (mm3)") +
+  guides(color = FALSE, shape = FALSE) +
   theme(
     axis.title.x = element_blank(),
     axis.title.y = element_text(size = 9),
-    axis.text = element_text(size = 7)
-  )
+    axis.text = element_text(size = 7),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(size = 7, hjust = 0.5, vjust = 0)
+  ) +
+  annotate('text', label = "(a)",
+           x = 0.6, y = max( ung_parasites$propagule_size_eaten, na.rm = T))
 p
 ```
 
 ```{r}
-#ggsave(plot = p, filename = "figIa.svg", device = "svg", units = "cm", width = 6, height = 6)
+ggsave(plot = p, filename = "figIa_rev.svg", device = "svg", units = "cm", width = 6, height = 6)
 ```
 
 The above figure was meant for the BOX in the manuscript. I also want to compare these groups statistically, so let's run one more set of phylogenetic regressions.
@@ -364,7 +372,7 @@ regx <- gls(log10(propagule_size_eaten) ~ complex * hatch,
             method="ML",
             correlation=corPagel(value=1, phy=tree_x, fixed=TRUE))
 anova(regx0, regx)
-anova(regx)
+summary(regx)
 ```
 
 Given the combination of phylogenetic structure and a lack of variation in some groups, the lambda parameter could not be estimated. Instead, I fixed it at one, which assumes high phylogenetic structure. The results are the same if I assume a lamda value of 0 (no phylogenetic structure).
@@ -380,5 +388,6 @@ regx <- gls(log10(propagule_size_eaten) ~ complex * hatch,
             method="ML",
             correlation=corPagel(value=0, phy=tree_x, fixed=TRUE))
 anova(regx0, regx)
+summary(regx)
 ```
 

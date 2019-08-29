@@ -379,10 +379,11 @@ ung_parasites <- mutate(ung_parasites,
 mypal <- c("#d95f02","#7570b3")
 p <- ggplot(ung_parasites, aes(x = complex2, y = time_to_infectivity, color = hatch)) +
   geom_boxplot(outlier.size = NULL, outlier.alpha = 0) +
-  geom_point(position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
-  #scale_y_log10() +
+  geom_point(aes(shape = hatch), 
+             position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
   scale_color_manual(values = mypal) +
-  labs(y = "Time to infectivity (degree days)") +
+  scale_shape_manual(values = c(16,15)) +
+  labs(title = "Nematodes", y = "Time to infectivity (degree days)") +
   theme(
     axis.title.x = element_blank(),
     axis.title.y = element_text(size = 9),
@@ -392,13 +393,17 @@ p <- ggplot(ung_parasites, aes(x = complex2, y = time_to_infectivity, color = ha
     legend.justification = c(1,1),
     legend.background = element_blank(),
     legend.text = element_text(color = mypal[2]),
-    legend.key = element_blank()
-  )
+    legend.key = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(size = 7, hjust = 0.5, vjust = 0)
+  ) +
+  annotate('text', label = "(c)",
+           x = 0.6, y = max( ung_parasites$time_to_infectivity, na.rm = T))
 p
 ```
 
 ```{r}
-#ggsave(plot = p, filename = "figIb.svg", device = "svg", units = "cm", width = 6, height = 6)
+# ggsave(plot = p, filename = "figIc_rev.svg", device = "svg", units = "cm", width = 6, height = 6)
 # Edit the colors of the legend text, increase point size
 ```
 
@@ -425,6 +430,9 @@ regx <- gls(time_to_infectivity ~ complex * hatch,
             correlation=corPagel(value=1, phy=tree_x, fixed=TRUE))
 anova(regx0, regx)
 ```
+```{r}
+summary(regx)
+```
 
 Given the combination of phylogenetic structure and a lack of variation in some groups, the lambda parameter could not be estimated. Instead, I fixed it at one, which assumes high phylogenetic structure. The results are the same if I assume a lamda value of 0 (no phylogenetic structure).
 
@@ -439,5 +447,36 @@ regx <- gls(time_to_infectivity ~ complex * hatch,
             method="ML",
             correlation=corPagel(value=0, phy=tree_x, fixed=TRUE))
 anova(regx0, regx)
+```
+
+Make one more figure, similar to previous one, for GfO presentation.
+
+
+```{r}
+library(RColorBrewer)
+mypal <- brewer.pal(n = 9, "Set1")
+
+ung_parasites <- mutate(ung_parasites, strategy = if_else(complex2 == "Targets\ninvertebrate", "Intermediate host", 
+                                         if_else(hatch == "egg eaten", "Egg", "Herbage")))%>%
+  mutate(strategy = factor(strategy, levels = c("Intermediate host", "Herbage", "Egg")))
+
+p <- ggplot(ung_parasites, aes(x = strategy, y = time_to_infectivity, color = strategy, fill = strategy)) +
+  geom_boxplot(outlier.size = NULL, outlier.alpha = 0, alpha = 0.25) +
+  geom_point(position = position_jitter(width = 0.1), alpha = 0.5, size = 1.5) +
+  labs(y = "Time to infectivity (degree days)", x = "Trophic transmission strategy") +
+  scale_color_manual(values = c(mypal[2], mypal[3], mypal[1])) +
+  scale_fill_manual(values = c(mypal[2], mypal[3], mypal[1])) +
+  guides(color = FALSE, fill = FALSE) +
+  theme(
+    axis.title = element_text(size = 9),
+    axis.text = element_text(size = 7),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank()
+  )
+p
+```
+
+```{r}
+# ggsave(plot = p, filename = "gfo_prop_devo.png", device = "png", units = "cm", width = 7, height = 6.5)
 ```
 

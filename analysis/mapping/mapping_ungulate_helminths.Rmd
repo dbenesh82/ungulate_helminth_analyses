@@ -194,7 +194,7 @@ length(unique(trans_states$parent_node))
 We can write this tree to file.
 
 ```{r}
-ggsave(filename = 'transitions_to_ung_parasitism.pdf', width = 297, height = 210, units = "mm")
+# ggsave(filename = 'transitions_to_ung_parasitism.pdf', width = 297, height = 210, units = "mm")
 ```
 
 Now let's split the 'ungulate parasite' group into multiple groups, depending on how they infect ungulates. First, we define three trophic transmission strategies:
@@ -311,10 +311,10 @@ p
 The plot shows the transitions.
 
 ```{r}
-ggsave(filename = 'transitions_to_ung_trans_routes.pdf', width = 297, height = 210, units = "mm")
+# ggsave(filename = 'transitions_to_ung_trans_routes.pdf', width = 297, height = 210, units = "mm")
 ```
 
-A few descriptive stats mentioned in [BOX](../../BOX_transitions.docx)...
+A few descriptive stats mentioned in manuscript text...
 
 How many taxa were in tree?
 
@@ -325,7 +325,7 @@ length(tree$tip.label) - length(grep(tree$tip.label, pattern = '2'))
 How many origins were counted manually?
 
 ```{r}
-origins_ih <- 15
+origins_ih <- 14
 origins_egg <- 4
 origins_herb <- 4
 origins_pen <- 4

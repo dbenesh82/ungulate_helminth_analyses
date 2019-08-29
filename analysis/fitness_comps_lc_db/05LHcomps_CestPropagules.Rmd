@@ -170,3 +170,192 @@ Thus, I am unaware of any tapeworm species that releases unembryonated eggs into
 # Conclusions
 
 Patterns of propagule size and development are not the same in ungulate-infecting cestodes and nematodes. Cestodes targeting invertebrate intermediate hosts have larger propagules than those targeting ungulates, which is not the same pattern observed in nematodes. Nematode transmission strategies are related to their propagule development, whereas in cestodes there is simply no variation in propagule development (i.e. they are all embryonated). It is unclear if this incongruence is caused by ecological differences in transmission (e.g. eggs in carnivore faeces in taeniids instead of ungulate faeces) or by phylogenetic constraints (e.g. propagule development being less constrained in nematodes).
+
+### Make a figure for publication
+
+```{r}
+head(ung_parasites)
+```
+
+```{r}
+#make new grouping variable
+ung_parasites <- mutate(ung_parasites, 
+                        complex2 = if_else(trans_strat == 'egg eaten', "Targets\nungulate", "Targets\ninvertebrate"))%>%
+  mutate(complex2 = factor(complex2, levels = c("Targets\nungulate", "Targets\ninvertebrate")))
+#plot
+mypal <- c("#d95f02","#7570b3")
+p <- ggplot(ung_parasites, aes(x = complex2, y = propagule_size_eaten, color = hatch)) +
+  geom_boxplot(outlier.size = NULL, outlier.alpha = 0) +
+  geom_point(aes(shape = hatch), 
+             position = position_jitterdodge(jitter.width = 0.1), alpha = 0.5, size = 1) +
+  scale_y_log10() +
+  scale_color_manual(values = mypal) +
+  scale_shape_manual(values = c(16,15)) +
+  ylab(bquote("Propagule volume (mm"^3*")" )) +
+  labs(title = "Cestodes") +
+  guides(color = FALSE, shape = FALSE) +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 9),
+    axis.text = element_text(size = 7),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(size = 7, hjust = 0.5, vjust = 0)
+  ) +
+  annotate('text', label = "(b)",
+           x = 0.6, y = max( ung_parasites$propagule_size_eaten, na.rm = T))
+p
+```
+
+```{r}
+# ggsave(plot = p, filename = "figIb_rev.svg", device = "svg", units = "cm", width = 4.5, height = 6)
+```
+
+
+### Phylogenetic analyses
+
+Read in megatree to which database species have been added by their taxonomy.
+
+```{r}
+library(ape)
+library(ggtree)
+```
+```{r}
+tree <- read.tree(file = "../../data/cest_tree.nex")
+```
+
+Which species need to be added?
+
+```{r}
+sp_to_add <- ung_parasites$Parasite.species[
+  !(ung_parasites$Parasite.species %in% gsub(tree$tip.label, pattern = "_", replacement = " "))]
+sp_to_add <- sub(sp_to_add, pattern = " ", replacement = "_")
+sp_to_add
+```
+
+Make subtree for just the cestodes infecting ungulates.
+
+```{r}
+tree2 <- drop.tip(tree, tip = tree$tip.label[
+  !(gsub(tree$tip.label, pattern = "_", replacement = " ") %in% ung_parasites$Parasite.species)])
+```
+
+The anoplocephalids are not monophyletic in megatree, which is probably incorrect. Put them all in the same clade manually.
+
+```{r}
+plot(tree2)
+```
+
+```{r}
+#write.tree(tree2, file = "../../data/cest_tree_ungs.nex")
+```
+
+During rearranging, I removed the branch lengths, so the tree looks like this.
+
+```{r}
+tree3 <- read.tree(file = "../../data/cest_tree_ungs.nex")
+plot(tree3)
+```
+
+```{r}
+tree3 <- compute.brlen(tree3, power = 0.5) # reassign branch lengths to resemble tree prior to manual adjustments
+tree3$tip.label <- gsub("_", " ", tree3$tip.label)
+```
+
+Let's look at the distribution of propagule sizes across the phylogeny of ungulate worms, starting with embryo size. Here is the tree on the left with bars representing oncosphere size on the right.
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_grow_start), !is.na(propagule_size_grow_start))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree3, red_dat_size$Parasite.species)
+
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Propagule size at growth start', 
+           data = select(ungroup(red_dat_size), id = Parasite.species, val = propagule_size_grow_start),
+           geom = geom_segment, aes(x=min(log10(val)), xend = log10(val), y = y, yend = y, color = trans_strat))
+```
+
+There is little difference between the two clades in embryo size. Moving on to egg size, which is what the next host consumes, a clearer difference emerges. Anoplocephalids (blue) have larger eggs than taeniids (red) - essentially the shell is thicker.
+
+```{r}
+# exclude species with missing worm size
+red_dat_size <- filter(ung_parasites, !is.nan(propagule_size_eaten), !is.na(propagule_size_eaten))
+# reduce tree to just remaining spp
+tree_x <- keep.tip(tree3, red_dat_size$Parasite.species)
+tree_df <- fortify(tree_x)
+tree_df <- left_join(tree_df, red_dat_size, by = c("label" = "Parasite.species"))
+p <- ggtree(tree_df)
+facet_plot(p, panel = 'Propagule size eaten', 
+           data = select(ungroup(red_dat_size), id = Parasite.species, val = propagule_size_eaten),
+           geom = geom_segment, aes(x=min(log10(val)), xend = log10(val), y = y, yend = y, color = trans_strat))
+```
+
+Now, we will fit some phylogenetic GLS models to assess the significance of these differences.
+
+```{r}
+library(nlme)
+library(MASS)
+```
+
+Lambda was estimated to be 0.66 indicating moderate phylogenetic structure in egg size.
+
+```{r}
+# fit gls reg with and without phylogeny - no predictors
+reg0 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML")
+reg1 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=FALSE))
+summary(reg1)
+```
+
+While large, lambda was not significantly greater than 0, and thus the likelihood ratio test between models with and without phylogeny was not significant.
+
+```{r}
+anova(reg0, reg1)
+```
+
+When we add parasite transmission strategy to the model (i.e. targets ungulates or targets invertebrates), there were problems with model fitting, presumably because lambda could not be estimated because phylogeny and transmission strategy are tightly linked. Therefore, three models were tested with a fixed value lambda: no phylogenetic signal (lambda = 0), moderate signal (0.5), and strong signal (1). 
+
+```{r}
+reg2.0 <- gls(log10(propagule_size_eaten) ~ trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0, phy=tree_x, fixed=T))
+reg2.05 <- gls(log10(propagule_size_eaten) ~ trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0.5, phy=tree_x, fixed=T))
+reg2.1 <- gls(log10(propagule_size_eaten) ~ trans_strat, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=1, phy=tree_x, fixed=T))
+```
+
+Regardless of which value lambda takes, adding transmission strategy to the model is a significant improvement according to likelihood ratio tests. 
+
+```{r}
+# refit null phylogenetic model with lambda fixed at estimated best value
+reg1 <- gls(log10(propagule_size_eaten) ~ 1, 
+            data = red_dat_size,
+            method="ML",
+            correlation=corPagel(value=0.66, phy=tree_x, fixed=T))
+
+anova(reg1, reg2.0)
+anova(reg1, reg2.05)
+anova(reg1, reg2.1)
+```
+
+It probably makes sense to report the most conservative test, where lambda is estimated to be 1. In this case, phylogeny is assumed to strongly affect egg size, leaving less variation to be explained by transmission strategy.
+
+```{r}
+summary(reg2.1)
+```
+
+
+
