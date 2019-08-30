@@ -1,6 +1,6 @@
 family,group,ung_inf,otl_name,trans_route,in_tree,otl_name_red
 Oligacanthorhynchidae,Acanthocephala,TRUE,Oligacanthorhynchidae,intermediate host eaten,TRUE,Oligacanthorhynchidae
-Echinorhynchidae,Acanthocephala,TRUE,Echinorhynchidae,intermediate host eaten,TRUE,Echinorhynchidae
+Echinorhynchidae,Acanthocephala,FALSE,Echinorhynchidae,not ungulate parasites,TRUE,Echinorhynchidae
 Apororhynchidae,Acanthocephala,FALSE,Apororhynchidae,not ungulate parasites,TRUE,Apororhynchidae
 Giganthorhynchidae,Acanthocephala,FALSE,Giganthorhynchidae,not ungulate parasites,TRUE,Giganthorhynchidae
 Moniliformidae,Acanthocephala,FALSE,Moniliformidae,not ungulate parasites,TRUE,Moniliformidae
