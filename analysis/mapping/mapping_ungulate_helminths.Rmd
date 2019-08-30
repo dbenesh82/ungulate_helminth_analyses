@@ -1,7 +1,6 @@
 ---
 title: "Map states onto trees"
-author: "Dan Benesh"
-output: html_document
+output: github_document
 ---
 
 Here I want to determine how often different transmission strategies to ungulate hosts have evolved. To that end, I want to map anceestral states to see 1) how often ungulates have been invaded and 2) what routes were taken to infect them.
