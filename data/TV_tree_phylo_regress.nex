@@ -1,0 +1,590 @@
+#NEXUS
+[written Tue Sep 18 17:04:48 CEST 2012 by Mesquite  version 2.74 (build 550) at EVOLECO012/172.16.1.12]
+
+BEGIN TAXA;
+	TITLE Taxa;
+	DIMENSIONS NTAX=392;
+	TAXLABELS
+		Muspicea.borreli Hystrichis.tricolor Soboliphyme.baturini Dioctophyma.renale Eustrongylides.tubifex Eustrongylides.ignotus Eustrongylides.excisus Cystoopsis.accipenseri Trichosomoides.crassicauda Trichurus.muris Trichuris.ovis Trichuris.skrjabini Trichuris.vulpis Trichuris.suis Trichuris.trichiura Bauscapillaria.obsignata Pseudocapillaria.tomentosa Pearsonema.mucronata Pearsonema.plica Aonchotheca.caudinflata Aonchotheca.putorii Aonchotheca.philippinensis Eucoleus.aerophilus Eucoleus.annulatus Eucoleus.contortus Eucoleus.frugilegi Placoconus.lotoris Uncinaria.stenocephala Triodontophorus.tenuicollis Strongylus.edentatus Strongylus.equinus Strongylus.vulgaris Stephanurus.dentatus Syngamus.trachea Cyathostoma.bronchialis Cyathostoma.lari Chabertia.ovina Cyclodontostomum.purvisi Oesophagostomum.asperum Oesophagostomum.kansuensis Oesophagostomum.radiatum Oesophagostomum.venulosum Oesophagostomum.columbianum Oesophagostomum.dentatum Oesophagostomum.quadrispinulatum Ornithostrongylus.quadriradiatus Ollulanus.tricuspis Molineus.barbatus Hepatojarakus.malayae Oswaldocruzia.filiformis Nematodirus.abnormails Nematodirus.battus Nematodirus.filicollis Nematodirus.helvetianus Nematodirus.spathiger Hassalstrongylus.musculi Heligmosomoides.kurilensis.kobayashii Heligmosomoides.polygyrus.polygyrus Epomidiostomum.uncinatum Amidostomum.acutum Amidostomum.fulicae Libyostrongylus.douglasi Obeliscoides.cuniculi.cuniculi Obeliscoides.cuniculi.multistriatus Cooperia.curticei Cooperia.fuelleborni Cooperia.pectinata Cooperia.oncophora Cooperia.punctata Teladorsagia.circumcincta Graphidium.strigosum Hyostrongylus.rubidus Ostergia.ostertagi Haemonchus.contortus Haemonchus.placei Trichostrongylus.tenuis Trichostrongylus.sigmodontis Trichostrongylus.skrjabini Trichostrongylus.retortaeformis Trichostrongylus.axei Trichostrongylus.vitrinus Trichostrongylus.colubriformis Trichostrongylus.rugatus Dictyocaulus.arnfieldi Dictyocaulus.filaria Dictyocaulus.eckerti Dictyocaulus.viviparus Troglostrongylus.brevior Skrjabingylus.chitwoodorum Skrjabingylus.lutrae Skrjabingylus.nasicola Skrjabingylus.petrowi Otostrongylus.circumlitus Crenosoma.petrowi Crenosoma.vulpis Crenosoma.striatum Crenosoma.mephitidis Oslerus.rostratus Oslerus.osleri Metastrongylus.apri Metastrongylus.pudendotectus Metastrongylus.salmi Filaroides.decorus Filaroides.hirthi Filaroides.martis Trilobostrongylus.bioccai Andersonstrongylus.captivensis Aelurostrongylus.abstrusus Aelurostrongylus.falciformis Aelurostrongylus.pridhami Didelphostrongylus.hayesi Angiostrongylus.andersoni Angiostrongylus.dujardini Angiostrongylus.mackerrasae Angiostrongylus.siamensis Angiostrongylus.cantonensis Angiostrongylus.malaysiensis Angiostrongylus.costaricensis Angiostrongylus.vasorum Neostrongylus.linearis Pneumostrongylus.calcaratus Varestrongylus.alpenae Varestrongylus.capreoli Varestrongylus.pneumonicus Varestrongylus.sagittatus Elaphostrongylus.alces Elaphostrongylus.cervi Elaphostrongylus.rangiferi Parelaphostrongylus.andersoni Parelaphostrongylus.odocoilei Parelaphostrongylus.tenuis Muellerius.capillaris Cystocaulus.ocreatus Umingmakstrongylus.pallikuukensis Protostrongylus.broughtoni Protostrongylus.cunicularum Protostrongylus.davtiani Protostrongylus.hobmaieri Protostrongylus.kamenskyi Protostrongylus.pulmonalis Protostrongylus.rufescens Protostrongylus.rushi Protostrongylus.skrjabini Protostrongylus.stilesi Protostrongylus.tauricus Dichelyne.bullocki Dichelyne.cotylophora Dichelyne.minutus Truttaedacnitis.pybusae Truttaedacnitis.truttae Cucullanus.chaubaudi Cucullanus.cirratus Cucullanus.heterochrous Anguillicola.crassus Anguillicola.globiceps Anguillicola.novaezelandiae Spiroxys.contortus Gnathostoma.hispidum Gnathostoma.procyonis Gnathostoma.turgidum Gnathostoma.vietnamicum Gnathostoma.doloresi Gnathostoma.spinigerum Gnathostoma.binucleatum Gnathostoma.nipponicum Maupasina.weissi Allodapa.suctoria Subulura.bolivari Subulura.jacchi Subulura.otolicni Subulura.williaminglisi Tarsubularia.perarmata Paraquimperia.tenerrima Skrjabinelazia.galliardi Seuratum.cadarachense Seuratum.nguyenvanaii Rictularia.cristata Rictularia.proni Pterygodermatites.affinis Pterygodermatites.coloradensis Pterygodermatites.desportesi Pterygodermatites.hispanica Pterygodermatites.nycticebi Pterygodermatites.peromysci Pterygodermatites.taterilli Pterygodermatites.zygodontomis Enterobius.vermicularis Gyrinicola.batrachiensis Oxyuris.equi Skrjabinema.ovis Aspiculuris.tetraptera Passalarus.ambiguus Syphacia.muris Syphacia.obvelata Spinicauda.freitasi Heterakis.gallinarum Heterakis.spumosa Ascaridia.columbae Ascaridia.compar Ascaridia.dissimilis Ascaridia.galli Ascaridia.numidae Megalobatrachonema.terdentatum Aplectana.courdurieri Aplectana.macintoshii Pseudoterranova.decipiens Anisakis.physeteris Anisakis.simplex Anisakis.typica Sulcascaris.sulcata Contraceacum.osculatum Contraceacum.microcephalum Contraceacum.micropapillatum Contraceacum.multipapillatum Contraceacum.rudolphi Porrocaecum.angusticolle Porrocaecum.crassum Porrocaecum.ensicaudatum Porrocaecum.semiteres Goezia.ascaroides Raphidascaris.acus Hysterothylacium.aduncum Hysterothylacium.analarum Hysterothylacium.bidentatum Hysterothylacium.haze Toxocara.pteropodis Toxocara.vitulorum Toxocara.canis Toxocara.cati Brevimulticaecum.tenuicolle Amplicaecum.robertsi Polydelphis.anoura Travassosascaris.araujoi Ophidascaris.labiatopapillosa Ophidascaris.moreliae Hexametra.angusticaecoides Hexametra.boddaertii Hexametra.quadricornis Toxascaris.leonina Lagochilascaris.minor Lagochilascaris.sprenti Parascaris.equorum Ascaris.lumbricoides Ascaris.suum Bayliascaris.columnaris Bayliascaris.devosi Bayliascaris.laevis Bayliascaris.procyonis Bayliascaris.tasmaniensis Bayliascaris.schroederi Bayliascaris.transfuga Philonema.agubernaculum Philonema.oncorhynchi Micropleura.indica Avioserpens.mosgovoyi Avioserpens.taiwana Dracunculus.doi Dracunculus.ophidensis Dracunculus.insignis Dracunculus.medinensis Philometra.abdominalis Philometra.cylindracea Philometra.fujimotoi Philometra.sibirica Philometroides.huronensis Philometroides.nodulosa Philometroides.parasiluri Philometroides.sanguinea Philometra.obturans Philometra.ovata Philometroides.cyprini Neocamallanus.ophiocephali Paracamallanus.cyathopharynx Paracamallanus.singhi Paracamallanus.sweeti Camallanus.anabantis Camallanus.cotti Camallanus.truncatus Camallanus.xenentodonti Camallanus.zacconis Camallanus.lacustris Camallanus.oxycephalus Procamallanus.fukiensis Procamallanus.neocaballeroi Procamallanus.rebecae Procamallanus.spiculogubernaculus Spirocamallanus.cearensis Spirocamallanus.cricotus Spirocamallanus.mysti Spirocamallanus.xenopodis Spirocamallanus.fulvidraconis Procamallanus.laeviconchus Pseudophysaloptera.vincenti Skrjabinoptera.phrynosoma Thubunaea.baylisi Abbreviata.caucasica Abbreviata.kazachstanica Physaloptera.hispida Physaloptera.maxillaris Physaloptera.praeputialis Physaloptera.rara Turgida.turgida Streptocara.crassicauda Ancyracanthopsis.winegardi Cheilospirura.spinosa Cosmocephalus.obvelatus Dispharynx.nasuta Echinuria.uncinata Paracuaria.adunca Skrjabinocerca.americana Skrjabinocerca.prima Syncuaria.squamata Desportesius.brevicaudatus Desportesius.invaginatus Skrjabinoclava.inornatae Skrjabinoclava.morrisoni Acuaria.anthuris Acuaria.depressa Acuaria.gruveli Acuaria.hamulosa Capillospirura.pseudoargumentosa Salvelinema.salmonicola Salvelinema.walkeri Cystidicola.farionis Cystidicola.stigmatura Cystidicoloides.tenuissima Ascarophis.marina Ascarophis.morrhuae Ascarophis.pacificus Ascarophis.arctica Spinitectus.carolini Spinitectus.gracilis Spinitectus.inermis Spinitectus.micracanthus Spinitectus.ranae Rhabdochona.canadensis Rhabdochona.cascadilla Rhabdochona.denudata Rhabdochona.ergensi Rhabdochona.hellichi Rhabdochona.kidderi Rhabdochona.phoxini Rhabdochona.rotundicaudatum Rhabdochona.zacconis Hedruris.androphora Hedruris.ijimai Procyrnea.zorillae Sicarius.dipterum Cyrnea.colini Cyrnea.eurycerca Cyrnea.mansioni Dicheilonema.rheae Quadriplotriaena.hypsokysta Serratospiculum.tendo Diplotriaena.agelaeus Diplotriaena.bargusinica Diplotriaena.tricuspis Diplotriaena.tridens Microtetrameres.centuri Microtetrameres.corax Microtetrameres.helix Microtetrameres.inermis Tetrameres.americana Tetrameres.cardinalis Tetrameres.confusa Tetrameres.crami Tetrameres.mohtedai Tetrameres.pattersoni Hartertia.gallinarum Oxyspirura.mansoni Trichospirura.leptostoma Protospirura.muricola Spirura.infundibuliformis Spirura.malayensis Spirura.rytipleurites Spirura.talpae Mastophorus.muris Spirocerca.lupi Vigisospirura.potekhina Ascarops.strongylina Physocephalus.sexalatus Simondsia.paradoxa Streptopharagus.kutassi Streptopharagus.pigmentatus Gongylonema.congolense Gongylonema.dupuisi Gongylonema.inguvicola Gongylonema.mucronatum Gongylonema.neoplasticum Gongylonema.problematicum Gongylonema.pulchrum Gongylonema.soricis 
+	;
+
+END;
+
+
+BEGIN TREES;
+	Title Imported_trees;
+	LINK Taxa = Taxa;
+	TRANSLATE
+		1 Muspicea.borreli,
+		2 Hystrichis.tricolor,
+		3 Soboliphyme.baturini,
+		4 Dioctophyma.renale,
+		5 Eustrongylides.tubifex,
+		6 Eustrongylides.ignotus,
+		7 Eustrongylides.excisus,
+		8 Cystoopsis.accipenseri,
+		9 Trichosomoides.crassicauda,
+		10 Trichurus.muris,
+		11 Trichuris.ovis,
+		12 Trichuris.skrjabini,
+		13 Trichuris.vulpis,
+		14 Trichuris.suis,
+		15 Trichuris.trichiura,
+		16 Bauscapillaria.obsignata,
+		17 Pseudocapillaria.tomentosa,
+		18 Pearsonema.mucronata,
+		19 Pearsonema.plica,
+		20 Aonchotheca.caudinflata,
+		21 Aonchotheca.putorii,
+		22 Aonchotheca.philippinensis,
+		23 Eucoleus.aerophilus,
+		24 Eucoleus.annulatus,
+		25 Eucoleus.contortus,
+		26 Eucoleus.frugilegi,
+		27 Placoconus.lotoris,
+		28 Uncinaria.stenocephala,
+		29 Triodontophorus.tenuicollis,
+		30 Strongylus.edentatus,
+		31 Strongylus.equinus,
+		32 Strongylus.vulgaris,
+		33 Stephanurus.dentatus,
+		34 Syngamus.trachea,
+		35 Cyathostoma.bronchialis,
+		36 Cyathostoma.lari,
+		37 Chabertia.ovina,
+		38 Cyclodontostomum.purvisi,
+		39 Oesophagostomum.asperum,
+		40 Oesophagostomum.kansuensis,
+		41 Oesophagostomum.radiatum,
+		42 Oesophagostomum.venulosum,
+		43 Oesophagostomum.columbianum,
+		44 Oesophagostomum.dentatum,
+		45 Oesophagostomum.quadrispinulatum,
+		46 Ornithostrongylus.quadriradiatus,
+		47 Ollulanus.tricuspis,
+		48 Molineus.barbatus,
+		49 Hepatojarakus.malayae,
+		50 Oswaldocruzia.filiformis,
+		51 Nematodirus.abnormails,
+		52 Nematodirus.battus,
+		53 Nematodirus.filicollis,
+		54 Nematodirus.helvetianus,
+		55 Nematodirus.spathiger,
+		56 Hassalstrongylus.musculi,
+		57 Heligmosomoides.kurilensis.kobayashii,
+		58 Heligmosomoides.polygyrus.polygyrus,
+		59 Epomidiostomum.uncinatum,
+		60 Amidostomum.acutum,
+		61 Amidostomum.fulicae,
+		62 Libyostrongylus.douglasi,
+		63 Obeliscoides.cuniculi.cuniculi,
+		64 Obeliscoides.cuniculi.multistriatus,
+		65 Cooperia.curticei,
+		66 Cooperia.fuelleborni,
+		67 Cooperia.pectinata,
+		68 Cooperia.oncophora,
+		69 Cooperia.punctata,
+		70 Teladorsagia.circumcincta,
+		71 Graphidium.strigosum,
+		72 Hyostrongylus.rubidus,
+		73 Ostergia.ostertagi,
+		74 Haemonchus.contortus,
+		75 Haemonchus.placei,
+		76 Trichostrongylus.tenuis,
+		77 Trichostrongylus.sigmodontis,
+		78 Trichostrongylus.skrjabini,
+		79 Trichostrongylus.retortaeformis,
+		80 Trichostrongylus.axei,
+		81 Trichostrongylus.vitrinus,
+		82 Trichostrongylus.colubriformis,
+		83 Trichostrongylus.rugatus,
+		84 Dictyocaulus.arnfieldi,
+		85 Dictyocaulus.filaria,
+		86 Dictyocaulus.eckerti,
+		87 Dictyocaulus.viviparus,
+		88 Troglostrongylus.brevior,
+		89 Skrjabingylus.chitwoodorum,
+		90 Skrjabingylus.lutrae,
+		91 Skrjabingylus.nasicola,
+		92 Skrjabingylus.petrowi,
+		93 Otostrongylus.circumlitus,
+		94 Crenosoma.petrowi,
+		95 Crenosoma.vulpis,
+		96 Crenosoma.striatum,
+		97 Crenosoma.mephitidis,
+		98 Oslerus.rostratus,
+		99 Oslerus.osleri,
+		100 Metastrongylus.apri,
+		101 Metastrongylus.pudendotectus,
+		102 Metastrongylus.salmi,
+		103 Filaroides.decorus,
+		104 Filaroides.hirthi,
+		105 Filaroides.martis,
+		106 Trilobostrongylus.bioccai,
+		107 Andersonstrongylus.captivensis,
+		108 Aelurostrongylus.abstrusus,
+		109 Aelurostrongylus.falciformis,
+		110 Aelurostrongylus.pridhami,
+		111 Didelphostrongylus.hayesi,
+		112 Angiostrongylus.andersoni,
+		113 Angiostrongylus.dujardini,
+		114 Angiostrongylus.mackerrasae,
+		115 Angiostrongylus.siamensis,
+		116 Angiostrongylus.cantonensis,
+		117 Angiostrongylus.malaysiensis,
+		118 Angiostrongylus.costaricensis,
+		119 Angiostrongylus.vasorum,
+		120 Neostrongylus.linearis,
+		121 Pneumostrongylus.calcaratus,
+		122 Varestrongylus.alpenae,
+		123 Varestrongylus.capreoli,
+		124 Varestrongylus.pneumonicus,
+		125 Varestrongylus.sagittatus,
+		126 Elaphostrongylus.alces,
+		127 Elaphostrongylus.cervi,
+		128 Elaphostrongylus.rangiferi,
+		129 Parelaphostrongylus.andersoni,
+		130 Parelaphostrongylus.odocoilei,
+		131 Parelaphostrongylus.tenuis,
+		132 Muellerius.capillaris,
+		133 Cystocaulus.ocreatus,
+		134 Umingmakstrongylus.pallikuukensis,
+		135 Protostrongylus.broughtoni,
+		136 Protostrongylus.cunicularum,
+		137 Protostrongylus.davtiani,
+		138 Protostrongylus.hobmaieri,
+		139 Protostrongylus.kamenskyi,
+		140 Protostrongylus.pulmonalis,
+		141 Protostrongylus.rufescens,
+		142 Protostrongylus.rushi,
+		143 Protostrongylus.skrjabini,
+		144 Protostrongylus.stilesi,
+		145 Protostrongylus.tauricus,
+		146 Dichelyne.bullocki,
+		147 Dichelyne.cotylophora,
+		148 Dichelyne.minutus,
+		149 Truttaedacnitis.pybusae,
+		150 Truttaedacnitis.truttae,
+		151 Cucullanus.chaubaudi,
+		152 Cucullanus.cirratus,
+		153 Cucullanus.heterochrous,
+		154 Anguillicola.crassus,
+		155 Anguillicola.globiceps,
+		156 Anguillicola.novaezelandiae,
+		157 Spiroxys.contortus,
+		158 Gnathostoma.hispidum,
+		159 Gnathostoma.procyonis,
+		160 Gnathostoma.turgidum,
+		161 Gnathostoma.vietnamicum,
+		162 Gnathostoma.doloresi,
+		163 Gnathostoma.spinigerum,
+		164 Gnathostoma.binucleatum,
+		165 Gnathostoma.nipponicum,
+		166 Maupasina.weissi,
+		167 Allodapa.suctoria,
+		168 Subulura.bolivari,
+		169 Subulura.jacchi,
+		170 Subulura.otolicni,
+		171 Subulura.williaminglisi,
+		172 Tarsubularia.perarmata,
+		173 Paraquimperia.tenerrima,
+		174 Skrjabinelazia.galliardi,
+		175 Seuratum.cadarachense,
+		176 Seuratum.nguyenvanaii,
+		177 Rictularia.cristata,
+		178 Rictularia.proni,
+		179 Pterygodermatites.affinis,
+		180 Pterygodermatites.coloradensis,
+		181 Pterygodermatites.desportesi,
+		182 Pterygodermatites.hispanica,
+		183 Pterygodermatites.nycticebi,
+		184 Pterygodermatites.peromysci,
+		185 Pterygodermatites.taterilli,
+		186 Pterygodermatites.zygodontomis,
+		187 Enterobius.vermicularis,
+		188 Gyrinicola.batrachiensis,
+		189 Oxyuris.equi,
+		190 Skrjabinema.ovis,
+		191 Aspiculuris.tetraptera,
+		192 Passalarus.ambiguus,
+		193 Syphacia.muris,
+		194 Syphacia.obvelata,
+		195 Spinicauda.freitasi,
+		196 Heterakis.gallinarum,
+		197 Heterakis.spumosa,
+		198 Ascaridia.columbae,
+		199 Ascaridia.compar,
+		200 Ascaridia.dissimilis,
+		201 Ascaridia.galli,
+		202 Ascaridia.numidae,
+		203 Megalobatrachonema.terdentatum,
+		204 Aplectana.courdurieri,
+		205 Aplectana.macintoshii,
+		206 Pseudoterranova.decipiens,
+		207 Anisakis.physeteris,
+		208 Anisakis.simplex,
+		209 Anisakis.typica,
+		210 Sulcascaris.sulcata,
+		211 Contraceacum.osculatum,
+		212 Contraceacum.microcephalum,
+		213 Contraceacum.micropapillatum,
+		214 Contraceacum.multipapillatum,
+		215 Contraceacum.rudolphi,
+		216 Porrocaecum.angusticolle,
+		217 Porrocaecum.crassum,
+		218 Porrocaecum.ensicaudatum,
+		219 Porrocaecum.semiteres,
+		220 Goezia.ascaroides,
+		221 Raphidascaris.acus,
+		222 Hysterothylacium.aduncum,
+		223 Hysterothylacium.analarum,
+		224 Hysterothylacium.bidentatum,
+		225 Hysterothylacium.haze,
+		226 Toxocara.pteropodis,
+		227 Toxocara.vitulorum,
+		228 Toxocara.canis,
+		229 Toxocara.cati,
+		230 Brevimulticaecum.tenuicolle,
+		231 Amplicaecum.robertsi,
+		232 Polydelphis.anoura,
+		233 Travassosascaris.araujoi,
+		234 Ophidascaris.labiatopapillosa,
+		235 Ophidascaris.moreliae,
+		236 Hexametra.angusticaecoides,
+		237 Hexametra.boddaertii,
+		238 Hexametra.quadricornis,
+		239 Toxascaris.leonina,
+		240 Lagochilascaris.minor,
+		241 Lagochilascaris.sprenti,
+		242 Parascaris.equorum,
+		243 Ascaris.lumbricoides,
+		244 Ascaris.suum,
+		245 Bayliascaris.columnaris,
+		246 Bayliascaris.devosi,
+		247 Bayliascaris.laevis,
+		248 Bayliascaris.procyonis,
+		249 Bayliascaris.tasmaniensis,
+		250 Bayliascaris.schroederi,
+		251 Bayliascaris.transfuga,
+		252 Philonema.agubernaculum,
+		253 Philonema.oncorhynchi,
+		254 Micropleura.indica,
+		255 Avioserpens.mosgovoyi,
+		256 Avioserpens.taiwana,
+		257 Dracunculus.doi,
+		258 Dracunculus.ophidensis,
+		259 Dracunculus.insignis,
+		260 Dracunculus.medinensis,
+		261 Philometra.abdominalis,
+		262 Philometra.cylindracea,
+		263 Philometra.fujimotoi,
+		264 Philometra.sibirica,
+		265 Philometroides.huronensis,
+		266 Philometroides.nodulosa,
+		267 Philometroides.parasiluri,
+		268 Philometroides.sanguinea,
+		269 Philometra.obturans,
+		270 Philometra.ovata,
+		271 Philometroides.cyprini,
+		272 Neocamallanus.ophiocephali,
+		273 Paracamallanus.cyathopharynx,
+		274 Paracamallanus.singhi,
+		275 Paracamallanus.sweeti,
+		276 Camallanus.anabantis,
+		277 Camallanus.cotti,
+		278 Camallanus.truncatus,
+		279 Camallanus.xenentodonti,
+		280 Camallanus.zacconis,
+		281 Camallanus.lacustris,
+		282 Camallanus.oxycephalus,
+		283 Procamallanus.fukiensis,
+		284 Procamallanus.neocaballeroi,
+		285 Procamallanus.rebecae,
+		286 Procamallanus.spiculogubernaculus,
+		287 Spirocamallanus.cearensis,
+		288 Spirocamallanus.cricotus,
+		289 Spirocamallanus.mysti,
+		290 Spirocamallanus.xenopodis,
+		291 Spirocamallanus.fulvidraconis,
+		292 Procamallanus.laeviconchus,
+		293 Pseudophysaloptera.vincenti,
+		294 Skrjabinoptera.phrynosoma,
+		295 Thubunaea.baylisi,
+		296 Abbreviata.caucasica,
+		297 Abbreviata.kazachstanica,
+		298 Physaloptera.hispida,
+		299 Physaloptera.maxillaris,
+		300 Physaloptera.praeputialis,
+		301 Physaloptera.rara,
+		302 Turgida.turgida,
+		303 Streptocara.crassicauda,
+		304 Ancyracanthopsis.winegardi,
+		305 Cheilospirura.spinosa,
+		306 Cosmocephalus.obvelatus,
+		307 Dispharynx.nasuta,
+		308 Echinuria.uncinata,
+		309 Paracuaria.adunca,
+		310 Skrjabinocerca.americana,
+		311 Skrjabinocerca.prima,
+		312 Syncuaria.squamata,
+		313 Desportesius.brevicaudatus,
+		314 Desportesius.invaginatus,
+		315 Skrjabinoclava.inornatae,
+		316 Skrjabinoclava.morrisoni,
+		317 Acuaria.anthuris,
+		318 Acuaria.depressa,
+		319 Acuaria.gruveli,
+		320 Acuaria.hamulosa,
+		321 Capillospirura.pseudoargumentosa,
+		322 Salvelinema.salmonicola,
+		323 Salvelinema.walkeri,
+		324 Cystidicola.farionis,
+		325 Cystidicola.stigmatura,
+		326 Cystidicoloides.tenuissima,
+		327 Ascarophis.marina,
+		328 Ascarophis.morrhuae,
+		329 Ascarophis.pacificus,
+		330 Ascarophis.arctica,
+		331 Spinitectus.carolini,
+		332 Spinitectus.gracilis,
+		333 Spinitectus.inermis,
+		334 Spinitectus.micracanthus,
+		335 Spinitectus.ranae,
+		336 Rhabdochona.canadensis,
+		337 Rhabdochona.cascadilla,
+		338 Rhabdochona.denudata,
+		339 Rhabdochona.ergensi,
+		340 Rhabdochona.hellichi,
+		341 Rhabdochona.kidderi,
+		342 Rhabdochona.phoxini,
+		343 Rhabdochona.rotundicaudatum,
+		344 Rhabdochona.zacconis,
+		345 Hedruris.androphora,
+		346 Hedruris.ijimai,
+		347 Procyrnea.zorillae,
+		348 Sicarius.dipterum,
+		349 Cyrnea.colini,
+		350 Cyrnea.eurycerca,
+		351 Cyrnea.mansioni,
+		352 Dicheilonema.rheae,
+		353 Quadriplotriaena.hypsokysta,
+		354 Serratospiculum.tendo,
+		355 Diplotriaena.agelaeus,
+		356 Diplotriaena.bargusinica,
+		357 Diplotriaena.tricuspis,
+		358 Diplotriaena.tridens,
+		359 Microtetrameres.centuri,
+		360 Microtetrameres.corax,
+		361 Microtetrameres.helix,
+		362 Microtetrameres.inermis,
+		363 Tetrameres.americana,
+		364 Tetrameres.cardinalis,
+		365 Tetrameres.confusa,
+		366 Tetrameres.crami,
+		367 Tetrameres.mohtedai,
+		368 Tetrameres.pattersoni,
+		369 Hartertia.gallinarum,
+		370 Oxyspirura.mansoni,
+		371 Trichospirura.leptostoma,
+		372 Protospirura.muricola,
+		373 Spirura.infundibuliformis,
+		374 Spirura.malayensis,
+		375 Spirura.rytipleurites,
+		376 Spirura.talpae,
+		377 Mastophorus.muris,
+		378 Spirocerca.lupi,
+		379 Vigisospirura.potekhina,
+		380 Ascarops.strongylina,
+		381 Physocephalus.sexalatus,
+		382 Simondsia.paradoxa,
+		383 Streptopharagus.kutassi,
+		384 Streptopharagus.pigmentatus,
+		385 Gongylonema.congolense,
+		386 Gongylonema.dupuisi,
+		387 Gongylonema.inguvicola,
+		388 Gongylonema.mucronatum,
+		389 Gongylonema.neoplasticum,
+		390 Gongylonema.problematicum,
+		391 Gongylonema.pulchrum,
+		392 Gongylonema.soricis;
+	TREE 'Imported tree 0+' = ((1:2.36,(2:1.77,3:1.77,(4:1.18,(5:0.59,6:0.59,7:0.59):0.59):0.59):0.59,(8:1.27,(9:0.59,(10:0.39333334,11:0.39333334,12:0.39333334,13:0.39333334,(14:0.19666667,15:0.19666667):0.19666667):0.19666667,(16:1.12,17:1.12,(18:0.56,19:0.56):0.56,(20:0.56,21:0.56,22:0.56):0.56,(23:0.56,24:0.56,25:0.56,26:0.56):0.56):1.1):1.43):0.44):0.93,(((27:0.1,28:0.1,((29:0.0435,(30:0.029,(31:0.0145,32:0.0145):0.0145):0.0145):0.029,((33:0.0435,34:0.0435,(35:0.0145,36:0.0145):0.029):0.029,((37:0.0145,38:0.0145):0.0435,(39:0.0435,40:0.0435,41:0.0435,(42:0.029,43:0.029,(44:0.0145,45:0.0145):0.0145):0.0145):0.0145):0.0145):0.0145):0.0145):0.08,(46:0.15,(47:0.12,(48:0.03,49:0.03,50:0.03):0.09,(51:0.09,52:0.09,(53:0.06,(54:0.03,55:0.03):0.03):0.03):0.03):0.03,((56:0.08,(57:0.04,58:0.04):0.04):0.04,((59:0.046666,(60:0.023333,61:0.023333):0.023333):0.023333333,(((62:0.034286,(63:0.017143,64:0.017143):0.017143):0.068572,(65:0.034286,66:0.034286,67:0.034286,(68:0.017143,69:0.017143):0.017143):0.068572,(70:0.051428999999999996,(71:0.017143,72:0.017143):0.034286,(73:0.034286,(74:0.017143,75:0.017143):0.017143)';':0.017143):0.051428999999999996,(76:0.08571499999999999,77:0.08571499999999999,78:0.08571499999999999,(79:0.068572,(80:0.051428999999999996,(81:0.034286,(82:0.017143,83:0.017143):0.017143):0.017143):0.017143):0.017143):0.017143):0.017143,((84:0.3,85:0.3,(86:0.15,87:0.15):0.15):0.17,(((88:0.05,(89:0.025,90:0.025,91:0.025,92:0.025):0.025):0.05,(93:0.07500000000000001,(94:0.05,95:0.05,(96:0.025,97:0.025):0.025):0.025):0.025):0.04,(((98:0.03,99:0.03):0.03,(100:0.03,101:0.03,102:0.03):0.03):0.04,((103:0.035,104:0.035,105:0.035):0.035,(106:0.1,107:0.1,(108:0.025,109:0.025,110:0.025):0.07500000000000001,(111:0.07500000000000001,(112:0.05,113:0.05,114:0.05,115:0.05,(116:0.025,117:0.025):0.025,(118:0.025,119:0.025):0.025):0.025):0.025):0.04,(120:0.18,121:0.18,(122:0.036,123:0.036,124:0.036,125:0.036):0.144,(((126:0.072,(127:0.036,128:0.036):0.036):0.036,(129:0.036,130:0.036,131:0.036):0.072):0.036,((132:0.072,(133:0.036,134:0.036):0.036):0.036,(135:0.036,136:0.036,137:0.036,138:0.036,139:0.036,140:0.036,141:0.036,142:0.036,143:0.036,144:0.036,145:0.036):0.072):0.036):0.036):0.02):0.03):0.03):0.12):0.17):0.02):0.05):0.1):0.12):3.01,(((146:0.075,147:0.075,148:0.075):0.15,((149:0.075,150:0.075):0.075,(151:0.075,152:0.075,153:0.075):0.075):0.075):0.075,(((154:0.05,(155:0.025,156:0.025):0.025):0.5,(157:0.04,(158:0.03,159:0.03,160:0.03,161:0.03,((162:0.01,163:0.01):0.01,(164:0.01,165:0.01):0.01):0.01):0.01):0.64):0.12,(((166:0.22,(167:0.11,168:0.11,169:0.11,170:0.11,171:0.11,172:0.11):0.11):0.33,((173:0.33,(174:0.22,(175:0.11,176:0.11):0.11):0.11):0.11,((177:0.11,178:0.11):0.11,(179:0.11,180:0.11,181:0.11,182:0.11,183:0.11,184:0.11,185:0.11,186:0.11):0.11):0.22):0.11):0.11,((187:0.55,188:0.55,189:0.55,(190:0.44,(191:0.33,(192:0.22,(193:0.11,194:0.11):0.11):0.11):0.11):0.11):0.11,(((195:0.2,(196:0.1,197:0.1):0.1):0.1,(198:0.1,199:0.1,200:0.1,201:0.1,202:0.1):0.2):0.21,(((203:0.22,(204:0.11,205:0.11):0.11):0.11,((206:0.037500000000000006,(207:0.025,(208:0.0125,209:0.0125):0.0125):0.0125):0.0125,(210:0.05,(211:0.064,(212:0.048,(213:0.032,(214:0.016,215:0.016):0.016):0.016):0.016):0.016,(((216:0.01,217:0.01,218:0.01,219:0.01):0.03,(220:0.03,(221:0.02,(222:0.01,223:0.01,224:0.01,225:0.01):0.01):0.01):0.01):0.01,((226:0.02,227:0.02,(228:0.01,229:0.01):0.01):0.04,(230:0.05,(231:0.02,232:0.02,233:0.02,(234:0.01,235:0.01):0.01,(236:0.01,237:0.01,238:0.01):0.01):0.03,(239:0.04,(240:0.01,241:0.01):0.03,((242:0.02,(243:0.01,244:0.01):0.01):0.01,(245:0.02,246:0.02,247:0.02,248:0.02,249:0.02,(250:0.01,251:0.01):0.01):0.01):0.01):0.01):0.01):0.02):0.025):0.025):0.1):0.1,((((252:0.04,253:0.04):0.3,((254:0.44,((255:0.04666,256:0.0466):0.09333,(257:0.09333,258:0.09333,(259:0.04666,260:0.04666):0.04666):0.04666):0.2):0.09,(261:0.48,262:0.48,263:0.48,264:0.48,265:0.48,266:0.48,267:0.48,(268:0.32,269:0.32,(270:0.16,271:0.16):0.16):0.16):0.0464):0.17):0.14,(272:0.24999900000000003,(273:0.083333,274:0.083333,275:0.083333):0.166666,(276:0.166666,277:0.166666,278:0.166666,279:0.166666,280:0.166666,(281:0.083333,282:0.083333):0.083333):0.083333,(283:0.166666,284:0.166666,285:0.166666,286:0.166666,287:0.166666,288:0.166666,289:0.166666,290:0.166666,(291:0.083333,292:0.083333):0.083333):0.083333):0.45):0.21,(((293:0.1,294:0.1,295:0.1,(296:0.05,297:0.05):0.05,(298:0.05,299:0.05,300:0.05,301:0.05,302:0.05):0.05):0.12,((303:0.10500000000000001,304:0.10500000000000001,(305:0.07,306:0.07,307:0.07,308:0.07,309:0.07,310:0.07,311:0.07,312:0.07,(313:0.035,314:0.035):0.035,(315:0.035,316:0.035):0.035,(317:0.035,318:0.035,319:0.035,320:0.035):0.035):0.035):0.035,((321:0.05332,(322:0.02666,323:0.02666):0.02666,(324:0.02666,325:0.02666,326:0.02666):0.02666,(327:0.02666,328:0.02666,329:0.02666,330:0.02666):0.02666):0.02666,((331:0.12,332:0.12,333:0.12,334:0.12,335:0.12):0.12,(336:0.12,337:0.12,338:0.12,339:0.12,340:0.12,341:0.12,342:0.12,343:0.12,344:0.12):0.12):0.07):0.02):0.11):0.06,((345:0.08,346:0.08):0.1,(347:0.12,348:0.12,(349:0.06,350:0.06,351:0.06):0.06):0.06,((352:0.14,353:0.14,354:0.14,(355:0.07,356:0.07,357:0.07,358:0.07):0.07):0.07,(((359:0.175,360:0.175,361:0.175,362:0.175):0.175,(363:0.175,364:0.175,365:0.175,366:0.175,367:0.175,368:0.175):0.175):0.06124999999999999,(369:0.12,370:0.12,(371:0.06,372:0.06,(373:0.03,374:0.03,375:0.03,376:0.03):0.03):0.06,(377:0.09,(378:0.03,379:0.03):0.06,(380:0.06,381:0.06,382:0.06,(383:0.03,384:0.03):0.03):0.03):0.03,(385:0.03,386:0.03,387:0.03,388:0.03,389:0.03,390:0.03,391:0.03,392:0.03):0.09):0.03):0.07)';':0.09):0.08):0.11):0.09):0.03):0.08):0.11):0.11):0.23):0.3):3.23):1.0;
+
+END;
+
+
+Begin MESQUITE;
+		MESQUITESCRIPTVERSION 2;
+		TITLE AUTO;
+		tell ProjectCoordinator;
+		timeSaved 1347980688828;
+		getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			setID 0 6935847008965139588;
+		endTell;
+		getWindow;
+		tell It;
+			suppress;
+			setResourcesState false false 100;
+			setPopoutState 400;
+			setExplanationSize 0;
+			setAnnotationSize 0;
+			setFontIncAnnot 0;
+			setFontIncExp 0;
+			setSize 1680 946;
+			setLocation -4 0;
+			setFont SanSerif;
+			setFontSize 10;
+			getToolPalette;
+			tell It;
+			endTell;
+			desuppress;
+		endTell;
+		getEmployee  #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			showTaxa #6935847008965139588 #mesquite.lists.TaxonList.TaxonList;
+			tell It;
+				setTaxa #6935847008965139588;
+				getWindow;
+				tell It;
+					newAssistant  #mesquite.lists.DefaultTaxaOrder.DefaultTaxaOrder;
+					newAssistant  #mesquite.lists.TaxonListCurrPartition.TaxonListCurrPartition;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1580 879;
+					setLocation -4 0;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+					endTell;
+				endTell;
+				showWindow;
+				getEmployee #mesquite.lists.ColorTaxon.ColorTaxon;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.lists.TaxonListAnnotPanel.TaxonListAnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+			endTell;
+		endTell;
+		getEmployee  #mesquite.trees.BasicTreeWindowCoord.BasicTreeWindowCoord;
+		tell It;
+			makeTreeWindow #6935847008965139588  #mesquite.trees.BasicTreeWindowMaker.BasicTreeWindowMaker;
+			tell It;
+				suppressEPCResponse;
+				setTreeSource  #mesquite.trees.StoredTrees.StoredTrees;
+				tell It;
+					setTreeBlock 1;
+					toggleUseWeights off;
+				endTell;
+				setAssignedID 1258.1347979382156.3058833617563280473;
+				getTreeWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1580 879;
+					setLocation -4 0;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.trees.BasicTreeWindowMaker.BasicTreeWindow.ladderize;
+					endTell;
+					setActive;
+					getTreeDrawCoordinator #mesquite.trees.BasicTreeDrawCoordinator.BasicTreeDrawCoordinator;
+				tell It;
+					suppress;
+					setTreeDrawer  #mesquite.trees.SquareTree.SquareTree;
+					tell It;
+						setNodeLocs #mesquite.trees.NodeLocsStandard.NodeLocsStandard;
+						tell It;
+							branchLengthsToggle on;
+							toggleScale on;
+							toggleBroadScale off;
+							toggleCenter on;
+							toggleEven on;
+						endTell;
+						setEdgeWidth 6;
+						orientRight;
+						setCornerMode Right_Angle  50;
+					endTell;
+					setBackground White;
+					setBranchColor Black;
+					showNodeNumbers off;
+					showBranchColors on;
+					labelBranchLengths off;
+					centerBrLenLabels on;
+					showBrLensUnspecified on;
+					showBrLenLabelsOnTerminals on;
+					setBrLenLabelColor 0 0 255;
+					setNumBrLenDecimals 6;
+					desuppress;
+					getEmployee #mesquite.trees.BasicDrawTaxonNames.BasicDrawTaxonNames;
+					tell It;
+						setColor Black;
+						toggleColorPartition on;
+						toggleShadePartition off;
+						toggleShowFootnotes on;
+						toggleNodeLabels on;
+						toggleCenterNodeNames off;
+						toggleShowNames on;
+						namesAngle ?;
+					endTell;
+				endTell;
+					setTreeNumber 1;
+					setTree '((1:4.090000000000001,(2:1.77,3:1.77,(4:1.18,(5:0.59,6:0.59,7:0.59):0.59):0.5900000000000001):2.3200000000000007,(8:3.6500000000000004,(9:2.22,(10:0.39333333999999986,11:0.39333333999999986,12:0.39333333999999986,13:0.39333333999999986,(14:0.19666667,15:0.19666667):0.19666666999999988):1.8266666600000003,(16:1.12,17:1.12,(18:0.56,19:0.56):0.56,(20:0.56,21:0.56,22:0.56):0.56,(23:0.56,24:0.56,25:0.56,26:0.56):0.56):1.1):1.4300000000000002):0.4400000000000004):3.079999999999999,(((27:0.10150000000000003,28:0.10150000000000003,((29:0.043500000000000004,(30:0.029,(31:0.0145,32:0.0145):0.0145):0.014500000000000002):0.043500000000000004,((33:0.043500000000000004,34:0.043500000000000004,(35:0.014499999999999999,36:0.014499999999999999):0.029000000000000005):0.029000000000000005,((37:0.014499999999999999,38:0.014499999999999999):0.043500000000000004,(39:0.043500000000000004,40:0.043500000000000004,41:0.043500000000000004,(42:0.029,43:0.029,(44:0.0145,45:0.0145):0.0145):0.014500000000000002):0.014499999999999999):0.014500000000000006):0.014499999999999999):0.014500000000000027):0.8285000000000001,(46:0.81,(47:0.12,(48:0.03,49:0.03,50:0.03):0.09,(51:0.09,52:0.09,(53:0.06,(54:0.03,55:0.03):0.03):0.03):0.03):0.6900000000000001,((56:0.07999999999999996,(57:0.04,58:0.04):0.03999999999999996):0.6300000000000001,((59:0.046665999999999985,(60:0.023333,61:0.023333):0.023332999999999986):0.613334,(((62:0.034286,(63:0.017143,64:0.017143):0.017143):0.06857200000000001,(65:0.034286,66:0.034286,67:0.034286,(68:0.017143,69:0.017143):0.017143):0.06857200000000001,(70:0.051428999999999996,(71:0.017143,72:0.017143):0.034286,(73:0.034286,(74:0.017143,75:0.017143):0.017143)'';'':0.017143):0.05142900000000001,(76:0.08571499999999999,77:0.08571499999999999,78:0.08571499999999999,(79:0.068572,(80:0.051428999999999996,(81:0.034286,(82:0.017143,83:0.017143):0.017143):0.017143):0.017143):0.01714299999999999):0.01714300000000002):0.537142,((84:0.3,85:0.3,(86:0.15,87:0.15):0.15):0.16999999999999998,(((88:0.05,(89:0.025,90:0.025,91:0.025,92:0.025):0.025):0.05,(93:0.07500000000000001,(94:0.05,95:0.05,(96:0.025,97:0.025):0.025):0.02500000000000001):0.024999999999999994):0.16,(((98:0.03,99:0.03):0.03,(100:0.03,101:0.03,102:0.03):0.03):0.16999999999999998,((103:0.035,104:0.035,105:0.035):0.16499999999999998,(106:0.1,107:0.1,(108:0.024999999999999994,109:0.024999999999999994,110:0.024999999999999994):0.07500000000000001,(111:0.07500000000000001,(112:0.05,113:0.05,114:0.05,115:0.05,(116:0.025,117:0.025):0.025,(118:0.025,119:0.025):0.025):0.02500000000000001):0.024999999999999994):0.09999999999999998,(120:0.18,121:0.18,(122:0.036000000000000004,123:0.036000000000000004,124:0.036000000000000004,125:0.036000000000000004):0.144,(((126:0.072,(127:0.036,128:0.036):0.036):0.03599999999999999,(129:0.036000000000000004,130:0.036000000000000004,131:0.036000000000000004):0.07199999999999998):0.036000000000000004,((132:0.072,(133:0.036,134:0.036):0.036):0.03599999999999999,(135:0.036000000000000004,136:0.036000000000000004,137:0.036000000000000004,138:0.036000000000000004,139:0.036000000000000004,140:0.036000000000000004,141:0.036000000000000004,142:0.036000000000000004,143:0.036000000000000004,144:0.036000000000000004,145:0.036000000000000004):0.07199999999999998):0.036000000000000004):0.036000000000000004):0.01999999999999999):0.03):0.030000000000000027):0.20999999999999996):0.17000000000000004):0.020000000000000018):0.050000000000000044):0.09999999999999998):0.1200000000000001):3.01,(((146:0.07500000000000001,147:0.07500000000000001,148:0.07500000000000001):0.15000000000000008,((149:0.075,150:0.075):0.075,(151:0.075,152:0.075,153:0.075):0.075):0.0750000000000001):1.4750000000000005,(((154:0.050000000000000044,(155:0.025,156:0.025):0.025000000000000043):0.63,(157:0.040000000000000036,(158:0.03,159:0.03,160:0.03,161:0.03,((162:0.01,163:0.01):0.01,(164:0.01,165:0.01):0.01):0.009999999999999998):0.010000000000000037):0.64):0.7900000000000004,(((166:0.21999999999999997,(167:0.11,168:0.11,169:0.11,170:0.11,171:0.11,172:0.11):0.10999999999999997):0.33000000000000007,((173:0.33,(174:0.22,(175:0.11,176:0.11):0.11):0.11000000000000001):0.10999999999999999,((177:0.11,178:0.11):0.11,(179:0.11,180:0.11,181:0.11,182:0.11,183:0.11,184:0.11,185:0.11,186:0.11):0.11):0.22):0.11000000000000004):0.8100000000000003,((187:0.55,188:0.55,189:0.55,(190:0.44,(191:0.33,(192:0.22,(193:0.11,194:0.11):0.11):0.11000000000000001):0.10999999999999999):0.11000000000000004):0.7000000000000002,(((195:0.2,(196:0.1,197:0.1):0.1):0.10000000000000003,(198:0.1,199:0.1,200:0.1,201:0.1,202:0.1):0.20000000000000004):0.8700000000000001,(((203:0.22,(204:0.11,205:0.11):0.11):0.11000000000000007,((206:0.037500000000000006,(207:0.025,(208:0.0125,209:0.0125):0.0125):0.012500000000000004):0.0925,(210:0.10500000000000001,(211:0.064,(212:0.048,(213:0.032,(214:0.016,215:0.016):0.016):0.016):0.016):0.04100000000000001,(((216:0.010000000000000002,217:0.010000000000000002,218:0.010000000000000002,219:0.010000000000000002):0.03,(220:0.03,(221:0.02,(222:0.01,223:0.01,224:0.01,225:0.01):0.01):0.009999999999999998):0.010000000000000002):0.04,((226:0.019999999999999997,227:0.019999999999999997,(228:0.01,229:0.01):0.009999999999999997):0.04000000000000001,(230:0.05,(231:0.02,232:0.02,233:0.02,(234:0.01,235:0.01):0.01,(236:0.01,237:0.01,238:0.01):0.01):0.030000000000000002,(239:0.04,(240:0.010000000000000002,241:0.010000000000000002):0.03,((242:0.02,(243:0.01,244:0.01):0.01):0.009999999999999998,(245:0.02,246:0.02,247:0.02,248:0.02,249:0.02,(250:0.01,251:0.01):0.01):0.009999999999999998):0.010000000000000002):0.010000000000000002):0.010000000000000002):0.019999999999999997):0.02500000000000001):0.024999999999999994):0.20000000000000007):0.81,((((252:0.040000000000000036,253:0.040000000000000036):0.66,((254:0.44,((255:0.04666000000000001,256:0.04666000000000001):0.09333,(257:0.09333,258:0.09333,(259:0.04666,260:0.04666):0.046669999999999996):0.04666000000000001):0.30001):0.09000000000000002,(261:0.48,262:0.48,263:0.48,264:0.48,265:0.48,266:0.48,267:0.48,(268:0.32,269:0.32,(270:0.16,271:0.16):0.16):0.15999999999999998):0.050000000000000044):0.17000000000000004):0.14,(272:0.24999900000000008,(273:0.08333299999999999,274:0.08333299999999999,275:0.08333299999999999):0.1666660000000001,(276:0.166666,277:0.166666,278:0.166666,279:0.166666,280:0.166666,(281:0.083333,282:0.083333):0.083333):0.08333300000000007,(283:0.166666,284:0.166666,285:0.166666,286:0.166666,287:0.166666,288:0.166666,289:0.166666,290:0.166666,(291:0.083333,292:0.083333):0.083333):0.08333300000000007):0.590001):0.20999999999999996,(((293:0.10000000000000003,294:0.10000000000000003,295:0.10000000000000003,(296:0.05,297:0.05):0.05000000000000003,(298:0.05,299:0.05,300:0.05,301:0.05,302:0.05):0.05000000000000003):0.33999999999999997,((303:0.10500000000000001,304:0.10500000000000001,(305:0.07,306:0.07,307:0.07,308:0.07,309:0.07,310:0.07,311:0.07,312:0.07,(313:0.035,314:0.035):0.035,(315:0.035,316:0.035):0.035,(317:0.035,318:0.035,319:0.035,320:0.035):0.035):0.035):0.225,((321:0.05331999999999998,(322:0.02666,323:0.02666):0.02665999999999998,(324:0.02666,325:0.02666,326:0.02666):0.02665999999999998,(327:0.02666,328:0.02666,329:0.02666,330:0.02666):0.02665999999999998):0.25668,((331:0.12,332:0.12,333:0.12,334:0.12,335:0.12):0.12,(336:0.12,337:0.12,338:0.12,339:0.12,340:0.12,341:0.12,342:0.12,343:0.12,344:0.12):0.12):0.07):0.020000000000000018):0.10999999999999999):0.21124999999999988,((345:0.08000000000000002,346:0.08000000000000002):0.4912499999999999,(347:0.12,348:0.12,(349:0.06,350:0.06,351:0.06):0.06):0.45124999999999993,((352:0.14,353:0.14,354:0.14,(355:0.07,356:0.07,357:0.07,358:0.07):0.07):0.34124999999999994,(((359:0.175,360:0.175,361:0.175,362:0.175):0.175,(363:0.175,364:0.175,365:0.175,366:0.175,367:0.175,368:0.175):0.175):0.06124999999999997,(369:0.12,370:0.12,(371:0.06,372:0.06,(373:0.03,374:0.03,375:0.03,376:0.03):0.03):0.06,(377:0.09,(378:0.03,379:0.03):0.06,(380:0.06,381:0.06,382:0.06,(383:0.03,384:0.03):0.03):0.03):0.03,(385:0.03,386:0.03,387:0.03,388:0.03,389:0.03,390:0.03,391:0.03,392:0.03):0.09):0.29124999999999995):0.07)'';'':0.08999999999999997):0.07999999999999996):0.39875000000000016):0.09000000000000008):0.030000000000000027):0.08000000000000007):0.1100000000000001):0.1100000000000001):0.2300000000000002):2.2399999999999993):3.23):1.0;';
+					setDrawingSizeMode 0;
+					toggleLegendFloat on;
+					scale 0;
+					toggleTextOnTree off;
+					showWindow;
+				endTell;
+				desuppressEPCResponse;
+				getEmployee #mesquite.trees.ColorBranches.ColorBranches;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.ornamental.BranchNotes.BranchNotes;
+				tell It;
+					setAlwaysOn off;
+				endTell;
+				getEmployee #mesquite.ornamental.ColorTreeByPartition.ColorTreeByPartition;
+				tell It;
+					colorByPartition off;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocDoubles.DrawTreeAssocDoubles;
+				tell It;
+					setOn on;
+					setDigits 4;
+					writeAsPercentage off;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocStrings.DrawTreeAssocStrings;
+				tell It;
+					setOn on;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.trees.TreeInfoValues.TreeInfoValues;
+				tell It;
+					panelOpen false;
+				endTell;
+			endTell;
+		endTell;
+		endTell;
+end;
+
+
