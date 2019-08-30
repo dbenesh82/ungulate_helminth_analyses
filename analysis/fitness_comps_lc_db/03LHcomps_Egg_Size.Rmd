@@ -1,7 +1,6 @@
 ---
 title: "Ungulate nematode life history - Propagule size"
-author: "Dan Benesh"
-output: html_document
+output: github_document
 ---
 
 I use the life cycle database to explore ideas about the costs and benefits of different infection routes exhibited by helminths of grazing mammals (ungulates). In this document, I specifically focus on egg sizes. The basic approach to data filtering and summarizing was described [previously](01LHcomps_Adult_Size.html).
