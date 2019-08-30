@@ -1,0 +1,288 @@
+---
+title: "Comparison of transmission strategies to ungulates"
+author: "Dan Benesh"
+date: "8/23/2019"
+output: html_document
+---
+
+I make a distinction between the number of times a transmission strategy has evolved and its commonness, measured in the number of families/genera exhibiting the strategy. I find below that transmission via intermediate hosts has often evolved, but in terms of number of families/genera, transmission via herbage is the most common strategy.
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(RColorBrewer)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(stringsAsFactors = FALSE)
+theme_set(new = theme_bw())
+```
+
+# Origins of strategies
+
+I create a data table based on the results of the mapping of strategies done [here](mapping_ungulate_helminths.Rmd).
+
+```{r}
+# transmission route
+tr <- c("eggs ingested",
+        "larvae on herbage",
+        "intermediate host eaten",
+        "larvae seek/penetrate",
+        "vector-transmission",
+        "trans-placental/mammary")
+# helminth group
+hg <- c("Acanthocephala",
+        "Cestoda",
+        "Trematoda",
+        "Monogenea",
+        "Nematoda")
+
+```
+
+```{r}
+tr <- rep(tr, times = 5)
+hg <- rep(hg, times = 6)
+dx <- data.frame(trans_route = tr, helminth_group = hg)
+```
+
+```{r}
+dx$origins <- 0
+```
+
+```{r}
+# origins of egg transmission
+dx$origins[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Nematoda")] <- 3
+dx$origins[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Cestoda")] <- 1
+```
+```{r}
+# origins herbage transmission
+dx$origins[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Trematoda")] <- 3
+dx$origins[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Nematoda")] <- 1
+```
+```{r}
+# origins int host eaten
+dx$origins[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Acanthocephala")] <- 1
+dx$origins[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Cestoda")] <- 2
+dx$origins[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Trematoda")] <- 5
+dx$origins[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Nematoda")] <- 6
+```
+```{r}
+# origins penetration
+dx$origins[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Monogenea")] <- 1
+dx$origins[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Trematoda")] <- 1
+dx$origins[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Nematoda")] <- 2
+```
+```{r}
+# origins vector, transplacental
+dx$origins[which(dx$trans_route == "vector-transmission" & dx$helminth_group == "Nematoda")] <- 3
+dx$origins[which(dx$trans_route == "trans-placental/mammary" & dx$helminth_group == "Nematoda")] <- 2
+```
+```{r}
+# make nice factors for plotting
+dx <- mutate(dx, helminth_group = factor(helminth_group, levels = rev(c("Nematoda", "Trematoda", "Cestoda", "Acanthocephala", "Monogenea"))))
+dx <- mutate(dx, trans_route = factor(trans_route, levels = rev(c("intermediate host eaten", "larvae on herbage", "eggs ingested",
+                                                              "larvae seek/penetrate", "vector-transmission", "trans-placental/mammary"))))
+```
+
+```{r}
+p1 <- ggplot(dx, aes(x = trans_route, y = origins, fill = helminth_group)) + 
+  geom_bar(stat = "identity") +
+  labs(y = "Origins of ungulate parasitism") +
+  scale_fill_brewer(type = "seq", palette = "PuBu", direction = 1) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.025))) +
+  theme(axis.title.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.title = element_blank(),
+        legend.position = c(1,0), legend.justification = c(1,0),
+        legend.background = element_rect(fill = "white", color = "black")
+        ) +
+  coord_flip()
+p1
+# could add origin values to plot
+```
+
+The number of times a strategy has resulted in ungulate parasitism does not tell us how common the strategy is for infecting ungulates. Next I look at the commonness of different strategies, based on the number of families observed.
+
+# Commoness of strategies
+
+### Families
+
+```{r}
+dx$families <- 0
+```
+```{r}
+# families of egg transmission
+dx$families[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Nematoda")] <- 5
+dx$families[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Cestoda")] <- 1
+```
+```{r}
+# families herbage transmission
+dx$families[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Trematoda")] <- 12
+dx$families[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Nematoda")] <- 8
+```
+```{r}
+# families int host eaten
+dx$families[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Acanthocephala")] <- 1
+dx$families[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Cestoda")] <- 4
+dx$families[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Trematoda")] <- 6
+dx$families[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Nematoda")] <- 7
+```
+```{r}
+# families penetration
+dx$families[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Monogenea")] <- 1
+dx$families[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Trematoda")] <- 1
+dx$families[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Nematoda")] <- 2
+```
+```{r}
+# families vector, transplacental
+dx$families[which(dx$trans_route == "vector-transmission" & dx$helminth_group == "Nematoda")] <- 5
+dx$families[which(dx$trans_route == "trans-placental/mammary" & dx$helminth_group == "Nematoda")] <- 3
+```
+```{r}
+p2 <- ggplot(dx, aes(x = trans_route, y = families, fill = helminth_group)) + 
+  geom_bar(stat = "identity") +
+  labs(y = "Number of families in ungulates") +
+  scale_fill_brewer(type = "seq", palette = "PuBu", direction = 1) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.025))) +
+  theme(axis.title.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.title = element_blank(),
+        legend.position = c(1,0), legend.justification = c(1,0),
+        legend.background = element_rect(fill = "white", color = "black")
+        ) +
+  coord_flip()
+p2
+# could add origin values to plot
+```
+
+The main difference between this plot and the previous one is that the herbage transmission strategy is far more common - those few origins have resulted in numerous families.
+
+### Genera
+
+```{r}
+dx$genera <- 0
+```
+```{r}
+# genera of egg transmission
+dx$genera[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Nematoda")] <- 1 + 1 + 4 + 3
+dx$genera[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Cestoda")] <- 2
+```
+```{r}
+# genera herbage transmission
+dx$genera[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Trematoda")] <- 6 + 1 + 6 + 1 + 1 + 1 + 1 + 15 + 4 + 4 + 1 + 1
+dx$genera[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Nematoda")] <- 2 + 36 + 13 + 3 + 3 + 13 + 4 + 9
+```
+```{r}
+# genera int host eaten
+dx$genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Acanthocephala")] <- 2
+dx$genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Cestoda")] <- 2 + 7 + 2 + 5 + 1 + 1 + 1 
+dx$genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Trematoda")] <- 1 + 2 + 1 + 4 + 1 + 3 # Troglotrematidae not in Supp Tbl! Assumed one genus
+dx$genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Nematoda")] <- 2 + 1 + 1 + 5 + 16 + 2 + 2  
+```
+```{r}
+# genera penetration
+dx$genera[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Monogenea")] <- 1
+dx$genera[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Trematoda")] <- 4
+dx$genera[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Nematoda")] <- 1 + 11
+```
+```{r}
+# genera vector, transplacental
+dx$genera[which(dx$trans_route == "vector-transmission" & dx$helminth_group == "Nematoda")] <- 1 + 4 + 5 + 9 + 1
+dx$genera[which(dx$trans_route == "trans-placental/mammary" & dx$helminth_group == "Nematoda")] <- 1 + 1
+```
+```{r}
+p3 <- ggplot(dx, aes(x = trans_route, y = genera, fill = helminth_group)) + 
+  geom_bar(stat = "identity") +
+  labs(y = "Number of genera in ungulates") +
+  scale_fill_brewer(type = "seq", palette = "PuBu", direction = 1) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.025))) +
+  theme(axis.title.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.title = element_blank(),
+        legend.position = c(1,0), legend.justification = c(1,0),
+        legend.background = element_rect(fill = "white", color = "black")
+        ) +
+  coord_flip()
+p3
+# could add origin values to plot
+```
+
+When we look at genera, the predominance of herbage transmission appears even clearer.
+
+```{r}
+#totals for genera in each strategy
+dx%>%group_by(trans_route, helminth_group)%>%
+  summarize(tot_gen = sum(genera))%>%
+  filter(tot_gen > 0)%>%
+  arrange(helminth_group, desc(tot_gen))
+```
+```{r}
+#totals for genera in each strategy
+dx%>%group_by(trans_route)%>%
+  summarize(tot_gen = sum(genera))
+```
+
+
+### Ungulate specialists?
+
+We can also ask if the different strategies results in ungulate specialists or not. For every strategy, let's calculate the proportion of genera in ungulates vs the proportion of genera in the family not known to infect ungulates.
+
+```{r}
+dx$tot_genera <- 0
+```
+```{r}
+# tot_genera of egg transmission
+dx$tot_genera[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Nematoda")] <- 29 + 6 + 33 + 63
+dx$tot_genera[which(dx$trans_route == "eggs ingested" & dx$helminth_group == "Cestoda")] <- 2
+```
+```{r}
+# tot_genera herbage transmission
+dx$tot_genera[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Trematoda")] <- 6 + 16 + 1 + 1 + 1 + 65 + 8 + 4 + 1 + 1 + 2 + 13
+dx$tot_genera[which(dx$trans_route == "larvae on herbage" & dx$helminth_group == "Nematoda")] <- 8 + 48 + 65 + 4 + 61 + 16 + 23 + 20
+```
+```{r}
+# tot_genera int host eaten
+dx$tot_genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Acanthocephala")] <- 12
+dx$tot_genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Cestoda")] <- 16 + 32 + 12 + 5 + 4 + 1 + 36
+dx$tot_genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Trematoda")] <- 2 + 43 + 29 + 36 + 46 + 1 # Troglotrematidae not in Supp Tbl! Assumed one genus
+dx$tot_genera[which(dx$trans_route == "intermediate host eaten" & dx$helminth_group == "Nematoda")] <- 8 + 4 + 18 + 3 + 23 + 5
+```
+```{r}
+# tot_genera penetration
+dx$tot_genera[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Monogenea")] <- 25
+dx$tot_genera[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Trematoda")] <- 14
+dx$tot_genera[which(dx$trans_route == "larvae seek/penetrate" & dx$helminth_group == "Nematoda")] <- 22 + 3
+```
+```{r}
+# tot_genera vector, transplacental
+dx$tot_genera[which(dx$trans_route == "vector-transmission" & dx$helminth_group == "Nematoda")] <- 4 + 20 + 94 + 13 + 9
+dx$tot_genera[which(dx$trans_route == "trans-placental/mammary" & dx$helminth_group == "Nematoda")] <- 33 + 3
+```
+
+```{r}
+dx2 <- filter(dx, origins != 0, families != 0)%>%
+  group_by(trans_route)%>%
+  summarize(genera = sum(genera), tot_genera = sum(tot_genera))
+dx2$genera/dx2$tot_genera
+```
+
+```{r}
+ggplot(dx2, aes(y= trans_route, x = genera/tot_genera)) + 
+  geom_segment(aes(yend = trans_route), xend = 0) +
+  geom_point(aes(size = tot_genera)) +
+  scale_x_continuous(limits = c(0, 0.35), expand = expand_scale(mult = c(0, 0.05))) +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank(),
+        axis.title.y = element_blank()) +
+  labs(x = "Proportion of genera in ungulates", size = "Genera")
+```
+
+We see that herbage transmission seems to keep worms in ungulates. By contrast, egg transmission is not specific to ungulates. In those families where ungulate parasitism arose via egg ingestion, less than 10% of the genera are found in ungulates. While this result supports the idea that herbage transmission intimately links helminths with ungulates, I'm not sure how useful it is. The non-ungulate genera in these families may exhibit different transmission strategies, so grouping them into the same strategy as the ungulate parasites might be inaccurate.
+
+
+Export a figure to file.
+
+```{r}
+ggsave(p1, filename = "fig1a_stacked_bars_origins.png", device = "png", units = "in", width = 4, height = 3)
+ggsave(p3, filename = "fig1b_stacked_bars_genera.png", device = "png", units = "in", width = 4, height = 3)
+```
+
