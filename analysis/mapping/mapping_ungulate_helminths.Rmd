@@ -81,6 +81,14 @@ tre_dat_red <- tre_dat_red[mv,]
 rm(mv)
 ```
 
+```{r}
+# this is for making Table 1 and mapping consistent
+tree$tip.label[which(tree$tip.label == "Troglotrematidae")] <- "Paragonimidae" # change name of tip
+tre_dat_red$otl_name[which(tre_dat_red$family == "Paragonimidae")] <- "Paragonimidae" # change in data
+tre_dat_red$otl_name_red[which(tre_dat_red$family == "Paragonimidae")] <- "Paragonimidae"
+```
+
+
 After making the trait data and tree consistent regarding names and order, I can start mapping. Let's look at the distribution of tip states.
 ```{r}
 sort(table(tre_dat_red$trans_route), decreasing = T)
@@ -291,18 +299,38 @@ length(unique(trans_states2$parent_node))
 Why were more transitions identified when mapping transmission routes, as opposed to just ungulate parasitism? Shouldn't every transition to ungulate parasitism be associated with one evolutionary change in transmission route? The additional transitions can be understood, because each transition to ungulate parasitism can be associated with multiple transmission strategies. For example, the clade of trichinellid and trichurid nematodes both infect ungulates (one origin), but they use different strategies to do so.
 
 ```{r}
+tree_df <- mutate(tree_df, child_state = factor(child_state, levels = c("not ungulate parasites",
+                                                                        "larvae seek/penetrate",
+                                                                        "vector-transmission", 
+                                                                        "trans-placental/mammary",
+                                                                        "larvae on herbage",
+                                                                        "intermediate host eaten",
+                                                                        "eggs ingested")
+                                                                        ))%>%
+  mutate(child_state = factor(child_state, labels = c("Not ungulate parasites",
+                                                      "Larvae seek host",
+                                                      "Transmitted by vector",
+                                                      "Transmammary/placental",
+                                                      "Larvae migrate to herbage",
+                                                      "Larvae via animal host",
+                                                      "Eggs ingested")))
+```
+
+```{r}
 # re-plot with points
 p <- ggtree(tree_df, aes(color = child_state), size = 0.7, layout = 'circular') +
   geom_tiplab2(hjust = -0.1, size = 1.25) +
-  scale_color_manual(values = c(mypalette[1:4], 'light gray', mypalette[6:7])) +
-  geom_nodepoint(data = filter(tree_df, trans_node), aes(color = parent_state),
+  geom_nodepoint(data = filter(tree_df, trans_node),
+                 #aes(color = parent_state),
                  shape = 19, size = 2, 
                  #color = "gray", 
                  alpha = 0.75) +
-  theme(legend.position = c(0.1, 1),
+  scale_color_manual(values = c('light gray', mypalette[4], mypalette[7], mypalette[5], mypalette[3], mypalette[2], mypalette[1])) +
+  theme(legend.position = c(0.175, 1),
         legend.justification = c(1,1),
         legend.title = element_blank(),
-        legend.text = element_text(size = 15))
+        legend.text = element_text(size = 10),
+        legend.background = element_blank())
 
 p
 ```
@@ -310,7 +338,8 @@ p
 The plot shows the transitions.
 
 ```{r}
-# ggsave(filename = 'transitions_to_ung_trans_routes.pdf', width = 297, height = 210, units = "mm")
+ggsave(filename = 'transitions_to_ung_trans_routes.pdf', width = 297, height = 210, units = "mm")
+ggsave(filename = 'transitions_to_ung_trans_routes_rev.svg', width = 297, height = 210, units = "mm")
 ```
 
 A few descriptive stats mentioned in manuscript text...
@@ -324,7 +353,7 @@ length(tree$tip.label) - length(grep(tree$tip.label, pattern = '2'))
 How many origins were counted manually?
 
 ```{r}
-origins_ih <- 14
+origins_ih <- 15
 origins_egg <- 4
 origins_herb <- 4
 origins_pen <- 4

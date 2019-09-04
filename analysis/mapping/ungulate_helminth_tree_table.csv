@@ -537,7 +537,7 @@ Leucochloridiidae,Platyhelminthes,FALSE,Leucochloridiidae,not ungulate parasites
 Bucephalidae,Platyhelminthes,FALSE,Bucephalidae,not ungulate parasites,TRUE,Bucephalidae
 Brauninidae,Platyhelminthes,FALSE,Brauninidae,not ungulate parasites,TRUE,Brauninidae
 Cyathocotylidae,Platyhelminthes,FALSE,Cyathocotylidae,not ungulate parasites,TRUE,Cyathocotylidae
-Diplostomidae,Platyhelminthes,FALSE,Diplostomatidae,not ungulate parasites,TRUE,Diplostomatidae
+Diplostomidae,Platyhelminthes,TRUE,Diplostomatidae,intermediate host eaten,TRUE,Diplostomatidae
 Proterodiplostomidae,Platyhelminthes,FALSE,Proterodiplostomidae,not ungulate parasites,FALSE,Proterodiplostomidae
 Strigeidae,Platyhelminthes,FALSE,Strigeidae,not ungulate parasites,TRUE,Strigeidae
 Calycodidae,Platyhelminthes,FALSE,Calycodidae,not ungulate parasites,TRUE,Calycodidae
